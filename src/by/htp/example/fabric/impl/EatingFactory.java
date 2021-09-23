@@ -1,5 +1,6 @@
 package by.htp.example.fabric.impl;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
 import by.htp.example.fabric.AfternoonTea;
@@ -7,6 +8,7 @@ import by.htp.example.fabric.Breakfast;
 import by.htp.example.fabric.Dinner;
 import by.htp.example.fabric.Eating;
 import by.htp.example.fabric.Lunch;
+import by.htp.example.fabric.NewEating;
 import by.htp.example.fabric.SecondBreakfast;
 import by.htp.example.param.TypeOfEating;
 
@@ -14,7 +16,7 @@ public class EatingFactory {
 
 	private Eating eating;
 	
-	public Eating getEating(String eatingParameters) {
+	public Eating getEating(String eatingParameters)throws ParseException{
 		Scanner in = new Scanner(System.in);
 		
 		System.out.println("Hello , pls choose eating : Breakfast ,"
@@ -22,7 +24,12 @@ public class EatingFactory {
 		TypeOfEating.EATING = in.nextLine();
 		
 		switch(TypeOfEating.EATING) {
-		
+		case "NewEating":
+			
+			eating = new NewEating();
+			eating.addEating();
+			break;
+			
 		case "AfternoonTea" :
 			
 			eating = new AfternoonTea();

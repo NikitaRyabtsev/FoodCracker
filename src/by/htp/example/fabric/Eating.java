@@ -1,7 +1,9 @@
 package by.htp.example.fabric;
 
+import java.text.ParseException;
+
 public interface Eating {
 
-	void addEating();
+	void addEating() throws ParseException;
 
 }
