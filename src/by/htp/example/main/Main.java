@@ -2,9 +2,9 @@ package by.htp.example.main;
 
 import java.util.Date;
 
-import by.htp.example.logic.Eating;
-import by.htp.example.logic.EatingFactory;
-import by.htp.example.logic.EatingParameters;
+import by.htp.example.fabric.Eating;
+import by.htp.example.fabric.impl.EatingFactory;
+import by.htp.example.param.TypeOfEating;
 
 public class Main {
 
@@ -12,17 +12,8 @@ public class Main {
 		
 		EatingFactory eatingFactory = new EatingFactory();
 		
-		Date date = new Date();
-		
-		Eating breakfast = eatingFactory.getEating(EatingParameters.BREAKFAST);
-
-		Eating lunch = eatingFactory.getEating(EatingParameters.LUNCH);
-
-		
-		Eating dinner = eatingFactory.getEating(EatingParameters.DINNER);
-
-		
-		
+		Eating eating = eatingFactory.getEating(TypeOfEating.EATING);
+	
 
 	}
 
