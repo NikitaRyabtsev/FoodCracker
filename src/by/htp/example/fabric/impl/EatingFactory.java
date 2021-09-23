@@ -20,7 +20,8 @@ public class EatingFactory {
 		Scanner in = new Scanner(System.in);
 		
 		System.out.println("Hello , pls choose eating : Breakfast ,"
-				+ " Lunch , Dinner , AfternoonTea , SecondBreakfast or Exit");
+				+ " Lunch , Dinner , AfternoonTea , SecondBreakfast , NewEating - u can create your own eating"
+				+ "or Exit");
 		TypeOfEating.EATING = in.nextLine();
 		
 		switch(TypeOfEating.EATING) {
