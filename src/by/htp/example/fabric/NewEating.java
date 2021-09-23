@@ -16,8 +16,10 @@ public class NewEating implements Eating{
 	@Override
 	public void addEating() throws ParseException{
 		System.out.println("Input Date like:hh:mm dd.MM.yy");
-		Scanner sc = new Scanner(System.in);
-		TypeOfEating.EATING = sc.nextLine();
+		
+		Scanner scan = new Scanner(System.in);
+		
+		TypeOfEating.EATING = scan.nextLine();
 		
 		DateFormat dateFormat = new SimpleDateFormat("hh:mm dd.MM.yy");		
 		
@@ -26,10 +28,10 @@ public class NewEating implements Eating{
 		System.out.println(date);
 		
 		System.out.println("Input Calories : ");
-		EatingParameters.CALORIES = sc.next();
+		EatingParameters.CALORIES = scan.next();
 		
 		System.out.println("Input WeigthOfFood in gramms : ");
-		EatingParameters.WEIGTH_OF_EATING = sc.next();
+		EatingParameters.WEIGTH_OF_EATING = scan.next();
 		
 		Show.showParam();
 		
