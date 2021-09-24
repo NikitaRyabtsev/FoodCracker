@@ -1,21 +1,12 @@
 package by.htp.example.main;
 
-import java.text.ParseException;
-import java.util.Date;
-
-import by.htp.example.fabric.Eating;
-import by.htp.example.fabric.impl.EatingFactory;
-import by.htp.example.param.TypeOfEating;
+import by.htp.example.view.AdminMenu;
 
 public class Main {
 
-	public static void main(String[] args)throws ParseException{
+	public static void main(String[] args) {
 		
-		EatingFactory eatingFactory = new EatingFactory();
-		
-		Eating eating = eatingFactory.getEating(TypeOfEating.EATING);
-	
-
+		AdminMenu menu = new AdminMenu();
+		menu.viewMenu();
 	}
-
 }
