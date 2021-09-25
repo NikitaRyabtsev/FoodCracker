@@ -2,26 +2,21 @@ package by.htp.example.bean;
 
 public class Meal {
 
-	private String name;
 	private String date;
+	private String time;
 	private double weight;
 	private double calories;
 
-	public Meal(String name, String date, double weight, double calories) {
+	
+
+	public Meal(String date, String time, double weight, double calories) {
 		super();
-		this.name = name;
 		this.date = date;
+		this.time = time;
 		this.weight = weight;
 		this.calories = calories;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getDate() {
 		return date;
@@ -47,10 +42,23 @@ public class Meal {
 		this.calories = calories;
 	}
 
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
 	@Override
 	public String toString() {
-		return name + ", date=" + date + ", weight=" + weight + ", calories=" + calories + "]";
+		return  
+				"Date: " + date + "," + 
+				"Time: " + time + ", Weight: " + weight + ", Calories: "
+				+ calories + "]";
 	}
+
+	
 
 
 
