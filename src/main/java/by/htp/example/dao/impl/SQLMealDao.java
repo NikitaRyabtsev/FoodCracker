@@ -31,7 +31,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
 
 			}
 		} catch (SQLException e) {
-			throw new DaoException();
+			throw new DaoException(e);
 		}
 		return meals;
 
@@ -59,7 +59,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
 					meal.setWeight(generatedKeys.getDouble(4));
 					meal.setCalories(generatedKeys.getDouble(5));
 				} else {
-					throw new SQLException("Creating user failed, no ID obtained.");
+					throw new SQLException("Creating Meal failed, no ID obtained.");
 				}
 			}
 			return meal;
@@ -70,28 +70,39 @@ public class SQLMealDao implements MealDao, DaoQuery {
 	}
 
 	@Override
-	public ArrayList<Meal> changeMealCharacteristicInDB(ArrayList<Meal> meals) {
-		// TODO Auto-generated method stub
+	public ArrayList<Meal> changeMealCharacteristicInDB(Meal meal) throws DaoException {
+
+		try (Connection connection = DriverManagerManager.getConnection();
+				PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_CHANGE_MEAL)) {
+
+			prepareStatement.setObject(1, meal.getDate());
+			prepareStatement.setObject(2, meal.getTime());
+			prepareStatement.setDouble(3, meal.getWeight());
+			prepareStatement.setDouble(4, meal.getWeight());
+			prepareStatement.setInt(5, meal.getId());
+
+			prepareStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
+
 		return null;
 	}
 
 	@Override
-	public ArrayList<Meal> deleteMealFromDB(ArrayList<Meal> meals) {
-		// TODO Auto-generated method stub
+	public ArrayList<Meal> deleteMealFromDB(Meal meal) throws DaoException {
+
+		try(Connection connection = DriverManagerManager.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_DELETE_MEAL)) {
+			preparedStatement.setInt(1, meal.getId());
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
 		return null;
-	}
 
-	private Meal init(ResultSet resultSet) throws SQLException {
-
-		Meal meal = new Meal();
-		meal.setId(resultSet.getInt("idMeal"));
-		meal.setWeight(resultSet.getDouble("weight"));
-		LocalDate localDate = resultSet.getObject("date", LocalDate.class);
-		LocalTime localTime = resultSet.getObject("time", LocalTime.class);
-		meal.setDate(localDate);
-		meal.setTime(localTime);
-		meal.setCalories(resultSet.getDouble("calories"));
-		return meal;
 	}
 
 	@Override
@@ -125,6 +136,23 @@ public class SQLMealDao implements MealDao, DaoQuery {
 
 		return null;
 
+	}
+
+	private Meal init(ResultSet resultSet) throws DaoException {
+		try(Connection connection = DriverManagerManager.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_DELETE_MEAL)){
+		Meal meal = new Meal();
+		meal.setId(resultSet.getInt("idMeal"));
+		meal.setWeight(resultSet.getDouble("weight"));
+		LocalDate localDate = resultSet.getObject("date", LocalDate.class);
+		LocalTime localTime = resultSet.getObject("time", LocalTime.class);
+		meal.setDate(localDate);
+		meal.setTime(localTime);
+		meal.setCalories(resultSet.getDouble("calories"));
+		return meal;
+		}catch(SQLException e) {
+			throw new DaoException();
+		}
 	}
 
 }

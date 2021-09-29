@@ -1,12 +1,15 @@
-package by.htp.example.service;
+package by.htp.example.controller;
 
 import java.util.ArrayList;
 
 import by.htp.example.bean.Meal;
+import by.htp.example.service.ServiceException;
 
-public interface MealService {
+public interface MealController {
 
-	ArrayList<Meal> getMeals() throws ServiceException;
+	public void viewMenu();
+	
+	void getMeals() throws ServiceException;
 
 	Meal createMeal() throws ServiceException;
 
