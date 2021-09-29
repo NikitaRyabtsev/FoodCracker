@@ -67,6 +67,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
 		} catch (SQLException e) {
 			throw new DaoException();
 		}
+	
 	}
 
 	@Override

@@ -8,11 +8,11 @@ public interface MealService {
 
 	ArrayList<Meal> getMeals() throws ServiceException;
 
-	Meal createMeal() throws ServiceException;
+	Meal createMeal(Meal meal) throws ServiceException;
 
-	ArrayList<Meal> changeMealCharacteristic() throws ServiceException;
+	Meal changeMealCharacteristic(Meal meal) throws ServiceException;
 	
-	void deleteMeal()throws ServiceException;
+	void deleteMeal(Meal meal)throws ServiceException;
 	
 	void getMealById() throws ServiceException;	
 	

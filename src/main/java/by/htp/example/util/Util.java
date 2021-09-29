@@ -11,21 +11,34 @@ public class Util {
 		int year = 0;
 		int month = 0;
 		int days = 0;
+		LocalDate localDate;
 		Scanner scan = new Scanner(System.in);
 		try {
-
-			System.out.println("Input year : [yyyy]");
+			System.out.println("Input year : [2000-2030]");
 			year = scan.nextInt();
+			
+			if (year < 2000 | year > 2030) {
+				throw new DateTimeException("");
+			}
 			System.out.println("Input month : [1-12]");
 			month = scan.nextInt();
+			
+			if (month < 1 | month > 12) {
+				throw new DateTimeException("");
+			}
 			System.out.println("Input days : [1-31]");
 			days = scan.nextInt();
-
+			
+			if (days < 1 | days > 31) {
+				throw new DateTimeException("");
+			}
+			
+			localDate = LocalDate.of(year, month, days);
 		} catch (DateTimeException e) {
+			System.out.println("[Info] Wrong date");
 			e.getStackTrace();
 		}
-
-		LocalDate localDate = LocalDate.of(year, month, days);
+		localDate = LocalDate.of(year, month, days);
 		return localDate;
 
 	}
@@ -37,6 +50,7 @@ public class Util {
 		try {
 			System.out.println("Input hours : [1-23]");
 			hours = scan.nextInt();
+	
 			System.out.println("Input minutes : [1-59]");
 			minutes = scan.nextInt();
 

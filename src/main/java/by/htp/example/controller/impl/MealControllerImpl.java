@@ -2,6 +2,7 @@ package by.htp.example.controller.impl;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -20,27 +21,25 @@ public class MealControllerImpl implements MealController {
 	private Scanner scan;
 
 	public void viewMenu() {
-		ServiceProvider instance = ServiceProvider.getInstance();
-		Scanner scan = new Scanner(System.in);
 		int userChoose = 0;
 
 		while (userChoose != 7) {
 			try {
 				showMenu();
-				userChoose = scan.nextInt();
+				userChoose = Util.scanInt();
 
 				switch (userChoose) {
 				case 1:
 					getMeals();
 					break;
 				case 2:
-					instance.getServiceMeal().createMeal();
+					createMeal();
 					break;
 				case 3:
-					instance.getServiceMeal().changeMealCharacteristic();
+					changeMealCharacteristic();
 					break;
 				case 4:
-					instance.getServiceMeal().deleteMeal();
+					deleteMeal();
 					break;
 				case 5:
 					getMealById();
@@ -53,11 +52,13 @@ public class MealControllerImpl implements MealController {
 					break;
 
 				default:
-					System.out.println(">>> Wrong choose");
+					System.out.println(">>>[Info] Wrong choose");
 				}
 
-			} catch (InputMismatchException | IllegalArgumentException | ServiceException ex) {
+			} catch (InputMismatchException | IllegalArgumentException ex) {
 
+			}catch(ServiceException e) {
+				System.out.println("[Error] Something wrong in method viewMenu");
 			}
 		}
 
@@ -77,21 +78,117 @@ public class MealControllerImpl implements MealController {
 
 	@Override
 	public Meal createMeal() throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+		int id = 0;
+		LocalDate date = null;
+		LocalTime time = null;
+		double weight = 0;
+		double calories = 0;
+		Meal meal;
+		try {
+
+			System.out.println("Input id of meal");
+			id = Util.scanInt();
+			date = Util.scanData();
+			time = Util.scanTime();
+			System.out.println("Input weight");
+			weight = Util.scanDouble();
+			System.out.println("Input calories");
+			calories = Util.scanDouble();
+
+		} catch (DateTimeException e) {
+			System.out.println("[Info] Wrong Date");
+		}
+		meal = new Meal(id, date, time, weight, calories);
+		System.out.println(meal.toString());
+		provider.getServiceMeal().createMeal(meal);
+		return meal;
 	}
 
 	@Override
 	public ArrayList<Meal> changeMealCharacteristic() throws ServiceException {
+		int userChoose;
+		LocalDate date;
+		LocalTime time;
+		double weight;
+		double calories;
+		try {
+			ArrayList<Meal> meals = provider.getServiceMeal().getMeals();
+			displayMeals(meals);
+			System.out.println("Input number of Meal you want to change : ");
+			userChoose = Util.scanInt();
+			displayMeals(meals);
+			Meal currentMeal = meals.get(userChoose - 1);
+			System.out.println("Input number of characterisic you want to chang : ");
+			System.out.println("#1 Change date : ");
+			System.out.println("#2 Change time : ");
+			System.out.println("#3 Change weight : ");
+			System.out.println("#4 Change calories : ");
+			System.out.println("#5 Previous menu : ");
+
+			userChoose = Util.scanInt();
+
+			if (userChoose < 1 || userChoose > 5) {
+				throw new IllegalArgumentException();
+			}
+
+			switch (userChoose) {
+			case 1:
+				date = Util.scanData();
+				currentMeal.setDate(date);
+				break;
+			case 2:
+				System.out.println("Input time: ");
+				time = Util.scanTime();
+				currentMeal.setTime(time);
+				break;
+			case 3:
+				System.out.println("Input weight: ");
+				weight = scan.nextDouble();
+				currentMeal.setWeight(weight);
+				break;
+			case 4:
+				System.out.println("Input calories");
+				calories = scan.nextDouble();
+				currentMeal.setCalories(calories);
+			case 5:
+				break;
+			default:
+				System.out.println(">>>Wrong choose");
+
+			}
+			provider.getServiceMeal().changeMealCharacteristic(currentMeal);
+		} catch (InputMismatchException | IllegalArgumentException | DateTimeException ex) {
+			System.out.println(">>> Wrong choose");
+		} catch (ServiceException e) {
+			System.out.println(">>>[Error] Something wrong in method changeMealCharacteristic()");
+		}
+
 		return null;
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void deleteMeal() throws ServiceException {
-		// TODO Auto-generated method stub
+		int userChoose;
+		ArrayList<Meal> meals;
+		try {
+			meals = provider.getServiceMeal().getMeals();
+			System.out.println("Input number of Meal u want to delete : ");
+			if (meals != null && !meals.isEmpty()) {
+				for (int i = 0; i < meals.size(); i++) {
+					System.out.println("Meal  " + meals.get(i).getDate() + " " + meals.get(i).getTime());
+				}
+				userChoose = Util.scanInt();
+				displayMeals(meals);
+				provider.getServiceMeal().deleteMeal(meals.get(userChoose));
+				System.out.println("-----Meal was deleted-----");
 
+			}
+		} catch (IllegalArgumentException e) {
+			System.out.println(">>>[Info] Meal is not exist");
+		} catch (ServiceException e1) {
+			System.out.println(">>>[Error]Somethin wrong in method deleteMeal()]");
+		}
 	}
 
 	@Override
@@ -125,7 +222,6 @@ public class MealControllerImpl implements MealController {
 		LocalDate userChoose;
 		try {
 			ArrayList<Meal> meals = provider.getServiceMeal().getMeals();
-			// checkMeals(meals);
 			userChoose = Util.scanData();
 			for (int i = 0; i < meals.size(); i++) {
 				if (userChoose.equals(meals.get(i).getDate())) {
@@ -135,7 +231,9 @@ public class MealControllerImpl implements MealController {
 				}
 			}
 		} catch (DateTimeException ex) {
-			System.out.println(">>>>Wrong parameters");
+			System.out.println(">>>[Info]Wrong parameters");
+		} catch (ServiceException e) {
+			System.out.println("[Error] Something wrong with metho getMealByDate()");
 		}
 	}
 
