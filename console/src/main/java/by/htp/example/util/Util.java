@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Util {
 
-	public static LocalDate scanData() {
+	public static LocalDate scanDate() {
 		int year = 0;
 		int month = 0;
 		int days = 0;

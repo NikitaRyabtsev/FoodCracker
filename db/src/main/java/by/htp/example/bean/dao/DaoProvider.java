@@ -17,7 +17,7 @@ public class DaoProvider {
 		return instance;
 	}
 
-	public UserDao getAdminDao() {
+	public UserDao getUserDao() {
 		return userDao;
 	}
 

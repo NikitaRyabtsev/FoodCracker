@@ -31,10 +31,10 @@ public class MealControllerImpl implements MealController {
 					getMeals();
 					break;
 				case 2:
-					createMeal();
+					storeMeal();
 					break;
 				case 3:
-					changeMealCharacteristic();
+					changeMealCharacteristics();
 					break;
 				case 4:
 					deleteMeal();
@@ -59,7 +59,6 @@ public class MealControllerImpl implements MealController {
 				System.out.println("[Error] Something wrong in method viewMenu");
 			}
 		}
-
 	}
 
 	@Override
@@ -75,7 +74,7 @@ public class MealControllerImpl implements MealController {
 	}
 //
 	@Override
-	public Meal createMeal() throws ServiceException {
+	public Meal storeMeal() throws ServiceException {
 		int id = 0;
 		LocalDate date = null;
 		LocalTime time = null;
@@ -86,7 +85,7 @@ public class MealControllerImpl implements MealController {
 
 			System.out.println("Input id of meal");
 			id = Util.scanInt();
-			date = Util.scanData();
+			date = Util.scanDate();
 			time = Util.scanTime();
 			System.out.println("Input weight");
 			weight = Util.scanDouble();
@@ -103,7 +102,7 @@ public class MealControllerImpl implements MealController {
 	}
 
 	@Override
-	public ArrayList<Meal> changeMealCharacteristic() throws ServiceException {
+	public ArrayList<Meal> changeMealCharacteristics() throws ServiceException {
 		int userChoose;
 		LocalDate date;
 		LocalTime time;
@@ -131,7 +130,7 @@ public class MealControllerImpl implements MealController {
 
 			switch (userChoose) {
 			case 1:
-				date = Util.scanData();
+				date = Util.scanDate();
 				currentMeal.setDate(date);
 				break;
 			case 2:
@@ -221,7 +220,7 @@ public class MealControllerImpl implements MealController {
 		LocalDate userChoose;
 		try {
 			ArrayList<Meal> meals = provider.getServiceMeal().getMeals();
-			userChoose = Util.scanData();
+			userChoose = Util.scanDate();
 			for (int i = 0; i < meals.size(); i++) {
 				if (userChoose.equals(meals.get(i).getDate())) {
 					System.out.println("------------------------------------------");

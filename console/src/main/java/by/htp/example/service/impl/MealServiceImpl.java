@@ -8,7 +8,7 @@ import by.htp.example.bean.dao.DaoProvider;
 import by.htp.example.service.MealService;
 import by.htp.example.service.ServiceException;
 
-public class SQLMealService implements MealService {
+public class MealServiceImpl implements MealService {
 
 	private DaoProvider provider = DaoProvider.getInstance();
 
@@ -46,33 +46,34 @@ public class SQLMealService implements MealService {
 	}
 
 	@Override
-	public void deleteMeal(Meal meal) throws ServiceException {
+	public Meal deleteMeal(Meal meal) throws ServiceException {
 
 		try {
-			provider.getMealDao().deleteMealFromDB(meal);
+			return provider.getMealDao().deleteMealFromDB(meal);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
 	}
 
 	@Override
-	public void getMealById() throws ServiceException {
+	public Meal getMealById(Meal meal) throws ServiceException {
 
 		try {
-			provider.getMealDao().getMealsFromDB();
-			System.out.println("Choose meal Id : ");
+			return provider.getMealDao().getMealByIdFromDB(meal);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
 	}
 
 	@Override
-	public void getMealByDate() throws ServiceException {
+	public Meal getMealByDate(Meal meal) throws ServiceException {
 		try {
-			provider.getMealDao().getMealsFromDB();
+
+			return provider.getMealDao().getMealByIdFromDB(meal);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
+
 
 	}
 }

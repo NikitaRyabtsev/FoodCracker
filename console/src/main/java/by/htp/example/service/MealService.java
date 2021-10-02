@@ -6,15 +6,15 @@ import by.htp.example.bean.Meal;
 
 public interface MealService {
 
-	ArrayList<by.htp.example.bean.Meal> getMeals() throws ServiceException;
+	ArrayList getMeals() throws ServiceException;
 
 	Meal createMeal(Meal meal) throws ServiceException;
 
 	Meal changeMealCharacteristic(Meal meal) throws ServiceException;
 	
-	void deleteMeal(Meal meal)throws ServiceException;
+	Meal deleteMeal(Meal meal)throws ServiceException;
 	
-	void getMealById() throws ServiceException;	
+	Meal getMealById(Meal meal) throws ServiceException;
 	
-	void getMealByDate() throws ServiceException;
+	Meal getMealByDate(Meal meal) throws ServiceException;
 }
