@@ -12,7 +12,7 @@ public class SQLUserDao implements UserDao , DaoQuery{
 		
 		user.setId(5);
 		user.setName("Nikita");
-		user.setRole("user");
+		user.setRole("looser");
 		
 		return user;
 	}

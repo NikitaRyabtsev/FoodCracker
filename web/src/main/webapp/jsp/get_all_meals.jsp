@@ -1,16 +1,15 @@
 <%@ page import="by.htp.example.bean.Meal" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>All meals</title>
 </head>
 <body>
-    <%
-        Meal meal;
-        meal = (Meal) request.getAttribute("getMeals");
-        out.println(meal.getId());
-    %>
-</form>
-
+<%
+    List<Meal> meals;
+    meals = (List<Meal>) request.getAttribute("getMeals");
+    out.println(meals);
+%>
 </body>
 </html>

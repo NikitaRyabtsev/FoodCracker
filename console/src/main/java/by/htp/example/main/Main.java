@@ -1,13 +1,13 @@
 package by.htp.example.main;
 
-import by.htp.example.controller.MealController;
-import by.htp.example.controller.impl.MealControllerImpl;
+
+import by.htp.example.view.ViewMenu;
 
 public class Main {
 
 	public static void main(String[] args){
 
-		MealController menu = new MealControllerImpl();
+		ViewMenu menu = new ViewMenu();
 		menu.viewMenu();
 
 		System.out.println("END");
