@@ -9,15 +9,22 @@
 <h2>Choose your option : </h2>
 
 <form action="controller" method="post">
-    <input type="hidden" name="command" value="get_all_Meals"/>
+    <input type="hidden" name="command" value="get_all_meals"/>
     <input type="submit" value="getMeals"/><br/>
 </form>
-<h4>
-    <%
-        User user;
-        user = (User) request.getAttribute("user");
-        out.print(user.getName());
-    %>
-</h4>
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="add_new_meal"/>
+    <input type="submit" value="addMeal">
+    <input type="text" name="id" value=""/>
+    <input type="date" name="date" value=""/>
+    <input type="time" name="time" value=""/>
+    <input type="text" name="weight" value=""/>
+    <input type="text" name="calories" value=""/>
+</form>
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="get_meal_by_id"/>
+    <input type="submit" value="getMeal"/>
+    <input type ="text" name="id" value=""/>
+</form>
 </body>
 </html>

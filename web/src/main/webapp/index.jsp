@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Artyom</title>
+<title>MainPage</title>
 </head>
 <body>
 <h1>Hello , bro</h1>

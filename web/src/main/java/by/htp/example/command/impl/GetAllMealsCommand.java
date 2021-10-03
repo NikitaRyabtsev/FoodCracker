@@ -28,9 +28,16 @@ public class GetAllMealsCommand implements Command {
 
         try {
             meals = mealService.getMeals();
-            request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEALS,meals);
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_MEALS_JSP);
-            dispatcher.forward(request, response);
+            if(meals != null | !meals.isEmpty()){
+                request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEALS,meals);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_MEALS_JSP);
+                dispatcher.forward(request, response);
+            }else{
+                request.setAttribute(RequestParameterName.REQ_PARAM_INCORRECT,meals);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+                dispatcher.forward(request,response);
+            }
+
         } catch (ServiceException e) {
 
             e.printStackTrace();

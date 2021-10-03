@@ -9,8 +9,16 @@ public class RequestParameterName {
     public static final String REQ_PARAM_LOGIN = "login";
     public static final String REQ_PARAM_PASS = "pass";
     public static final String REQ_PARAM_GET_MEALS = "getMeals";
+    public static final String REQ_PARAM_GET_MEAL = "getMeal";
     public static final String REQ_PARAM_USER = "user";
+    public static final String REQ_PARAM_INCORRECT = "error";
 
     public static final String REQ_PARAM_ADD_MEAL = "addMeal";
+    public static final String REQ_PARAM_ID = "id";
+    public static final String REQ_PARAM_DATE = "date";
+    public static final String REQ_PARAM_TIME = "time";
+    public static final String REQ_PARAM_WEIGHT = "weight";
+    public static final String REQ_PARAM_CALORIES = "calories";
+
 
 }

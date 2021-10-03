@@ -3,6 +3,7 @@ package by.htp.example.controller;
 import by.htp.example.command.Command;
 import by.htp.example.command.CommandHelper;
 import by.htp.example.command.RequestParameterName;
+import by.htp.example.service.ServiceException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +37,7 @@ public class ControllerServlet extends HttpServlet {
         command = CommandHelper.getInstance().getCommand(commandName);
         try {
             command.execute(request, response);
-        } catch (IOException | ServletException e) {
+        } catch (IOException | ServletException | ServiceException e) {
 
             e.printStackTrace();
         }

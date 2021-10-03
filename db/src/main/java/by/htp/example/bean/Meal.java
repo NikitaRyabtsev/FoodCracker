@@ -12,6 +12,10 @@ public class Meal {
 	private double weight;
 	private double calories;
 
+	public Meal(int id){
+		super();
+		this.id = id;
+	}
 	public Meal() {}
 
 	public Meal(int id, LocalDate date, LocalTime time, double weight, double calories) {
