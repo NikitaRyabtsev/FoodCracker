@@ -14,6 +14,5 @@
     <input type="password" name="pass" value=""/>
     <input type="submit" value="Sign in"/><br/>
 </form>
-
 </body>
 </html>

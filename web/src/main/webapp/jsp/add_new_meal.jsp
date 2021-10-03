@@ -8,9 +8,9 @@
 </head>
 <body>
 <%
-    Meal meal2;
-    meal2 = (Meal) request.getAttribute("addMeal");
-    out.println("Meal : " + meal2);
+    Meal meal;
+    meal = (Meal) request.getAttribute("addMeal");
+    out.println("Meal : " + meal);
   int i =10;
   int b = 20;
   int sum = i+b;

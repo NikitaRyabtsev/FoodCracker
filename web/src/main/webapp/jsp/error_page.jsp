@@ -8,7 +8,7 @@
 
 <h1>
     ERROR<br>
-    <form action="controller" method="post">
+        <form action="controller" method="post">
         <input type="hidden" name="command" value=""/>
         <input type="submit" value="back">
             <%

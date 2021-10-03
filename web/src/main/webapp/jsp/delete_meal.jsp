@@ -2,24 +2,19 @@
   Created by IntelliJ IDEA.
   User: 37525
   Date: 03.10.2021
-  Time: 12:03
+  Time: 23:03
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Meal</title>
+    <title>DeleteMeal</title>
 </head>
 <body>
-<h1>Get Meal</h1>
 <%
-//    Meal meal;
-//    meal = (Meal)request.getAttribute("getMeal");
-    out.println(meal.getWeight());
-    int i = 10;
-    int b = 10;
-    out.println(i+b);
+    Meal meal;
+    meal = (Meal) request.getAttribute("deleteMeal");
+    out.println("Meal was deleted");
 %>
-
 </body>
 </html>
