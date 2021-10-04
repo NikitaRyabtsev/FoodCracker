@@ -3,7 +3,6 @@ package by.htp.example.command;
 
 import by.htp.example.command.impl.*;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +22,7 @@ public class CommandProvider {
         commands.put(CommandName.DELETE_MEAL,new DeleteMealCommand());
         commands.put(CommandName.GET_MEAL_BY_ID,new GetMealByIdCommand());
         commands.put(CommandName.GET_MEAL_BY_DATE,new GetMealByDateCommand());
+
     }
     public static CommandProvider getInstance(){
         return instance;

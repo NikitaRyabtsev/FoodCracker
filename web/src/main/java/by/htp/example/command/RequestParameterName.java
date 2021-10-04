@@ -12,9 +12,10 @@ public class RequestParameterName {
     public static final String REQ_PARAM_GET_MEAL = "getMeal";
     public static final String REQ_PARAM_DELETE_MEAL = "deleteMeal";
     public static final String REQ_PARAM_USER = "user";
-    public static final String REQ_PARAM_INCORRECT = "error";
-
+    public static final String REQ_PARAM_INCORRECT = "incorrect";
     public static final String REQ_PARAM_ADD_MEAL = "addMeal";
+    public static final String REQ_PARAM_CHANGE_MEAL = "changeMeal";
+
     public static final String REQ_PARAM_ID = "id";
     public static final String REQ_PARAM_DATE = "date";
     public static final String REQ_PARAM_TIME = "time";

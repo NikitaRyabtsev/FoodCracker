@@ -10,6 +10,7 @@ public enum CommandName {
     CHANGE_MEAL,
     DELETE_MEAL,
     GET_MEAL_BY_ID,
-    GET_MEAL_BY_DATE
+    GET_MEAL_BY_DATE,
+    
 
 }

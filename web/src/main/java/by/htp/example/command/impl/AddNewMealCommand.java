@@ -7,12 +7,12 @@ import by.htp.example.command.RequestParameterName;
 import by.htp.example.service.MealService;
 import by.htp.example.service.ServiceException;
 import by.htp.example.service.ServiceProvider;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -28,18 +28,21 @@ public class AddNewMealCommand implements Command {
         String caloriesS = request.getParameter(RequestParameterName.REQ_PARAM_CALORIES);
         int id = Integer.parseInt(idS);
         LocalDate date = LocalDate.parse(dateS);
+        LocalDate checkDateAfter = LocalDate.of(2021, 10, 04);
         LocalTime time = LocalTime.parse(timeS);
         double weight = Integer.parseInt(weightS);
         double calories = Integer.parseInt(caloriesS);
         MealService mealService = provider.getServiceMeal();
-        Meal meal = new Meal(id, date, time, weight, calories);
-        Meal meal2;
-        try {
 
-            meal2 = mealService.createMeal(meal);
-            request.setAttribute(RequestParameterName.REQ_PARAM_ADD_MEAL, meal2);
+        Meal meal = new Meal(id, date, time, weight, calories);
+
+        try {
+            mealService.createMeal(meal);
+            request.setAttribute(RequestParameterName.REQ_PARAM_ADD_MEAL, meal);
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ADD_NEW_MEAl_JSP);
             dispatcher.forward(request, response);
+
+
 
         } catch (ServiceException e) {
             e.printStackTrace();

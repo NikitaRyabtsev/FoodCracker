@@ -13,10 +13,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class GetMealByDateCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        ServiceProvider provider = ServiceProvider.getInstance();
+        String dateS = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
+
+        LocalDate date = LocalDate.parse(dateS);
 
 
 //        LocalDate userChoose;

@@ -17,11 +17,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class GetAllMealsCommand implements Command {
-    CommandHelper helper = CommandHelper.getInstance();
-    ServiceProvider provider = ServiceProvider.getInstance();
+
+
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        ServiceProvider provider = ServiceProvider.getInstance();
 
         List<Meal> meals;
         MealService mealService = provider.getServiceMeal();

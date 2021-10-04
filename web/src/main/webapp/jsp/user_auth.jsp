@@ -1,4 +1,4 @@
-<%@ page import="by.htp.example.bean.user.User" %>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,18 +18,8 @@
     <input type="number" name="id" value=""/>
     <input type="date" name="date" value=""/>
     <input type="time" name="time" value=""/>
-    <input type="text" name="weight" value=""/>
-    <input type="text" name="calories" value=""/>
-</form>
-<form action="controller" method="post">
-    <input type="hidden" name="command" value="get_meal_by_id"/>
-    <input type="submit" value="getMeal"/>
-    <input type ="text" name="id" value=""/>
-</form>
-<form action="controller" method="post">
-    <input type="hidden" name="command" value="delete_meal"/>
-    <input type="submit" value="deleteMeal"/>
-    <input type = "number" name = "id" value=""/>
+    <input type="number" name="weight" value=""/>
+    <input type="number" name="calories" value=""/>
 </form>
 </body>
 </html>

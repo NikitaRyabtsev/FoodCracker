@@ -101,12 +101,12 @@ public class Meal {
 
 	@Override
 	public String toString() {
-		return " Date: " + date + ", Time: " + time + ", Weight: " + weight + ", Calories " + calories;
+		return "Meal{" +
+				"id=" + id +
+				", date=" + date +
+				", time=" + time +
+				", weight=" + weight +
+				", calories=" + calories +
+				'}';
 	}
-
-	
-	
-
-
-
 }
