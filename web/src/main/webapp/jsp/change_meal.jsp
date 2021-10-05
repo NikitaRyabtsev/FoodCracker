@@ -1,4 +1,4 @@
-<%--
+<%@ page import="by.htp.example.bean.Meal" %><%--
   Created by IntelliJ IDEA.
   User: 37525
   Date: 04.10.2021
@@ -11,6 +11,11 @@
     <title>Title</title>
 </head>
 <body>
+<%
+    Meal meal;
+    meal = (Meal) request.getAttribute("changeMeal");
+    out.println(meal + " gdgd");
 
+%>
 </body>
 </html>

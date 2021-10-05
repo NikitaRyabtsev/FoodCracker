@@ -26,20 +26,23 @@ public class ChangeMealCommand implements Command {
         String timeS = request.getParameter(RequestParameterName.REQ_PARAM_TIME);
         String weightS = request.getParameter(RequestParameterName.REQ_PARAM_WEIGHT);
         String caloriesS = request.getParameter(RequestParameterName.REQ_PARAM_CALORIES);
-        int id = Integer.parseInt(idS);
-        LocalDate date = LocalDate.parse(dateS);
-        LocalDate checkDateAfter = LocalDate.of(2021, 10, 04);
-        LocalTime time = LocalTime.parse(timeS);
-        double weight = Integer.parseInt(weightS);
-        double calories = Integer.parseInt(caloriesS);
-        MealService mealService = provider.getServiceMeal();
-
-        Meal meal = new Meal(id, date, time, weight, calories);
         try {
-            mealService.changeMealCharacteristic(meal);
-            request.setAttribute(RequestParameterName.REQ_PARAM_CHANGE_MEAL, meal);
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.CHANGE_MEAL);
-            dispatcher.forward(request, response);
+            int id = Integer.parseInt(idS);
+            LocalDate date = LocalDate.parse(dateS);
+            LocalDate checkDateAfter = LocalDate.of(2021, 10, 04);
+            LocalTime time = LocalTime.parse(timeS);
+            double weight = Integer.parseInt(weightS);
+            double calories = Integer.parseInt(caloriesS);
+            MealService mealService = provider.getServiceMeal();
+            Meal meal = new Meal(id, date, time, weight, calories);
+
+            if(meal !=null) {
+
+                mealService.changeMealCharacteristic(meal);
+                request.setAttribute(RequestParameterName.REQ_PARAM_CHANGE_MEAL, meal);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.CHANGE_MEAL);
+                dispatcher.forward(request, response);
+            }
         } catch (ServiceException e) {
 
         }

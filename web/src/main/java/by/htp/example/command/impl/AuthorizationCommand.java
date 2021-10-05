@@ -21,7 +21,6 @@ public class AuthorizationCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-
         String login = request.getParameter(RequestParameterName.REQ_PARAM_LOGIN);
         String password = request.getParameter(RequestParameterName.REQ_PARAM_PASS);
 

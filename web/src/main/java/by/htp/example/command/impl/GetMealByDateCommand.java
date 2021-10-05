@@ -22,23 +22,22 @@ public class GetMealByDateCommand implements Command {
         String dateS = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
 
         LocalDate date = LocalDate.parse(dateS);
+        MealService mealService = provider.getServiceMeal();
+        Meal meal;
+        try {
+            meal = mealService.getMealByDate(date);
+            if (meal != null) {
+                request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEAL_BY_DATE, meal);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_MEAL);
+                dispatcher.forward(request, response);
+            } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+                dispatcher.forward(request, response);
+            }
 
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
 
-//        LocalDate userChoose;
-//        try {
-//            ArrayList<Meal> meals = provider.getServiceMeal().getMeals();
-//            userChoose = Util.scanDate();
-//            for (int i = 0; i < meals.size(); i++) {
-//                if (userChoose.equals(meals.get(i).getDate())) {
-//                    System.out.println("------------------------------------------");
-//                    System.out.println(meals.get(i).toString());
-//                    System.out.println("------------------------------------------");
-//                }
-//            }
-//        } catch (DateTimeException ex) {
-//            System.out.println(">>>[Info]Wrong parameters");
-//        } catch (ServiceException e) {
-//            System.out.println("[Error] Something wrong with metho getMealByDate()");
-//        }
     }
 }

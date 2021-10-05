@@ -11,7 +11,7 @@
     meal = (Meal) request.getAttribute("deleteMeal");
     out.println("Meal was deleted");
 %>
+<jsp:include page="user_auth.jsp"/>
 
-<jsp:include page="get_all_meals.jsp"/>
 </body>
 </html>

@@ -22,14 +22,18 @@ public class GetMealByIdCommand implements Command {
 
         int id = Integer.parseInt(idS);
         MealService mealService = provider.getServiceMeal();
-
+        Meal meal;
         try {
-            Meal meal = mealService.getMealById(id);
+            meal = mealService.getMealById(id);
             if (meal != null) {
-            request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEAL, meal);
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_MEAL);
-            dispatcher.forward(request, response);
-        }
+                request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEAL_BY_ID, meal);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_MEAL);
+                dispatcher.forward(request, response);
+            } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+                dispatcher.forward(request, response);
+            }
+
         } catch (ServiceException e) {
             e.printStackTrace();
         }

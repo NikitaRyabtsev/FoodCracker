@@ -23,15 +23,24 @@ public class DeleteMealCommand implements Command {
         MealService mealService = provider.getServiceMeal();
 
         String idS = request.getParameter(RequestParameterName.REQ_PARAM_ID);
-        int id = Integer.parseInt(idS);
 
-        Meal meal = new Meal(id);
-           try {
-                mealService.deleteMeal(meal);
-                request.setAttribute(RequestParameterName.REQ_PARAM_DELETE_MEAL, meal);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.DELETE_MEAL);
-                dispatcher.forward(request, response);
-            } catch (ServiceException e) {
+
+        try {
+            int id = Integer.parseInt(idS);
+
+                Meal meal = new Meal(id);
+                if (meal != null | id > 0) {
+                    mealService.deleteMeal(meal);
+                    request.setAttribute(RequestParameterName.REQ_PARAM_DELETE_MEAL, meal);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.DELETE_MEAL);
+                    dispatcher.forward(request, response);
+                } else {
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+                    dispatcher.forward(request, response);
+                    throw new NumberFormatException();
+                }
+
+            } catch(ServiceException | NumberFormatException e){
                 e.printStackTrace();
 
             }

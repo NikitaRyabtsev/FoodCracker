@@ -9,8 +9,8 @@
 <%
     Meal meal;
     meal = (Meal) request.getAttribute("incorrect");
-    out.println("ERROR" + meal);
+    out.println("Wrong chose , try again");
 %>
-
+<jsp:include page="user_auth.jsp"/>
 </body>
 </html>

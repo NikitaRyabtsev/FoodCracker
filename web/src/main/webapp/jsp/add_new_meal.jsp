@@ -13,6 +13,7 @@
     meal = (Meal) request.getAttribute("addMeal");
     out.println("Meal : " + meal);
 %>
-<jsp:include page="user_auth.jsp"/>
+<jsp:include page="get_all_meals.jsp"/>
+
 </body>
 </html>
