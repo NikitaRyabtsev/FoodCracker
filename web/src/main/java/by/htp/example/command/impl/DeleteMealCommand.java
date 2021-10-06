@@ -41,8 +41,9 @@ public class DeleteMealCommand implements Command {
                 }
 
             } catch(ServiceException | NumberFormatException e){
-                e.printStackTrace();
-
+            e.printStackTrace();
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            dispatcher.forward(request, response);
             }
         }
 

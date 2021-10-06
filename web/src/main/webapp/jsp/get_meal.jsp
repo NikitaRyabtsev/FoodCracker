@@ -1,5 +1,5 @@
 <%@ page import="by.htp.example.bean.Meal" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c' %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,10 +10,17 @@
 <%
     Meal meal;
     meal = (Meal)request.getAttribute("getMealById");
-    meal = (Meal)request.getAttribute("getMealByDate");
-    out.println(meal + " get meal ");
+    out.println(meal);
 %>
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="change_meal"/>
+    <input type="submit" value="changeMeal"/>
+    <input type="number" name="id" value="${meal.getId()}"/>
+    <input type="date" name="date" value=""/>
+    <input type="time" name="time" value=""/>
+    <input type="number" name="weight" value=""/>
+    <input type="number" name="calories" value=""/>
 
-
+</form>
 </body>
 </html>

@@ -15,7 +15,6 @@
 <form action="controller" method="post">
     <input type="hidden" name="command" value="add_new_meal"/>
     <input type="submit" value="addMeal">
-    <input type="number" name="id" value=""/>
     <input type="date" name="date" value=""/>
     <input type="time" name="time" value=""/>
     <input type="number" name="weight" value=""/>

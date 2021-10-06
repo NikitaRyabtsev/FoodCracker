@@ -44,25 +44,25 @@ public class SQLMealDao implements MealDao, DaoQuery {
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_CREATE_MEAL,
                      Statement.RETURN_GENERATED_KEYS);) {
 
-            preparedStatement.setInt(1, meal.getId());
-            preparedStatement.setObject(2, meal.getDate());
-            preparedStatement.setObject(3, meal.getTime());
-            preparedStatement.setDouble(4, meal.getWeight());
-            preparedStatement.setDouble(5, meal.getCalories());
+            //preparedStatement.setInt(1, meal.getId());
+            preparedStatement.setObject(1, meal.getDate());
+            preparedStatement.setObject(2, meal.getTime());
+            preparedStatement.setDouble(3, meal.getWeight());
+            preparedStatement.setDouble(4, meal.getCalories());
 
             preparedStatement.executeUpdate();
 
-            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    meal.setId(generatedKeys.getInt(1));
-                    meal.setDate(generatedKeys.getObject(2, LocalDate.class));
-                    meal.setTime(generatedKeys.getObject(3, LocalTime.class));
-                    meal.setWeight(generatedKeys.getDouble(4));
-                    meal.setCalories(generatedKeys.getDouble(5));
-                } else {
-                    throw new DaoException("Creating Meal failed, no ID obtained.");
-                }
-            }
+//            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+//                if (generatedKeys.next()) {
+//                    meal.setId(generatedKeys.getInt(1));
+//                    meal.setDate(generatedKeys.getObject(2, LocalDate.class));
+//                    meal.setTime(generatedKeys.getObject(3, LocalTime.class));
+//                    meal.setWeight(generatedKeys.getDouble(4));
+//                    meal.setCalories(generatedKeys.getDouble(5));
+//                } else {
+//                    throw new DaoException("Creating Meal failed, no ID obtained.");
+//                }
+//            }
             return meal;
 
         } catch (SQLException e) {
@@ -80,7 +80,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
             prepareStatement.setObject(1, meal.getDate());
             prepareStatement.setObject(2, meal.getTime());
             prepareStatement.setDouble(3, meal.getWeight());
-            prepareStatement.setDouble(4, meal.getWeight());
+            prepareStatement.setDouble(4, meal.getCalories());
             prepareStatement.setInt(5, meal.getId());
 
             prepareStatement.executeUpdate();
@@ -108,8 +108,9 @@ public class SQLMealDao implements MealDao, DaoQuery {
     }
 
     @Override
-    public Meal getMealByIdFromDB(int id) throws DaoException {
-
+    public Meal getMealByIdFromDB(int idMeal) throws DaoException {
+        Meal meal = null;
+        int id;
         LocalDate date;
         LocalTime time;
         double weight;
@@ -117,18 +118,24 @@ public class SQLMealDao implements MealDao, DaoQuery {
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_MEAL)) {
 
-            prepareStatement.setInt(1, id);
+            prepareStatement.setInt(1,idMeal);
+
             ResultSet rs = prepareStatement.executeQuery();
-            date = rs.getObject("date",LocalDate.class);
-            time = rs.getObject("time" , LocalTime.class);
-            calories = rs.getDouble("calories");
-            weight = rs.getDouble("weight");
+            rs.next();
+                id = rs.getInt("idMeal");
+                date = rs.getObject("date",LocalDate.class);
+                time = rs.getObject("time" , LocalTime.class);
+                calories = rs.getDouble("calories");
+                weight = rs.getDouble("weight");
+
+                meal = new Meal(id, date,time,weight,calories);
 
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             throw new DaoException(e);
         }
 
-        Meal meal = new Meal(id, date,time,weight,calories);
+
         return meal;
 
     }

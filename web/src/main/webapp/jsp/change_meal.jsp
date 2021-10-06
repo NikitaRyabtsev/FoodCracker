@@ -14,8 +14,8 @@
 <%
     Meal meal;
     meal = (Meal) request.getAttribute("changeMeal");
-    out.println(meal + " gdgd");
-
+    out.println(meal);
 %>
+<jsp:include page="user_auth.jsp"/>
 </body>
 </html>

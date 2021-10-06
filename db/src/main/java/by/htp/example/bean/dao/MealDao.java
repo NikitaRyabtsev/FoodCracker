@@ -15,7 +15,7 @@ public interface MealDao {
 
 	Meal deleteMealFromDB(Meal meal) throws DaoException;
 
-	Meal getMealByIdFromDB(int id) throws DaoException;
+	Meal getMealByIdFromDB(int idMeal) throws DaoException;
 
 	Meal getMealByDateFromDB(LocalDate date) throws DaoException;
 

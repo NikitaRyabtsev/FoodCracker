@@ -11,9 +11,8 @@
 <%
     Meal meal;
     meal = (Meal) request.getAttribute("addMeal");
-    out.println("Meal : " + meal);
+    out.println("Meal was create");
 %>
-<jsp:include page="get_all_meals.jsp"/>
-
+<jsp:include page="user_auth.jsp"/>
 </body>
 </html>
