@@ -7,12 +7,12 @@
 <title>MainPage</title>
 </head>
 <body>
-<h1>Hello , bro</h1>
-<form action="controller" method="post">
-    <input type="hidden" name="command" value="authorization"/>
-    <input type="text" name="login" value=""/>
-    <input type="password" name="pass" value=""/>
-    <input type="submit" value="Sign in"/><br/>
-</form>
+<jsp:include page="/jsp/header.jsp"/>
+<%--<form action="controller" method="post">--%>
+<%--    <input type="hidden" name="command" value="authorization"/>--%>
+<%--    <input type="text" name="login" value=""/>--%>
+<%--    <input type="password" name="pass" value=""/>--%>
+<%--    <input type="submit" value="Sign in"/><br/>--%>
+<%--</form>--%>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%@ page import="by.htp.example.bean.Meal" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -6,11 +6,7 @@
 </head>
 <body>
 
-<%
-    Meal meal;
-    meal = (Meal) request.getAttribute("incorrect");
-    out.println("Wrong chose , try again");
-%>
-<jsp:include page="user_auth.jsp"/>
+<c:out value="ERORR PAGE"/>
+<button type="button" name="back" onclick="history.back()">back</button>
 </body>
 </html>

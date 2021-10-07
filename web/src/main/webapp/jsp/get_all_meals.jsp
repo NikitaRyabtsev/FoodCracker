@@ -10,13 +10,9 @@
     <title>All meals</title>
 </head>
 <body>
-<form action="controller" method="post">
-    <input type="hidden" name="command" value="get_meal_by_date"/>
-    <input type="submit" value="getMealByDate"/>
-    <input type="date" name="date" value=""/>
-</form>
+<jsp:include page="/jsp/header.jsp"/>
 <h3>List of Meals : </h3>
-<table border="2" cellspacing="2" cellpadding="15">
+<table class="table table-striped table-hover">
 
     <tr>
         <td>Date</td>
@@ -46,6 +42,16 @@
     </c:forEach>
 
 </table>
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="add_new_meal"/>
+    <input type="submit" value="addMeal">
+    <input type="date" name="date" value=""/>
+    <input type="time" name="time" value=""/>
+    <input type="number" name="weight" value=""/>
+    <input type="number" name="calories" value=""/>
+</form>
+
 <button type="button" name="back" onclick="history.back()">back</button>
+<jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>

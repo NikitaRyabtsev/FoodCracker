@@ -22,13 +22,13 @@ public class ChangeMealCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         ServiceProvider provider = ServiceProvider.getInstance();
-        String idS = request.getParameter(RequestParameterName.REQ_PARAM_ID);
+       // String idS = request.getParameter(RequestParameterName.REQ_PARAM_ID);
         String dateS = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
         String timeS = request.getParameter(RequestParameterName.REQ_PARAM_TIME);
         String weightS = request.getParameter(RequestParameterName.REQ_PARAM_WEIGHT);
         String caloriesS = request.getParameter(RequestParameterName.REQ_PARAM_CALORIES);
         try {
-            int id = Integer.parseInt(idS);
+           // int id = Integer.parseInt(idS);
             LocalDate date = LocalDate.parse(dateS);
             LocalTime time = LocalTime.parse(timeS);
             double weight = Integer.parseInt(weightS);
@@ -37,9 +37,9 @@ public class ChangeMealCommand implements Command {
             LocalDate checkDateAfter = LocalDate.of(2021, 12, 31);
             MealService mealService = provider.getServiceMeal();
 
-            Meal meal = new Meal(id, date, time, weight, calories);
+            Meal meal = new Meal( date, time, weight, calories);
 
-            meal.setId(id);
+           // meal.setId(id);
             meal.setDate(date);
             meal.setTime(time);
             meal.setWeight(weight);

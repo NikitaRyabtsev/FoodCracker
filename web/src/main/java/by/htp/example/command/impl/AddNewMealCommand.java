@@ -36,11 +36,11 @@ public class AddNewMealCommand implements Command {
             double calories = Integer.parseInt(caloriesS);
             MealService mealService = provider.getServiceMeal();
 
-            if (date.isAfter(checkDateAfter) | date.isBefore(checkDateBefore)) {
+            if (weight != 0 | calories != 0 ) {
                 Meal meal = new Meal(date, time, weight, calories);
                 mealService.createMeal(meal);
                 request.setAttribute(RequestParameterName.REQ_PARAM_ADD_MEAL, meal);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ADD_NEW_MEAl_JSP);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_MEALS_JSP);
                 dispatcher.forward(request, response);
 
             } else {

@@ -73,7 +73,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
 
     @Override
     public void changeMealCharacteristicInDB(Meal meal) throws DaoException {
-
+            int id;
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_CHANGE_MEAL)) {
 
@@ -81,10 +81,12 @@ public class SQLMealDao implements MealDao, DaoQuery {
             prepareStatement.setObject(2, meal.getTime());
             prepareStatement.setDouble(3, meal.getWeight());
             prepareStatement.setDouble(4, meal.getCalories());
-            prepareStatement.setInt(5, meal.getId());
+            //prepareStatement.setInt(5, meal.getId());
 
             prepareStatement.executeUpdate();
-
+            ResultSet rs = prepareStatement.executeQuery();
+            rs.next();
+            id = rs.getInt("idMeal");
         } catch (SQLException e) {
             throw new DaoException(e);
         }
@@ -142,25 +144,33 @@ public class SQLMealDao implements MealDao, DaoQuery {
 
     @Override
     public Meal getMealByDateFromDB(LocalDate date) throws DaoException {
+        Meal meal = null;
         int id;
         LocalTime time;
+        LocalDate rsDate;
         double weight;
         double calories;
+
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_DATE)) {
-
+            System.out.println(1);
             prepareStatement.setObject(1, date);
+            System.out.println(2);
             ResultSet rs = prepareStatement.executeQuery();
+            System.out.println(3);
+            rs.next();
             id = rs.getInt("idMeal");
+            rsDate = rs.getObject("date",LocalDate.class);
             time = rs.getObject("time" , LocalTime.class);
             calories = rs.getDouble("calories");
             weight = rs.getDouble("weight");
-
+            System.out.println(4);
+            meal = new Meal(id,rsDate,time,calories,weight);
         } catch (SQLException e) {
 
             throw new DaoException(e);
         }
-        Meal meal = new Meal(id,date,time,calories,weight);
+
         return meal;
 
     }

@@ -11,11 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<%
-    Meal meal;
-    meal = (Meal) request.getAttribute("changeMeal");
-    out.println(meal);
-%>
 <jsp:include page="user_auth.jsp"/>
+
 </body>
 </html>
