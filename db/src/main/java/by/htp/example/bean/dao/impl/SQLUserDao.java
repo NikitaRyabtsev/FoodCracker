@@ -16,20 +16,22 @@ public class SQLUserDao implements UserDao, DaoQuery {
         String role;
         String name;
         String rsLogin;
+        String rsPassword;
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_USER_LOG_ON)) {
 
         	preparedStatement.setString(1,login);
+        	preparedStatement.setString(2,password);
 
 			ResultSet rs = preparedStatement.executeQuery();
 			rs.next();
 
-			password = rs.getString("password");
+			rsPassword = rs.getString("password");
 			role = rs.getString("role");
 			name = rs.getString("name");
 			rsLogin = rs.getString("login");
 
-			user = new User(rsLogin,password,name,role);
+			user = new User(rsLogin,rsPassword,name,role);
         } catch (SQLException e) {
             throw new DaoException(e);
         }

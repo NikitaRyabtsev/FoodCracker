@@ -120,7 +120,6 @@ public class SQLMealDao implements MealDao, DaoQuery {
                 meal = new Meal(id, date,time,weight,calories);
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
             throw new DaoException(e);
         }
 

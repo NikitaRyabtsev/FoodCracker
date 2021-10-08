@@ -9,7 +9,7 @@ public interface DaoQuery {
 	String SQL_QUERY_DELETE_MEAL = "DELETE FROM Meal WHERE idMeal=?";
 	String SQL_QUERY_CHANGE_MEAL = "UPDATE Meal SET date=? , time=? ,weight=? , calories=? WHERE idMeal=?";
 
-	String SQL_QUERY_USER_LOG_ON = "SELECT password,role,name FROM User WHERE login=?";
+	String SQL_QUERY_USER_LOG_ON = "SELECT password,role,name FROM User WHERE login=?,password=?";
 	String SQL_QUERY_USER_REGISTRATION = "INSERT INTO User (login,password,name,secondName,weight,role,email,sex,dateOfBirth) " +
 			"VALUES(?,?,?,?,?,?,?,?,?)";
 

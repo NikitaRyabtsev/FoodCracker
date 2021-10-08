@@ -21,14 +21,12 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("[Info]Validation is not correct");
         }
         User user;
-
         try{
             UserDao userDao = DaoProvider.getInstance().getUserDao();
             user = userDao.authorization(login, password);
         }catch(DaoException e){
             throw new ServiceException(e);
         }
-
         return user;
     }
 

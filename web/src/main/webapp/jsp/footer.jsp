@@ -9,15 +9,16 @@
 <html>
 <head>
 </head>
-<body class="d-flex flex-column min-vh-100">
-<div class="wrapper flex-grow-1"></div>
+<%--class="d-flex flex-column min-vh-100"--%>
+<body>
+<%--class="wrapper flex-grow-1"--%>
 <footer class="footer p-5 bg-dark text-white">
     <div class="content has-text-centered">
         <p>
             <strong>FoodCracker</strong> разработал <a>Никита Рябцев</a>. Исходный код лицензирован.
             <a href="http://opensource.org/licenses/mit-license.php">Лицензия</a>. Содержимое сайта защищено
         <div class="footer-style__copy">
-            2021-2022 FoodCracker
+        © 2021 FoodCracker
         </div>
         </p>
     </div>
