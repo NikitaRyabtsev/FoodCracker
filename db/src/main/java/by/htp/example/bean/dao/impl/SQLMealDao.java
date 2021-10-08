@@ -41,10 +41,8 @@ public class SQLMealDao implements MealDao, DaoQuery {
     @Override
     public Meal createMealInDB(Meal meal) throws DaoException {
         try (Connection connection = DriverManagerManager.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_CREATE_MEAL,
-                     Statement.RETURN_GENERATED_KEYS);) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_CREATE_MEAL)) {
 
-            //preparedStatement.setInt(1, meal.getId());
             preparedStatement.setObject(1, meal.getDate());
             preparedStatement.setObject(2, meal.getTime());
             preparedStatement.setDouble(3, meal.getWeight());
@@ -52,17 +50,6 @@ public class SQLMealDao implements MealDao, DaoQuery {
 
             preparedStatement.executeUpdate();
 
-//            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
-//                if (generatedKeys.next()) {
-//                    meal.setId(generatedKeys.getInt(1));
-//                    meal.setDate(generatedKeys.getObject(2, LocalDate.class));
-//                    meal.setTime(generatedKeys.getObject(3, LocalTime.class));
-//                    meal.setWeight(generatedKeys.getDouble(4));
-//                    meal.setCalories(generatedKeys.getDouble(5));
-//                } else {
-//                    throw new DaoException("Creating Meal failed, no ID obtained.");
-//                }
-//            }
             return meal;
 
         } catch (SQLException e) {

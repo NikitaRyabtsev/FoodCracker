@@ -19,7 +19,7 @@ import java.time.format.DateTimeParseException;
 
 public class AddNewMealCommand implements Command {
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 
         ServiceProvider provider = ServiceProvider.getInstance();
         String dateS = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
