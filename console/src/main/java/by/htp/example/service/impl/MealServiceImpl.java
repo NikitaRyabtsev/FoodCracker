@@ -69,8 +69,7 @@ public class MealServiceImpl implements MealService {
     @Override
     public Meal getMealByDate(LocalDate date) throws ServiceException {
         try {
-            int i = 0;
-            return provider.getMealDao().getMealByIdFromDB(i);
+            return provider.getMealDao().getMealByDateFromDB(date);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

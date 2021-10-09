@@ -18,6 +18,14 @@ public class Meal {
 	}
 	public Meal() {}
 
+	public Meal(LocalDate date, LocalTime time, double weight, double calories) {
+		super();
+		this.date = date;
+		this.time = time;
+		this.weight = weight;
+		this.calories = calories;
+	}
+
 	public Meal(int id, LocalDate date, LocalTime time, double weight, double calories) {
 		super();
 		this.id = id;

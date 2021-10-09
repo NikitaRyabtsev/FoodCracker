@@ -1,5 +1,6 @@
 package by.htp.example.controller;
 
+import by.htp.example.bean.dao.DaoException;
 import by.htp.example.command.Command;
 import by.htp.example.command.CommandHelper;
 import by.htp.example.command.RequestParameterName;
@@ -36,7 +37,7 @@ public class ControllerServlet extends HttpServlet {
         command = CommandHelper.getInstance().getCommand(commandName);
         try {
             command.execute(request, response);
-        } catch (IOException | ServletException | ServiceException e) {
+        } catch (IOException | ServletException | ServiceException | DaoException e) {
 
             e.printStackTrace();
         }

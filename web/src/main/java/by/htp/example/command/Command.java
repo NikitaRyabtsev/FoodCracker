@@ -1,5 +1,6 @@
 package by.htp.example.command;
 
+import by.htp.example.bean.dao.DaoException;
 import by.htp.example.service.ServiceException;
 
 import javax.servlet.ServletException;
@@ -9,5 +10,5 @@ import java.io.IOException;
 
 public interface Command {
 
-    void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException;
+    void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException;
 }

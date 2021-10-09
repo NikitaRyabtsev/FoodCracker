@@ -8,22 +8,36 @@ import by.htp.example.service.ServiceException;
 import by.htp.example.service.UserService;
 import by.htp.example.validation.UserDataValidator;
 
+import java.security.Provider;
+
 public class UserServiceImpl implements UserService {
 
     private static final UserDataValidator validator = UserDataValidator.getInstance();
 
     @Override
-    public User authorization(String login, String password) throws ServiceException {
+    public User authorization(String login, String password) throws ServiceException{
 
         if (!validator.check(login, password)) {
             throw new ServiceException("[Info]Validation is not correct");
         }
         User user;
-
-        UserDao userDao = DaoProvider.getInstance().getUserDao();
-        user = userDao.authorization(login, password);
-
+        try{
+            UserDao userDao = DaoProvider.getInstance().getUserDao();
+            user = userDao.authorization(login, password);
+        }catch(DaoException e){
+            throw new ServiceException(e);
+        }
         return user;
+    }
+
+    @Override
+    public void registration(User user) throws ServiceException {
+        UserDao userDao = DaoProvider.getInstance().getUserDao();
+       try {
+           userDao.registration(user);
+       }catch(DaoException e){
+           throw new ServiceException(e);
+       }
     }
 
 

@@ -6,11 +6,6 @@
     <title>DeleteMeal</title>
 </head>
 <body>
-<%
-    Meal meal;
-    meal = (Meal) request.getAttribute("deleteMeal");
-    out.println("Meal was deleted");
-%>
 <jsp:include page="user_auth.jsp"/>
 
 </body>

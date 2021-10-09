@@ -19,7 +19,6 @@ import java.util.List;
 public class GetAllMealsCommand implements Command {
 
 
-
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServiceProvider provider = ServiceProvider.getInstance();
@@ -29,20 +28,20 @@ public class GetAllMealsCommand implements Command {
 
         try {
             meals = mealService.getMeals();
-            if(meals != null | !meals.isEmpty()){
-                request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEALS,meals);
+            if (meals != null | !meals.isEmpty()) {
+                request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEALS, meals);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_MEALS_JSP);
                 dispatcher.forward(request, response);
-            }else{
-                request.setAttribute(RequestParameterName.REQ_PARAM_INCORRECT,meals);
+            } else {
+                request.setAttribute(RequestParameterName.REQ_PARAM_INCORRECT, meals);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
-                dispatcher.forward(request,response);
+                dispatcher.forward(request, response);
             }
 
         } catch (ServiceException e) {
-
             e.printStackTrace();
-
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            dispatcher.forward(request, response);
         }
     }
 }

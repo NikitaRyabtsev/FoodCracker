@@ -5,21 +5,19 @@
     <title>User</title>
 </head>
 <body>
-<h1>Hello , User</h1>
-<h2>Choose your option : </h2>
-
-<form action="controller" method="post">
-    <input type="hidden" name="command" value="get_all_meals"/>
-    <input type="submit" value="getMeals"/><br/>
-</form>
+<jsp:include page="/jsp/header.jsp"/>
+<%--<form action="controller" method="post">--%>
+<%--    <input type="hidden" name="command" value="get_all_meals"/>--%>
+<%--    <input type="submit" value="getMeals"/><br/>--%>
+<%--</form>--%>
 <form action="controller" method="post">
     <input type="hidden" name="command" value="add_new_meal"/>
     <input type="submit" value="addMeal">
-    <input type="number" name="id" value=""/>
     <input type="date" name="date" value=""/>
     <input type="time" name="time" value=""/>
     <input type="number" name="weight" value=""/>
     <input type="number" name="calories" value=""/>
 </form>
+<jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>
