@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 public class GetMealByDateCommand implements Command {
     @Override
@@ -23,11 +24,12 @@ public class GetMealByDateCommand implements Command {
 
         LocalDate date = LocalDate.parse(dateS);
         MealService mealService = provider.getServiceMeal();
+        List<Meal> meals;
         Meal meal;
         try {
-            meal = mealService.getMealByDate(date);
-            if (meal != null) {
-                request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEAL_BY_DATE, meal);
+            meals = mealService.getMealByDate(date);
+            if (meals != null | meals.isEmpty()) {
+                request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEAL_BY_DATE, meals);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_MEAL);
                 dispatcher.forward(request, response);
             } else {

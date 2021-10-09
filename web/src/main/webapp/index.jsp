@@ -6,10 +6,11 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <title>Вход</title>
 </head>
 <body>
+<jsp:include page="/jsp/header.jsp"/>
 <body class="text-center ">
 
 <main class="form-sign in">
@@ -18,11 +19,11 @@
         <h1 class="h3 mb-3 fw-normal">Введите логин и пароль</h1>
 
         <div class="form-floating ">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Логин</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" class="w-100 form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
         </div>
 
@@ -31,7 +32,12 @@
                 <input type="checkbox" value="remember-me"> Запомнить
             </label>
         </div>
-        <button class="w-100 btn btn-success" type="submit">Войти</button>
+        <button class="w-50 btn btn-success" type="submit">Войти</button>
+    <form action="controller" method="post">
+        <input type="hidden" name="user_registration" value="registration"/>
+        <button class="w-50 btn btn-success" type="submit" value="registration">Зарегистрироваться</button>
+        <a href = "jsp/registration.jsp">Check</a>
+    </form>
         <p class="mt-5 mb-3 text-muted">© 2021</p>
     </form>
 </main>

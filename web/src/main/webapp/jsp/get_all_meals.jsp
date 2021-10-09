@@ -50,7 +50,18 @@
     <input type="number" name="weight" value=""/>
     <input type="number" name="calories" value=""/>
 </form>
-
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="user_registration"/>
+    <input type="login" name="login" value="">
+    <input type="password" name="password" value="">
+    <input type="email" name="email" value="">
+    <input type="text" name="role" value="">
+    <input type="text" name="sex" value="">
+    <input type="text" name="name" value="">
+    <input type="text" name="secondName" value="">
+    <input type="number" name="weight" value="">
+    <input type="submit" value="Зарегеситрироваться"/>
+</form>
 <button type="button" name="back" onclick="history.back()">back</button>
 <jsp:include page="/jsp/footer.jsp"/>
 </body>

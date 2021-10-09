@@ -18,6 +18,7 @@
     <input type="number" name="weight" value=""/>
     <input type="number" name="calories" value=""/>
 </form>
+
 <jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>

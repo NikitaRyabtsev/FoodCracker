@@ -8,8 +8,6 @@ import by.htp.example.service.ServiceException;
 import by.htp.example.service.UserService;
 import by.htp.example.validation.UserDataValidator;
 
-import java.security.Provider;
-
 public class UserServiceImpl implements UserService {
 
     private static final UserDataValidator validator = UserDataValidator.getInstance();
@@ -40,5 +38,25 @@ public class UserServiceImpl implements UserService {
        }
     }
 
+    @Override
+    public User editProfile(User user) throws ServiceException {
+        UserDao userDao = DaoProvider.getInstance().getUserDao();
+        try{
+            userDao.editProfileInDB(user);
+            return user;
+        }catch(DaoException e){
+            throw new ServiceException(e);
+        }
+    }
 
+    @Override
+    public User deleteMeal(User user) throws ServiceException {
+        UserDao userDao = DaoProvider.getInstance().getUserDao();
+        try {
+            userDao.deleteUserFromDB(user);
+            return user;
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

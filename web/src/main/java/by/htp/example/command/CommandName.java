@@ -4,6 +4,7 @@ public enum CommandName {
 
     NO_SUCH_COMMAND,
     AUTHORIZATION,
+    USER_REGISTRATION,
 
     GET_ALL_MEALS,
     ADD_NEW_MEAL,
@@ -11,6 +12,7 @@ public enum CommandName {
     DELETE_MEAL,
     GET_MEAL_BY_ID,
     GET_MEAL_BY_DATE,
+
     
 
 }

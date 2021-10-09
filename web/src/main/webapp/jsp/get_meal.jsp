@@ -10,6 +10,7 @@
 <form action="controller" method="post">
     <input type="hidden" name="command" value="change_meal"/>
     <input type="submit" value="changeMeal"/>
+    <input type="number" name = id value="">
     <input type="date" name="date" value=""/>
     <input type="time" name="time" value=""/>
     <input type="number" name="weight" value=""/>
@@ -25,7 +26,7 @@
     </tr>
 
     <tr>
-        <c:forEach items="${requestScope.getMealById}" var="meal">
+        <c:forEach items="${requestScope.getMealByDate}" var="meal">
         <td><c:out value="${meal.getDate()}"/></td>
         <td><c:out value="${meal.getTime()}"/></td>
         <td><c:out value="${meal.getWeight()}"/></td>

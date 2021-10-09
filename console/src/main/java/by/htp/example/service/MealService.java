@@ -2,6 +2,7 @@ package by.htp.example.service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import by.htp.example.bean.Meal;
 
@@ -17,5 +18,5 @@ public interface MealService {
 	
 	Meal getMealById(int id) throws ServiceException;
 	
-	Meal getMealByDate(LocalDate date) throws ServiceException;
+	List<Meal> getMealByDate(LocalDate date) throws ServiceException;
 }
