@@ -6,7 +6,6 @@
     <title>DeleteMeal</title>
 </head>
 <body>
-<jsp:include page="user_auth.jsp"/>
-
+<jsp:include page="get_all_meals.jsp"/>
 </body>
 </html>

@@ -18,7 +18,7 @@ import java.time.LocalDate;
 public class RegistrationCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
-        User user = null;
+        User user;
         ServiceProvider provider = ServiceProvider.getInstance();
 
         String login = request.getParameter(RequestParameterName.REQ_PARAM_LOGIN);
@@ -31,18 +31,18 @@ public class RegistrationCommand implements Command {
         String dateOfBirthS = request.getParameter(RequestParameterName.REQ_PARAM_DATE_OF_BIRTH);
         String role = request.getParameter(RequestParameterName.REQ_PARAM_ROLE);
         try {
-            if (user != null) {
-                double weight = Integer.parseInt(weightS);
-                LocalDate dateOfBirth = LocalDate.parse(dateOfBirthS);
-                user = new User(login, password, email, name, secondName, weight, sex, dateOfBirth, role);
-                provider.getUserService().registration(user);
-                request.setAttribute(RequestParameterName.REQ_PARAM_REGISTRATION,user);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_REGISTRATION);
-                dispatcher.forward(request,response);
-            } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
-                dispatcher.forward(request, response);
-            }
+
+            double weight = Integer.parseInt(weightS);
+            LocalDate dateOfBirth = LocalDate.parse(dateOfBirthS);
+
+            user = new User(login, password, email, name, secondName, weight, sex, dateOfBirth, role);
+
+            provider.getUserService().registration(user);
+
+            request.setAttribute(RequestParameterName.REQ_PARAM_REGISTRATION, user);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_REGISTRATION);
+            dispatcher.forward(request, response);
+
         } catch (ServiceException e) {
             e.printStackTrace();
         }

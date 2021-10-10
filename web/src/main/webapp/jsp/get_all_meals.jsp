@@ -27,15 +27,15 @@
         <td><c:out value="${meal.getTime()}"/></td>
         <td><c:out value="${meal.getWeight()}"/></td>
         <td><c:out value="${meal.getCalories()}"/></td>
+            <form action="controller" method="post">
+                <input type="hidden" name="command" value="get_meal_by_id"/>
+                <input type="hidden" name="id" value="${meal.getId()}"/>
+                <td><input type="submit" value="Просмотреть"/></td>
+            </form>
         <form action="controller" method="post">
             <input type="hidden" name="command" value="delete_meal"/>
             <input type="hidden" name="id" value="${meal.getId()}"/>
-            <td><input type="submit" value="deleteMeal"/></td>
-        </form>
-        <form action="controller" method="post">
-            <input type="hidden" name="command" value="get_meal_by_id"/>
-            <input type="hidden" name="id" value="${meal.getId()}"/>
-            <td><input type="submit" value="getMeal"/></td>
+            <td><input type="submit" value="" class="btn-close"/></td>
         </form>
 
     </tr>
@@ -52,15 +52,16 @@
 </form>
 <form action="controller" method="post">
     <input type="hidden" name="command" value="user_registration"/>
-    <input type="login" name="login" value="">
-    <input type="password" name="password" value="">
+    <input type="text" name="login" value="">
+    <input type="text" name="password" value="">
     <input type="email" name="email" value="">
     <input type="text" name="role" value="">
     <input type="text" name="sex" value="">
     <input type="text" name="name" value="">
     <input type="text" name="secondName" value="">
     <input type="number" name="weight" value="">
-    <input type="submit" value="Зарегеситрироваться"/>
+    <input type="date" name="dateOfBirth" value="">
+    <input type="submit" value="Зарегестрироваться"/>
 </form>
 <button type="button" name="back" onclick="history.back()">back</button>
 <jsp:include page="/jsp/footer.jsp"/>

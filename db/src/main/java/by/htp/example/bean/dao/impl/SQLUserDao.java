@@ -44,18 +44,19 @@ public class SQLUserDao implements UserDao, DaoQuery {
     public void registration(User user) throws DaoException {
 
         try (Connection connection = DriverManagerManager.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_USER_REGISTRATION)) {
-            preparedStatement.setString(3, user.getName());
-            preparedStatement.setString(4, user.getSecondName());
-            preparedStatement.setString(1, user.getLogin());
-            preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setString(8, user.getSex());
-            preparedStatement.setString(7, user.getEmail());
-            preparedStatement.setDouble(5, user.getWeight());
-            preparedStatement.setString(6, user.getRole());
-            preparedStatement.setObject(9, user.getDateOfBirth());
+             PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_USER_REGISTRATION)) {
 
-            preparedStatement.executeUpdate();
+            prepareStatement.setString(1, user.getLogin());
+            prepareStatement.setString(2, user.getPassword());
+            prepareStatement.setString(3, user.getName());
+            prepareStatement.setString(4, user.getSecondName());
+            prepareStatement.setDouble(5, user.getWeight());
+            prepareStatement.setString(6, user.getRole());
+            prepareStatement.setString(7, user.getEmail());
+            prepareStatement.setString(8, user.getSex());
+            prepareStatement.setObject(9, user.getDateOfBirth());
+
+            prepareStatement.executeUpdate();
 
         } catch (SQLException e) {
             throw new DaoException(e);
