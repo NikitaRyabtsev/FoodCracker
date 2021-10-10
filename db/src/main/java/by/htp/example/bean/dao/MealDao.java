@@ -2,6 +2,7 @@ package by.htp.example.bean.dao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import by.htp.example.bean.Meal;
 
@@ -17,6 +18,6 @@ public interface MealDao {
 
 	Meal getMealByIdFromDB(int idMeal) throws DaoException;
 
-	Meal getMealByDateFromDB(LocalDate date) throws DaoException;
+	List<Meal> getMealByDateFromDB(LocalDate date) throws DaoException;
 
 }

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import by.htp.example.bean.Meal;
 import by.htp.example.bean.dao.DaoException;
@@ -129,7 +130,8 @@ public class SQLMealDao implements MealDao, DaoQuery {
     }
 
     @Override
-    public Meal getMealByDateFromDB(LocalDate date) throws DaoException {
+    public List<Meal> getMealByDateFromDB(LocalDate date) throws DaoException {
+        List<Meal> meals = new ArrayList<>();
         Meal meal = null;
         int id;
         LocalTime time;
@@ -139,25 +141,23 @@ public class SQLMealDao implements MealDao, DaoQuery {
 
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_DATE)) {
-            System.out.println(1);
             prepareStatement.setObject(1, date);
-            System.out.println(2);
             ResultSet rs = prepareStatement.executeQuery();
-            System.out.println(3);
             rs.next();
             id = rs.getInt("idMeal");
             rsDate = rs.getObject("date",LocalDate.class);
             time = rs.getObject("time" , LocalTime.class);
             calories = rs.getDouble("calories");
             weight = rs.getDouble("weight");
-            System.out.println(4);
+
             meal = new Meal(id,rsDate,time,calories,weight);
+            meals.add(meal);
         } catch (SQLException e) {
 
             throw new DaoException(e);
         }
 
-        return meal;
+        return meals;
 
     }
 

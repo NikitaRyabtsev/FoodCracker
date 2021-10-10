@@ -2,6 +2,7 @@ package by.htp.example.service.impl;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import by.htp.example.bean.Meal;
 import by.htp.example.bean.dao.DaoException;
@@ -67,7 +68,7 @@ public class MealServiceImpl implements MealService {
     }
 
     @Override
-    public Meal getMealByDate(LocalDate date) throws ServiceException {
+    public List<Meal> getMealByDate(LocalDate date) throws ServiceException {
         try {
             return provider.getMealDao().getMealByDateFromDB(date);
         } catch (DaoException e) {
