@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class GetMealByDateCommand implements Command {
@@ -26,18 +27,21 @@ public class GetMealByDateCommand implements Command {
         MealService mealService = provider.getServiceMeal();
         List<Meal> meals;
         try {
-            LocalDate date = LocalDate.parse(dateS);
-            meals = mealService.getMealByDate(date);
-            if (meals != null | meals.isEmpty()) {
-                request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEAL_BY_DATE, meals);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_MEAL);
-                dispatcher.forward(request, response);
-            } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
-                dispatcher.forward(request, response);
-            }
+                LocalDate date = LocalDate.parse(dateS);
+                meals = mealService.getMealByDate(date);
+                if (meals != null | meals.isEmpty()) {
+                    request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEAL_BY_DATE, meals);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_MEAL);
+                    dispatcher.forward(request, response);
+                } else {
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+                    dispatcher.forward(request, response);
+                }
 
-        } catch (ServiceException e) {
+        } catch (ServiceException | DateTimeParseException e) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            dispatcher.forward(request, response);
+            System.out.println("Введите дату");
             e.printStackTrace();
         }
 

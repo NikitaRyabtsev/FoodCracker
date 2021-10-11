@@ -20,14 +20,13 @@
         <input type="hidden" name="command" value="authorization"/>
         <%--        <img class="mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">--%>
         <h1 class="h3 mb-3 fw-normal">Введите логин и пароль</h1>
-        <div class="form-floating ">
-
-            <input type="text" class="form-control" id="floatingInput" name="login" value="" placeholder="login">
-            <label for="floatingInput">Логин</label>
+        <div class="col-md-6">
+            <label for="validationDefault03" class="form-label">Логин</label>
+            <input type="login" name="login" value="" class="form-control" id="validationDefault03" required>
         </div>
-        <div class="form-floating">
-            <input type="text" class="w-100 form-control" name="password" value="" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Пароль</label>
+        <div class="col-md-6">
+            <label for="validationDefault04" class="form-label">Пароль</label>
+            <input type="text" name="password" value="" class="form-control" id="validationDefault04" required>
         </div>
         <div class="checkbox mb-3">
             <label>
