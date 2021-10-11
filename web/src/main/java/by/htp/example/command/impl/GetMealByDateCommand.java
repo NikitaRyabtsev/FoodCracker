@@ -22,11 +22,11 @@ public class GetMealByDateCommand implements Command {
         ServiceProvider provider = ServiceProvider.getInstance();
         String dateS = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
 
-        LocalDate date = LocalDate.parse(dateS);
+
         MealService mealService = provider.getServiceMeal();
         List<Meal> meals;
-        Meal meal;
         try {
+            LocalDate date = LocalDate.parse(dateS);
             meals = mealService.getMealByDate(date);
             if (meals != null | meals.isEmpty()) {
                 request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEAL_BY_DATE, meals);

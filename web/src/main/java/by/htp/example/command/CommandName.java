@@ -4,7 +4,8 @@ public enum CommandName {
 
     NO_SUCH_COMMAND,
     AUTHORIZATION,
-    USER_REGISTRATION,
+    REGISTRATION,
+    LOG_OUT,
 
     GET_ALL_MEALS,
     ADD_NEW_MEAL,

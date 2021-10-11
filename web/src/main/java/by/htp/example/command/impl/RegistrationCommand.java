@@ -1,12 +1,14 @@
 package by.htp.example.command.impl;
 
 import by.htp.example.bean.dao.DaoException;
+import by.htp.example.bean.dao.Role;
 import by.htp.example.bean.user.User;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
 import by.htp.example.command.RequestParameterName;
 import by.htp.example.service.ServiceException;
 import by.htp.example.service.ServiceProvider;
+import by.htp.example.service.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,8 +19,9 @@ import java.time.LocalDate;
 
 public class RegistrationCommand implements Command {
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         User user;
+        double weight;
         ServiceProvider provider = ServiceProvider.getInstance();
 
         String login = request.getParameter(RequestParameterName.REQ_PARAM_LOGIN);
@@ -26,24 +29,27 @@ public class RegistrationCommand implements Command {
         String email = request.getParameter(RequestParameterName.REQ_PARAM_EMAIL);
         String name = request.getParameter(RequestParameterName.REQ_PARAM_NAME);
         String secondName = request.getParameter(RequestParameterName.REQ_PARAM_SECOND_NAME);
-        String weightS = request.getParameter(RequestParameterName.REQ_PARAM_WEIGHT);
+        String weightS = request.getParameter(RequestParameterName.REQ_PARAM_USER_WEIGHT);
         String sex = request.getParameter(RequestParameterName.REQ_PARAM_SEX);
         String dateOfBirthS = request.getParameter(RequestParameterName.REQ_PARAM_DATE_OF_BIRTH);
-        String role = request.getParameter(RequestParameterName.REQ_PARAM_ROLE);
+        System.out.println("reg");
         try {
-
-            double weight = Integer.parseInt(weightS);
+            System.out.println(weightS);
+            weight = Integer.parseInt(weightS);
+            System.out.println("5");
             LocalDate dateOfBirth = LocalDate.parse(dateOfBirthS);
 
-            user = new User(login, password, email, name, secondName, weight, sex, dateOfBirth, role);
-
-            provider.getUserService().registration(user);
-
+            user = new User(login, password, email, name, secondName, weight, sex, dateOfBirth);
+            UserService userService = provider.getUserService();
+            userService.registration(user);
             request.setAttribute(RequestParameterName.REQ_PARAM_REGISTRATION, user);
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_REGISTRATION);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.REGISTRATION);
             dispatcher.forward(request, response);
 
         } catch (ServiceException e) {
+            e.printStackTrace();
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            dispatcher.forward(request, response);
             e.printStackTrace();
         }
     }
