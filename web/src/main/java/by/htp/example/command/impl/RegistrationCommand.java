@@ -51,7 +51,7 @@ public class RegistrationCommand implements Command {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
                 dispatcher.forward(request, response);
             }
-        } catch (ServiceException | DateTimeParseException e) {
+        } catch (ServiceException | DateTimeParseException | NumberFormatException e) {
             e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);

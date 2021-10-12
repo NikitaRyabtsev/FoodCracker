@@ -6,6 +6,7 @@ public enum CommandName {
     AUTHORIZATION,
     REGISTRATION,
     LOG_OUT,
+    GO_TO_REGISTRATION,
 
     GET_ALL_MEALS,
     ADD_NEW_MEAL,

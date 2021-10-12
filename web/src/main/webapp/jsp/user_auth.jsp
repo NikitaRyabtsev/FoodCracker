@@ -36,7 +36,7 @@
         <button class="w-50 btn btn-success" type="submit">Войти</button>
     </form>
     <form action="controller" method="post">
-        <input type="hidden" name="command" value="registration"/>
+        <input type="hidden" name="command" value="go_to_registration"/>
         <input type="submit" class="btn btn-success" value="Регистрация"/>
         <a href="registration.jsp">Reg</a>
     </form>

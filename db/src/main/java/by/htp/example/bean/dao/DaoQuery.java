@@ -14,5 +14,6 @@ public interface DaoQuery {
 	String SQL_QUERY_DELETE_USER = "DELETE FROM User WHERE idUser=?";
 	String SQL_QUERY_EDIT_PROFILE = "UPDATE User SET login=? , password = ?, name = ? , secondName = ? ,weight = ? , email=? ," +
 			" sex =? , dateOfBirth=? WHERE idUser=?";
+	String SQL_QUERY_GET_ALL_USERS = "SELECT * FROM User";
 
 }

@@ -17,36 +17,36 @@
 <form action="controller" method="post">
     <input type="hidden" name="command" value="registration"/>
     <div class="form-group">
-        <label for="exampleLogin">Логин</label>
-        <input type="login" name="login" class="w-50 form-control" id="exampleLogin" placeholder="Введите логин">
+        <label for="validationDefault01">Логин</label>
+        <input type="login" name="login" class="w-50 form-control" id="validationDefault01" placeholder="Введите логин" required>
     </div>
     <div class="form-group">
-        <label for="examplePassword">Пароль</label>
-        <input type="text" name ="password" class="form-control" id="examplePassword" placeholder="Пароль">
+        <label for="validationDefault02">Пароль</label>
+        <input type="text" name ="password" class="form-control" id="validationDefault02" placeholder="Пароль" required>
     </div>
     <div class="form-group">
-        <label for="exampleEmail">E-mail</label>
-        <input type="email" name = "email" class="form-control" id="exampleEmail" placeholder="email:vasya@vasya">
+        <label for="validationDefault03">E-mail</label>
+        <input type="email" name = "email" class="form-control" id="validationDefault03" placeholder="email:vasya@vasya" required>
     </div>
     <div class="form-group">
-        <label for="exampleSex">Пол</label>
-        <input type="text" name ="sex" class="form-control" id="exampleSex" placeholder="Пол">
+        <label for="validationDefault04">Пол</label>
+        <input type="text" name ="sex" class="form-control" id="validationDefault04" placeholder="Пол" required>
     </div>
     <div class="form-group">
-        <label for="exampleDateOfBirth">Дата рождения</label>
-        <input type="date" name ="dateOfBirth" class="form-control" id="exampleDateOfBirth" placeholder="Дата рождения">
+        <label for="validationDefault05">Дата рождения</label>
+        <input type="date" name ="dateOfBirth" class="form-control" id="validationDefault05" placeholder="Дата рождения" required>
     </div>
     <div class="form-group">
-        <label for="exampleName">Имя</label>
-        <input type="text" name ="name" class="form-control" id="exampleName" placeholder="Имя">
+        <label for="validationDefault06">Имя</label>
+        <input type="text" name ="name" class="form-control" id="validationDefault06" placeholder="Имя" required>
     </div>
     <div class="form-group">
-        <label for="exampleSecondName">Фамилия</label>
-        <input type="text" name ="secondName" class="form-control" id="exampleSecondName" placeholder="Фамилия">
+        <label for="validationDefault07">Фамилия</label>
+        <input type="text" name ="secondName" class="form-control" id="validationDefault07" placeholder="Фамилия" required>
     </div>
     <div class="form-group">
-        <label for="exampleWeight">Вес</label>
-        <input type="number" name ="userWeight" class="form-control" id="exampleWeight" placeholder="Вес">
+        <label for="validationDefault08">Вес</label>
+        <input type="number" name ="userWeight" class="form-control" id="validationDefault08" placeholder="Вес" required>
     </div>
     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
     <jsp:include page="/jsp/footer.jsp"/>

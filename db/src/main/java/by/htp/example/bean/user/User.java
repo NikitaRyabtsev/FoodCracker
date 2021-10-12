@@ -17,6 +17,21 @@ public class User {
     private String sex;
     private LocalDate dateOfBirth;
     private Role role;
+    private boolean block;
+
+    public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth, Role role, boolean block) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+        this.secondName = secondName;
+        this.weight = weight;
+        this.sex = sex;
+        this.dateOfBirth = dateOfBirth;
+        this.role = role;
+        this.block = block;
+    }
 
     public User(String login , String password){
         this.login = login;
@@ -49,6 +64,19 @@ public class User {
         this.sex = sex;
         this.dateOfBirth = dateOfBirth;
         this.role = role;
+    }
+
+    public User() {
+
+    }
+
+    public boolean isBlock() {
+        return block;
+    }
+
+
+    public void setBlock(boolean block) {
+        this.block = block;
     }
 
     public int getId() {
@@ -130,7 +158,6 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -138,6 +165,7 @@ public class User {
         User user = (User) o;
         return id == user.id &&
                 Double.compare(user.weight, weight) == 0 &&
+                block == user.block &&
                 Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
@@ -150,7 +178,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, password, email, name, secondName, weight, sex, dateOfBirth, role);
+        return Objects.hash(id, login, password, email, name, secondName, weight, sex, dateOfBirth, role, block);
     }
 
     @Override
