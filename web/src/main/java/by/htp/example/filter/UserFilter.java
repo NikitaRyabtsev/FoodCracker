@@ -1,13 +1,8 @@
 package by.htp.example.filter;
 
-import by.htp.example.bean.dao.DaoException;
-import by.htp.example.bean.user.User;
 import by.htp.example.command.CommandName;
 import by.htp.example.command.JSPPageName;
 import by.htp.example.command.RequestParameterName;
-
-import by.htp.example.service.ServiceException;
-import by.htp.example.service.ServiceProvider;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +31,7 @@ public class UserFilter implements Filter {
 
         String param =  req.getParameter(RequestParameterName.REQ_PARAM_COMMAND_NAME);
 
-        if (session.getAttribute(RequestParameterName.REQ_PARAM_USER) != null) {
+        if (session.getAttribute(RequestParameterName.REQ_SESSION_USER) != null) {
             chain.doFilter(req, resp);
         } else if (CommandName.AUTHORIZATION.toString().equalsIgnoreCase(param)) {
             chain.doFilter(req, resp);

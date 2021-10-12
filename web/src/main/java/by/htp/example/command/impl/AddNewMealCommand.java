@@ -49,7 +49,7 @@ public class AddNewMealCommand implements Command {
                 throw new NumberFormatException();
             }
         } catch (ServiceException | NumberFormatException | DateTimeParseException e) {
-            e.printStackTrace();
+
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
         }

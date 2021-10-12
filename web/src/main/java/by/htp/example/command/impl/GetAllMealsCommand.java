@@ -39,7 +39,7 @@ public class GetAllMealsCommand implements Command {
             }
 
         } catch (ServiceException e) {
-            e.printStackTrace();
+
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
         }

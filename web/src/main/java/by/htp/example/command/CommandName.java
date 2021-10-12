@@ -7,6 +7,7 @@ public enum CommandName {
     REGISTRATION,
     LOG_OUT,
     GO_TO_REGISTRATION,
+    TO_EDIT_PROFILE,
 
     GET_ALL_MEALS,
     ADD_NEW_MEAL,

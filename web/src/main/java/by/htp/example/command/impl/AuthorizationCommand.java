@@ -1,6 +1,5 @@
 package by.htp.example.command.impl;
 
-import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.user.User;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
@@ -26,7 +25,10 @@ public class AuthorizationCommand implements Command {
         User user;
 
         ServiceProvider provider = ServiceProvider.getInstance();
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
+        if(session!=null){
+            session = request.getSession(true);
+        }
 
         String login = request.getParameter(RequestParameterName.REQ_PARAM_LOGIN);
         String password = request.getParameter(RequestParameterName.REQ_PARAM_PASS);
@@ -35,7 +37,7 @@ public class AuthorizationCommand implements Command {
             user = userService.authorization(login, password);
 
             if (user != null) {
-                session.setAttribute(RequestParameterName.REQ_PARAM_USER, user);
+                session.setAttribute(RequestParameterName.REQ_SESSION_USER, user);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
                 dispatcher.forward(request, response);
             }else{
@@ -46,7 +48,7 @@ public class AuthorizationCommand implements Command {
         } catch (ServiceException e) {
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
-            e.printStackTrace();
+
         }
 
 
