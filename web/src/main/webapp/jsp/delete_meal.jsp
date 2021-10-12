@@ -6,6 +6,7 @@
     <title>DeleteMeal</title>
 </head>
 <body>
-<jsp:include page="get_all_meals.jsp"/>
+<c:out>Meal was deleted</c:out>
+<button type="button" name="back" onclick="history.back()">back</button>
 </body>
 </html>

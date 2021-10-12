@@ -10,53 +10,46 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-
     <title>Registration</title>
 </head>
 <body>
 <jsp:include page="/jsp/header.jsp"/>
 <form action="controller" method="post">
-    <input type="hidden" name="command" value="user_registration"/>
-    <input type="login" name="login" value="">
-    <input type="password" name="password" value="">
-    <input type="email" name="email" value="">
-    <input type="text" name="role" value="">
-    <input type="text" name="sex" value="">
-    <input type="text" name="name" value="">
-    <input type="text" name="secondName" value="">
-    <input type="number" name="weight" value="">
-    <input type="submit" value="Зарегеситрироваться"/>
-</form>
-<form>
+    <input type="hidden" name="command" value="registration"/>
     <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="w-50 form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите email">
+        <label for="validationDefault01">Логин</label>
+        <input type="login" name="login" class="w-50 form-control" id="validationDefault01" placeholder="Введите логин" required>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
+        <label for="validationDefault02">Пароль</label>
+        <input type="text" name ="password" class="form-control" id="validationDefault02" placeholder="Пароль" required>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword" placeholder="Пароль">
+        <label for="validationDefault03">E-mail</label>
+        <input type="email" name = "email" class="form-control" id="validationDefault03" placeholder="email:vasya@vasya" required>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPasswor" placeholder="Пароль">
+        <label for="validationDefault04">Пол</label>
+        <input type="text" name ="sex" class="form-control" id="validationDefault04" placeholder="Пол" required>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPasswo" placeholder="Пароль">
+        <label for="validationDefault05">Дата рождения</label>
+        <input type="date" name ="dateOfBirth" class="form-control" id="validationDefault05" placeholder="Дата рождения" required>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassw" placeholder="Пароль">
+        <label for="validationDefault06">Имя</label>
+        <input type="text" name ="name" class="form-control" id="validationDefault06" placeholder="Имя" required>
     </div>
-    <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <div class="form-group">
+        <label for="validationDefault07">Фамилия</label>
+        <input type="text" name ="secondName" class="form-control" id="validationDefault07" placeholder="Фамилия" required>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="form-group">
+        <label for="validationDefault08">Вес</label>
+        <input type="number" name ="userWeight" class="form-control" id="validationDefault08" placeholder="Вес" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    <jsp:include page="/jsp/footer.jsp"/>
 </form>
 </body>
 </html>

@@ -75,6 +75,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
             ResultSet rs = prepareStatement.executeQuery();
             rs.next();
             id = rs.getInt("idMeal");
+            rs.close();
         } catch (SQLException e) {
             throw new DaoException(e);
         }
@@ -119,7 +120,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
                 weight = rs.getDouble("weight");
 
                 meal = new Meal(id, date,time,weight,calories);
-
+                rs.close();
         } catch (SQLException e) {
             throw new DaoException(e);
         }
@@ -152,6 +153,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
 
             meal = new Meal(id,rsDate,time,calories,weight);
             meals.add(meal);
+            rs.close();
         } catch (SQLException e) {
 
             throw new DaoException(e);
@@ -172,6 +174,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
             meal.setDate(localDate);
             meal.setTime(localTime);
             meal.setCalories(resultSet.getDouble("calories"));
+
         } catch (SQLException e) {
             throw new DaoException(e);
         }

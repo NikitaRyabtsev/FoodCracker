@@ -13,10 +13,10 @@ public class RequestParameterName {
     public static final String REQ_PARAM_SEX = "sex";
     public static final String REQ_PARAM_NAME = "name";
     public static final String REQ_PARAM_SECOND_NAME = "secondName";
+    public static final String REQ_PARAM_USER_WEIGHT = "userWeight";
     public static final String REQ_PARAM_EMAIL = "email";
     public static final String REQ_PARAM_ROLE = "role";
     public static final String REQ_PARAM_DATE_OF_BIRTH = "dateOfBirth";
-
 
     public static final String REQ_PARAM_GET_MEALS = "getMeals";
     public static final String REQ_PARAM_GET_MEAL_BY_ID = "getMealById";

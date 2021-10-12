@@ -5,7 +5,6 @@
     <title>ERROR</title>
 </head>
 <body>
-
 <c:out value="ERORR PAGE"/>
 <button type="button" name="back" onclick="history.back()">back</button>
 </body>
