@@ -9,6 +9,8 @@ public enum CommandName {
     GO_TO_REGISTRATION,
     TO_EDIT_PROFILE,
 
+    GET_ALL_USERS,
+
     GET_ALL_MEALS,
     ADD_NEW_MEAL,
     CHANGE_MEAL,

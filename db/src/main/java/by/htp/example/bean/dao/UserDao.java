@@ -12,7 +12,7 @@ public interface UserDao {
 
     User deleteUserFromDB(User user) throws DaoException;
 
-    User blockUserInDB(int id) throws DaoException;
+    User blockUserInDB(User user) throws DaoException;
 
     List<User> getAllUsersFromDB() throws DaoException;
 

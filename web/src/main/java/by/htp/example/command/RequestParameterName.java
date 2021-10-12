@@ -17,6 +17,9 @@ public class RequestParameterName {
     public static final String REQ_PARAM_ROLE = "role";
     public static final String REQ_PARAM_DATE_OF_BIRTH = "dateOfBirth";
 
+    public static final String REQ_PARAM_GET_USERS = "getUsers";
+    public static final String REQ_PARAM_BLOCK_USER = "blockUser";
+
     public static final String REQ_PARAM_GET_MEALS = "getMeals";
     public static final String REQ_PARAM_GET_MEAL_BY_ID = "getMealById";
     public static final String REQ_PARAM_GET_MEAL_BY_DATE = "getMealByDate";

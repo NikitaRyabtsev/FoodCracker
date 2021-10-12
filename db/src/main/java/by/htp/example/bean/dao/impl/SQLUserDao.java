@@ -78,29 +78,12 @@ public class SQLUserDao implements UserDao, DaoQuery {
     }
 
     @Override
-    public User blockUserInDB(int id) throws DaoException {
-        User user = null;
-        int idUser = 0;
-        boolean block = false;
+    public User blockUserInDB(User user) throws DaoException {
+
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_BLOCK_USER)) {
-            prepareStatement.setObject(1, idUser);
-            prepareStatement.setBoolean(11,block);
-            ResultSet rs = prepareStatement.executeQuery();
-            if(rs.next()) {
-
-                id = rs.getInt("idUser");
-                boolean blockDB = rs.getBoolean("block");
-                String login =  rs.getString("login");
-                String password = rs.getString("password");
-                String name = rs.getString("name");
-                String secondName = rs.getString("secondName");
-                String email = rs.getString("email");
-                String sex = rs.getString("sex");
-                double weight = rs.getDouble("weight");
-                LocalDate dateOfBirth = rs.getObject("date", LocalDate.class);
-                user = new User(id,blockDB);
-            }
+            prepareStatement.setObject(1, user.getId());
+            prepareStatement.setBoolean(11,user.isBlock());
 
         }catch(SQLException e){
             throw new DaoException(e);
@@ -146,7 +129,7 @@ public class SQLUserDao implements UserDao, DaoQuery {
                 String email = rs.getString("email");
                 String sex = rs.getString("sex");
                 double weight = rs.getDouble("weight");
-                LocalDate dateOfBirth = rs.getObject("date", LocalDate.class);
+                LocalDate dateOfBirth = rs.getObject("dateOfBirth", LocalDate.class);
 
                 user = new User(id,login,password,email,name,secondName,weight,sex,dateOfBirth);
             }
@@ -198,8 +181,7 @@ public class SQLUserDao implements UserDao, DaoQuery {
             user.setEmail(rs.getString("email"));
             user.setSex(rs.getString("sex"));
             user.setWeight(rs.getDouble("weight"));
-            LocalDate localDate = rs.getObject("date", LocalDate.class);
-            user.setRole((Role) rs.getObject("role"));
+            LocalDate localDate = rs.getObject("dateOfBirth", LocalDate.class);
             user.setBlock(rs.getBoolean("block"));
 
         } catch (SQLException e) {

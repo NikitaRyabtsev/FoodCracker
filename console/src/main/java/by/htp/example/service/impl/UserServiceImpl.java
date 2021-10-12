@@ -8,6 +8,8 @@ import by.htp.example.service.ServiceException;
 import by.htp.example.service.UserService;
 import by.htp.example.validation.UserDataValidator;
 
+import java.util.List;
+
 public class UserServiceImpl implements UserService {
 
     private static final UserDataValidator validator = UserDataValidator.getInstance();
@@ -48,9 +50,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User blockUser(String id) throws ServiceException {
+    public List<User> getUsers() throws ServiceException {
         try{
-            return provider.getUserDao().blockUserInDB(Integer.parseInt(id));
+            return provider.getUserDao().getAllUsersFromDB();
+        }catch(DaoException e){
+            throw new ServiceException(e);
+        }
+
+    }
+
+    @Override
+    public User blockUser(User user) throws ServiceException {
+        try{
+            return provider.getUserDao().blockUserInDB(user);
         }catch(DaoException e){
             throw new ServiceException();
         }
