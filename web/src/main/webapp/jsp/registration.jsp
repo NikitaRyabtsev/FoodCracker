@@ -29,8 +29,11 @@
         <input type="email" name = "email" class="form-control" id="validationDefault03" placeholder="email:vasya@vasya" required>
     </div>
     <div class="form-group">
-        <label for="validationDefault04">Пол</label>
-        <input type="text" name ="sex" class="form-control" id="validationDefault04" placeholder="Пол" required>
+        <label for="exampleFormControlSelect1">Пол</label>
+        <select class="form-control" name="sex" id="exampleFormControlSelect1">
+            <option>male</option>
+            <option>female</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="validationDefault05">Дата рождения</label>

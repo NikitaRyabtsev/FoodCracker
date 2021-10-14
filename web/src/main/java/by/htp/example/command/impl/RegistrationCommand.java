@@ -1,7 +1,5 @@
 package by.htp.example.command.impl;
 
-import by.htp.example.bean.dao.DaoException;
-import by.htp.example.bean.dao.Role;
 import by.htp.example.bean.user.User;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
@@ -45,7 +43,7 @@ public class RegistrationCommand implements Command {
                 UserService userService = provider.getUserService();
                 userService.registration(user);
                 request.setAttribute(RequestParameterName.REQ_PARAM_REGISTRATION, user);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.REGISTRATION);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
                 dispatcher.forward(request, response);
             }else{
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
