@@ -8,10 +8,12 @@ import by.htp.example.service.ServiceException;
 import by.htp.example.service.UserService;
 import by.htp.example.validation.UserDataValidator;
 
+import java.util.List;
+
 public class UserServiceImpl implements UserService {
 
     private static final UserDataValidator validator = UserDataValidator.getInstance();
-
+    private DaoProvider provider = DaoProvider.getInstance();
     @Override
     public User authorization(String login, String password) throws ServiceException{
 
@@ -39,11 +41,38 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User editProfile(User user) throws ServiceException {
-        UserDao userDao = DaoProvider.getInstance().getUserDao();
+    public User getAdminAccessInfo(String id) throws ServiceException {
         try{
-            userDao.editProfileInDB(user);
-            return user;
+            return provider.getUserDao().getEditAdminAccessInfo(Integer.parseInt(id));
+        }catch(DaoException e){
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<User> getUsers() throws ServiceException {
+        try{
+            return provider.getUserDao().getAllUsersFromDB();
+        }catch(DaoException e){
+            throw new ServiceException(e);
+        }
+
+    }
+
+    @Override
+    public User blockUser(User user) throws ServiceException {
+        try{
+            return provider.getUserDao().blockUserInDB(user);
+        }catch(DaoException e){
+            throw new ServiceException();
+        }
+
+    }
+
+    @Override
+    public User getUserAccessInfo(String id) throws ServiceException {
+        try{
+            return provider.getUserDao().getEditUserAccessInfo(Integer.parseInt(id));
         }catch(DaoException e){
             throw new ServiceException(e);
         }

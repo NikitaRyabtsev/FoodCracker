@@ -19,6 +19,48 @@ public class User {
     private Role role;
     private boolean block;
 
+    public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth){
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+        this.secondName = secondName;
+        this.weight = weight;
+        this.sex = sex;
+        this.dateOfBirth = dateOfBirth;
+    }
+    public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex,boolean block, LocalDate dateOfBirth){
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+        this.secondName = secondName;
+        this.weight = weight;
+        this.sex = sex;
+        this.block = block;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public User(String login , String password){
+        this.login = login;
+        this.password = password;
+    }
+    public User(String login,String password,String name){
+        this.login = login;
+        this.password = password;
+        this.name = name;
+    }
+
+    public User(int id , boolean block){
+        this.id = id;
+        this.block = block;
+    }
+    public User() {
+
+    }
+
     public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth, Role role, boolean block) {
         this.id = id;
         this.login = login;
@@ -33,16 +75,8 @@ public class User {
         this.block = block;
     }
 
-    public User(String login , String password){
-        this.login = login;
-        this.password = password;
-    }
-    public User(String login,String password,String name){
-        this.login = login;
-        this.password = password;
-        this.name = name;
-    }
-    public User( String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth) {
+    public User(String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth) {
+
         this.login = login;
         this.password = password;
         this.email = email;
@@ -52,22 +86,7 @@ public class User {
         this.sex = sex;
         this.dateOfBirth = dateOfBirth;
         this.role = role;
-    }
-    public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth, Role role) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.name = name;
-        this.secondName = secondName;
-        this.weight = weight;
-        this.sex = sex;
-        this.dateOfBirth = dateOfBirth;
-        this.role = role;
-    }
-
-    public User() {
-
+        this.block = block;
     }
 
     public boolean isBlock() {

@@ -23,6 +23,7 @@
         <td>Time</td>
         <td>Weight</td>
         <td>Calories</td>
+        <c:out value="${meal.date}"/>
     </tr>
 
     <tr>

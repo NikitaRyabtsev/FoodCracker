@@ -9,7 +9,6 @@ public class RequestParameterName {
     public static final String REQ_PARAM_LOGIN = "login";
     public static final String REQ_PARAM_PASS = "password";
     public static final String REQ_PARAM_REGISTRATION = "registration";
-    public static final String REQ_PARAM_USER = "user";
     public static final String REQ_PARAM_SEX = "sex";
     public static final String REQ_PARAM_NAME = "name";
     public static final String REQ_PARAM_SECOND_NAME = "secondName";
@@ -17,6 +16,9 @@ public class RequestParameterName {
     public static final String REQ_PARAM_EMAIL = "email";
     public static final String REQ_PARAM_ROLE = "role";
     public static final String REQ_PARAM_DATE_OF_BIRTH = "dateOfBirth";
+
+    public static final String REQ_PARAM_GET_USERS = "getUsers";
+    public static final String REQ_PARAM_BLOCK_USER = "blockUser";
 
     public static final String REQ_PARAM_GET_MEALS = "getMeals";
     public static final String REQ_PARAM_GET_MEAL_BY_ID = "getMealById";
@@ -31,6 +33,8 @@ public class RequestParameterName {
     public static final String REQ_PARAM_TIME = "time";
     public static final String REQ_PARAM_WEIGHT = "weight";
     public static final String REQ_PARAM_CALORIES = "calories";
+
+    public static final String REQ_SESSION_USER = "user";
 
 
 

@@ -3,9 +3,10 @@
 <html>
 <head>
     <title>ERROR</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<c:out value="ERORR PAGE"/>
+<img src="/images/error.png">
 <button type="button" name="back" onclick="history.back()">back</button>
 </body>
 </html>
