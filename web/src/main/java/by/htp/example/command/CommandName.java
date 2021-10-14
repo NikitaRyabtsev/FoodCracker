@@ -10,6 +10,8 @@ public enum CommandName {
     TO_EDIT_PROFILE,
 
     GET_ALL_USERS,
+    BLOCK_USER,
+    DELETE_USER,
 
     GET_ALL_MEALS,
     ADD_NEW_MEAL,

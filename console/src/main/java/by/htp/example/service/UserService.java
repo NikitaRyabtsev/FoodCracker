@@ -12,7 +12,7 @@ public interface UserService {
 
     void registration(User user) throws ServiceException;
 
-    User getAdminAccessInfo(String id) throws ServiceException;
+    User getAdminAccessInfo(int id) throws ServiceException;
 
     List<User> getUsers() throws ServiceException;
 
@@ -20,5 +20,5 @@ public interface UserService {
 
     User getUserAccessInfo(String id) throws ServiceException;
 
-    User deleteMeal(User user) throws ServiceException;
+    User deleteUser(User user) throws ServiceException;
 }

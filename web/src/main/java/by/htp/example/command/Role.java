@@ -1,4 +1,4 @@
-package by.htp.example.bean.dao;
+package by.htp.example.command;
 
 public enum Role {
     USER,

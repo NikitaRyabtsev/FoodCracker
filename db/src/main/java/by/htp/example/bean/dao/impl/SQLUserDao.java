@@ -1,8 +1,6 @@
 package by.htp.example.bean.dao.impl;
 
-import by.htp.example.bean.Meal;
 import by.htp.example.bean.dao.DaoException;
-import by.htp.example.bean.dao.Role;
 import by.htp.example.bean.dao.connection.DriverManagerManager;
 import by.htp.example.bean.user.User;
 import by.htp.example.bean.dao.DaoQuery;
@@ -20,20 +18,23 @@ public class SQLUserDao implements UserDao, DaoQuery {
     public User authorization(String login, String password) throws DaoException {
         User user = null;
         String name;
-        String rsLogin;
-        String rsPassword;
+        String role;
+        String block;
+        int id;
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_USER_LOG_ON)) {
 
             preparedStatement.setString(1, login);
-
+            preparedStatement.setString(2,password);
 
             ResultSet rs = preparedStatement.executeQuery();
            if(rs.next()) {
-               rsPassword = rs.getString("password");
-               rsLogin = rs.getString("login");
+
                name = rs.getString("name");
-               user = new User(rsLogin, rsPassword, name);
+               role = rs.getString("role");
+
+
+               user = new User(role, name);
            }
             rs.close();
         } catch (SQLException e) {
@@ -79,12 +80,21 @@ public class SQLUserDao implements UserDao, DaoQuery {
 
     @Override
     public User blockUserInDB(User user) throws DaoException {
-
+        int id;
+        String block;
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_BLOCK_USER)) {
-            prepareStatement.setObject(1, user.getId());
-            prepareStatement.setBoolean(11,user.isBlock());
 
+            prepareStatement.setString(1,user.getBlock());
+            prepareStatement.setInt(2,user.getId());
+
+            prepareStatement.executeUpdate();
+            ResultSet rs = prepareStatement.executeQuery();
+
+            if (rs.next()) {
+                id = rs.getInt("idUser");
+                block = rs.getString("block");
+            }
         }catch(SQLException e){
             throw new DaoException(e);
         }
@@ -158,13 +168,13 @@ public class SQLUserDao implements UserDao, DaoQuery {
                 String email = rs.getString("email");
                 String sex = rs.getString("sex");
                 double weight = rs.getDouble("weight");
-                LocalDate dateOfBirth = rs.getObject("date", LocalDate.class);
-                Role role = (Role) rs.getObject("role");
-                boolean block = rs.getBoolean("block");
+                LocalDate dateOfBirth = rs.getObject("dateOfBirth", LocalDate.class);
+                String role = rs.getString("role");
+                String block = rs.getString("block");
 
                 user = new User(id,login,password,email,name,secondName,weight,sex,dateOfBirth,role,block);
             }
-
+            rs.close();
         }catch(SQLException e){
             throw new DaoException(e);
         }
@@ -174,6 +184,7 @@ public class SQLUserDao implements UserDao, DaoQuery {
     private User init(ResultSet rs)throws DaoException{
         User user = new User();
         try {
+            user.setId(rs.getInt("idUser"));
             user.setLogin(rs.getString("login"));
             user.setPassword(rs.getString("password"));
             user.setName(rs.getString("name"));
@@ -182,7 +193,9 @@ public class SQLUserDao implements UserDao, DaoQuery {
             user.setSex(rs.getString("sex"));
             user.setWeight(rs.getDouble("weight"));
             LocalDate localDate = rs.getObject("dateOfBirth", LocalDate.class);
-            user.setBlock(rs.getBoolean("block"));
+            user.setDateOfBirth(localDate);
+            user.setRole(rs.getString("role"));
+            user.setBlock(rs.getString("block"));
 
         } catch (SQLException e) {
             throw new DaoException(e);

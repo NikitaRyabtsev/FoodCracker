@@ -1,6 +1,5 @@
 package by.htp.example.bean.user;
 
-import by.htp.example.bean.dao.Role;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -16,9 +15,15 @@ public class User {
     private double weight;
     private String sex;
     private LocalDate dateOfBirth;
-    private Role role;
-    private boolean block;
+    private String role;
+    private String block;
 
+
+    public User(String role,String name){
+
+        this.role = role;
+        this.name = name;
+    }
     public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth){
         this.id = id;
         this.login = login;
@@ -30,7 +35,7 @@ public class User {
         this.sex = sex;
         this.dateOfBirth = dateOfBirth;
     }
-    public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex,boolean block, LocalDate dateOfBirth){
+    public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex,String block, LocalDate dateOfBirth){
         this.id = id;
         this.login = login;
         this.password = password;
@@ -43,17 +48,13 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public User(String login , String password){
-        this.login = login;
-        this.password = password;
-    }
     public User(String login,String password,String name){
         this.login = login;
         this.password = password;
         this.name = name;
     }
 
-    public User(int id , boolean block){
+    public User(int id , String block){
         this.id = id;
         this.block = block;
     }
@@ -61,7 +62,7 @@ public class User {
 
     }
 
-    public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth, Role role, boolean block) {
+    public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth, String role, String block) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -85,17 +86,15 @@ public class User {
         this.weight = weight;
         this.sex = sex;
         this.dateOfBirth = dateOfBirth;
-        this.role = role;
+
+    }
+
+    public User(String block) {
         this.block = block;
     }
 
-    public boolean isBlock() {
-        return block;
-    }
-
-
-    public void setBlock(boolean block) {
-        this.block = block;
+    public User(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -170,13 +169,22 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
+
+    public String getBlock() {
+        return block;
+    }
+
+    public void setBlock(String block) {
+        this.block = block;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -184,7 +192,6 @@ public class User {
         User user = (User) o;
         return id == user.id &&
                 Double.compare(user.weight, weight) == 0 &&
-                block == user.block &&
                 Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
@@ -192,7 +199,8 @@ public class User {
                 Objects.equals(secondName, user.secondName) &&
                 Objects.equals(sex, user.sex) &&
                 Objects.equals(dateOfBirth, user.dateOfBirth) &&
-                role == user.role;
+                Objects.equals(role, user.role) &&
+                Objects.equals(block, user.block);
     }
 
     @Override
@@ -212,7 +220,8 @@ public class User {
                 ", weight=" + weight +
                 ", sex='" + sex + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
-                ", role=" + role +
+                ", role='" + role + '\'' +
+                ", block='" + block + '\'' +
                 '}';
     }
 }
