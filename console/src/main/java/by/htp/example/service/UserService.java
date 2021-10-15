@@ -16,9 +16,9 @@ public interface UserService {
 
     List<User> getUsers() throws ServiceException;
 
-    User blockUser(User user) throws ServiceException;
+    void blockUser(User user) throws ServiceException;
 
-    User getUserAccessInfo(String id) throws ServiceException;
+    User getUserAccessInfo(int id) throws ServiceException;
 
     User deleteUser(User user) throws ServiceException;
 }

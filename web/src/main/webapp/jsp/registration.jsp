@@ -48,6 +48,12 @@
         <input type="text" name ="secondName" class="form-control" id="validationDefault07" placeholder="Фамилия" required>
     </div>
     <div class="form-group">
+        <input type="hidden" name = "blockUser" class="form-control"  value="unlock" required>
+    </div>
+    <div class="form-group">
+        <input type="hidden" name = "role" class="form-control" value="user" required>
+    </div>
+    <div class="form-group">
         <label for="validationDefault08">Вес</label>
         <input type="number" name ="userWeight" class="form-control" id="validationDefault08" placeholder="Вес" required>
     </div>

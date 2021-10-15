@@ -26,23 +26,27 @@ public class ToEditProfileCommand implements Command {
         HttpSession session = request.getSession(false);
 
         if (session != null) {
-
             user = (User) session.getAttribute(RequestParameterName.REQ_SESSION_USER);
         }
         if (user != null) {
-            String idS = request.getParameter(RequestParameterName.REQ_PARAM_ID);
+            String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
             try {
-                int id = Integer.parseInt(idS);
 
                 if (Role.ADMIN.toString().equalsIgnoreCase(user.getRole())) {
 
-                    user = userService.getAdminAccessInfo(id);
+                    user = userService.getAdminAccessInfo(Integer.parseInt(id));
 
                     request.setAttribute(RequestParameterName.REQ_PARAM_TO_EDIT_PROFILE, user);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ADMIN_PROFILE);
+                    dispatcher.forward(request, response);
+                } else if (Role.USER.toString().equalsIgnoreCase(user.getRole())) {
+
+                    user = userService.getUserAccessInfo(Integer.parseInt(id));
+                    request.setAttribute(RequestParameterName.REQ_PARAM_TO_EDIT_PROFILE, user);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_PROFILE);
                     dispatcher.forward(request, response);
                 }
-            } catch (ServiceException e) {
+            } catch (ServiceException |NumberFormatException e) {
                 e.printStackTrace();
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
                 dispatcher.forward(request, response);

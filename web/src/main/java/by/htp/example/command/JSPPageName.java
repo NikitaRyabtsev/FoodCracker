@@ -16,4 +16,7 @@ public final class JSPPageName {
     public static final String CHANGE_MEAL = "/jsp/change_meal.jsp";
     public static final String REGISTRATION = "/jsp/registration.jsp";
     public static final String GET_ALL_USERS = "/jsp/get_all_users.jsp";
+    public static final String ADMIN_PROFILE = "/jsp/admin_profile.jsp";
+    public static final String USER_PROFILE = "/jsp/user_profile.jsp";
+    public static final String GET_ALL_FOOD = "/jsp/get_all_food.jsp";
 }

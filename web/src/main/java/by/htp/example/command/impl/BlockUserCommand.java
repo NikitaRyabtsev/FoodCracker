@@ -21,21 +21,20 @@ import java.io.IOException;
 public class BlockUserCommand implements Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServiceProvider provider = ServiceProvider.getInstance();
 
         String block = request.getParameter(RequestParameterName.REQ_PARAM_BLOCK_USER);
-
         User user = null;
-        HttpSession session = request.getSession(false);
 
-        if (session != null) {
-            user = (User) session.getAttribute(RequestParameterName.REQ_SESSION_USER);
-        }
         try {
+
             UserService userService = provider.getUserService();
             user = new User(block);
+            user.setBlock(block);
+            System.out.println("1" + user.getBlock());
             userService.blockUser(user);
+            System.out.println("2" + user.getBlock());
             request.setAttribute(RequestParameterName.REQ_PARAM_BLOCK_USER, user);
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
             dispatcher.forward(request, response);

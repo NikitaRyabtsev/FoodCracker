@@ -62,8 +62,8 @@ public class User {
 
     }
 
-    public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth, String role, String block) {
-        this.id = id;
+    public User(String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth, String role, String block) {
+
         this.login = login;
         this.password = password;
         this.email = email;
@@ -76,8 +76,8 @@ public class User {
         this.block = block;
     }
 
-    public User(String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth) {
-
+    public User(int id , String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth,String role,String block) {
+        this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
@@ -86,7 +86,8 @@ public class User {
         this.weight = weight;
         this.sex = sex;
         this.dateOfBirth = dateOfBirth;
-
+        this.block = block;
+        this.role = role;
     }
 
     public User(String block) {
@@ -96,6 +97,16 @@ public class User {
     public User(int id) {
         this.id = id;
     }
+
+
+    public User(String role, String name, int id, String block) {
+        this.role = role;
+        this.name = name;
+        this.id = id;
+        this.block = block;
+    }
+
+
 
     public int getId() {
         return id;

@@ -28,19 +28,15 @@ public class GetUsersCommand implements Command {
         List<User> users;
 
         HttpSession session = request.getSession(false);
-        String goToPage = JSPPageName.USER_INDEX_JSP;
         try {
             if (session != null) {
                 user = (User) session.getAttribute(RequestParameterName.REQ_SESSION_USER);
             }
             if (user != null) {
-                System.out.println("1");
+
                 users = userService.getUsers();
                 if (users != null | !users.isEmpty()) {
                     if (Role.ADMIN.toString().equalsIgnoreCase(user.getRole())) {
-                        System.out.println("3");
-                        users = userService.getUsers();
-
                         request.setAttribute(RequestParameterName.REQ_PARAM_GET_USERS, users);
                         RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_USERS);
                         dispatcher.forward(request, response);
@@ -51,8 +47,8 @@ public class GetUsersCommand implements Command {
                 dispatcher.forward(request, response);
             }
         } catch (ServiceException e) {
-            System.out.println("exc");
-            e.printStackTrace();
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
+            dispatcher.forward(request, response);
         }
 
     }

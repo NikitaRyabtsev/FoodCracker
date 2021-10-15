@@ -24,6 +24,7 @@ public class RequestParameterName {
 
     public static final String REQ_PARAM_TO_REDIRECT = "redirect";
 
+    public static final String REQ_PARAM_GET_FOODS = "getFoods";
 
     public static final String REQ_PARAM_GET_MEALS = "getMeals";
     public static final String REQ_PARAM_GET_MEAL_BY_ID = "getMealById";

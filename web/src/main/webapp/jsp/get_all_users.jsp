@@ -17,8 +17,8 @@
 <body>
 <h1>HELLO</h1>
 <table class="table table-striped table-hover">
-
     <tr>
+        <td>Id</td>
         <td>Логин</td>
         <td>Пароль</td>
         <td>Имя</td>
@@ -27,11 +27,12 @@
         <td>Пол</td>
         <td>Вес</td>
         <td>Дата Рождения</td>
-        <td>Роль</td>
-        <td>Заблокирован</td>
+        <td>Уровень доступа</td>
+        <td>Статус</td>
 
     <tr>
         <c:forEach items="${requestScope.getUsers}" var="user" varStatus="status">
+        <td><c:out value="${user.getId()}"/></td>
         <td><c:out value="${user.getLogin()}"/></td>
         <td><c:out value="${user.getPassword()}"/></td>
         <td><c:out value="${user.getName()}"/></td>
@@ -44,12 +45,9 @@
         <td><c:out value="${user.getBlock()}"/></td>
             <form action="controller" method="post">
                 <input type="hidden" name="command" value="block_user"/>
-                <input type="hidden" name="id" value="${user.getId()}"/>
-                <td><select type="submit" class="form-control" name="block" id="exampleFormControlSelect1">
-                    <option>block</option>
-                    <option>unblock</option>
-                    </select></td>
-                <td><input type="submit" value="" class="form-control"></td>
+               <td><input type="hidden" name="id" value="${user.getId()}"></td>
+                <td><input type="text" name="blockUser" value="lock"></td>
+                <td><input type="submit" class="form-control"></td>
             </form>
             <form action="controller" method="post">
                 <input type="hidden" name="command" value="delete_user"/>

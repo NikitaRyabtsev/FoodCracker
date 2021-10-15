@@ -69,7 +69,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
             prepareStatement.setObject(2, meal.getTime());
             prepareStatement.setDouble(3, meal.getWeight());
             prepareStatement.setDouble(4, meal.getCalories());
-            //prepareStatement.setInt(5, meal.getId());
+            prepareStatement.setInt(5, meal.getId());
 
             prepareStatement.executeUpdate();
             ResultSet rs = prepareStatement.executeQuery();
