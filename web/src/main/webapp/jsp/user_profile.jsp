@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 37525
@@ -11,7 +12,31 @@
     <title>User</title>
 </head>
 <body>
+<jsp:include page="/jsp/header.jsp"/>
 <h1>Hello,user</h1>
+<table class="table table-striped table-hover">
+    <tr>
+        <td>Логин</td>
+        <td>Пароль</td>
+        <td>Имя</td>
+        <td>Фамилия</td>
+        <td>E-mail</td>
+        <td>Пол</td>
+        <td>Вес</td>
+        <td>Дата Рождения</td>
 
+    <tr>
+        <td><c:out value="${user.login}"/></td>
+        <td><c:out value="${user.password}"/></td>
+        <td><c:out value="${user.name}"/></td>
+        <td><c:out value="${user.secondName}"/></td>
+        <td><c:out value="${user.email}"/></td>
+        <td><c:out value="${user.sex}"/></td>
+        <td><c:out value="${user.weight}"/></td>
+        <td><c:out value="${user.dateOfBirth}"/></td>
+         <td><c:out value="${user.role}"/></td>
+    </tr>
+</table>
+<jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>

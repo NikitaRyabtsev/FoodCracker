@@ -17,10 +17,6 @@ public class SQLUserDao implements UserDao, DaoQuery {
     @Override
     public User authorization(String login, String password) throws DaoException {
         User user = null;
-        String name;
-        String role;
-        String block;
-        int id;
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_USER_LOG_ON)) {
 
@@ -29,13 +25,7 @@ public class SQLUserDao implements UserDao, DaoQuery {
 
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-
-                name = rs.getString("name");
-                role = rs.getString("role");
-                id = rs.getInt("idUser");
-                block = rs.getString("block");
-
-                user = new User(role, name, id, block);
+                user = init(rs);
             }
             rs.close();
         } catch (SQLException e) {
@@ -83,17 +73,17 @@ public class SQLUserDao implements UserDao, DaoQuery {
 
     @Override
     public void blockUserInDB(User user) throws DaoException {
-        int id;
-        String block;
+
         try (Connection connection = DriverManagerManager.getConnection();
-             PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_BLOCK_USER)) {
-            prepareStatement.setInt(1, user.getId());
-            prepareStatement.setString(2, user.getBlock());
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_BLOCK_USER)) {
+
+            preparedStatement.setString(1, user.getBlock());
+            preparedStatement.setInt(2,user.getId());
+            preparedStatement.executeUpdate();
+
         } catch (SQLException e) {
             throw new DaoException(e);
         }
-
-
     }
 
     @Override
@@ -111,7 +101,6 @@ public class SQLUserDao implements UserDao, DaoQuery {
         } catch (SQLException e) {
             throw new DaoException(e);
         }
-
         return users;
     }
 
@@ -125,7 +114,7 @@ public class SQLUserDao implements UserDao, DaoQuery {
 
             ResultSet rs = prepareStatement.executeQuery();
             if (rs.next()) {
-                id = rs.getInt("idUser");
+
                 String login = rs.getString("login");
                 String password = rs.getString("password");
                 String name = rs.getString("name");
@@ -147,27 +136,13 @@ public class SQLUserDao implements UserDao, DaoQuery {
     @Override
     public User getEditAdminAccessInfo(int id) throws DaoException {
         User user = null;
-        int idUser = 0;
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_ADMIN_ACCESS_INFO)) {
-            prepareStatement.setInt(1, idUser);
+            prepareStatement.setInt(1, id);
 
             ResultSet rs = prepareStatement.executeQuery();
             if (rs.next()) {
-
-                id = rs.getInt("idUser");
-                String login = rs.getString("login");
-                String password = rs.getString("password");
-                String name = rs.getString("name");
-                String secondName = rs.getString("secondName");
-                String email = rs.getString("email");
-                String sex = rs.getString("sex");
-                double weight = rs.getDouble("weight");
-                LocalDate dateOfBirth = rs.getObject("dateOfBirth", LocalDate.class);
-                String role = rs.getString("role");
-                String block = rs.getString("block");
-
-                user = new User(id, login, password, email, name, secondName, weight, sex, dateOfBirth, role, block);
+                user = init(rs);
             }
             rs.close();
         } catch (SQLException e) {

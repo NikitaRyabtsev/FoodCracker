@@ -10,7 +10,7 @@ public interface DaoQuery {
 	String SQL_QUERY_CHANGE_MEAL = "UPDATE Meal SET date=? , time=? ,weight=? , calories=? WHERE idMeal=?";
 
 //User
-	String SQL_QUERY_USER_LOG_ON = "SELECT name ,role,block,idUser FROM User WHERE login=? AND password=?";
+	String SQL_QUERY_USER_LOG_ON = "SELECT * FROM User WHERE login=? AND password=?";
 	String SQL_QUERY_USER_REGISTRATION = "INSERT INTO User (login,password,name,secondName,email,sex,weight,dateOfBirth,role,block) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 	String SQL_QUERY_DELETE_USER = "DELETE FROM User WHERE idUser=?";

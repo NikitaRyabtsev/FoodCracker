@@ -28,12 +28,11 @@ public class GetUsersCommand implements Command {
         List<User> users;
 
         HttpSession session = request.getSession(false);
+        if (session != null) {
+            user = (User) session.getAttribute(RequestParameterName.REQ_SESSION_USER);
+        }
         try {
-            if (session != null) {
-                user = (User) session.getAttribute(RequestParameterName.REQ_SESSION_USER);
-            }
             if (user != null) {
-
                 users = userService.getUsers();
                 if (users != null | !users.isEmpty()) {
                     if (Role.ADMIN.toString().equalsIgnoreCase(user.getRole())) {

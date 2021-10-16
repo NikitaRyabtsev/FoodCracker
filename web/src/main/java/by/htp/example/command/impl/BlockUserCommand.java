@@ -23,22 +23,20 @@ public class BlockUserCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServiceProvider provider = ServiceProvider.getInstance();
-
-        String block = request.getParameter(RequestParameterName.REQ_PARAM_BLOCK_USER);
+        UserService userService = provider.getUserService();
         User user = null;
-
+        String block = request.getParameter(RequestParameterName.REQ_PARAM_BLOCK_USER);
+        String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
         try {
-
-            UserService userService = provider.getUserService();
-            user = new User(block);
-            user.setBlock(block);
-            System.out.println("1" + user.getBlock());
-            userService.blockUser(user);
-            System.out.println("2" + user.getBlock());
-            request.setAttribute(RequestParameterName.REQ_PARAM_BLOCK_USER, user);
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
-            dispatcher.forward(request, response);
-
+            user = new User(Integer.parseInt(id), block);
+            if (user != null) {
+                System.out.println(user);
+                userService.blockUser(user);
+                System.out.println(user);
+                request.setAttribute(RequestParameterName.REQ_PARAM_BLOCK_USER, user);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
+                dispatcher.forward(request, response);
+            }
         } catch (ServiceException e) {
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);

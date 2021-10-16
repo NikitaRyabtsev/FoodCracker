@@ -46,8 +46,8 @@
             <form action="controller" method="post">
                 <input type="hidden" name="command" value="block_user"/>
                <td><input type="hidden" name="id" value="${user.getId()}"></td>
-                <td><input type="text" name="blockUser" value="lock"></td>
-                <td><input type="submit" class="form-control"></td>
+                <td><input type="text" name="blockUser" value=""></td>
+                <td><input type="submit" value="" class="form-control"></td>
             </form>
             <form action="controller" method="post">
                 <input type="hidden" name="command" value="delete_user"/>

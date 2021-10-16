@@ -19,11 +19,6 @@ public class User {
     private String block;
 
 
-    public User(String role,String name){
-
-        this.role = role;
-        this.name = name;
-    }
     public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth){
         this.id = id;
         this.login = login;
@@ -35,33 +30,15 @@ public class User {
         this.sex = sex;
         this.dateOfBirth = dateOfBirth;
     }
-    public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex,String block, LocalDate dateOfBirth){
-        this.id = id;
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.name = name;
-        this.secondName = secondName;
-        this.weight = weight;
-        this.sex = sex;
-        this.block = block;
-        this.dateOfBirth = dateOfBirth;
-    }
 
-    public User(String login,String password,String name){
-        this.login = login;
-        this.password = password;
-        this.name = name;
+    public User() {
+
     }
 
     public User(int id , String block){
         this.id = id;
         this.block = block;
     }
-    public User() {
-
-    }
-
     public User(String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth, String role, String block) {
 
         this.login = login;
@@ -99,11 +76,12 @@ public class User {
     }
 
 
-    public User(String role, String name, int id, String block) {
+    public User(String role, String name, int id, String block,String email) {
         this.role = role;
         this.name = name;
         this.id = id;
         this.block = block;
+        this.email = email;
     }
 
 

@@ -35,10 +35,10 @@ public class ToEditProfileCommand implements Command {
                 if (Role.ADMIN.toString().equalsIgnoreCase(user.getRole())) {
 
                     user = userService.getAdminAccessInfo(Integer.parseInt(id));
-
                     request.setAttribute(RequestParameterName.REQ_PARAM_TO_EDIT_PROFILE, user);
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ADMIN_PROFILE);
                     dispatcher.forward(request, response);
+
                 } else if (Role.USER.toString().equalsIgnoreCase(user.getRole())) {
 
                     user = userService.getUserAccessInfo(Integer.parseInt(id));
@@ -46,6 +46,8 @@ public class ToEditProfileCommand implements Command {
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_PROFILE);
                     dispatcher.forward(request, response);
                 }
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
+                dispatcher.forward(request, response);
             } catch (ServiceException |NumberFormatException e) {
                 e.printStackTrace();
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
