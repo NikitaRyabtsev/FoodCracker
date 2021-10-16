@@ -58,7 +58,7 @@
         <input type="number" name="weight" class="form-control" id="validationDefault3" value="" required>
     </div>
     <div class="col-md-4">
-        <label for="validationDefault4" class="form-label">Вес</label>
+        <label for="validationDefault4" class="form-label">Калории</label>
         <input type="number" name="calories" class="form-control" id="validationDefault4" value="" required>
     </div>
     <div class="col-md-3">

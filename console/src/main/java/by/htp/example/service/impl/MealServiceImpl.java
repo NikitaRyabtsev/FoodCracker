@@ -42,7 +42,7 @@ public class MealServiceImpl implements MealService {
             provider.getMealDao().changeMealCharacteristicInDB(meal);
             return meal;
         } catch (DaoException e) {
-            throw new ServiceException();
+            throw new ServiceException(e);
         }
 
     }

@@ -1,7 +1,5 @@
 package by.htp.example.command.impl;
 
-import by.htp.example.bean.dao.DaoException;
-import by.htp.example.bean.dao.Role;
 import by.htp.example.bean.user.User;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
@@ -33,26 +31,28 @@ public class RegistrationCommand implements Command {
         String weightS = request.getParameter(RequestParameterName.REQ_PARAM_USER_WEIGHT);
         String sex = request.getParameter(RequestParameterName.REQ_PARAM_SEX);
         String dateOfBirthS = request.getParameter(RequestParameterName.REQ_PARAM_DATE_OF_BIRTH);
+        String block = request.getParameter(RequestParameterName.REQ_PARAM_BLOCK_USER);
+        String role = request.getParameter(RequestParameterName.REQ_PARAM_ROLE);
 
         try {
-            System.out.println(weightS);
+
             weight = Integer.parseInt(weightS);
             LocalDate dateOfBirth = LocalDate.parse(dateOfBirthS);
 
-            user = new User(login, password, email, name, secondName, weight, sex, dateOfBirth);
+            user = new User(login, password, email, name, secondName, weight, sex, dateOfBirth, role, block);
             if (user != null) {
 
                 UserService userService = provider.getUserService();
                 userService.registration(user);
                 request.setAttribute(RequestParameterName.REQ_PARAM_REGISTRATION, user);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.REGISTRATION);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
                 dispatcher.forward(request, response);
-            }else{
+            } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
                 dispatcher.forward(request, response);
             }
         } catch (ServiceException | DateTimeParseException | NumberFormatException e) {
-
+            e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
 

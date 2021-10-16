@@ -1,5 +1,6 @@
 package by.htp.example.filter;
 
+import by.htp.example.bean.user.User;
 import by.htp.example.command.CommandName;
 import by.htp.example.command.JSPPageName;
 import by.htp.example.command.RequestParameterName;
@@ -19,6 +20,7 @@ public class UserFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
+        User user = null;
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
@@ -34,7 +36,7 @@ public class UserFilter implements Filter {
         if (session.getAttribute(RequestParameterName.REQ_SESSION_USER) != null) {
             chain.doFilter(req, resp);
         } else if (CommandName.AUTHORIZATION.toString().equalsIgnoreCase(param)) {
-            chain.doFilter(req, resp);
+                chain.doFilter(req, resp);
         } else if (CommandName.REGISTRATION.toString().equalsIgnoreCase(param)){
             chain.doFilter(req,resp);
         } else if (CommandName.GO_TO_REGISTRATION.toString().equalsIgnoreCase(param)) {

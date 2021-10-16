@@ -12,13 +12,13 @@ public interface UserService {
 
     void registration(User user) throws ServiceException;
 
-    User getAdminAccessInfo(String id) throws ServiceException;
+    User getAdminAccessInfo(int id) throws ServiceException;
 
     List<User> getUsers() throws ServiceException;
 
-    User blockUser(User user) throws ServiceException;
+    void blockUser(User user) throws ServiceException;
 
-    User getUserAccessInfo(String id) throws ServiceException;
+    User getUserAccessInfo(int id) throws ServiceException;
 
-    User deleteMeal(User user) throws ServiceException;
+    User deleteUser(User user) throws ServiceException;
 }

@@ -41,9 +41,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getAdminAccessInfo(String id) throws ServiceException {
+    public User getAdminAccessInfo(int id) throws ServiceException {
         try{
-            return provider.getUserDao().getEditAdminAccessInfo(Integer.parseInt(id));
+            return provider.getUserDao().getEditAdminAccessInfo(id);
         }catch(DaoException e){
             throw new ServiceException(e);
         }
@@ -60,26 +60,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User blockUser(User user) throws ServiceException {
+    public void blockUser(User user) throws ServiceException {
         try{
-            return provider.getUserDao().blockUserInDB(user);
+            provider.getUserDao().blockUserInDB(user);
         }catch(DaoException e){
-            throw new ServiceException();
+            throw new ServiceException(e);
         }
 
     }
 
     @Override
-    public User getUserAccessInfo(String id) throws ServiceException {
+    public User getUserAccessInfo(int id) throws ServiceException {
         try{
-            return provider.getUserDao().getEditUserAccessInfo(Integer.parseInt(id));
+            return provider.getUserDao().getEditUserAccessInfo(id);
         }catch(DaoException e){
             throw new ServiceException(e);
         }
     }
 
     @Override
-    public User deleteMeal(User user) throws ServiceException {
+    public User deleteUser(User user) throws ServiceException {
         UserDao userDao = DaoProvider.getInstance().getUserDao();
         try {
             userDao.deleteUserFromDB(user);
