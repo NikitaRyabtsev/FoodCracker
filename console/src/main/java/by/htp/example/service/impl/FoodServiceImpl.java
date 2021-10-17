@@ -13,13 +13,23 @@ public class FoodServiceImpl implements FoodService {
     DaoProvider provider = DaoProvider.getInstance();
 
     @Override
-    public List getAllFood() throws ServiceException {
+    public List getAllFood(int keyMealId , int keyUserId) throws ServiceException {
         List<Food> foods;
         try {
-           foods = provider.getFoodDao().getAllFoodFromDB();
+           foods = provider.getFoodDao().getAllFoodFromDB(keyMealId ,keyUserId);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
         return foods;
+    }
+
+    @Override
+    public Food createFood(Food food) throws ServiceException {
+        try{
+            provider.getFoodDao().createFoodInDB(food);
+        }catch(DaoException e){
+            throw new ServiceException(e);
+        }
+        return null;
     }
 }

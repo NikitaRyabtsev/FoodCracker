@@ -15,6 +15,7 @@
 </head>
 <body>
 <jsp:include page="/jsp/header.jsp"/>
+<button class="w-50 btn btn-success" type="submit">Добавить новый продукт</button>
 <table class="table table-striped table-hover">
     <tr>
         <td>Название</td>
@@ -24,14 +25,16 @@
         <td>Углеводы</td>
 
 
-
     <tr>
         <c:forEach items="${requestScope.getFoods}" var="food" varStatus="status">
         <td><c:out value="${food.getName()}"/></td>
         <td><c:out value="${food.getCalories()}"/></td>
-            <td><c:out value="${food.getProteins()}"/></td>
-            <td><c:out value="${food.getFats()}"/></td>
-            <td><c:out value="${food.getCarbohydrates()}"/></td>
+        <td><c:out value="${food.getProteins()}"/></td>
+        <td><c:out value="${food.getFats()}"/></td>
+        <td><c:out value="${food.getCarbohydrates()}"/></td>
+         <td><c:out value="${food.getKeyUserId}"/></td>
+            <td><c:out value="${food.getKeyMealId}"/></td>
+
     </tr>
     </c:forEach>
 

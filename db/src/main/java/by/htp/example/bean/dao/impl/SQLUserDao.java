@@ -13,7 +13,6 @@ import java.util.List;
 
 public class SQLUserDao implements UserDao, DaoQuery {
 
-
     @Override
     public User authorization(String login, String password) throws DaoException {
         User user = null;
@@ -154,6 +153,7 @@ public class SQLUserDao implements UserDao, DaoQuery {
     private User init(ResultSet rs) throws DaoException {
         User user = new User();
         try {
+
             user.setId(rs.getInt("idUser"));
             user.setLogin(rs.getString("login"));
             user.setPassword(rs.getString("password"));

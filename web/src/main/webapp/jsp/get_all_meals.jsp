@@ -22,6 +22,7 @@
         <td>Time</td>
         <td>Weight</td>
         <td>Calories</td>
+        <td>user_userId</td>
     </tr>
 
     <tr>
@@ -39,12 +40,12 @@
                     <form action="controller" method="post">
                     <input type="hidden" name="command" value="get_meal_by_id"/>
                     <input type="hidden" name="id" value="${meal.getId()}"/>
-                </form>аф</a>
+                </form></a>
                 <a class="dropdown-item" href="#">
                     <form action="controller" method="post">
                     <input type="hidden" name="command" value="delete_meal"/>
                     <input type="hidden" name="id" value="${meal.getId()}"/>
-                </form>мя</a>
+                </form></a>
             </div>
         </div>
 
@@ -77,6 +78,9 @@
     <div class="col-md-4">
         <label for="validationDefault3" class="form-label">Вес</label>
         <input type="number" name="weight" class="form-control" id="validationDefault3" value="" required>
+    </div>
+    <div>
+        <input type="hidden" name="id" value="${user.id}" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault4" class="form-label">Калории</label>

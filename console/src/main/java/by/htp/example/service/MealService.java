@@ -8,7 +8,7 @@ import by.htp.example.bean.Meal;
 
 public interface MealService {
 
-	ArrayList<Meal>getMeals() throws ServiceException;
+	ArrayList<Meal>getMeals(int keyUserId) throws ServiceException;
 
 	Meal createMeal(Meal meal) throws ServiceException;
 

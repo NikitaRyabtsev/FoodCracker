@@ -4,14 +4,18 @@ import java.util.Objects;
 
 public class Food {
 
+
     private int id;
     private String name;
     private double calories;
     private double proteins;
     private double fats;
     private double carbohydrates;
-    public Food(){
 
+    private int keyUserId;
+    private int keyMealId;
+
+    public Food(){
     }
 
     public Food(int id, String name, double calories, double proteins, double fats, double carbohydrates) {
@@ -21,6 +25,41 @@ public class Food {
         this.proteins = proteins;
         this.fats = fats;
         this.carbohydrates = carbohydrates;
+    }
+
+    public Food(String name, double calories, double proteins, double fats, double carbohydrates) {
+        this.name = name;
+        this.calories = calories;
+        this.proteins = proteins;
+        this.fats = fats;
+        this.carbohydrates=carbohydrates;
+    }
+
+    public Food(int id, String name, double calories, double proteins, double fats, double carbohydrates, int keyUserId, int keyMealId) {
+        this.id = id;
+        this.name = name;
+        this.calories = calories;
+        this.proteins = proteins;
+        this.fats = fats;
+        this.carbohydrates = carbohydrates;
+        this.keyUserId = keyUserId;
+        this.keyMealId = keyMealId;
+    }
+
+    public int getKeyUserId() {
+        return keyUserId;
+    }
+
+    public void setKeyUserId(int keyUserId) {
+        this.keyUserId = keyUserId;
+    }
+
+    public int getKeyMealId() {
+        return keyMealId;
+    }
+
+    public void setKeyMealId(int keyMealId) {
+        this.keyMealId = keyMealId;
     }
 
     public int getId() {

@@ -19,18 +19,19 @@ import by.htp.example.bean.dao.connection.DriverManagerManager;
 public class SQLMealDao implements MealDao, DaoQuery {
 
     @Override
-    public ArrayList<Meal> getMealsFromDB() throws DaoException {
-
+    public ArrayList<Meal> getMealsFromDB(int keyUserId) throws DaoException {
         ArrayList<Meal> meals = new ArrayList<>();
-        try {
-            Connection connection = DriverManagerManager.getConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SQL_QUERY_GET_ALL_MEAL);
+        try (Connection connection = DriverManagerManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_GET_ALL_MEAL)) {
+
+            preparedStatement.setInt(1, keyUserId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 meals.add(init(resultSet));
             }
             resultSet.close();
-            statement.close();
+
         } catch (SQLException e) {
             throw new DaoException(e);
         }
@@ -43,11 +44,11 @@ public class SQLMealDao implements MealDao, DaoQuery {
     public Meal createMealInDB(Meal meal) throws DaoException {
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_CREATE_MEAL)) {
-
             preparedStatement.setObject(1, meal.getDate());
             preparedStatement.setObject(2, meal.getTime());
             preparedStatement.setDouble(3, meal.getWeight());
             preparedStatement.setDouble(4, meal.getCalories());
+            preparedStatement.setInt(5, meal.getKeyUserId());
 
             preparedStatement.executeUpdate();
 
@@ -87,6 +88,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
     public Meal deleteMealFromDB(Meal meal) throws DaoException {
 
         try (Connection connection = DriverManagerManager.getConnection();
+
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_DELETE_MEAL)) {
             preparedStatement.setInt(1, meal.getId());
             preparedStatement.executeUpdate();
@@ -146,7 +148,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_DATE)) {
             prepareStatement.setObject(1, date);
             ResultSet rs = prepareStatement.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 id = rs.getInt("idMeal");
                 rsDate = rs.getObject("date", LocalDate.class);
                 time = rs.getObject("time", LocalTime.class);
@@ -170,6 +172,8 @@ public class SQLMealDao implements MealDao, DaoQuery {
 
         Meal meal = new Meal();
         try {
+
+            meal.setKeyUserId(resultSet.getInt("user_idUser"));
             meal.setId(resultSet.getInt("idMeal"));
             meal.setWeight(resultSet.getDouble("weight"));
             LocalDate localDate = resultSet.getObject("date", LocalDate.class);
@@ -177,7 +181,6 @@ public class SQLMealDao implements MealDao, DaoQuery {
             meal.setDate(localDate);
             meal.setTime(localTime);
             meal.setCalories(resultSet.getDouble("calories"));
-
         } catch (SQLException e) {
             throw new DaoException(e);
         }

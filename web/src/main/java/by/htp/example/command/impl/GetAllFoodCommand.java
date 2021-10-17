@@ -23,10 +23,13 @@ public class GetAllFoodCommand implements Command {
         ServiceProvider provider = ServiceProvider.getInstance();
         FoodService foodService = provider.getFoodService();
 
+        String keyMealId = request.getParameter("mealId");
+        String keyUserId = request.getParameter(RequestParameterName.REQ_PARAM_ID);
         List<Food> foods;
 
         try{
-            foods = foodService.getAllFood();
+            foods = foodService.getAllFood(Integer.parseInt(keyMealId),Integer.parseInt(keyUserId));
+
             if(foods!=null | foods.isEmpty()){
                 request.setAttribute(RequestParameterName.REQ_PARAM_GET_FOODS, foods);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_FOOD);
@@ -36,9 +39,10 @@ public class GetAllFoodCommand implements Command {
                 dispatcher.forward(request, response);
             }
         }catch(ServiceException e){
+            e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
-            e.printStackTrace();
+
         }
     }
 }
