@@ -14,15 +14,18 @@
 </head>
 <body>
 <jsp:include page="/jsp/header.jsp"/>
+<div class="form-row">
 <form action="controller" method="post">
     <input type="hidden" name="command" value="registration"/>
-    <div class="form-group">
+    <div class="row">
+    <div class="form-group col-md-6">
         <label for="validationDefault01">Логин</label>
         <input type="login" name="login" class="w-50 form-control" id="validationDefault01" placeholder="Введите логин" required>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
         <label for="validationDefault02">Пароль</label>
         <input type="text" name ="password" class="form-control" id="validationDefault02" placeholder="Пароль" required>
+    </div>
     </div>
     <div class="form-group">
         <label for="validationDefault03">E-mail</label>
@@ -35,7 +38,7 @@
             <option>female</option>
         </select>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-4">
         <label for="validationDefault05">Дата рождения</label>
         <input type="date" name ="dateOfBirth" class="form-control" id="validationDefault05" placeholder="Дата рождения" required>
     </div>
@@ -59,6 +62,8 @@
     </div>
     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
     <jsp:include page="/jsp/footer.jsp"/>
+</form>
+</div>
 </form>
 </body>
 </html>

@@ -22,5 +22,6 @@ public enum CommandName {
     GET_MEAL_BY_DATE,
 //Food
     GET_ALL_FOOD,
+    ADD_NEW_FOOD,
 
 }

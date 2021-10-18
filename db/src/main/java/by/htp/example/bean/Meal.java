@@ -1,11 +1,15 @@
 package by.htp.example.bean;
 
+import by.htp.example.bean.user.User;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Objects;
 
 public class Meal {
 
+	private int keyUserId;
 	private int id;
 	private LocalDate date;
 	private LocalTime time;
@@ -35,6 +39,23 @@ public class Meal {
 		this.calories = calories;
 	}
 
+	public Meal(LocalDate date, LocalTime time, double weight, double calories, int keyUserId) {
+
+		this.date = date;
+		this.time = time;
+		this.weight = weight;
+		this.calories = calories;
+		this.keyUserId = keyUserId;
+	}
+
+
+	public int getKeyUserId() {
+		return keyUserId;
+	}
+
+	public void setKeyUserId(int keyUserId) {
+		this.keyUserId = keyUserId;
+	}
 
 	public int getId() {
 		return id;

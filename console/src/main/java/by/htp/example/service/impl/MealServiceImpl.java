@@ -14,10 +14,10 @@ public class MealServiceImpl implements MealService {
 
     private DaoProvider provider = DaoProvider.getInstance();
 
-    public ArrayList<Meal> getMeals() throws ServiceException {
+    public ArrayList<Meal> getMeals(int keyUserId) throws ServiceException {
         ArrayList<Meal> meals;
         try {
-            meals = provider.getMealDao().getMealsFromDB();
+            meals = provider.getMealDao().getMealsFromDB(keyUserId);
 
         } catch (DaoException e) {
             throw new ServiceException(e);

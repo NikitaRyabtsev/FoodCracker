@@ -1,9 +1,7 @@
 package by.htp.example.command.impl;
 
 import by.htp.example.bean.user.User;
-import by.htp.example.command.Command;
-import by.htp.example.command.JSPPageName;
-import by.htp.example.command.RequestParameterName;
+import by.htp.example.command.*;
 import by.htp.example.service.ServiceException;
 import by.htp.example.service.ServiceProvider;
 import by.htp.example.service.UserService;
@@ -38,6 +36,7 @@ public class AuthorizationCommand implements Command {
 
             if (user != null) {
                 session.setAttribute(RequestParameterName.REQ_SESSION_USER, user);
+
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
                 dispatcher.forward(request, response);
             }else{

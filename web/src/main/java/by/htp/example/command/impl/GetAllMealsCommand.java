@@ -26,8 +26,9 @@ public class GetAllMealsCommand implements Command {
         List<Meal> meals;
         MealService mealService = provider.getServiceMeal();
 
+        String keyUserId = request.getParameter(RequestParameterName.REQ_PARAM_ID);
         try {
-            meals = mealService.getMeals();
+            meals = mealService.getMeals(Integer.parseInt(keyUserId));
             if (meals != null | !meals.isEmpty()) {
                 request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEALS, meals);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_MEALS_JSP);
@@ -39,7 +40,7 @@ public class GetAllMealsCommand implements Command {
             }
 
         } catch (ServiceException e) {
-
+            e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
         }

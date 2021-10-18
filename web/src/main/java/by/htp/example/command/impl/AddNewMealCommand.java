@@ -26,6 +26,8 @@ public class AddNewMealCommand implements Command {
         String timeS = request.getParameter(RequestParameterName.REQ_PARAM_TIME);
         String weightS = request.getParameter(RequestParameterName.REQ_PARAM_WEIGHT);
         String caloriesS = request.getParameter(RequestParameterName.REQ_PARAM_CALORIES);
+        String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
+
         LocalDate checkDateAfter = LocalDate.of(2021, 10, 04);
         LocalDate checkDateBefore = LocalDate.of(2021, 12, 31);
         try {
@@ -37,7 +39,7 @@ public class AddNewMealCommand implements Command {
             MealService mealService = provider.getServiceMeal();
 
             if (weight != 0 | calories != 0 ) {
-                Meal meal = new Meal(date, time, weight, calories);
+                Meal meal = new Meal(date, time, weight, calories,Integer.parseInt(id));
                 mealService.createMeal(meal);
                 request.setAttribute(RequestParameterName.REQ_PARAM_ADD_MEAL, meal);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_MEALS_JSP);
@@ -49,7 +51,7 @@ public class AddNewMealCommand implements Command {
                 throw new NumberFormatException();
             }
         } catch (ServiceException | NumberFormatException | DateTimeParseException e) {
-
+            e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
         }

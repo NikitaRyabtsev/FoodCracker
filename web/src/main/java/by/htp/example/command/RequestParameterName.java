@@ -4,7 +4,7 @@ public class RequestParameterName {
 
     private RequestParameterName() {
     }
-
+//User
     public static final String REQ_PARAM_COMMAND_NAME = "command";
     public static final String REQ_PARAM_LOGIN = "login";
     public static final String REQ_PARAM_PASS = "password";
@@ -16,16 +16,21 @@ public class RequestParameterName {
     public static final String REQ_PARAM_EMAIL = "email";
     public static final String REQ_PARAM_ROLE = "role";
     public static final String REQ_PARAM_DATE_OF_BIRTH = "dateOfBirth";
-
     public static final String REQ_PARAM_TO_EDIT_PROFILE = "info";
     public static final String REQ_PARAM_GET_USERS = "getUsers";
     public static final String REQ_PARAM_BLOCK_USER = "blockUser";
     public static final String REQ_PARAM_DELETE_USER = "deleteUser";
 
     public static final String REQ_PARAM_TO_REDIRECT = "redirect";
-
+//Food
+    public static final String REQ_PARAM_GET_NAME = "name";
+    public static final String REQ_PARAM_GET_CALORIES = "calories";
+    public static final String REQ_PARAM_GET_PROTEINS = "proteins";
+    public static final String REQ_PARAM_GET_FATS = "fats";
+    public static final String REQ_PARAM_GET_CARBOHYDRATES = "carbohydrates";
     public static final String REQ_PARAM_GET_FOODS = "getFoods";
 
+//Meal
     public static final String REQ_PARAM_GET_MEALS = "getMeals";
     public static final String REQ_PARAM_GET_MEAL_BY_ID = "getMealById";
     public static final String REQ_PARAM_GET_MEAL_BY_DATE = "getMealByDate";
