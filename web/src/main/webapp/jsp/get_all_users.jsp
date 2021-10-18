@@ -14,8 +14,9 @@
 
     <title>Users</title>
 </head>
+
 <body>
-<h1>HELLO</h1>
+<jsp:include page="/jsp/header.jsp"/>
 <table class="table table-striped table-hover">
     <tr>
         <td>Id</td>

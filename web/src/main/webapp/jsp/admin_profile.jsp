@@ -16,7 +16,6 @@
 </head>
 <body>
 <jsp:include page="/jsp/header.jsp"/>
-<h1>Hello,Admin</h1>
 <a href="#" class="nav-link px-2 text-secondary">
     <form action="controller" method="post">
         <input type="hidden" name="command" value="get_all_users"/>
@@ -36,8 +35,6 @@
         <td>Дата Рождения</td>
         <td>Уровень доступа</td>
         <td>Статус</td>
-
-
     <tr>
          <td><c:out value="${user.id}"/></td>
         <td><c:out value="${user.login}"/></td>

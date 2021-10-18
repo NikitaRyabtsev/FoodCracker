@@ -16,14 +16,14 @@
     <input type="number" name="weight" value=""/>
     <input type="number" name="calories" value=""/>
 </form>
-<table class="table table-striped table-hover">
+<table class="w-50 table table-striped table-hover">
 
     <tr>
         <td>Date</td>
         <td>Time</td>
         <td>Weight</td>
         <td>Calories</td>
-        <c:out value="${meal.date}"/>
+
     </tr>
 
     <tr>
@@ -36,7 +36,25 @@
     </c:forEach>
 
 </table>
-<button type="button" name="back" onclick="history.back()">back</button>
+<table class="w-50 table table-striped table-hover">
+    <tr>
+        <td>Название</td>
+        <td>Калории</td>
+        <td>Белки</td>
+        <td>Жиры</td>
+        <td>Углеводы</td>
+    </tr>
+    <tr>
+        <c:forEach items="${requestScope.getFoodByMeal}" var="food">
+        <td><c:out value="${food.getName()}"/></td>
+        <td><c:out value="${food.getCalories()}"/></td>
+        <td><c:out value="${food.getProteins()}"/></td>
+        <td><c:out value="${food.getFats()}"/></td>
+        <td><c:out value="${food.getCarbohydrates()}"/></td>
+    </tr>
+    </c:forEach>
+</table>
+
 </body>
 <jsp:include page="/jsp/footer.jsp"/>
 </html>

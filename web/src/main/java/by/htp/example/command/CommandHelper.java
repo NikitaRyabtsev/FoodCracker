@@ -31,7 +31,7 @@ public class CommandHelper {
         commands.put(CommandName.GET_MEAL_BY_DATE,new GetMealByDateCommand());
 //Food
         commands.put(CommandName.GET_ALL_FOOD,new GetAllFoodCommand());
-        commands.put(CommandName.ADD_NEW_FOOD,new AddNewFoodCommand());
+        commands.put(CommandName.GET_FOOD_BY_MEAL, new GetFoodByMealCommand());
 
     }
     public static CommandHelper getInstance() {

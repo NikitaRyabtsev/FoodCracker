@@ -10,6 +10,8 @@ public interface MealDao {
 
 	ArrayList<Meal> getMealsFromDB(int keyUserId) throws DaoException;
 
+
+
 	Meal createMealInDB(Meal meal) throws DaoException;
 
 	void changeMealCharacteristicInDB(Meal meal) throws DaoException;

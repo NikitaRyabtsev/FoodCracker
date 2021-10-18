@@ -6,7 +6,7 @@ import by.htp.example.bean.Meal;
 import java.util.List;
 
 public interface FoodService {
-    List getAllFood(int keyMealId , int keyUserId) throws ServiceException;
+    List getAllFood() throws ServiceException;
 
-    Food createFood(Food food) throws ServiceException;
+    List<Food> getFoodByMeal(String keyMealId,String keyUserId) throws ServiceException;
 }

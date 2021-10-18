@@ -29,6 +29,7 @@ public class RequestParameterName {
     public static final String REQ_PARAM_GET_FATS = "fats";
     public static final String REQ_PARAM_GET_CARBOHYDRATES = "carbohydrates";
     public static final String REQ_PARAM_GET_FOODS = "getFoods";
+    public static final String REQ_PARAM_GET_FOOD_BY_MEAL = "getFoodByMeal";
 
 //Meal
     public static final String REQ_PARAM_GET_MEALS = "getMeals";

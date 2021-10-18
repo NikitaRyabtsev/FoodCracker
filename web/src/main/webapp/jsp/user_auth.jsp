@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 37525
@@ -16,6 +17,7 @@
 <body>
 
 <main class="form-sign in">
+
     <form action="controller" method="post">
         <input type="hidden" name="command" value="authorization"/>
 <%--        <img src="/images/FoodCracker.png" alt="" width="72" height="57">--%>

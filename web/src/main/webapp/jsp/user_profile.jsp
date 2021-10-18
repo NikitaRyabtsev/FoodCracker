@@ -24,6 +24,7 @@
         <td>Пол</td>
         <td>Вес</td>
         <td>Дата Рождения</td>
+        <td>Уровень доступа</td>
 
     <tr>
         <td><c:out value="${user.login}"/></td>

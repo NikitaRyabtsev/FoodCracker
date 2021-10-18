@@ -35,18 +35,19 @@ public class GetUsersCommand implements Command {
             if (user != null) {
                 users = userService.getUsers();
                 if (users != null | !users.isEmpty()) {
+
                     if (Role.ADMIN.toString().equalsIgnoreCase(user.getRole())) {
                         request.setAttribute(RequestParameterName.REQ_PARAM_GET_USERS, users);
                         RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_USERS);
                         dispatcher.forward(request, response);
                     }
                 }
-
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
                 dispatcher.forward(request, response);
             }
         } catch (ServiceException e) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
+            e.printStackTrace();
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
         }
 

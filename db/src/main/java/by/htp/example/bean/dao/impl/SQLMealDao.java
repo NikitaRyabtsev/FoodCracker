@@ -16,6 +16,8 @@ import by.htp.example.bean.dao.DaoQuery;
 import by.htp.example.bean.dao.MealDao;
 import by.htp.example.bean.dao.connection.DriverManagerManager;
 
+import javax.swing.*;
+
 public class SQLMealDao implements MealDao, DaoQuery {
 
     @Override
@@ -25,7 +27,6 @@ public class SQLMealDao implements MealDao, DaoQuery {
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_GET_ALL_MEAL)) {
 
             preparedStatement.setInt(1, keyUserId);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 meals.add(init(resultSet));
@@ -47,8 +48,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
             preparedStatement.setObject(1, meal.getDate());
             preparedStatement.setObject(2, meal.getTime());
             preparedStatement.setDouble(3, meal.getWeight());
-            preparedStatement.setDouble(4, meal.getCalories());
-            preparedStatement.setInt(5, meal.getKeyUserId());
+            preparedStatement.setInt(4, meal.getKeyUserId());
 
             preparedStatement.executeUpdate();
 

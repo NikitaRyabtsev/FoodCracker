@@ -1,4 +1,5 @@
 package by.htp.example.service.impl;
+
 import by.htp.example.bean.Food;
 import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.dao.DaoProvider;
@@ -13,10 +14,10 @@ public class FoodServiceImpl implements FoodService {
     DaoProvider provider = DaoProvider.getInstance();
 
     @Override
-    public List getAllFood(int keyMealId , int keyUserId) throws ServiceException {
+    public List getAllFood() throws ServiceException {
         List<Food> foods;
         try {
-           foods = provider.getFoodDao().getAllFoodFromDB(keyMealId ,keyUserId);
+            foods = provider.getFoodDao().getAllFoodFromDB();
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
@@ -24,12 +25,13 @@ public class FoodServiceImpl implements FoodService {
     }
 
     @Override
-    public Food createFood(Food food) throws ServiceException {
-        try{
-            provider.getFoodDao().createFoodInDB(food);
-        }catch(DaoException e){
+    public List<Food> getFoodByMeal(String keyMealId, String keyUserId) throws ServiceException {
+        List<Food> foods;
+        try {
+            foods = provider.getFoodDao().getFoodByMeal(Integer.parseInt(keyMealId), Integer.parseInt(keyUserId));
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
-        return null;
+        return foods;
     }
 }

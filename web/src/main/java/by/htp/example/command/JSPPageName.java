@@ -17,4 +17,5 @@ public final class JSPPageName {
     public static final String ADMIN_PROFILE = "/jsp/admin_profile.jsp";
     public static final String USER_PROFILE = "/jsp/user_profile.jsp";
     public static final String GET_ALL_FOOD = "/jsp/get_all_food.jsp";
+    public static final String GET_FOOD_BY_MEAL = "/jsp/get_food_by_meal.jsp";
 }

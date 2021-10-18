@@ -13,13 +13,12 @@ import java.util.List;
 
 public class SQLFoodDao implements FoodDao, DaoQuery {
     @Override
-    public List<Food> getAllFoodFromDB(int keyMealId , int keyUserId) throws DaoException {
+    public List<Food> getAllFoodFromDB() throws DaoException {
         List<Food> foods = new ArrayList<>();
 
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_GET_ALL_FOOD)) {
-            preparedStatement.setInt(1, keyMealId);
-            preparedStatement.setInt(2, keyUserId);
+
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 foods.add(init(resultSet));
@@ -32,31 +31,34 @@ public class SQLFoodDao implements FoodDao, DaoQuery {
     }
 
     @Override
-    public Food createFoodInDB(Food food) throws DaoException {
+    public List<Food> getFoodByMeal(int keyMealId, int keyUserId) throws DaoException {
+        List<Food> foods = new ArrayList<>();
+
         try (Connection connection = DriverManagerManager.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_CREATE_FOOD)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_GET_FOOD_BY_MEAL)) {
 
-            preparedStatement.setString(1, food.getName());
-            preparedStatement.setDouble(2, food.getCalories());
-            preparedStatement.setDouble(3, food.getProteins());
-            preparedStatement.setDouble(4, food.getFats());
-            preparedStatement.setDouble(5, food.getCarbohydrates());
-
-            preparedStatement.executeUpdate();
-            return food;
+            Food food = new Food();
+            preparedStatement.setInt(1, keyMealId);
+            preparedStatement.setInt(2, keyUserId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                foods.add(food);
+                foods.add(init(resultSet));
+            }
+            resultSet.close();
         } catch (SQLException e) {
             throw new DaoException(e);
         }
+        return foods;
+
     }
+
 
 
     private Food init(ResultSet resultSet) throws DaoException {
 
         Food food = new Food();
         try {
-
-            food.setKeyUserId(resultSet.getInt("user_idUser"));
-            food.setKeyMealId(resultSet.getInt("meal.idMeal"));
             food.setId(resultSet.getInt("idFood"));
             food.setName(resultSet.getString("name"));
             food.setCalories(resultSet.getDouble("calories"));

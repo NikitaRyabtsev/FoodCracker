@@ -25,32 +25,23 @@ public class AddNewMealCommand implements Command {
         String dateS = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
         String timeS = request.getParameter(RequestParameterName.REQ_PARAM_TIME);
         String weightS = request.getParameter(RequestParameterName.REQ_PARAM_WEIGHT);
-        String caloriesS = request.getParameter(RequestParameterName.REQ_PARAM_CALORIES);
         String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
 
-        LocalDate checkDateAfter = LocalDate.of(2021, 10, 04);
-        LocalDate checkDateBefore = LocalDate.of(2021, 12, 31);
         try {
 
             LocalDate date = LocalDate.parse(dateS);
             LocalTime time = LocalTime.parse(timeS);
             double weight = Integer.parseInt(weightS);
-            double calories = Integer.parseInt(caloriesS);
             MealService mealService = provider.getServiceMeal();
 
-            if (weight != 0 | calories != 0 ) {
-                Meal meal = new Meal(date, time, weight, calories,Integer.parseInt(id));
+
+                Meal meal = new Meal(date, time, weight,Integer.parseInt(id));
                 mealService.createMeal(meal);
                 request.setAttribute(RequestParameterName.REQ_PARAM_ADD_MEAL, meal);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_MEALS_JSP);
                 dispatcher.forward(request, response);
 
-            } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
-                dispatcher.forward(request, response);
-                throw new NumberFormatException();
-            }
-        } catch (ServiceException | NumberFormatException | DateTimeParseException e) {
+        } catch (ServiceException e) {
             e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
