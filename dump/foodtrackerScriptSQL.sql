@@ -128,6 +128,78 @@ INSERT INTO `food` (`idFood`, `name`, `calories`, `proteins`, `fats`, `carbohydr
 	(100, 'Сом', 141, 16.7, 8.4, 0);
 /*!40000 ALTER TABLE `food` ENABLE KEYS */;
 
+-- Дамп структуры для таблица foodtracker.food_has_meal
+CREATE TABLE IF NOT EXISTS `food_has_meal` (
+  `food_idFood` int(11) NOT NULL,
+  `meal_idMeal` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  KEY `fk_food_has_meal_meal1_idx` (`meal_idMeal`),
+  KEY `fk_food_has_meal_food1_idx` (`food_idFood`),
+  CONSTRAINT `fk_food_has_meal_food1` FOREIGN KEY (`food_idFood`) REFERENCES `food` (`idFood`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_food_has_meal_meal1` FOREIGN KEY (`meal_idMeal`) REFERENCES `meal` (`idMeal`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы foodtracker.food_has_meal: ~55 rows (приблизительно)
+/*!40000 ALTER TABLE `food_has_meal` DISABLE KEYS */;
+INSERT INTO `food_has_meal` (`food_idFood`, `meal_idMeal`, `id`) VALUES
+	(1, 4, 1),
+	(1, 4, 2),
+	(1, 1, 3),
+	(2, 2, 4),
+	(34, 3, 5),
+	(65, 4, 6),
+	(75, 5, 7),
+	(2, 6, 8),
+	(34, 7, 9),
+	(43, 8, 10),
+	(54, 9, 11),
+	(75, 5, 12),
+	(24, 1, 13),
+	(53, 3, 14),
+	(23, 4, 15),
+	(23, 6, 16),
+	(53, 5, 17),
+	(23, 4, 18),
+	(12, 3, 19),
+	(32, 6, 20),
+	(23, 4, 21),
+	(12, 6, 22),
+	(4, 3, 23),
+	(63, 5, 24),
+	(43, 12, 25),
+	(43, 14, 26),
+	(4, 15, 27),
+	(43, 17, 28),
+	(4, 25, 29),
+	(2, 3, 30),
+	(32, 23, 31),
+	(53, 27, 32),
+	(35, 26, 33),
+	(34, 24, 34),
+	(12, 23, 35),
+	(32, 4, 36),
+	(54, 23, 37),
+	(43, 12, 38),
+	(2, 14, 39),
+	(3, 13, 40),
+	(43, 12, 41),
+	(3, 20, 42),
+	(21, 10, 43),
+	(99, 10, 44),
+	(35, 12, 45),
+	(100, 14, 46),
+	(23, 15, 47),
+	(1, 1, 48),
+	(4, 1, 49),
+	(4, 2, 50),
+	(4, 2, 51),
+	(4, 1, 52),
+	(2, 4, 53),
+	(2, 4, 54),
+	(2, 4, 55);
+/*!40000 ALTER TABLE `food_has_meal` ENABLE KEYS */;
+
 -- Дамп структуры для таблица foodtracker.meal
 CREATE TABLE IF NOT EXISTS `meal` (
   `idMeal` int(11) NOT NULL AUTO_INCREMENT,
@@ -135,32 +207,43 @@ CREATE TABLE IF NOT EXISTS `meal` (
   `time` time DEFAULT NULL,
   `weight` double DEFAULT NULL,
   `calories` double DEFAULT NULL,
-  PRIMARY KEY (`idMeal`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+  `user_idUser` int(11) NOT NULL,
+  PRIMARY KEY (`idMeal`),
+  KEY `user_idUser_idx` (`user_idUser`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы foodtracker.meal: ~20 rows (приблизительно)
+-- Дамп данных таблицы foodtracker.meal: ~29 rows (приблизительно)
 /*!40000 ALTER TABLE `meal` DISABLE KEYS */;
-INSERT INTO `meal` (`idMeal`, `date`, `time`, `weight`, `calories`) VALUES
-	(22, '0324-03-05', '05:35:00', 45, 5454),
-	(23, '0324-03-05', '05:35:00', 45, 5454),
-	(24, '2021-10-21', '03:23:00', 32, 3232),
-	(25, '0011-11-11', '11:01:00', 111, 1111),
-	(26, '0032-02-23', '03:23:00', 32, 32),
-	(27, '0002-03-31', '03:02:00', 32, 32),
-	(28, '0002-03-31', '04:35:00', 54, 54),
-	(29, '0435-05-31', '04:43:00', 534, 534),
-	(30, '0213-02-24', '04:03:00', 43, 43),
-	(31, '0002-03-31', '03:02:00', 32, 3223),
-	(32, '0534-03-05', '05:04:00', 54, 45),
-	(33, '0534-03-05', '05:04:00', 54, 45),
-	(34, '0534-03-05', '05:04:00', 54, 45),
-	(35, '0005-03-25', '06:45:00', 645, 654),
-	(36, '1111-11-11', '11:11:00', 111, 111),
-	(37, '1111-11-11', '11:11:00', 111, 111),
-	(38, '0325-12-31', '05:54:00', 54, 45),
-	(39, '2021-10-06', '00:03:00', 1, 1),
-	(40, '2021-10-08', '17:11:00', 2323, 2332),
-	(41, '0054-03-12', '23:43:00', 23543, 3553);
+INSERT INTO `meal` (`idMeal`, `date`, `time`, `weight`, `calories`, `user_idUser`) VALUES
+	(1, '2000-10-17', '05:35:00', 45, 5454, 1),
+	(2, '2000-10-17', '05:35:00', 45, 5454, 4),
+	(3, '2000-10-17', '03:23:00', 32, 3232, 4),
+	(4, '2000-10-17', '11:01:00', 111, 1111, 4),
+	(5, '2000-10-17', '03:23:00', 32, 32, 2),
+	(6, '2000-10-17', '03:02:00', 32, 32, 2),
+	(7, '2000-10-17', '04:35:00', 54, 54, 2),
+	(8, '2000-10-17', '04:43:00', 534, 534, 3),
+	(9, '2000-10-17', '04:03:00', 43, 43, 3),
+	(10, '2000-10-17', '03:02:00', 32, 3223, 3),
+	(11, '2000-10-18', '05:04:00', 54, 45, 4),
+	(12, '2000-10-19', '05:04:00', 54, 45, 5),
+	(13, '2000-10-19', '05:04:00', 54, 45, 5),
+	(14, '2000-10-19', '06:45:00', 645, 654, 6),
+	(15, '2000-10-19', '11:11:00', 111, 111, 6),
+	(16, '2000-10-19', '11:11:00', 111, 111, 1),
+	(17, '2000-10-19', '05:54:00', 54, 45, 2),
+	(18, '2000-10-19', '00:03:00', 1, 1, 3),
+	(19, '2000-10-19', '17:11:00', 2323, 2332, 4),
+	(20, '2000-10-19', '23:43:00', 23543, 3553, 5),
+	(21, '2000-10-19', '12:12:00', 123, 123, 6),
+	(22, '2000-10-19', '22:02:00', 222, 2222, 6),
+	(23, '2000-10-19', '22:22:00', 2222, 222, 7),
+	(24, '2000-10-19', '03:33:00', 333, 333, 8),
+	(25, '2000-10-19', '03:33:00', 333, 3333, 8),
+	(26, '2000-10-19', '03:33:00', 333, 333, 9),
+	(27, '2000-10-19', '20:15:00', 123, 13, 9),
+	(50, '2021-10-19', '18:05:00', 100, NULL, 0),
+	(51, '2021-10-19', '12:00:00', 50, NULL, 4);
 /*!40000 ALTER TABLE `meal` ENABLE KEYS */;
 
 -- Дамп структуры для таблица foodtracker.user
@@ -176,22 +259,56 @@ CREATE TABLE IF NOT EXISTS `user` (
   `dateOfBirth` varchar(45) DEFAULT NULL,
   `role` varchar(45) DEFAULT NULL,
   `block` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`idUser`),
+  UNIQUE KEY `password_UNIQUE` (`password`),
+  UNIQUE KEY `login_UNIQUE` (`login`)
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы foodtracker.user: ~9 rows (приблизительно)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`idUser`, `login`, `password`, `name`, `secondName`, `email`, `sex`, `weight`, `dateOfBirth`, `role`, `block`) VALUES
-	(24, 'RyabtsevNukuta', '321', '123', '231', '213@5423', 'female', 123, '0321-03-21', 'user', 'unlock'),
-	(28, 'admin', 'admin', 'Nikita', 'Ryabtsev', '123nikitacool123@gmail.com', 'male', 555, '2000-07-13', 'admin', 'unlock'),
-	(29, 'mich', 'mich123', 'mich', 'mich', 'mich@123', 'male', 75, '1900-11-11', 'user', 'unlock'),
-	(32, 'login', 'user', 'Nikita', 'RYABTSEV', '123nikitacool123@gmail.com', 'male', 55, '0004-12-31', 'user', 'unlock'),
-	(33, 'login', 'mich', 'nikitosik', 'ryab', '123nikitacool123@gmail.com', 'male', 67, '0543-03-12', 'user', 'unlock'),
-	(34, 'login', 'user', 'Kostya', 'juk', '123nikitacool123@gmail.com', 'male', 15, '0055-03-21', 'user', 'unlock'),
-	(36, 'user', 'user', 'Nikita', 'Ryabtsev', '123nikitacool123@gmail.com', 'female', 69, '0054-02-26', 'user', 'unlock'),
-	(40, 'looser', 'Looser', 'Nika', 'Ryabtseva', '123nikitacool123@gmail.com', 'female', 50, '2000-03-12', 'user', 'unlock'),
-	(41, 'loser', 'loser', 'Mike', 'Mikevoch', '123nikitacool123@gmail.com', 'male', 80, '2000-03-12', 'user', 'unlock');
+	(1, '123', '123', 'Anton', 'Kulak', 'anton@mail.ru', 'male', 75, '2000-03-21', 'user', 'unblock'),
+	(2, '1234', '1234', 'Anton', 'Gevon', 'antonGevon@gmail.com', 'male', 69, '1999-12-23', 'user', 'block'),
+	(3, '12345', '12345', 'Nika', 'Ryabtseva', '123nikacool123@gmail.com', 'female', 50, '2000-06-12', 'user', 'block'),
+	(4, 'admin', 'admin', 'Nikita', 'Ryabtsev', '123nikitacool123@gmail.com', 'male', 73, '2000-07-13', 'admin', 'unblock'),
+	(5, '123456', '123456', 'Mich', 'Ural', 'michUral@yandex.by', 'male', 75, '1995-11-11', 'user', 'unblock'),
+	(6, '321', '321', 'Nikita', 'Omelyashko', 'NikOmel@mail.ru', 'male', 60, '2000-12-10', 'user', 'unblock'),
+	(7, '4321', '4321', 'Darya', 'Heineken', 'daryaHeineken@mail.ru', 'female', 48, '1999-12-13', 'user', 'unblock'),
+	(8, '54321', '54321', 'Kostya', 'Juk', 'kostyaJuk@outlook.com', 'male', 35, '1983-01-02', 'user', 'unblock'),
+	(9, '654321', '654321', 'Mike', 'Mikevoch', 'mikyMekovich@yandex.ru', 'male', 120, '1950-03-12', 'user', 'unblock');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
+-- Дамп структуры для таблица foodtracker.user_weight
+CREATE TABLE IF NOT EXISTS `user_weight` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `weight` double DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `user_idUser` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_userWeight_user1_idx` (`user_idUser`),
+  CONSTRAINT `fk_userWeight_user1` FOREIGN KEY (`user_idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы foodtracker.user_weight: ~16 rows (приблизительно)
+/*!40000 ALTER TABLE `user_weight` DISABLE KEYS */;
+INSERT INTO `user_weight` (`id`, `weight`, `date`, `user_idUser`) VALUES
+	(1, 70, '2021-10-19', 4),
+	(2, 65, '2021-10-20', 4),
+	(3, 55, '2021-10-19', 2),
+	(4, 65, '2021-10-19', 2),
+	(5, 50, '2021-10-19', 3),
+	(6, 75, '2021-10-19', 1),
+	(7, 75, '2021-10-19', 1),
+	(9, 75, '2021-10-19', 1),
+	(10, 75, '2021-10-19', 1),
+	(11, 75, '2021-10-19', 1),
+	(12, 75, '2021-10-19', 1),
+	(16, 50, '2021-10-19', 3),
+	(17, 50, '2021-10-19', 3),
+	(18, 50, '2021-10-19', 3),
+	(48, 74, '2021-10-19', 1),
+	(49, 59, '2021-10-19', 6);
+/*!40000 ALTER TABLE `user_weight` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
