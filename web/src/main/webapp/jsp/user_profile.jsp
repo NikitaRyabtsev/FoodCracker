@@ -38,6 +38,13 @@
          <td><c:out value="${user.role}"/></td>
     </tr>
 </table>
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="add_user_weight"/>
+    <input type="hidden" name="id" value="${user.id}"/>
+    <input type="date" name="date" value=""/>
+    <input type="number" name="weight" value="${user.weight}">
+    <td><input type="submit" value="Добавить вес"/></td>
+</form>
 <jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>

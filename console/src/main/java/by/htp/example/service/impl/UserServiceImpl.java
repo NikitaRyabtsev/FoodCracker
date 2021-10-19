@@ -8,6 +8,7 @@ import by.htp.example.service.ServiceException;
 import by.htp.example.service.UserService;
 import by.htp.example.validation.UserDataValidator;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
@@ -87,5 +88,18 @@ public class UserServiceImpl implements UserService {
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
+    }
+
+    @Override
+    public User addUserWeight(String id , String date) throws ServiceException {
+        UserDao userDao = DaoProvider.getInstance().getUserDao();
+        User user;
+        try{
+            user = userDao.addUserWeightInDB(Integer.parseInt(id)
+                    ,LocalDate.parse(date));
+        }catch(DaoException e){
+            throw new ServiceException(e);
+        }
+        return user;
     }
 }

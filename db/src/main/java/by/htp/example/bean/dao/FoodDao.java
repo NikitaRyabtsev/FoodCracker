@@ -10,4 +10,6 @@ public interface FoodDao {
     List<Food> getAllFoodFromDB() throws DaoException;
 
     List<Food> getFoodByMeal(int keyMealId ,int keyUserId) throws DaoException;
+
+    List<Food> addFoodInMealDB(int keyMealId,int keyFoodId) throws DaoException;
 }

@@ -20,6 +20,7 @@ public class RequestParameterName {
     public static final String REQ_PARAM_GET_USERS = "getUsers";
     public static final String REQ_PARAM_BLOCK_USER = "blockUser";
     public static final String REQ_PARAM_DELETE_USER = "deleteUser";
+    public static final String REQ_PARAM_ADD_USER_WEIGHT = "addUserWeight";
 
     public static final String REQ_PARAM_TO_REDIRECT = "redirect";
 //Food
@@ -30,6 +31,7 @@ public class RequestParameterName {
     public static final String REQ_PARAM_GET_CARBOHYDRATES = "carbohydrates";
     public static final String REQ_PARAM_GET_FOODS = "getFoods";
     public static final String REQ_PARAM_GET_FOOD_BY_MEAL = "getFoodByMeal";
+    public static final String REQ_PARAM_ADD_FOOD_IN_MEAL= "addFood";
 
 //Meal
     public static final String REQ_PARAM_GET_MEALS = "getMeals";

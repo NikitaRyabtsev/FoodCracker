@@ -4,6 +4,7 @@ import by.htp.example.bean.Meal;
 import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.user.User;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface UserService {
@@ -21,4 +22,6 @@ public interface UserService {
     User getUserAccessInfo(int id) throws ServiceException;
 
     User deleteUser(User user) throws ServiceException;
+
+    User addUserWeight(String id , String date) throws ServiceException;
 }

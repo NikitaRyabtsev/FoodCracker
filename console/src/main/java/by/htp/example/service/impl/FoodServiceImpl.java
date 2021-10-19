@@ -34,4 +34,15 @@ public class FoodServiceImpl implements FoodService {
         }
         return foods;
     }
+
+    @Override
+    public List<Food> addFoodInMeal(String keyMealId, String keyFoodId) throws ServiceException {
+        List<Food> foods;
+        try {
+            foods = provider.getFoodDao().addFoodInMealDB(Integer.parseInt(keyMealId), Integer.parseInt(keyFoodId));
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+        return foods;
+    }
 }

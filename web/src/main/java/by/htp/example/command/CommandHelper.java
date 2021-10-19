@@ -32,7 +32,8 @@ public class CommandHelper {
 //Food
         commands.put(CommandName.GET_ALL_FOOD,new GetAllFoodCommand());
         commands.put(CommandName.GET_FOOD_BY_MEAL, new GetFoodByMealCommand());
-
+        commands.put(CommandName.ADD_FOOD_IN_MEAL,new AddFoodInMealCommand());
+        commands.put(CommandName.ADD_USER_WEIGHT, new AddUserWeightCommand());
     }
     public static CommandHelper getInstance() {
         return instance;

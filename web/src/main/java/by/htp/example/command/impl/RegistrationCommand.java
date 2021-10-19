@@ -35,13 +35,11 @@ public class RegistrationCommand implements Command {
         String role = request.getParameter(RequestParameterName.REQ_PARAM_ROLE);
 
         try {
-
             weight = Integer.parseInt(weightS);
             LocalDate dateOfBirth = LocalDate.parse(dateOfBirthS);
 
             user = new User(login, password, email, name, secondName, weight, sex, dateOfBirth, role, block);
             if (user != null) {
-
                 UserService userService = provider.getUserService();
                 userService.registration(user);
                 request.setAttribute(RequestParameterName.REQ_PARAM_REGISTRATION, user);

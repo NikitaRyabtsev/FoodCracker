@@ -12,15 +12,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/style_popup.css" rel="stylesheet" type="text/css">
+    <link href="/js/popups.js">
     <title>Login</title>
 </head>
 <body>
-
-<main class="form-sign in">
-
+<%--<header id="header" class="header lock-padding">--%>
+<%--    <div class="header_container _container">--%>
+<%--        <a href="#popup" class="header_phone popup-link">PoopUp</a>--%>
+<%--    </div>--%>
+<%--</header>--%>
+<div class="center">
     <form action="controller" method="post">
         <input type="hidden" name="command" value="authorization"/>
-<%--        <img src="/images/FoodCracker.png" alt="" width="72" height="57">--%>
+        <%--        <img src="/images/FoodCracker.png" alt="" width="72" height="57">--%>
         <h1 class="h3 mb-3 fw-normal">Введите логин и пароль</h1>
         <div class="col-md-6">
             <label for="validationDefault03" class="form-label">Логин</label>
@@ -41,7 +46,41 @@
         <input type="hidden" name="command" value="go_to_registration"/>
         <input type="submit" class="btn btn-success" value="Регистрация"/>
     </form>
-</main>
+</div>
+<%--<div class="alert alert-danger" role="alert">--%>
+<%--    <button onclick="myFunction()">Try it</button>--%>
+<%--</div>--%>
+<!-- Button trigger modal -->
+<%--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">--%>
+<%--    Запустить модальное окно--%>
+<%--</button>--%>
+
+<%--<!-- Modal -->--%>
+<%--<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">--%>
+<%--    <div class="modal-dialog modal-dialog-centered" role="document">--%>
+<%--        <div class="modal-content">--%>
+<%--            <div class="modal-header">--%>
+<%--                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>--%>
+<%--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+<%--                    <span aria-hidden="true">&times;</span>--%>
+<%--                </button>--%>
+<%--            </div>--%>
+<%--            <div class="modal-body">--%>
+<%--                ...--%>
+<%--            </div>--%>
+<%--            <div class="modal-footer">--%>
+<%--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
+<%--                <button type="button" class="btn btn-primary">Save changes</button>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<%--<script>$('#exampleModalCenter').modal(options)</script>--%>
 <p class="mt-5 mb-3 text-muted">© 2021</p>
+<script>
+    function myFunction() {
+        alert("I am an alert box!");
+    }
+</script>
 </body>
 </html>

@@ -31,7 +31,7 @@
         <td><c:out value="${food.getProteins()}"/></td>
         <td><c:out value="${food.getFats()}"/></td>
         <td><c:out value="${food.getCarbohydrates()}"/></td>
-            <form action="controller" method="post">
+            <form action="controller" method="get">
                 <input type="hidden" name="command" value="get_food_by_meal"/>
                 <input type="hidden" name="id" value="${user.id}"/>
                 <input type="hidden" name="keyIdMeal" value="${meal.id}">
