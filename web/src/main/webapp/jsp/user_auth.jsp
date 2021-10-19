@@ -25,7 +25,6 @@
 <div class="center">
     <form action="controller" method="post">
         <input type="hidden" name="command" value="authorization"/>
-        <%--        <img src="/images/FoodCracker.png" alt="" width="72" height="57">--%>
         <h1 class="h3 mb-3 fw-normal">Введите логин и пароль</h1>
         <div class="col-md-6">
             <label for="validationDefault03" class="form-label">Логин</label>

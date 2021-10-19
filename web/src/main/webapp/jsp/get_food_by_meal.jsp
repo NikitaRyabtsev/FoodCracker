@@ -25,8 +25,8 @@
         <td>Жиры</td>
         <td>Углеводы</td>
     </tr>
+    <c:forEach items="${requestScope.getFoodByMeal}" var="food">
     <tr>
-        <c:forEach items="${requestScope.getFoodByMeal}" var="food">
         <td><c:out value="${food.getName()}"/></td>
         <td><c:out value="${food.getCalories()}"/></td>
         <td><c:out value="${food.getProteins()}"/></td>
@@ -35,11 +35,13 @@
     </tr>
     </c:forEach>
 </table>
+
 <form action="controller" method="post">
     <input type="hidden" name="command" value="add_food_in_meal"/>
-    <input type="number" name="keyFoodId" value=""/>
-    <input type="number" name="keyMealId" value="${meal.getId()}"/>
-    <td><input type="submit" value="Добавить"/></td>
+    <input name="keyFoodId" value="<%=request.getParameter("keyMealId")%>"/>
+    <input value="<%=request.getParameter("keyMealId")%>"/>
+    <input hidden value="${param.keyMealId}"/>
+    <input type="submit" value="Добавить"/>
 </form>
 <jsp:include page="/jsp/footer.jsp"/>
 </body>

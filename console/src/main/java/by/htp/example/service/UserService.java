@@ -23,5 +23,5 @@ public interface UserService {
 
     User deleteUser(User user) throws ServiceException;
 
-    User addUserWeight(String id , String date) throws ServiceException;
+    User addUserWeight(String id ,String weight, String date) throws ServiceException;
 }

@@ -33,7 +33,6 @@ public class AddFoodInMealCommand implements Command {
                 dispatcher.forward(request, response);
             }
         }catch(ServiceException e){
-
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
             e.printStackTrace();

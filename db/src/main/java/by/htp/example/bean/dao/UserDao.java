@@ -21,6 +21,6 @@ public interface UserDao {
 
 	User getEditUserAccessInfo(int id) throws DaoException;
 
-    User addUserWeightInDB(int id , LocalDate date) throws DaoException;
+    User addUserWeightInDB(int id , double weight,LocalDate date) throws DaoException;
 
 }

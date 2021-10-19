@@ -25,9 +25,11 @@ public class AddUserWeightCommand implements Command {
         User user;
 
         String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
-        String date = request.getParameter("date");
+        String weight = request.getParameter(RequestParameterName.REQ_PARAM_WEIGHT);
+        String date = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
+
         try {
-            user = userService.addUserWeight(id, date);
+            user = userService.addUserWeight(id, weight,date);
             if (user != null) {
                 request.setAttribute(RequestParameterName.REQ_PARAM_ADD_USER_WEIGHT, user);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);

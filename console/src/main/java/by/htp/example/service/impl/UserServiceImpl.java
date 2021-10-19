@@ -91,11 +91,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User addUserWeight(String id , String date) throws ServiceException {
+    public User addUserWeight(String id ,String weight, String date) throws ServiceException {
         UserDao userDao = DaoProvider.getInstance().getUserDao();
         User user;
         try{
-            user = userDao.addUserWeightInDB(Integer.parseInt(id)
+            user = userDao.addUserWeightInDB(Integer.parseInt(id),Double.parseDouble(weight)
                     ,LocalDate.parse(date));
         }catch(DaoException e){
             throw new ServiceException(e);

@@ -133,12 +133,13 @@ public class SQLUserDao implements UserDao, DaoQuery {
     }
 
     @Override
-    public User addUserWeightInDB(int id , LocalDate date) throws DaoException {
+    public User addUserWeightInDB(int id , double weight,LocalDate date) throws DaoException {
         User user = new User();
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_ADD_WEIGHT)) {
             prepareStatement.setInt(1, id);
-            prepareStatement.setObject(2,date);
+            prepareStatement.setDouble(2,weight);
+            prepareStatement.setObject(3,date);
 
             prepareStatement.executeUpdate();
         } catch (SQLException e) {

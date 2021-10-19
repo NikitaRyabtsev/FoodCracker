@@ -24,11 +24,7 @@ public interface DaoQuery {
 	String SQL_QUERY_BLOCK_USER = "UPDATE User SET block=? WHERE idUser=?";
 	String SQL_QUERY_GET_USER_ACCESS_INFO = "SELECT login,password,name,secondName, email,sex,weight,dateOfBirth FROM User WHERE idUser=?";
 	String SQL_QUERY_GET_ADMIN_ACCESS_INFO = "SELECT * FROM User WHERE idUser=?";
-	String SQL_QUERY_ADD_WEIGHT = "INSERT INTO user_weight (weight,user_idUser) " +
-			" SELECT user.weight AS weightUser ,user.idUser AS idUser FROM user  " +
-			" JOIN user_weight ON idUser = user_weight.user_idUser " +
-			" WHERE idUser = ? AND user_weight.date = ? ";
-
+	String SQL_QUERY_ADD_WEIGHT = "INSERT INTO user_weight (user_idUser,weight,date) values (?,?,?)";
 //Food
 	String SQL_QUERY_GET_ALL_FOOD = "SELECT * FROM Food";
 	String SQL_QUERY_GET_FOOD_BY_MEAL = "SELECT food.* FROM meal JOIN food_has_meal ON meal.idMeal = food_has_meal.meal_idMeal " +
