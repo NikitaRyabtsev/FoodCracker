@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -15,8 +14,6 @@ import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.dao.DaoQuery;
 import by.htp.example.bean.dao.MealDao;
 import by.htp.example.bean.dao.connection.DriverManagerManager;
-
-import javax.swing.*;
 
 public class SQLMealDao implements MealDao, DaoQuery {
 
@@ -42,18 +39,17 @@ public class SQLMealDao implements MealDao, DaoQuery {
     }
 
     @Override
-    public Meal createMealInDB(Meal meal) throws DaoException {
+    public Meal createMealInDB(LocalDate date,LocalTime time,int keyUserId) throws DaoException {
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_CREATE_MEAL)) {
-            preparedStatement.setObject(1, meal.getDate());
-            preparedStatement.setObject(2, meal.getTime());
-            preparedStatement.setDouble(3, meal.getWeight());
-            preparedStatement.setInt(4, meal.getKeyUserId());
+           Meal meal = new Meal();
+            preparedStatement.setObject(1, date);
+            preparedStatement.setObject(2, time);
+            preparedStatement.setInt(3,keyUserId);
 
             preparedStatement.executeUpdate();
 
             return meal;
-
         } catch (SQLException e) {
             throw new DaoException(e);
         }

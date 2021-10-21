@@ -1,15 +1,15 @@
-package by.htp.example.service.impl;
+package by.htp.example.impl;
 
+
+import by.htp.example.ServiceException;
 import by.htp.example.bean.Food;
 import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.dao.DaoProvider;
-import by.htp.example.service.FoodService;
-import by.htp.example.service.ServiceException;
-import by.htp.example.service.ServiceProvider;
+import by.htp.example.FoodService;
 
 import java.util.List;
 
-public class FoodServiceImpl implements FoodService {
+public class FoodServiceImpl implements FoodService  {
 
     DaoProvider provider = DaoProvider.getInstance();
 

@@ -1,16 +1,19 @@
 package by.htp.example.bean;
 
-import by.htp.example.bean.user.User;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 import java.util.Objects;
 
-public class Meal {
+
+public class Meal implements Serializable {
 
 	private int keyUserId;
+//	@XmlTransient
 	private int id;
+//	@XmlElement(name="DateOfEating")
 	private LocalDate date;
 	private LocalTime time;
 	private double weight;
@@ -47,6 +50,12 @@ public class Meal {
 		this.calories = calories;
 		this.keyUserId = keyUserId;
 	}
+
+    public Meal(LocalDate date, LocalTime time ,int id) {
+		this.date = date;
+		this.time = time;
+		this.id = id;
+    }
 
 
 	public int getKeyUserId() {

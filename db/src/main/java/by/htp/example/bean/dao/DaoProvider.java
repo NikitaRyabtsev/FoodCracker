@@ -1,8 +1,8 @@
 package by.htp.example.bean.dao;
 
 import by.htp.example.bean.dao.impl.SQLFoodDao;
-import by.htp.example.bean.dao.impl.SQLUserDao;
 import by.htp.example.bean.dao.impl.SQLMealDao;
+import by.htp.example.bean.dao.impl.SQLUserDao;
 
 public class DaoProvider {
 

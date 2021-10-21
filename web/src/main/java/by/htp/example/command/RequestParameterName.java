@@ -5,6 +5,7 @@ public class RequestParameterName {
     private RequestParameterName() {
     }
 //User
+
     public static final String REQ_PARAM_COMMAND_NAME = "command";
     public static final String REQ_PARAM_LOGIN = "login";
     public static final String REQ_PARAM_PASS = "password";
@@ -32,6 +33,9 @@ public class RequestParameterName {
     public static final String REQ_PARAM_GET_FOODS = "getFoods";
     public static final String REQ_PARAM_GET_FOOD_BY_MEAL = "getFoodByMeal";
     public static final String REQ_PARAM_ADD_FOOD_IN_MEAL= "addFood";
+    public static final String REQ_PARAM_ADD_FOOD_ID_MEAL= "keyMealId";
+    public static final String REQ_PARAM_ADD_FOOD_ID= "keyFoodId";
+
 
 //Meal
     public static final String REQ_PARAM_GET_MEALS = "getMeals";

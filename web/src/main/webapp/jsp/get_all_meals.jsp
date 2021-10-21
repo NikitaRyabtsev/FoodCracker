@@ -13,14 +13,14 @@
 <body>
 <jsp:include page="/jsp/header.jsp"/>
 
-<h3>List of Meals : </h3>
+<h3></h3>
 
 <table class="table table-striped table-hover">
     <tr>
-        <td>Date</td>
-        <td>Time</td>
-        <td>Weight</td>
-        <td>Calories</td>
+        <td>Дата</td>
+        <td>Время </td>
+        <td>Вес(г)</td>
+        <td>Калории</td>
 
     </tr>
     <tr>
@@ -33,7 +33,7 @@
             <input type="hidden" name="command" value="get_food_by_meal"/>
             <input type="hidden" name="keyUserId" value="${user.id}"/>
             <input type="hidden" name="keyMealId" value="${meal.getId()}">
-            <td><input type="submit" value=""></td>
+            <td><input type="submit" value="Просмотреть"></td>
         </form>
 
             <%--            <div class="dropdown show">--%>
@@ -54,11 +54,11 @@
             <%--            </div>--%>
             <%--        </div>--%>
 
-        <form action="controller" method="post">
-            <input type="hidden" name="command" value="get_meal_by_id"/>
-            <input type="hidden" name="id" value="${meal.getId()}"/>
-            <td><input type="submit" value="Просмотреть"/></td>
-        </form>
+<%--        <form action="controller" method="post">--%>
+<%--            <input type="hidden" name="command" value="get_meal_by_id"/>--%>
+<%--            <input type="hidden" name="id" value="${meal.getId()}"/>--%>
+<%--            <td><input type="submit" value=""/></td>--%>
+<%--        </form>--%>
         <form action="controller" method="post">
             <input type="hidden" name="command" value="delete_meal"/>
             <input type="hidden" name="id" value="${meal.getId()}"/>
@@ -69,6 +69,7 @@
     </c:forEach>
 
 </table>
+<h3>Добавить приём пищи</h3>
 <form action="controller" method="post">
     <input type="hidden" name="command" value="add_new_meal"/>
 
@@ -80,18 +81,13 @@
         <label for="validationDefault2" class="form-label">Время</label>
         <input type="time" name="time" class="form-control" id="validationDefault2" value="" required>
     </div>
-    <div class="col-md-4">
-        <label for="validationDefault3" class="form-label">Вес</label>
-        <input type="number" name="weight" class="form-control" id="validationDefault3" value="" required>
-    </div>
     <div>
         <input type="hidden" name="id" value="${user.id}" required>
     </div>
     <div class="col-md-3">
-        <input type="submit" value="addMeal" class="btn btn-success"/>
+        <input type="submit" value="Добавить" class="btn btn-success"/>
     </div>
 </form>
-<button type="button" name="back" onclick="history.back()">back</button>
 <jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>

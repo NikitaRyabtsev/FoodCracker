@@ -1,20 +1,23 @@
-package by.htp.example.service.impl;
+package by.htp.example.impl;
 
 import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.dao.DaoProvider;
 import by.htp.example.bean.dao.UserDao;
 import by.htp.example.bean.user.User;
-import by.htp.example.service.ServiceException;
-import by.htp.example.service.UserService;
+import by.htp.example.ServiceException;
+import by.htp.example.UserService;
 import by.htp.example.validation.UserDataValidator;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public class UserServiceImpl implements UserService {
+
+public class UserServiceImpl implements UserService{
 
     private static final UserDataValidator validator = UserDataValidator.getInstance();
+
     private DaoProvider provider = DaoProvider.getInstance();
+
     @Override
     public User authorization(String login, String password) throws ServiceException{
 

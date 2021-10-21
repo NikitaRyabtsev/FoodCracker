@@ -1,7 +1,6 @@
 package by.htp.example.bean.dao;
 
 import by.htp.example.bean.Food;
-import by.htp.example.bean.Meal;
 
 import java.util.List;
 

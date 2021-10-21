@@ -19,7 +19,7 @@
 <a href="#" class="nav-link px-2 text-secondary">
     <form action="controller" method="post">
         <input type="hidden" name="command" value="get_all_users"/>
-        <input type="submit" class="btn btn-success " value="Просмотреть юзеров"/>
+        <input type="submit" class="btn btn-success " value="Просмотреть пользователей"/>
     </form>
 </a>
 <table class="table table-striped table-hover">

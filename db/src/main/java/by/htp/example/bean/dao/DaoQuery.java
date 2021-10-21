@@ -2,7 +2,7 @@ package by.htp.example.bean.dao;
 
 public interface DaoQuery {
 //Meals
-	String SQL_QUERY_CREATE_MEAL = "INSERT INTO Meal (date,time,weight,user_idUser) VALUES (?,?,?,?)";
+	String SQL_QUERY_CREATE_MEAL = "INSERT INTO Meal (date,time,user_idUser) VALUES (?,?,?)";
 	String SQL_QUERY_GET_MEAL = "SELECT * FROM Meal WHERE idMeal=?";
 	String SQL_QUERY_GET_DATE = "SELECT * FROM Meal WHERE date=?";
 	String SQL_QUERY_DELETE_MEAL = "DELETE FROM Meal WHERE idMeal=?";

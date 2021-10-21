@@ -1,12 +1,12 @@
 package by.htp.example.command.impl;
 
-import by.htp.example.bean.Meal;
+import by.htp.example.MealService;
+import by.htp.example.ServiceException;
+import by.htp.example.ServiceProvider;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
 import by.htp.example.command.RequestParameterName;
-import by.htp.example.service.MealService;
-import by.htp.example.service.ServiceException;
-import by.htp.example.service.ServiceProvider;
+import by.htp.example.bean.Meal;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +26,7 @@ public class DeleteMealCommand implements Command {
         try {
             int id = Integer.parseInt(idS);
                 Meal meal = new Meal(id);
-                if (meal != null | id > 0) {
+                if (meal != null) {
                     mealService.deleteMeal(meal);
                     request.setAttribute(RequestParameterName.REQ_PARAM_DELETE_MEAL, meal);
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
@@ -34,10 +34,9 @@ public class DeleteMealCommand implements Command {
                 } else {
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
                     dispatcher.forward(request, response);
-                    throw new NumberFormatException();
                 }
 
-            } catch(ServiceException | NumberFormatException e){
+            } catch(ServiceException e){
             e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);

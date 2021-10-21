@@ -16,30 +16,31 @@
     <link href="/js/popups.js">
     <title>Login</title>
 </head>
-<body>
+<body class="text-center">
 <%--<header id="header" class="header lock-padding">--%>
 <%--    <div class="header_container _container">--%>
 <%--        <a href="#popup" class="header_phone popup-link">PoopUp</a>--%>
 <%--    </div>--%>
 <%--</header>--%>
-<div class="center">
+<div>
     <form action="controller" method="post">
         <input type="hidden" name="command" value="authorization"/>
-        <h1 class="h3 mb-3 fw-normal">Введите логин и пароль</h1>
-        <div class="col-md-6">
+        <div mb-3>
             <label for="validationDefault03" class="form-label">Логин</label>
-            <input type="login" name="login" value="" class="form-control" id="validationDefault03" required>
-        </div>
-        <div class="col-md-6">
+            <input type="login" name="login" value="" class="center w-25 form-control" id="validationDefault03"
+                   style="margin-left: 638px;"required autofocus>
+        </div></br>
+        <div class="mb-3">
             <label for="validationDefault04" class="form-label">Пароль</label>
-            <input type="text" name="password" value="" class="form-control" id="validationDefault04" required>
+            <input type="text" name="password" value="" class="w-25 form-control" id="validationDefault04"
+                   style="margin-left: 638px "required autofocus>
         </div>
         <div class="checkbox mb-3">
             <label>
                 <input type="checkbox" value="remember-me"> Запомнить
             </label>
         </div>
-        <button class="w-50 btn btn-success" type="submit">Войти</button>
+        <button class="w-25 btn btn-success" type="submit">Войти</button>
     </form>
     <form action="controller" method="post">
         <input type="hidden" name="command" value="go_to_registration"/>

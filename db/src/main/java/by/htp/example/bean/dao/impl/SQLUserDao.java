@@ -1,10 +1,10 @@
 package by.htp.example.bean.dao.impl;
 
+import by.htp.example.bean.dao.UserDao;
+import by.htp.example.bean.user.User;
 import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.dao.connection.DriverManagerManager;
-import by.htp.example.bean.user.User;
 import by.htp.example.bean.dao.DaoQuery;
-import by.htp.example.bean.dao.UserDao;
 
 import java.sql.*;
 import java.time.LocalDate;

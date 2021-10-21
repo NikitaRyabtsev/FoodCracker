@@ -1,12 +1,12 @@
-package by.htp.example.service;
+package by.htp.example;
 
-import by.htp.example.bean.Meal;
-import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.user.User;
 
-import java.time.LocalDate;
+import javax.ejb.Local;
 import java.util.List;
 
+
+@Local
 public interface UserService {
 
     User authorization(String login, String password) throws ServiceException;

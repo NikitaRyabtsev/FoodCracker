@@ -1,8 +1,8 @@
-package by.htp.example.service;
+package by.htp.example;
 
-import by.htp.example.service.impl.FoodServiceImpl;
-import by.htp.example.service.impl.MealServiceImpl;
-import by.htp.example.service.impl.UserServiceImpl;
+import by.htp.example.impl.MealServiceImpl;
+import by.htp.example.impl.UserServiceImpl;
+import by.htp.example.impl.FoodServiceImpl;
 
 public class ServiceProvider {
 

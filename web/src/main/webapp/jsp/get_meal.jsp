@@ -25,7 +25,6 @@
         <td>Calories</td>
 
     </tr>
-
     <tr>
         <c:forEach items="${requestScope.getMealByDate}" var="meal">
         <td><c:out value="${meal.getDate()}"/></td>
@@ -36,25 +35,6 @@
     </c:forEach>
 
 </table>
-<table class="w-50 table table-striped table-hover">
-    <tr>
-        <td>Название</td>
-        <td>Калории</td>
-        <td>Белки</td>
-        <td>Жиры</td>
-        <td>Углеводы</td>
-    </tr>
-    <tr>
-        <c:forEach items="${requestScope.getFoodByMeal}" var="food">
-        <td><c:out value="${food.getName()}"/></td>
-        <td><c:out value="${food.getCalories()}"/></td>
-        <td><c:out value="${food.getProteins()}"/></td>
-        <td><c:out value="${food.getFats()}"/></td>
-        <td><c:out value="${food.getCarbohydrates()}"/></td>
-    </tr>
-    </c:forEach>
-</table>
-
 </body>
 <jsp:include page="/jsp/footer.jsp"/>
 </html>

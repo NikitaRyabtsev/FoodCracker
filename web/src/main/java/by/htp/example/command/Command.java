@@ -1,7 +1,7 @@
 package by.htp.example.command;
 
+import by.htp.example.ServiceException;
 import by.htp.example.bean.dao.DaoException;
-import by.htp.example.service.ServiceException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

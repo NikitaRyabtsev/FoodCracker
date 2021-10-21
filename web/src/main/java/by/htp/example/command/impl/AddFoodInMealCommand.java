@@ -5,9 +5,9 @@ import by.htp.example.bean.dao.DaoException;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
 import by.htp.example.command.RequestParameterName;
-import by.htp.example.service.FoodService;
-import by.htp.example.service.ServiceException;
-import by.htp.example.service.ServiceProvider;
+import by.htp.example.FoodService;
+import by.htp.example.ServiceException;
+import by.htp.example.ServiceProvider;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,8 +22,8 @@ public class AddFoodInMealCommand implements Command {
         ServiceProvider provider = ServiceProvider.getInstance();
         FoodService foodService = provider.getFoodService();
 
-        String keyMealId = request.getParameter("keyMealId");
-        String keyFoodId = request.getParameter("keyFoodId");
+        String keyMealId = request.getParameter(RequestParameterName.REQ_PARAM_ADD_FOOD_ID_MEAL);
+        String keyFoodId = request.getParameter(RequestParameterName.REQ_PARAM_ADD_FOOD_ID);
         List<Food> foods;
         try{
             foods = foodService.addFoodInMeal(keyMealId,keyFoodId);

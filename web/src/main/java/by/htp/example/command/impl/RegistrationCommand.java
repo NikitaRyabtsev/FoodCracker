@@ -1,13 +1,14 @@
 package by.htp.example.command.impl;
 
+import by.htp.example.ServiceProvider;
+import by.htp.example.UserService;
+import by.htp.example.command.RequestParameterName;
 import by.htp.example.bean.user.User;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
-import by.htp.example.command.RequestParameterName;
-import by.htp.example.service.ServiceException;
-import by.htp.example.service.ServiceProvider;
-import by.htp.example.service.UserService;
+import by.htp.example.ServiceException;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
 public class RegistrationCommand implements Command {
+    @Inject
+    private UserService userService;
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         User user;
@@ -40,7 +43,7 @@ public class RegistrationCommand implements Command {
 
             user = new User(login, password, email, name, secondName, weight, sex, dateOfBirth, role, block);
             if (user != null) {
-                UserService userService = provider.getUserService();
+                userService = provider.getUserService();
                 userService.registration(user);
                 request.setAttribute(RequestParameterName.REQ_PARAM_REGISTRATION, user);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
