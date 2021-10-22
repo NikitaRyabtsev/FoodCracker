@@ -105,4 +105,17 @@ public class UserServiceImpl implements UserService{
         }
         return user;
     }
+
+    @Override
+    public User EditProfileInDB(String login , String password , String name, String secondName
+            , String email, String sex , String dateOfBirth , String id) throws ServiceException {
+        try{
+
+            return provider.getUserDao().EditProfileInDB(login,password,name,secondName
+                        ,email,sex,LocalDate.parse(dateOfBirth),Integer.parseInt(id));
+
+        }catch (DaoException e){
+            throw new ServiceException(e);
+        }
+    }
 }

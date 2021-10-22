@@ -6,10 +6,8 @@ import by.htp.example.bean.Meal;
 import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.dao.DaoProvider;
 import by.htp.example.bean.dao.MealDao;
-import by.htp.example.bean.dao.impl.SQLMealDao;
 import by.htp.example.command.RequestParameterName;
 
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -25,7 +23,7 @@ public class MealRestService implements MealService{
     MealDao mealDao = provider.getMealDao();
 
     @Override
-    @GET
+    @POST
     public ArrayList<Meal> getMeals(@PathParam(RequestParameterName.REQ_PARAM_ID) String keyUserId) throws ServiceException {
         try {
             return mealDao.getMealsFromDB(Integer.parseInt(keyUserId));

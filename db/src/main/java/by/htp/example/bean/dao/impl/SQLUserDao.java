@@ -133,6 +133,29 @@ public class SQLUserDao implements UserDao, DaoQuery {
     }
 
     @Override
+    public User EditProfileInDB(String login , String password , String name, String secondName
+    ,String email,String sex , LocalDate dateOfBirth , int id) throws DaoException {
+
+        try (Connection connection = DriverManagerManager.getConnection();
+             PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_EDIT_PROFILE)) {
+            prepareStatement.setString(1, login);
+            prepareStatement.setString(2, password);
+            prepareStatement.setString(3, name);
+            prepareStatement.setString(4, secondName);
+            prepareStatement.setString(5,email);
+            prepareStatement.setString(6, sex);
+            prepareStatement.setObject(7, dateOfBirth);
+            prepareStatement.setInt(8,id);
+
+            prepareStatement.executeUpdate();
+        }catch(SQLException e){
+            throw new DaoException(e);
+        }
+
+            return null;
+    }
+
+    @Override
     public User addUserWeightInDB(int id , double weight,LocalDate date) throws DaoException {
         User user = new User();
         try (Connection connection = DriverManagerManager.getConnection();

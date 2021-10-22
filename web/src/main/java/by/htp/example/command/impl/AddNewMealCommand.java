@@ -28,8 +28,7 @@ public class AddNewMealCommand implements Command {
             meal = mealService.createMeal(date, time, id);
             if(meal!=null) {
                 request.setAttribute(RequestParameterName.REQ_PARAM_ADD_MEAL, meal);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
-                dispatcher.forward(request, response);
+                response.sendRedirect(JSPPageName.GET_ALL_MEALS_JSP);
             }else{
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
                 dispatcher.forward(request, response);

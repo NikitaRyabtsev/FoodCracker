@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="by.htp.example.bean.user.User" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
@@ -6,11 +7,14 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <title>Вход</title>
+    <title>Главная<img src="/images/FoodCracker.svg" width="30" height="30" class="d-inline-block align-top" alt=""></title>
 </head>
 <body>
 <jsp:include page="/jsp/header.jsp"/>
-
+<c:if test="${sessionScope.user != null}" >
+    <h3>User</h3>.
+</c:if>
+<div>
 <main role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">

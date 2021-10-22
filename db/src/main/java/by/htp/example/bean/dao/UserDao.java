@@ -21,6 +21,11 @@ public interface UserDao {
 
 	User getEditUserAccessInfo(int id) throws DaoException;
 
+    User EditProfileInDB(String login , String password , String name, String secondName
+            ,String email,String sex , LocalDate dateOfBirth , int id) throws DaoException;
+
     User addUserWeightInDB(int id , double weight,LocalDate date) throws DaoException;
+
+
 
 }

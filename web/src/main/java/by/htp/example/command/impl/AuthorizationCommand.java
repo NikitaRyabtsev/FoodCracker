@@ -12,6 +12,7 @@ import by.htp.example.command.JSPPageName;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -37,7 +38,6 @@ public class AuthorizationCommand implements Command {
         String password = request.getParameter(RequestParameterName.REQ_PARAM_PASS);
         try {
             userService = provider.getUserService();
-
             user = userService.authorization(login, password);
 
             if (user != null) {
@@ -46,11 +46,10 @@ public class AuthorizationCommand implements Command {
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
                     dispatcher.forward(request, response);
                 }else if(Status.BLOCK.toString().equalsIgnoreCase(user.getBlock())){
-                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
-                    dispatcher.forward(request, response);
+                    response.sendRedirect(JSPPageName.USER_AUTH_PAGE_JSP);
                 }
             }else{
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
                 dispatcher.forward(request, response);
             }
         } catch (ServiceException e) {

@@ -12,6 +12,7 @@ public enum CommandName {
     BLOCK_USER,
     DELETE_USER,
     ADD_USER_WEIGHT,
+    EDIT_PROFILE,
 //Meal
 
     GET_ALL_MEALS,

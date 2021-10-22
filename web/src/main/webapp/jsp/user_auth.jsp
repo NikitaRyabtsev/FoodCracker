@@ -14,7 +14,7 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <link href="/css/style_popup.css" rel="stylesheet" type="text/css">
     <link href="/js/popups.js">
-    <title>Login</title>
+    <title>Вход</title>
 </head>
 <body class="text-center">
 <%--<header id="header" class="header lock-padding">--%>
@@ -28,25 +28,35 @@
         <div mb-3>
             <label for="validationDefault03" class="form-label">Логин</label>
             <input type="login" name="login" value="" class="center w-25 form-control" id="validationDefault03"
-                   style="margin-left: 638px;"required autofocus>
-        </div></br>
+                   style="margin-left: 638px;" required autofocus>
+        </div>
+        </br>
         <div class="mb-3">
             <label for="validationDefault04" class="form-label">Пароль</label>
             <input type="text" name="password" value="" class="w-25 form-control" id="validationDefault04"
-                   style="margin-left: 638px "required autofocus>
+                   style="margin-left: 638px " required autofocus>
         </div>
         <div class="checkbox mb-3">
             <label>
                 <input type="checkbox" value="remember-me"> Запомнить
             </label>
         </div>
-        <button class="w-25 btn btn-success" type="submit">Войти</button>
+            <div>
+                <button class="w-25 btn btn-success" type="submit">Войти</button>
+            </div>
     </form>
+    <c:if test="${sessionScope.user.block =='block'}">
+        <script>
+            alert("Извините , но вы заблокированы");
+        </script>
+    </c:if>
     <form action="controller" method="post">
         <input type="hidden" name="command" value="go_to_registration"/>
         <input type="submit" class="btn btn-success" value="Регистрация"/>
     </form>
 </div>
+
+
 <%--<div class="alert alert-danger" role="alert">--%>
 <%--    <button onclick="myFunction()">Try it</button>--%>
 <%--</div>--%>
