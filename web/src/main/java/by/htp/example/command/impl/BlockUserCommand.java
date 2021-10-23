@@ -1,29 +1,27 @@
 package by.htp.example.command.impl;
 
-import by.htp.example.bean.Meal;
-import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.user.User;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
 import by.htp.example.command.RequestParameterName;
-import by.htp.example.command.Role;
-import by.htp.example.service.ServiceException;
-import by.htp.example.service.ServiceProvider;
-import by.htp.example.service.UserService;
+import by.htp.example.ServiceException;
+import by.htp.example.ServiceProvider;
+import by.htp.example.UserService;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class BlockUserCommand implements Command {
-
+    @Inject
+    private UserService userService;
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServiceProvider provider = ServiceProvider.getInstance();
-        UserService userService = provider.getUserService();
+        userService = provider.getUserService();
         User user = null;
         String block = request.getParameter(RequestParameterName.REQ_PARAM_BLOCK_USER);
         String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);

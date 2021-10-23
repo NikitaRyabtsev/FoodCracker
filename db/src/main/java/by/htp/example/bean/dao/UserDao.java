@@ -2,6 +2,7 @@ package by.htp.example.bean.dao;
 
 import by.htp.example.bean.user.User;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface UserDao {
@@ -19,5 +20,12 @@ public interface UserDao {
 	User getEditAdminAccessInfo(int id) throws DaoException;
 
 	User getEditUserAccessInfo(int id) throws DaoException;
+
+    User EditProfileInDB(String login , String password , String name, String secondName
+            ,String email,String sex , LocalDate dateOfBirth , int id) throws DaoException;
+
+    User addUserWeightInDB(int id , double weight,LocalDate date) throws DaoException;
+
+
 
 }

@@ -21,6 +21,7 @@ public class CommandHelper {
         commands.put(CommandName.GET_ALL_USERS,new GetUsersCommand());
         commands.put(CommandName.BLOCK_USER,new BlockUserCommand());
         commands.put(CommandName.DELETE_USER, new DeleteUserCommand());
+        commands.put(CommandName.EDIT_PROFILE,new EditProfileCommand());
 //Meal
         commands.put(CommandName.NO_SUCH_COMMAND, new NoSuchCommand());
         commands.put(CommandName.GET_ALL_MEALS , new GetAllMealsCommand());
@@ -31,8 +32,9 @@ public class CommandHelper {
         commands.put(CommandName.GET_MEAL_BY_DATE,new GetMealByDateCommand());
 //Food
         commands.put(CommandName.GET_ALL_FOOD,new GetAllFoodCommand());
-        commands.put(CommandName.ADD_NEW_FOOD,new AddNewFoodCommand());
-
+        commands.put(CommandName.GET_FOOD_BY_MEAL, new GetFoodByMealCommand());
+        commands.put(CommandName.ADD_FOOD_IN_MEAL,new AddFoodInMealCommand());
+        commands.put(CommandName.ADD_USER_WEIGHT, new AddUserWeightCommand());
     }
     public static CommandHelper getInstance() {
         return instance;

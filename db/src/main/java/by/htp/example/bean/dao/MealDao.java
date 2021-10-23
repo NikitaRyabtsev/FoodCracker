@@ -1,6 +1,7 @@
 package by.htp.example.bean.dao;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ public interface MealDao {
 
 	ArrayList<Meal> getMealsFromDB(int keyUserId) throws DaoException;
 
-	Meal createMealInDB(Meal meal) throws DaoException;
+	Meal createMealInDB(LocalDate date, LocalTime time, int keyUserId) throws DaoException;
 
 	void changeMealCharacteristicInDB(Meal meal) throws DaoException;
 

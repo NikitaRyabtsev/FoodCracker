@@ -11,7 +11,8 @@ public enum CommandName {
     GET_ALL_USERS,
     BLOCK_USER,
     DELETE_USER,
-
+    ADD_USER_WEIGHT,
+    EDIT_PROFILE,
 //Meal
 
     GET_ALL_MEALS,
@@ -22,6 +23,7 @@ public enum CommandName {
     GET_MEAL_BY_DATE,
 //Food
     GET_ALL_FOOD,
-    ADD_NEW_FOOD,
+    GET_FOOD_BY_MEAL,
+    ADD_FOOD_IN_MEAL,
 
 }

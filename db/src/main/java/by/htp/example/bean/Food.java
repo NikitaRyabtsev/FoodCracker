@@ -15,6 +15,7 @@ public class Food {
     private int keyUserId;
     private int keyMealId;
 
+
     public Food(){
     }
 

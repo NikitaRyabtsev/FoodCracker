@@ -12,10 +12,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-    <title>Users</title>
+    <title>Пользователи</title>
 </head>
+
 <body>
-<h1>HELLO</h1>
+<jsp:include page="/jsp/header.jsp"/>
 <table class="table table-striped table-hover">
     <tr>
         <td>Id</td>

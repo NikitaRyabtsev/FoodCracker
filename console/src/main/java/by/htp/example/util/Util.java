@@ -1,5 +1,6 @@
 package by.htp.example.util;
 
+import javax.ejb.Stateless;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;

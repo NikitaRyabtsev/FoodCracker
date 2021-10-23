@@ -1,12 +1,12 @@
 package by.htp.example.command.impl;
 
-import by.htp.example.bean.Meal;
+import by.htp.example.MealService;
+import by.htp.example.ServiceException;
+import by.htp.example.ServiceProvider;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
 import by.htp.example.command.RequestParameterName;
-import by.htp.example.service.MealService;
-import by.htp.example.service.ServiceException;
-import by.htp.example.service.ServiceProvider;
+import by.htp.example.bean.Meal;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,9 +18,8 @@ public class GetMealByIdCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServiceProvider provider = ServiceProvider.getInstance();
-        String idS = request.getParameter(RequestParameterName.REQ_PARAM_ID);
+        String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
 
-        int id = Integer.parseInt(idS);
         MealService mealService = provider.getServiceMeal();
         Meal meal;
         try {

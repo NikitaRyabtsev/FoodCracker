@@ -1,9 +1,9 @@
 package by.htp.example.filter;
 
-import by.htp.example.bean.user.User;
 import by.htp.example.command.CommandName;
-import by.htp.example.command.JSPPageName;
 import by.htp.example.command.RequestParameterName;
+import by.htp.example.bean.user.User;
+import by.htp.example.command.JSPPageName;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +40,7 @@ public class UserFilter implements Filter {
         } else if (CommandName.REGISTRATION.toString().equalsIgnoreCase(param)){
             chain.doFilter(req,resp);
         } else if (CommandName.GO_TO_REGISTRATION.toString().equalsIgnoreCase(param)) {
-            chain.doFilter(req,resp);
+            chain.doFilter(req, resp);
         } else {
             req.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP).forward(req, resp);
         }

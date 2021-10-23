@@ -4,9 +4,9 @@ import by.htp.example.bean.Meal;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
 import by.htp.example.command.RequestParameterName;
-import by.htp.example.service.MealService;
-import by.htp.example.service.ServiceException;
-import by.htp.example.service.ServiceProvider;
+import by.htp.example.MealService;
+import by.htp.example.ServiceException;
+import by.htp.example.ServiceProvider;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeParseException;
 
 public class ChangeMealCommand implements Command {
     @Override

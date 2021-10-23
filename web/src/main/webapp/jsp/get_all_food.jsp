@@ -11,11 +11,10 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <title>Food</title>
+    <title>Продукты</title>
 </head>
 <body>
 <jsp:include page="/jsp/header.jsp"/>
-<button class="w-50 btn btn-success" type="submit">Добавить новый продукт</button>
 <table class="table table-striped table-hover">
     <tr>
         <td>Название</td>
@@ -24,7 +23,7 @@
         <td>Жиры</td>
         <td>Углеводы</td>
 
-
+    </tr>
     <tr>
         <c:forEach items="${requestScope.getFoods}" var="food" varStatus="status">
         <td><c:out value="${food.getName()}"/></td>
@@ -32,9 +31,12 @@
         <td><c:out value="${food.getProteins()}"/></td>
         <td><c:out value="${food.getFats()}"/></td>
         <td><c:out value="${food.getCarbohydrates()}"/></td>
-         <td><c:out value="${food.getKeyUserId}"/></td>
-            <td><c:out value="${food.getKeyMealId}"/></td>
-
+            <form action="controller" method="get">
+                <input type="hidden" name="command" value="get_food_by_meal"/>
+                <input type="hidden" name="id" value="${user.id}"/>
+                <input type="hidden" name="keyIdMeal" value="${meal.id}">
+                <td><input type="submit" value="" class="btn-close"></td>
+            </form>
     </tr>
     </c:forEach>
 

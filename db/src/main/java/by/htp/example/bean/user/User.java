@@ -84,6 +84,18 @@ public class User {
         this.email = email;
     }
 
+    public User(int id ,String login, String password, String name, String secondName, String email, String sex, LocalDate dateOfBirth) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+        this.secondName = secondName;
+        this.sex = sex;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+
 
 
     public int getId() {

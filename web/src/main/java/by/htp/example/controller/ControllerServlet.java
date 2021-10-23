@@ -1,11 +1,10 @@
 package by.htp.example.controller;
 
-import by.htp.example.bean.dao.DaoException;
-import by.htp.example.bean.user.User;
-import by.htp.example.command.Command;
+import by.htp.example.ServiceException;
 import by.htp.example.command.CommandHelper;
 import by.htp.example.command.RequestParameterName;
-import by.htp.example.service.ServiceException;
+import by.htp.example.bean.dao.DaoException;
+import by.htp.example.command.Command;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

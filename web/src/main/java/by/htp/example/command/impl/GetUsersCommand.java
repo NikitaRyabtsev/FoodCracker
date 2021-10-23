@@ -6,9 +6,9 @@ import by.htp.example.bean.user.User;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
 import by.htp.example.command.RequestParameterName;
-import by.htp.example.service.ServiceException;
-import by.htp.example.service.ServiceProvider;
-import by.htp.example.service.UserService;
+import by.htp.example.ServiceException;
+import by.htp.example.ServiceProvider;
+import by.htp.example.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,18 +35,19 @@ public class GetUsersCommand implements Command {
             if (user != null) {
                 users = userService.getUsers();
                 if (users != null | !users.isEmpty()) {
+
                     if (Role.ADMIN.toString().equalsIgnoreCase(user.getRole())) {
                         request.setAttribute(RequestParameterName.REQ_PARAM_GET_USERS, users);
                         RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_USERS);
                         dispatcher.forward(request, response);
                     }
                 }
-
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
                 dispatcher.forward(request, response);
             }
         } catch (ServiceException e) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
+            e.printStackTrace();
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
         }
 
