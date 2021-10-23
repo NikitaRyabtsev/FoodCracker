@@ -4,11 +4,12 @@ import javax.ejb.Stateless;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Util {
 
-	public static LocalDate scanDate() {
+	public static LocalDate scanDate() throws DateTimeException {
 		int year = 0;
 		int month = 0;
 		int days = 0;
@@ -17,27 +18,18 @@ public class Util {
 		try {
 			System.out.println("Input year : [2000-2030]");
 			year = scan.nextInt();
-			
 			if (year < 2000 | year > 2030) {
-				throw new DateTimeException("");
+				System.out.println("Input month : [1-12]");
+				month = scan.nextInt();
+				System.out.println("Input days : [1-31]");
+				days = scan.nextInt();
+				localDate = LocalDate.of(year, month, days);
+			}else{
+				System.out.println("Не верно введена дата");
 			}
-			System.out.println("Input month : [1-12]");
-			month = scan.nextInt();
-			
-			if (month < 1 | month > 12) {
-				throw new DateTimeException("");
-			}
-			System.out.println("Input days : [1-31]");
-			days = scan.nextInt();
-			
-			if (days < 1 | days > 31) {
-				throw new DateTimeException("");
-			}
-			
-			localDate = LocalDate.of(year, month, days);
 		} catch (DateTimeException e) {
 			System.out.println("[Info] Wrong date");
-			e.getStackTrace();
+			throw new DateTimeException("");
 		}
 		localDate = LocalDate.of(year, month, days);
 		return localDate;

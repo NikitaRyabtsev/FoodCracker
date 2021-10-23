@@ -12,7 +12,7 @@ import javax.ejb.Local;
 @Local
 public interface MealService {
 
-	ArrayList<Meal>getMeals(String keyUserId) throws ServiceException;
+	List<Meal> getMeals(String keyUserId) throws ServiceException;
 
 	Meal createMeal(String date,String time ,String id) throws ServiceException;
 

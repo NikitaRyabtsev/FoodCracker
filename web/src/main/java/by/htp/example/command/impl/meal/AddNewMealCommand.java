@@ -1,4 +1,4 @@
-package by.htp.example.command.impl;
+package by.htp.example.command.impl.meal;
 
 import by.htp.example.bean.Meal;
 import by.htp.example.bean.dao.DaoException;
@@ -25,7 +25,7 @@ public class AddNewMealCommand implements Command {
 
         try {
             mealService.createMeal(date, time, id);
-            CommandHelper.getInstance().getCommand("GET_ALL_MEALS").execute(request,response);
+            CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_ALL_MEALS)).execute(request,response);
         } catch (ServiceException | DaoException e) {
             e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);

@@ -1,4 +1,4 @@
-package by.htp.example.command.impl;
+package by.htp.example.command.impl.user;
 
 import by.htp.example.UserService;
 import by.htp.example.command.RequestParameterName;

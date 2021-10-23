@@ -25,7 +25,7 @@ public class MealRestService implements MealService{
     @Override
     @GET
     @Path("/id")
-    public ArrayList<Meal> getMeals(String keyUserId) throws ServiceException {
+    public List<Meal> getMeals(String keyUserId) throws ServiceException {
         try {
             return mealDao.getMealsFromDB(Integer.parseInt(keyUserId));
         } catch (DaoException e) {

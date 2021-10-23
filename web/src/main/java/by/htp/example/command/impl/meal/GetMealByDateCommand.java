@@ -1,4 +1,4 @@
-package by.htp.example.command.impl;
+package by.htp.example.command.impl.meal;
 
 import by.htp.example.ServiceException;
 import by.htp.example.ServiceProvider;

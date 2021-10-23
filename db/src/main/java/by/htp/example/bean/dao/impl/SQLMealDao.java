@@ -18,8 +18,8 @@ import by.htp.example.bean.dao.connection.DriverManagerManager;
 public class SQLMealDao implements MealDao, DaoQuery {
 
     @Override
-    public ArrayList<Meal> getMealsFromDB(int keyUserId) throws DaoException {
-        ArrayList<Meal> meals = new ArrayList<>();
+    public List<Meal> getMealsFromDB(int keyUserId) throws DaoException {
+       List<Meal> meals = new ArrayList<>();
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_GET_ALL_MEAL)) {
 

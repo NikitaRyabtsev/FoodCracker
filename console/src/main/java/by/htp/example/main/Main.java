@@ -4,6 +4,7 @@ package by.htp.example.main;
 import by.htp.example.MealServiceRemote;
 import by.htp.example.ServiceException;
 import by.htp.example.bean.Meal;
+import by.htp.example.view.ViewMenu;
 import by.htp.example.view.ViewMenuEjb;
 
 import javax.naming.InitialContext;
@@ -23,31 +24,8 @@ public class Main {
     private static final String URL = "http://localhost:8080/rest/meal";
 
     public static void main(String[] args) throws NamingException {
-		ejbBeans();
-       // rest();
-
-    }
-
-    public static void ejbBeans() throws NamingException {
-        Properties p = new Properties();
-        p.setProperty("java.naming.factory.initial", "org.wildfly.naming.client.WildFlyInitialContextFactory");
-        p.setProperty("java.naming.provider.url", "remote+http://localhost:8080");
-        p.setProperty("java.naming.security.principal", "jndiuser");
-        p.setProperty("java.naming.security.credentials", "jndiuser");
-
-        System.out.println("creating context");
-        InitialContext ctx = new InitialContext(p);
-
-        System.out.println("checking on remote");
-        MealServiceRemote mealServiceRemote = (MealServiceRemote) ctx.lookup("web-1.0-SNAPSHOT/MealServiceImpl!by.htp.example.MealServiceRemote");
-      try {
-          System.out.println(mealServiceRemote.getMeals("1"));
-          ViewMenuEjb viewMenuEjb = new ViewMenuEjb();
-          viewMenuEjb.viewMenu();
-      }catch(ServiceException e){
-          e.printStackTrace();
-          e.getMessage();
-      }
+		ViewMenu viewMenu = new ViewMenu();
+		viewMenu.viewMenu();
 
     }
 

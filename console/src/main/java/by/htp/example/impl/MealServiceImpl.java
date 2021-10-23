@@ -17,11 +17,11 @@ import javax.ejb.Stateless;
 @Stateless
 public class MealServiceImpl implements MealServiceRemote , MealService{
 
-
     private DaoProvider provider = DaoProvider.getInstance();
 
-    public ArrayList<Meal> getMeals(String keyUserId) throws ServiceException {
-        ArrayList<Meal> meals;
+    public List<Meal> getMeals(String keyUserId) throws ServiceException {
+
+        List<Meal> meals;
         try {
             meals = provider.getMealDao().getMealsFromDB(Integer.parseInt(keyUserId));
 

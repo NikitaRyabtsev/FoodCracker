@@ -1,6 +1,11 @@
 package by.htp.example.command;
 
 import by.htp.example.command.impl.*;
+import by.htp.example.command.impl.food.AddFoodInMealCommand;
+import by.htp.example.command.impl.food.GetAllFoodCommand;
+import by.htp.example.command.impl.food.GetFoodByMealCommand;
+import by.htp.example.command.impl.meal.*;
+import by.htp.example.command.impl.user.*;
 
 import java.util.HashMap;
 import java.util.Map;

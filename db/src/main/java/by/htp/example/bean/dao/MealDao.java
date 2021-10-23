@@ -9,7 +9,7 @@ import by.htp.example.bean.Meal;
 
 public interface MealDao {
 
-	ArrayList<Meal> getMealsFromDB(int keyUserId) throws DaoException;
+	List<Meal> getMealsFromDB(int keyUserId) throws DaoException;
 
 	Meal createMealInDB(LocalDate date, LocalTime time, int keyUserId) throws DaoException;
 

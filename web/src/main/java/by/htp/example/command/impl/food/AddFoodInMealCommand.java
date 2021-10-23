@@ -1,4 +1,4 @@
-package by.htp.example.command.impl;
+package by.htp.example.command.impl.food;
 
 import by.htp.example.bean.Food;
 import by.htp.example.bean.dao.DaoException;
