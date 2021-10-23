@@ -4,6 +4,7 @@ package by.htp.example.main;
 import by.htp.example.MealServiceRemote;
 import by.htp.example.ServiceException;
 import by.htp.example.bean.Meal;
+import by.htp.example.view.ViewMenuEjb;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -22,8 +23,8 @@ public class Main {
     private static final String URL = "http://localhost:8080/rest/meal";
 
     public static void main(String[] args) throws NamingException {
-		//ejbBeans();
-        rest();
+		ejbBeans();
+       // rest();
 
     }
 
@@ -41,6 +42,8 @@ public class Main {
         MealServiceRemote mealServiceRemote = (MealServiceRemote) ctx.lookup("web-1.0-SNAPSHOT/MealServiceImpl!by.htp.example.MealServiceRemote");
       try {
           System.out.println(mealServiceRemote.getMeals("1"));
+          ViewMenuEjb viewMenuEjb = new ViewMenuEjb();
+          viewMenuEjb.viewMenu();
       }catch(ServiceException e){
           e.printStackTrace();
           e.getMessage();

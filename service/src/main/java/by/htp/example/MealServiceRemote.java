@@ -14,9 +14,9 @@ public interface MealServiceRemote {
 
 	Meal createMeal(String date,String time ,String id) throws ServiceException;
 
-	Meal changeMealCharacteristic(Meal meal) throws ServiceException;
+	Meal changeMealCharacteristic(String date,String time,String mealId) throws ServiceException;
 
-	Meal deleteMeal(Meal meal)throws ServiceException;
+	void deleteMeal(String id)throws ServiceException;
 
 	Meal getMealById(String id) throws ServiceException;
 

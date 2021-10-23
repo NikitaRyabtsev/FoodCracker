@@ -45,11 +45,8 @@
                 <button class="w-25 btn btn-success" type="submit">Войти</button>
             </div>
     </form>
-    <c:if test="${sessionScope.user.block =='block'}">
-        <script>
-            alert("Извините , но вы заблокированы");
-        </script>
-    </c:if>
+    fdfdfdf
+111111
     <form action="controller" method="post">
         <input type="hidden" name="command" value="go_to_registration"/>
         <input type="submit" class="btn btn-success" value="Регистрация"/>

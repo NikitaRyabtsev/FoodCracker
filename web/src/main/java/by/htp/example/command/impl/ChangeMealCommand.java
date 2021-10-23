@@ -21,45 +21,23 @@ public class ChangeMealCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         ServiceProvider provider = ServiceProvider.getInstance();
-       // String idS = request.getParameter(RequestParameterName.REQ_PARAM_ID);
-        String dateS = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
-        String timeS = request.getParameter(RequestParameterName.REQ_PARAM_TIME);
-        String weightS = request.getParameter(RequestParameterName.REQ_PARAM_WEIGHT);
-        String caloriesS = request.getParameter(RequestParameterName.REQ_PARAM_CALORIES);
+        MealService mealService = provider.getServiceMeal();
+        Meal meal = null;
+        String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
+        String date = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
+        String time = request.getParameter(RequestParameterName.REQ_PARAM_TIME);
         try {
-           // int id = Integer.parseInt(idS);
-            LocalDate date = LocalDate.parse(dateS);
-            LocalTime time = LocalTime.parse(timeS);
-            double weight = Integer.parseInt(weightS);
-            double calories = Integer.parseInt(caloriesS);
-            LocalDate checkDateBefore = LocalDate.of(2021, 10, 04);
-            LocalDate checkDateAfter = LocalDate.of(2021, 12, 31);
-            MealService mealService = provider.getServiceMeal();
-
-            Meal meal = new Meal( date, time, weight, calories);
-
-           // meal.setId(id);
-            meal.setDate(date);
-            meal.setTime(time);
-            meal.setWeight(weight);
-            meal.setCalories(calories);
-
+            meal = mealService.changeMealCharacteristic(id, date, time);
             if (meal != null) {
-                if (date.isAfter(checkDateAfter) | date.isBefore(checkDateBefore)) {
-                    mealService.changeMealCharacteristic(meal);
-                    request.setAttribute(RequestParameterName.REQ_PARAM_CHANGE_MEAL, meal);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.CHANGE_MEAL);
-                    dispatcher.forward(request, response);
-                }
-            } else {
-
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+                request.setAttribute(RequestParameterName.REQ_PARAM_CHANGE_MEAL, meal);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.CHANGE_MEAL);
                 dispatcher.forward(request, response);
-                throw new NumberFormatException();
-
+            } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
+                dispatcher.forward(request, response);
             }
-        } catch (ServiceException  e) {
-                e.printStackTrace();
+        } catch (ServiceException e) {
+            e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
         }

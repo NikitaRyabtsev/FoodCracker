@@ -7,13 +7,10 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <title>Главная<img src="/images/FoodCracker.svg" width="30" height="30" class="d-inline-block align-top" alt=""></title>
+    <title>Главная</title>
 </head>
 <body>
 <jsp:include page="/jsp/header.jsp"/>
-<c:if test="${sessionScope.user != null}" >
-    <h3>User</h3>.
-</c:if>
 <div>
 <main role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->

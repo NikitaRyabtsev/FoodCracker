@@ -22,26 +22,23 @@ public class DeleteMealCommand implements Command {
         ServiceProvider provider = ServiceProvider.getInstance();
         MealService mealService = provider.getServiceMeal();
 
-        String idS = request.getParameter(RequestParameterName.REQ_PARAM_ID);
+        String id = request.getParameter(RequestParameterName.REQ_PARAM_ID_MEAL);
         try {
-            int id = Integer.parseInt(idS);
-                Meal meal = new Meal(id);
-                if (meal != null) {
-                    mealService.deleteMeal(meal);
-                    request.setAttribute(RequestParameterName.REQ_PARAM_DELETE_MEAL, meal);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
-                    dispatcher.forward(request, response);
-                } else {
-                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
-                    dispatcher.forward(request, response);
-                }
-
-            } catch(ServiceException e){
+            mealService.deleteMeal(id);
+            if (id != null) {
+                System.out.println(id);
+                request.setAttribute(RequestParameterName.REQ_PARAM_DELETE_MEAL, id);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
+                dispatcher.forward(request, response);
+            } else {
+                response.sendRedirect(RequestParameterName.REQ_PARAM_GET_MEALS);
+            }
+        } catch (ServiceException e) {
             e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
-            }
         }
-
     }
+
+}
 

@@ -19,7 +19,6 @@ public class GetMealByIdCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServiceProvider provider = ServiceProvider.getInstance();
         String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
-
         MealService mealService = provider.getServiceMeal();
         Meal meal;
         try {
@@ -34,6 +33,7 @@ public class GetMealByIdCommand implements Command {
             }
 
         } catch (ServiceException e) {
+            e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
         }

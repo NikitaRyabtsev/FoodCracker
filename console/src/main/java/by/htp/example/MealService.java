@@ -1,6 +1,7 @@
 package by.htp.example;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +16,9 @@ public interface MealService {
 
 	Meal createMeal(String date,String time ,String id) throws ServiceException;
 
-	Meal changeMealCharacteristic(Meal meal) throws ServiceException;
+	Meal changeMealCharacteristic(String date, String time,String mealId )throws ServiceException;
 	
-	Meal deleteMeal(Meal meal)throws ServiceException;
+	void deleteMeal(String id)throws ServiceException;
 	
 	Meal getMealById(String id) throws ServiceException;
 	

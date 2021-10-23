@@ -14,7 +14,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("meal")
+@Path("/meal")
 @Consumes({"application/json"})
 @Produces({"application/json"})
 public class MealRestService implements MealService{
@@ -23,8 +23,9 @@ public class MealRestService implements MealService{
     MealDao mealDao = provider.getMealDao();
 
     @Override
-    @POST
-    public ArrayList<Meal> getMeals(@PathParam(RequestParameterName.REQ_PARAM_ID) String keyUserId) throws ServiceException {
+    @GET
+    @Path("/id")
+    public ArrayList<Meal> getMeals(String keyUserId) throws ServiceException {
         try {
             return mealDao.getMealsFromDB(Integer.parseInt(keyUserId));
         } catch (DaoException e) {
@@ -45,9 +46,11 @@ public class MealRestService implements MealService{
     }
     @Override
     @POST
-    public Meal changeMealCharacteristic(Meal meal) throws ServiceException {
+    public Meal changeMealCharacteristic(String date ,String time, String mealId) throws ServiceException {
+        Meal meal = null;
         try {
-            mealDao.changeMealCharacteristicInDB(meal);
+           meal = mealDao.changeMealCharacteristicInDB(LocalDate.parse(date)
+                   ,LocalTime.parse(time), Integer.parseInt(mealId));
         }catch(DaoException e){
             throw new ServiceException(e);
         }
@@ -55,15 +58,14 @@ public class MealRestService implements MealService{
     }
     @Override
     @POST
-    public Meal deleteMeal(Meal meal) throws ServiceException {
+    public void deleteMeal(String id) throws ServiceException {
         try{
-            return mealDao.deleteMealFromDB(meal);
+            mealDao.deleteMealFromDB(Integer.parseInt(id));
         }catch(DaoException e){
             throw new ServiceException(e);
         }
-
-
     }
+
     @Override
     @POST
     public Meal getMealById(@PathParam(RequestParameterName.REQ_PARAM_ID) String id) throws ServiceException {
@@ -73,6 +75,7 @@ public class MealRestService implements MealService{
             throw new ServiceException(e);
         }
     }
+
     @Override
     @POST
     public List<Meal> getMealByDate(@PathParam(RequestParameterName.REQ_PARAM_DATE) String date) throws ServiceException {
