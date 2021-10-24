@@ -4,7 +4,7 @@ import by.htp.example.bean.Food;
 
 import javax.ejb.Local;
 import java.util.List;
-    @Local
+
 public interface FoodService {
     List getAllFood() throws ServiceException;
 

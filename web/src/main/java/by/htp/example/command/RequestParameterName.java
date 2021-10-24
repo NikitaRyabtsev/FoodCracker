@@ -48,6 +48,7 @@ public class RequestParameterName {
     public static final String REQ_PARAM_CHANGE_MEAL = "changeMeal";
 
     public static final String REQ_PARAM_ID = "id";
+    public static final String REQ_PARAM_ID_MEAL = "idM";
     public static final String REQ_PARAM_DATE = "date";
     public static final String REQ_PARAM_TIME = "time";
     public static final String REQ_PARAM_WEIGHT = "weight";

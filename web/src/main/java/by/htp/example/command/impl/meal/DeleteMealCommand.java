@@ -1,4 +1,4 @@
-package by.htp.example.command.impl;
+package by.htp.example.command.impl.meal;
 
 import by.htp.example.MealService;
 import by.htp.example.ServiceException;
@@ -14,29 +14,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class GetMealByIdCommand implements Command {
+
+public class DeleteMealCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        ServiceProvider provider = ServiceProvider.getInstance();
-        String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
 
+        ServiceProvider provider = ServiceProvider.getInstance();
         MealService mealService = provider.getServiceMeal();
-        Meal meal;
+
+        String id = request.getParameter(RequestParameterName.REQ_PARAM_ID_MEAL);
         try {
-            meal = mealService.getMealById(id);
-            if (meal != null) {
-                request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEAL_BY_ID, meal);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_MEAL);
+            mealService.deleteMeal(id);
+            if (id != null) {
+                System.out.println(id);
+                request.setAttribute(RequestParameterName.REQ_PARAM_DELETE_MEAL, id);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
                 dispatcher.forward(request, response);
             } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
-                dispatcher.forward(request, response);
+                response.sendRedirect(RequestParameterName.REQ_PARAM_GET_MEALS);
             }
-
         } catch (ServiceException e) {
+            e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
         }
-
     }
+
 }
+

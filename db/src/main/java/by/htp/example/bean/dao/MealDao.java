@@ -9,13 +9,14 @@ import by.htp.example.bean.Meal;
 
 public interface MealDao {
 
-	ArrayList<Meal> getMealsFromDB(int keyUserId) throws DaoException;
+	List<Meal> getMealsFromDB(int keyUserId) throws DaoException;
 
 	Meal createMealInDB(LocalDate date, LocalTime time, int keyUserId) throws DaoException;
 
-	void changeMealCharacteristicInDB(Meal meal) throws DaoException;
+	Meal changeMealCharacteristicInDB(LocalDate date ,
+									  LocalTime time,int mealId) throws DaoException;
 
-	Meal deleteMealFromDB(Meal meal) throws DaoException;
+	void deleteMealFromDB(int id) throws DaoException;
 
 	Meal getMealByIdFromDB(int idMeal) throws DaoException;
 

@@ -21,20 +21,23 @@
         <td>Время </td>
         <td>Вес(г)</td>
         <td>Калории</td>
-
+        <td></td>
+        <td></td>
     </tr>
-    <tr>
         <c:forEach items="${requestScope.getMeals}" var="meal" varStatus="status">
+            <tr>
         <td><c:out value="${meal.getDate()}"/></td>
         <td><c:out value="${meal.getTime()}"/></td>
         <td><c:out value="${meal.getWeight()}"/></td>
         <td><c:out value="${meal.getCalories()}"/></td>
+                <td>
         <form action="controller" method="post">
             <input type="hidden" name="command" value="get_food_by_meal"/>
             <input type="hidden" name="keyUserId" value="${user.id}"/>
             <input type="hidden" name="keyMealId" value="${meal.getId()}">
-            <td><input type="submit" value="Просмотреть"></td>
+            <input type="submit" value="Просмотреть">
         </form>
+                </td>
 
             <%--            <div class="dropdown show">--%>
             <%--           <td> <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
@@ -54,16 +57,18 @@
             <%--            </div>--%>
             <%--        </div>--%>
 
-<%--        <form action="controller" method="post">--%>
-<%--            <input type="hidden" name="command" value="get_meal_by_id"/>--%>
-<%--            <input type="hidden" name="id" value="${meal.getId()}"/>--%>
-<%--            <td><input type="submit" value=""/></td>--%>
-<%--        </form>--%>
+        <form action="controller" method="post">
+            <input type="hidden" name="command" value="get_meal_by_id"/>
+            <input type="hidden" name="id" value="${meal.getId()}"/>
+            <td><input type="submit" value=""/></td>
+        </form>
+                <td>
         <form action="controller" method="post">
             <input type="hidden" name="command" value="delete_meal"/>
-            <input type="hidden" name="id" value="${meal.getId()}"/>
-            <td><input type="submit" value="" class="btn-close"/></td>
+            <input type="hidden" name="idM" value="${meal.getId()}"/>
+            <input type="submit" value="" class="btn-close"/>
         </form>
+                </td>
 
     </tr>
     </c:forEach>

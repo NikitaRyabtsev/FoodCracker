@@ -1,6 +1,5 @@
-package by.htp.example.command.impl;
+package by.htp.example.command.impl.user;
 
-import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.user.User;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
@@ -16,23 +15,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AddUserWeightCommand implements Command {
+public class BlockUserCommand implements Command {
     @Inject
     private UserService userService;
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServiceProvider provider = ServiceProvider.getInstance();
         userService = provider.getUserService();
-        User user;
-
+        User user = null;
+        String block = request.getParameter(RequestParameterName.REQ_PARAM_BLOCK_USER);
         String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
-        String weight = request.getParameter(RequestParameterName.REQ_PARAM_WEIGHT);
-        String date = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
-
         try {
-            user = userService.addUserWeight(id, weight,date);
+            user = new User(Integer.parseInt(id), block);
             if (user != null) {
-                request.setAttribute(RequestParameterName.REQ_PARAM_ADD_USER_WEIGHT, user);
+                System.out.println(user);
+                userService.blockUser(user);
+                System.out.println(user);
+                request.setAttribute(RequestParameterName.REQ_PARAM_BLOCK_USER, user);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
                 dispatcher.forward(request, response);
             }
@@ -41,5 +40,6 @@ public class AddUserWeightCommand implements Command {
             dispatcher.forward(request, response);
             e.printStackTrace();
         }
+
     }
 }

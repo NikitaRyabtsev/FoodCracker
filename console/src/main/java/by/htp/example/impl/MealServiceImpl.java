@@ -17,11 +17,11 @@ import javax.ejb.Stateless;
 @Stateless
 public class MealServiceImpl implements MealServiceRemote , MealService{
 
-
     private DaoProvider provider = DaoProvider.getInstance();
 
-    public ArrayList<Meal> getMeals(String keyUserId) throws ServiceException {
-        ArrayList<Meal> meals;
+    public List<Meal> getMeals(String keyUserId) throws ServiceException {
+
+        List<Meal> meals;
         try {
             meals = provider.getMealDao().getMealsFromDB(Integer.parseInt(keyUserId));
 
@@ -44,9 +44,12 @@ public class MealServiceImpl implements MealServiceRemote , MealService{
     }
 
     @Override
-    public Meal changeMealCharacteristic(Meal meal) throws ServiceException {
+    public Meal changeMealCharacteristic(String date ,
+                                         String time,String mealId) throws ServiceException {
+        Meal meal;
         try {
-            provider.getMealDao().changeMealCharacteristicInDB(meal);
+            meal = provider.getMealDao().changeMealCharacteristicInDB(LocalDate.parse(date)
+                        ,LocalTime.parse(time) , Integer.parseInt(mealId));
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
@@ -54,10 +57,10 @@ public class MealServiceImpl implements MealServiceRemote , MealService{
     }
 
     @Override
-    public Meal deleteMeal(Meal meal) throws ServiceException {
+    public void deleteMeal(String id) throws ServiceException {
 
         try {
-            return provider.getMealDao().deleteMealFromDB(meal);
+          provider.getMealDao().deleteMealFromDB(Integer.parseInt(id));
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

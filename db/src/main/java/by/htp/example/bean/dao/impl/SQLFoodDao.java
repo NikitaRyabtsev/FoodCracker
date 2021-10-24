@@ -41,7 +41,6 @@ public class SQLFoodDao implements FoodDao, DaoQuery {
             preparedStatement.setInt(2, keyUserId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-
                 foods.add(init(resultSet));
             }
             resultSet.close();

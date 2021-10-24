@@ -57,8 +57,14 @@ public class Meal implements Serializable {
 		this.id = id;
     }
 
+    public Meal(int id, LocalDate date, LocalTime time) {
+		this.id = id;
+		this.date = date;
+		this.time = time;
+    }
 
-	public int getKeyUserId() {
+
+    public int getKeyUserId() {
 		return keyUserId;
 	}
 

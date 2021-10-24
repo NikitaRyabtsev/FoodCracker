@@ -1,4 +1,4 @@
-package by.htp.example.command.impl;
+package by.htp.example.command.impl.user;
 
 import by.htp.example.UserService;
 import by.htp.example.command.RequestParameterName;
@@ -46,7 +46,9 @@ public class AuthorizationCommand implements Command {
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
                     dispatcher.forward(request, response);
                 }else if(Status.BLOCK.toString().equalsIgnoreCase(user.getBlock())){
-                    response.sendRedirect(JSPPageName.USER_AUTH_PAGE_JSP);
+                    request.setAttribute("blocked", "true");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
+                    dispatcher.forward(request, response);
                 }
             }else{
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
