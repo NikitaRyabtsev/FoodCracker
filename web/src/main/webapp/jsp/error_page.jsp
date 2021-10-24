@@ -3,11 +3,10 @@
 <html>
 <head>
     <title>Ошибка</title>
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <jsp:include page="/jsp/header.jsp"/>
-<img src="/images/error.png">
+<%--<img src="/images/error.png">--%>
 <button type="button" name="back" onclick="history.back()">back</button>
 </body>
 </html>

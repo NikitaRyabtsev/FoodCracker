@@ -1,11 +1,8 @@
 package by.htp.example.view;
 
-import by.htp.example.ServiceException;
 import by.htp.example.util.Util;
 
 import javax.naming.NamingException;
-import java.time.DateTimeException;
-import java.util.InputMismatchException;
 
 public class ViewMenu {
 
@@ -22,7 +19,7 @@ public class ViewMenu {
                         viewMenuConsole.viewMenuConsole();
                         break;
                     case 2:
-                        viewMenuEjb.viewMenuEjb();
+                       // viewMenuEjb.viewMenuEjb();
                         break;
                     case 3:
                         System.out.println("Goodbye");
@@ -30,7 +27,7 @@ public class ViewMenu {
                     default:
                         System.out.println(">>>[Info] Wrong choose");
                 }
-            } catch (IllegalArgumentException | NamingException ex) {
+            } catch (IllegalArgumentException  ex) {
                 System.out.println("[ERROR] Something wrong in viewMenu");
             }
         }

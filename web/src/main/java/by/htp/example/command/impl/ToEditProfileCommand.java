@@ -22,7 +22,7 @@ public class ToEditProfileCommand implements Command {
     @Inject
     private UserService userService;
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         ServiceProvider provider = ServiceProvider.getInstance();
         userService = provider.getUserService();
         User user = null;

@@ -18,7 +18,7 @@ import java.util.List;
 
 public class GetAllFoodCommand implements Command {
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServiceProvider provider = ServiceProvider.getInstance();
         FoodService foodService = provider.getFoodService();
         List<Food> foods;

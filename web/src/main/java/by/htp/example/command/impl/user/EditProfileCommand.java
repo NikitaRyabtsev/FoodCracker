@@ -18,7 +18,7 @@ import java.time.LocalDate;
 
 public class EditProfileCommand implements Command {
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServiceProvider provider = ServiceProvider.getInstance();
         UserService userService = provider.getUserService();
         User user = null;

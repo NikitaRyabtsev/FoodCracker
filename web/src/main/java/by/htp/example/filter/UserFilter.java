@@ -41,7 +41,7 @@ public class UserFilter implements Filter {
             chain.doFilter(req,resp);
         } else if (CommandName.GO_TO_REGISTRATION.toString().equalsIgnoreCase(param)) {
             chain.doFilter(req, resp);
-        }else if(url.equals("/rest/meal")){
+        }else if(url.equals("/rest/meal") | url.equals("/ws/meal")){
             chain.doFilter(req,resp);
         } else {
             req.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP).forward(req, resp);

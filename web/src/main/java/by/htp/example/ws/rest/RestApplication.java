@@ -1,8 +1,8 @@
-package by.htp.example.rest;
+package by.htp.example.ws.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath("rest")
+@ApplicationPath("ws/rest")
 public class RestApplication extends Application {
 }

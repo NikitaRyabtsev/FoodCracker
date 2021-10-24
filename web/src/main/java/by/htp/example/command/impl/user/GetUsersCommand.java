@@ -20,7 +20,7 @@ import java.util.List;
 
 public class GetUsersCommand implements Command {
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         User user = null;
 
         ServiceProvider provider = ServiceProvider.getInstance();

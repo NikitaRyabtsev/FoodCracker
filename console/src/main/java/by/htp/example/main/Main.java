@@ -21,28 +21,11 @@ import java.util.Properties;
 
 public class Main {
 
-    private static final String URL = "http://localhost:8080/rest/meal";
 
-    public static void main(String[] args) throws NamingException {
+    public static void main(String[] args){
 		ViewMenu viewMenu = new ViewMenu();
 		viewMenu.viewMenu();
 
     }
 
-    public static void rest(){
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(URL);
-
-        Meal meal = new Meal();
-
-        Response responseAdd = target.request(MediaType.APPLICATION_JSON).post(Entity.entity(meal, MediaType.APPLICATION_JSON));
-
-
-        Response responseGet = target.request(MediaType.APPLICATION_JSON).get();
-        GenericType<List<Meal>> type = new GenericType<List<Meal>>() {};
-        List<Meal> meals = responseGet.readEntity(type);
-
-        client.close();
-
-    }
 }

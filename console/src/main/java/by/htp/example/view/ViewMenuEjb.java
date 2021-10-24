@@ -15,55 +15,55 @@ import java.time.format.DateTimeParseException;
 import java.util.*;
 
 public class ViewMenuEjb{
-
-    @Inject
-    private MealServiceRemote mealServiceRemote = new MealServiceImpl();
-
-    private Scanner scan;
-
-	public void viewMenuEjb() throws NamingException {
-		ejbBeans();
-		int userChoose = 0;
-		String userId = "1";
-		while (userChoose != 7) {
-			try {
-				showMenu();
-				userChoose = Util.scanInt();
-
-				switch (userChoose) {
-				case 1://
-					displayMeals(mealServiceRemote.getMeals(userId));
-					break;
-				case 2://
-					System.out.println(mealServiceRemote.createMeal(String.valueOf(Util.scanDate())
-							,String.valueOf(Util.scanTime()),userId));
-					break;
-				case 3:
-					mealServiceRemote.changeMealCharacteristic(String.valueOf
-							(Util.scanDate()),String.valueOf(Util.scanTime()),userId);
-					break;
-				case 4:
-					mealServiceRemote.deleteMeal(String.valueOf(Util.scanInt()));
-					break;
-				case 5:
-					displayMeals(mealServiceRemote.getMeals(userId));
-					System.out.println(mealServiceRemote.getMealById(String.valueOf(Util.scanInt())));
-					break;
-				case 6:
-					displayMeals(mealServiceRemote.getMealByDate(String.valueOf(Util.scanDate())));
-					break;
-				case 7:
-					System.out.println("Goodbye");
-					break;
-
-				default:
-					System.out.println(">>>[Info] Wrong choose");
-				}
-			} catch (InputMismatchException |  DateTimeException | IllegalArgumentException  | ServiceException ex) {
-				ex.getMessage();
-			}
-		}
-	}
+//
+//    @Inject
+//    private MealServiceRemote mealServiceRemote = new MealServiceImpl();
+//
+//    private Scanner scan;
+//
+//	public void viewMenuEjb() throws NamingException {
+//		ejbBeans();
+//		int userChoose = 0;
+//		String userId = "1";
+//		while (userChoose != 7) {
+//			try {
+//				showMenu();
+//				userChoose = Util.scanInt();
+//
+//				switch (userChoose) {
+//				case 1://
+//					displayMeals(mealServiceRemote.getMeals(userId));
+//					break;
+//				case 2://
+//					System.out.println(mealServiceRemote.createMeal(String.valueOf(Util.scanDate())
+//							,String.valueOf(Util.scanTime()),userId));
+//					break;
+//				case 3:
+//					mealServiceRemote.changeMealCharacteristic(String.valueOf
+//							(Util.scanDate()),String.valueOf(Util.scanTime()),userId);
+//					break;
+//				case 4:
+//					mealServiceRemote.deleteMeal(String.valueOf(Util.scanInt()));
+//					break;
+//				case 5:
+//					displayMeals(mealServiceRemote.getMeals(userId));
+//					System.out.println(mealServiceRemote.getMealById(String.valueOf(Util.scanInt())));
+//					break;
+//				case 6:
+//					displayMeals(mealServiceRemote.getMealByDate(String.valueOf(Util.scanDate())));
+//					break;
+//				case 7:
+//					System.out.println("Goodbye");
+//					break;
+//
+//				default:
+//					System.out.println(">>>[Info] Wrong choose");
+//				}
+//			} catch (InputMismatchException |  DateTimeException | IllegalArgumentException  | ServiceException ex) {
+//				ex.getMessage();
+//			}
+//		}
+//	}
 
 
 
