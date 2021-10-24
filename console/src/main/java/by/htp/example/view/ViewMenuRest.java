@@ -23,14 +23,11 @@ import java.util.Scanner;
 public class ViewMenuRest {
     private static final String URL = "http://localhost:8080/rest/meal";
 
-    public static void rest() {
+    public void rest() {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(URL);
-
         Meal meal = new Meal();
-
         Response responseAdd = target.request(MediaType.APPLICATION_JSON).post(Entity.entity(meal, MediaType.APPLICATION_JSON));
-
         Response responseGet = target.request(MediaType.APPLICATION_JSON).get();
         GenericType<List<Meal>> type = new GenericType<List<Meal>>() {
         };

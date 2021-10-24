@@ -21,7 +21,6 @@ public class SoapMealService {
 
     @WebMethod(operationName = "getMeals")
     public List<Meal> getMeals(@WebParam(name = "userId") String keyUserId) throws ServiceException {
-        keyUserId = "4";
         try {
             return mealDao.getMealsFromDB(Integer.parseInt(keyUserId));
         } catch (DaoException e) {
@@ -31,11 +30,12 @@ public class SoapMealService {
 
 
     @WebMethod(operationName = "addMeal")
-    public Meal createMeal(@WebParam(name = "date") LocalDate date,
-                           @WebParam(name = "time") LocalTime time,
-                           @WebParam(name = "userId") int id) throws ServiceException{
+    public Meal createMeal(@WebParam(name = "date") String date,
+                           @WebParam(name = "time") String time,
+                           @WebParam(name = "userId") String id) throws ServiceException{
         try {
-            return mealDao.createMealInDB(date,time,id);
+            return mealDao.createMealInDB(LocalDate.parse(date),LocalTime.parse(time),
+                    Integer.parseInt(id));
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
@@ -64,11 +64,10 @@ public class SoapMealService {
         }
     }
 
-
     @WebMethod(operationName = "getMealById")
-    public Meal getMealById(@WebParam(name = "mealId") int id) throws ServiceException {
+    public Meal getMealById(@WebParam(name = "mealId") String id) throws ServiceException {
         try {
-            return mealDao.getMealByIdFromDB(id);
+            return mealDao.getMealByIdFromDB(Integer.parseInt(id));
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

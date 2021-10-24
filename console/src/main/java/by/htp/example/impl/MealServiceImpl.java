@@ -15,7 +15,7 @@ import by.htp.example.ServiceException;
 import javax.ejb.Stateless;
 
 @Stateless
-public class MealServiceImpl implements  MealService{
+public class MealServiceImpl implements  MealService,MealServiceRemote{
 
     private DaoProvider provider = DaoProvider.getInstance();
 

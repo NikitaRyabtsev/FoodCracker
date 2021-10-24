@@ -45,6 +45,12 @@
     <input type="number" name="weight" value="">
     <td><input type="submit" value="Добавить вес"/></td>
 </form>
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="get_weight"/>
+    <input type="hidden" name="id" value="${user.id}"/>
+    <input type ="hidden" name="date">
+    <td><input type="submit" value="Статистика веса"/></td>
+</form>
 <h3>Изменить профиль</h3>
 <form action="controller" method="post">
     <input type="hidden" name="command" value="edit_profile"/>

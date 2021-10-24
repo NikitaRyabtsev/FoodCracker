@@ -28,9 +28,7 @@ public class GetFoodByMealCommand implements Command {
         try{
             foods = foodService.getFoodByMeal(keyMealId,keyUserId);
             if(foods!=null | !foods.isEmpty()){
-
                 request.setAttribute(RequestParameterName.REQ_PARAM_GET_FOOD_BY_MEAL, foods);
-                System.out.println(request.getParameter("keyMealId"));
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_FOOD_BY_MEAL);
                 dispatcher.forward(request, response);
             }
