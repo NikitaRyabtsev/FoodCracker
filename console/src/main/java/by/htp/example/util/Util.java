@@ -18,7 +18,7 @@ public class Util {
 		try {
 			System.out.println("Input year : [2000-2030]");
 			year = scan.nextInt();
-			if (year < 2000 | year > 2030) {
+			if (year > 2000 | year < 2030) {
 				System.out.println("Input month : [1-12]");
 				month = scan.nextInt();
 				System.out.println("Input days : [1-31]");

@@ -45,7 +45,7 @@ public class ServiceException_Exception
     /**
      * 
      * @return
-     *     returns fault bean: by.htp.example.main.soap.ServiceException
+     *     returns fault bean: by.htp.example.soap.ServiceException
      */
     public ServiceException getFaultInfo() {
         return faultInfo;
