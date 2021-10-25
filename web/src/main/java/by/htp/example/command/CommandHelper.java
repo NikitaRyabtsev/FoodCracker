@@ -27,6 +27,7 @@ public class CommandHelper {
         commands.put(CommandName.BLOCK_USER,new BlockUserCommand());
         commands.put(CommandName.DELETE_USER, new DeleteUserCommand());
         commands.put(CommandName.EDIT_PROFILE,new EditProfileCommand());
+        commands.put(CommandName.GET_WEIGHT, new GetUserWeightCommand());
 //Meal
         commands.put(CommandName.NO_SUCH_COMMAND, new NoSuchCommand());
         commands.put(CommandName.GET_ALL_MEALS , new GetAllMealsCommand());

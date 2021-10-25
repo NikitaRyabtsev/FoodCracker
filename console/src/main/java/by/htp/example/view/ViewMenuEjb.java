@@ -31,10 +31,10 @@ public class ViewMenuEjb{
 				userChoose = Util.scanInt();
 
 				switch (userChoose) {
-				case 1://
+				case 1:
 					displayMeals(mealServiceRemote.getMeals(userId));
 					break;
-				case 2://
+				case 2:
 					System.out.println(mealServiceRemote.createMeal(String.valueOf(Util.scanDate())
 							,String.valueOf(Util.scanTime()),userId));
 					break;
@@ -64,8 +64,6 @@ public class ViewMenuEjb{
 			}
 		}
 	}
-
-
 
 	private void showMenu() {
 		System.out.println("Choose your options : ");

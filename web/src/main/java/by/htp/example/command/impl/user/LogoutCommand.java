@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class LogoutCommand implements Command {
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession(false);
         session.removeAttribute(RequestParameterName.REQ_SESSION_USER);
         session.invalidate();

@@ -14,7 +14,7 @@ import java.io.IOException;
 public class ToRegistrationCommand implements Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.REGISTRATION);
         dispatcher.forward(request, response);
     }

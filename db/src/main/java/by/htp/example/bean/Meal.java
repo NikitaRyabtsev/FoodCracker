@@ -1,21 +1,34 @@
 package by.htp.example.bean;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import by.htp.example.LocalDateAdapter;
+import by.htp.example.LocalTimeAdapter;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Meal implements Serializable {
 
 	private int keyUserId;
-//	@XmlTransient
+	@XmlElement(name="mealId")
 	private int id;
-//	@XmlElement(name="DateOfEating")
+
+	@XmlElement(name="DateOfEating")
+	@XmlJavaTypeAdapter(LocalDateAdapter.class)
 	private LocalDate date;
+
+	@XmlElement(name="timeOfEating")
+	@XmlJavaTypeAdapter(LocalTimeAdapter.class)
 	private LocalTime time;
+	@XmlTransient
 	private double weight;
 	private double calories;
 
@@ -64,7 +77,7 @@ public class Meal implements Serializable {
     }
 
 
-    public int getKeyUserId() {
+	public int getKeyUserId() {
 		return keyUserId;
 	}
 
@@ -80,7 +93,6 @@ public class Meal implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public LocalDate getDate() {
 		return date;

@@ -34,13 +34,11 @@ public class ControllerServlet extends HttpServlet {
         Command command;
         commandName = request.getParameter(RequestParameterName.REQ_PARAM_COMMAND_NAME);
         System.out.println("Comm name: " + commandName);
-
         command = CommandHelper.getInstance().getCommand(commandName);
 
         try {
             command.execute(request, response);
         } catch (IOException | ServletException | ServiceException | DaoException e) {
-
             e.printStackTrace();
         }
 

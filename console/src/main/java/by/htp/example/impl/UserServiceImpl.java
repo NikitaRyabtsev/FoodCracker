@@ -118,4 +118,13 @@ public class UserServiceImpl implements UserService{
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public User getWeightFromDB(String id,String date) throws ServiceException {
+        try{
+            return provider.getUserDao().getWeightFromDB(Integer.parseInt(id),LocalDate.parse(date));
+        }catch(DaoException e){
+            throw new ServiceException(e);
+        }
+    }
 }
