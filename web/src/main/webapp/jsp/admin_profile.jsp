@@ -44,13 +44,26 @@
         <td><c:out value="${user.secondName}"/></td>
         <td><c:out value="${user.email}"/></td>
         <td><c:out value="${user.sex}"/></td>
-        <td><c:out value="${user.weight}"/></td>
-    <td><c:out value="${user.dateOfWeighting}"/></td>
+        <td><c:out value="${info.weight}"/></td>
+        <td><c:out value="${info.dateOfWeighting}"/></td>
         <td><c:out value="${user.dateOfBirth}"/></td>
         <td><c:out value="${user.role}"/></td>
         <td><c:out value="${user.block}"/></td>
     </tr>
 </table>
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="add_user_weight"/>
+    <input type="hidden" name="id" value="${user.id}"/>
+    <input type="date" name="date" value=""/>
+    <input type="number" name="weight" value="">
+    <td><input type="submit" value="Добавить вес"/></td>
+</form>
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="get_weight"/>
+    <input type="hidden" name="id" value="${user.id}"/>
+    <input type="hidden" name="date">
+    <td><input type="submit" value="Статистика веса"/></td>
+</form>
 <jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>

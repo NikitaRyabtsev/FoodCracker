@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 public class GetUserWeightCommand implements Command {
     @Override
@@ -20,13 +21,12 @@ public class GetUserWeightCommand implements Command {
         UserService userService = provider.getUserService();
 
         String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
-        String date = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
-        User user = null;
+        List<User> users;
         try{
-            user = userService.getWeightFromDB(id,date);
-            if(user != null){
-                request.setAttribute(RequestParameterName.REQ_PARAM_GET_USER_WEIGHT, user);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_USERS);
+            users = userService.getWeightFromDB(id);
+            if(users != null){
+                request.setAttribute(RequestParameterName.REQ_PARAM_GET_USER_WEIGHT, users);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_USER_WEIGHT);
                 dispatcher.forward(request, response);
             }else {
                 response.sendRedirect(JSPPageName.USER_INDEX_JSP);

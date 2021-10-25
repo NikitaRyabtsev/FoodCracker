@@ -17,7 +17,7 @@ public interface UserDao {
 
     List<User> getAllUsersFromDB() throws DaoException;
 
-	User getEditAdminAccessInfo(int id) throws DaoException;
+	User getEditAdminAccessInfo(int id , int weightId) throws DaoException;
 
 	User getEditUserAccessInfo(int id , int weightId) throws DaoException;
 
@@ -26,7 +26,7 @@ public interface UserDao {
 
     User addUserWeightInDB(int id , double weight,LocalDate date) throws DaoException;
 
-    User getWeightFromDB(int id,LocalDate date) throws DaoException;
+    List<User>  getWeightFromDB(int id) throws DaoException;
 
 
 }

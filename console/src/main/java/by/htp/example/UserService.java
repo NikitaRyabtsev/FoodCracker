@@ -15,7 +15,7 @@ public interface UserService {
 
     void registration(User user) throws ServiceException;
 
-    User getAdminAccessInfo(int id) throws ServiceException;
+    User getAdminAccessInfo(String id ,  String weightId) throws ServiceException;
 
     List<User> getUsers() throws ServiceException;
 
@@ -30,5 +30,5 @@ public interface UserService {
     User EditProfileInDB(String login , String password , String name, String secondName
             , String email, String sex , String dateOfBirth , String id) throws ServiceException;
 
-    User getWeightFromDB(String id, String date) throws ServiceException;
+    List<User> getWeightFromDB(String id) throws ServiceException;
 }

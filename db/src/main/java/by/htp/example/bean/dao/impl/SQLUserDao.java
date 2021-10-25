@@ -124,6 +124,7 @@ public class SQLUserDao implements UserDao, DaoQuery {
                 LocalDate dateOfWeighting = rs.getObject("date", LocalDate.class);
                 user.setDateOfWeighting(dateOfWeighting);
                 user.setIdWeight(rs.getInt("user_idUser"));
+
             }
 
         } catch (SQLException e) {
@@ -172,32 +173,41 @@ public class SQLUserDao implements UserDao, DaoQuery {
     }
 
     @Override
-    public User getWeightFromDB(int id,LocalDate date) throws DaoException {
+    public List<User> getWeightFromDB(int id) throws DaoException {
+        List<User> users = new ArrayList<>();
         User user = new User();
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_USER_WEIGHT)) {
             prepareStatement.setInt(1, id);
             ResultSet rs = prepareStatement.executeQuery();
             if (rs.next()) {
-                date = rs.getObject("date", LocalDate.class);
+
+                user.setWeight(rs.getDouble("us_weight"));
+                LocalDate dateOfWeighting = rs.getObject("date",LocalDate.class);
+                user.setDateOfWeighting(dateOfWeighting);
+                users.add(user);
             }
             rs.close();
         } catch (SQLException e) {
             throw new DaoException(e);
         }
-        return user;
+        return users;
     }
 
     @Override
-    public User getEditAdminAccessInfo(int id) throws DaoException {
+    public User getEditAdminAccessInfo(int id , int weightId) throws DaoException {
         User user = null;
         try (Connection connection = DriverManagerManager.getConnection();
-             PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_ADMIN_ACCESS_INFO)) {
-            prepareStatement.setInt(1, id);
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_GET_ADMIN_ACCESS_INFO)) {
+            preparedStatement.setInt(1, weightId);
+            preparedStatement.setInt(2, id );
 
-            ResultSet rs = prepareStatement.executeQuery();
+            ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 user = init(rs);
+                user.setWeight(rs.getDouble("weight"));
+                LocalDate dateOfWeighting = rs.getObject("date" , LocalDate.class);
+                user.setDateOfWeighting(dateOfWeighting);
             }
             rs.close();
         } catch (SQLException e) {
@@ -221,9 +231,6 @@ public class SQLUserDao implements UserDao, DaoQuery {
             user.setDateOfBirth(localDate);
             user.setRole(rs.getString("role"));
             user.setBlock(rs.getString("block"));
-            user.setWeight(rs.getDouble("weight"));
-            LocalDate dateOfWeighting = rs.getObject("date" , LocalDate.class);
-            user.setDateOfWeighting(dateOfWeighting);
             user.setIdWeight(rs.getInt("user_idUser"));
 
         } catch (SQLException e) {
