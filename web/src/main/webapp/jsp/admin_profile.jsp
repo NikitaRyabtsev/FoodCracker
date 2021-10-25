@@ -32,6 +32,7 @@
         <td>E-mail</td>
         <td>Пол</td>
         <td>Вес</td>
+        <td>Дата взвешивания</td>
         <td>Дата Рождения</td>
         <td>Уровень доступа</td>
         <td>Статус</td>
@@ -44,6 +45,7 @@
         <td><c:out value="${user.email}"/></td>
         <td><c:out value="${user.sex}"/></td>
         <td><c:out value="${user.weight}"/></td>
+    <td><c:out value="${user.dateOfWeighting}"/></td>
         <td><c:out value="${user.dateOfBirth}"/></td>
         <td><c:out value="${user.role}"/></td>
         <td><c:out value="${user.block}"/></td>

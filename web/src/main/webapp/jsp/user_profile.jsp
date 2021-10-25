@@ -22,7 +22,8 @@
         <td>Фамилия</td>
         <td>E-mail</td>
         <td>Пол</td>
-        <td>Вес(кг)</td>
+        <td>Вес</td>
+        <td>Дата взвешивания</td>
         <td>Дата Рождения</td>
         <td>Уровень доступа</td>
 
@@ -34,6 +35,7 @@
         <td><c:out value="${user.email}"/></td>
         <td><c:out value="${user.sex}"/></td>
         <td><c:out value="${user.weight}"/></td>
+        <td><c:out value="${user.dateOfWeighting}"/></td>
         <td><c:out value="${user.dateOfBirth}"/></td>
         <td><c:out value="${user.role}"/></td>
     </tr>
@@ -48,7 +50,7 @@
 <form action="controller" method="post">
     <input type="hidden" name="command" value="get_weight"/>
     <input type="hidden" name="id" value="${user.id}"/>
-    <input type ="hidden" name="date">
+    <input type="hidden" name="date">
     <td><input type="submit" value="Статистика веса"/></td>
 </form>
 <h3>Изменить профиль</h3>

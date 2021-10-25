@@ -19,7 +19,7 @@ public interface UserDao {
 
 	User getEditAdminAccessInfo(int id) throws DaoException;
 
-	User getEditUserAccessInfo(int id) throws DaoException;
+	User getEditUserAccessInfo(int id , int weightId) throws DaoException;
 
     User EditProfileInDB(String login , String password , String name, String secondName
             ,String email,String sex , LocalDate dateOfBirth , int id) throws DaoException;

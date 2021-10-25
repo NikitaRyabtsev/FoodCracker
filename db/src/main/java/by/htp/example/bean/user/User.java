@@ -7,26 +7,42 @@ import java.util.Objects;
 public class User {
 
     private int id;
+    private int idWeight;
     private String login;
     private String password;
     private String email;
     private String name;
     private String secondName;
-    private double weight;
     private String sex;
     private LocalDate dateOfBirth;
     private String role;
     private String block;
+    private double weight;
+    private LocalDate dateOfWeighting;
 
-
-    public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth){
+    public User(int id, String login, String password, String email, String name, String secondName, String sex, LocalDate dateOfBirth, String role, String block, double weight, LocalDate dateOfWeighting) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
         this.name = name;
         this.secondName = secondName;
+        this.sex = sex;
+        this.dateOfBirth = dateOfBirth;
+        this.role = role;
+        this.block = block;
         this.weight = weight;
+        this.dateOfWeighting = dateOfWeighting;
+    }
+
+    public User(int id, String login, String password, String email, String name, String secondName, String sex, LocalDate dateOfBirth){
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+        this.secondName = secondName;
+
         this.sex = sex;
         this.dateOfBirth = dateOfBirth;
     }
@@ -46,7 +62,6 @@ public class User {
         this.email = email;
         this.name = name;
         this.secondName = secondName;
-        this.weight = weight;
         this.sex = sex;
         this.dateOfBirth = dateOfBirth;
         this.role = role;
@@ -60,7 +75,6 @@ public class User {
         this.email = email;
         this.name = name;
         this.secondName = secondName;
-        this.weight = weight;
         this.sex = sex;
         this.dateOfBirth = dateOfBirth;
         this.block = block;
@@ -75,8 +89,15 @@ public class User {
         this.id = id;
     }
 
+    public int getIdWeight() {
+        return idWeight;
+    }
 
-    public User(String role, String name, int id, String block,String email) {
+    public void setIdWeight(int idWeight) {
+        this.idWeight = idWeight;
+    }
+
+    public User(String role, String name, int id, String block, String email) {
         this.role = role;
         this.name = name;
         this.id = id;
@@ -84,8 +105,7 @@ public class User {
         this.email = email;
     }
 
-    public User(int id ,String login, String password, String name, String secondName, String email, String sex, LocalDate dateOfBirth) {
-        this.id = id;
+    public User(String login, String password, String email, String name, String secondName, String sex, LocalDate dateOfBirth, String role, String block) {
         this.login = login;
         this.password = password;
         this.email = email;
@@ -93,10 +113,25 @@ public class User {
         this.secondName = secondName;
         this.sex = sex;
         this.dateOfBirth = dateOfBirth;
+        this.block = block;
+        this.role = role;
     }
 
+    public double getWeight() {
+        return weight;
+    }
 
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
+    public LocalDate getDateOfWeighting() {
+        return dateOfWeighting;
+    }
+
+    public void setDateOfWeighting(LocalDate dateOfWeighting) {
+        this.dateOfWeighting = dateOfWeighting;
+    }
 
     public int getId() {
         return id;
@@ -146,14 +181,6 @@ public class User {
         this.secondName = secondName;
     }
 
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
     public String getSex() {
         return sex;
     }
@@ -192,7 +219,6 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id == user.id &&
-                Double.compare(user.weight, weight) == 0 &&
                 Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
@@ -206,7 +232,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, password, email, name, secondName, weight, sex, dateOfBirth, role, block);
+        return Objects.hash(id, login, password, email, name, secondName, sex, dateOfBirth, role, block);
     }
 
     @Override
@@ -218,7 +244,6 @@ public class User {
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", secondName='" + secondName + '\'' +
-                ", weight=" + weight +
                 ", sex='" + sex + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", role='" + role + '\'' +

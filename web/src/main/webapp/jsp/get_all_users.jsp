@@ -26,6 +26,7 @@
         <td>E-mail</td>
         <td>Пол</td>
         <td>Вес</td>
+        <td>Последняя дата взвешивания</td>
         <td>Дата Рождения</td>
         <td>Уровень доступа</td>
         <td>Статус</td>
@@ -40,23 +41,24 @@
         <td><c:out value="${user.getEmail()}"/></td>
         <td><c:out value="${user.getSex()}"/></td>
         <td><c:out value="${user.getWeight()}"/></td>
+        <td><c:out value="${user.getDateOfWeighting()}"/></td>
         <td><c:out value="${user.getDateOfBirth()}"/></td>
         <td><c:out value="${user.getRole()}"/></td>
         <td><c:out value="${user.getBlock()}"/></td>
-            <form action="controller" method="post">
-                <input type="hidden" name="command" value="block_user"/>
-               <td><input type="hidden" name="id" value="${user.getId()}"></td>
-                <td><select class="form-control" name="blockUser" >
-                    <option>block</option>
-                    <option>unblock</option>
-                </select></td>
-                <td><input type="submit" value=""class="form-control"></td>
-            </form>
-            <form action="controller" method="post">
-                <input type="hidden" name="command" value="delete_user"/>
-                <input type="hidden" name="id" value="${user.getId()}"/>
-                <td><input type="submit" value="" class="btn-close"></td>
-            </form>
+        <form action="controller" method="post">
+            <input type="hidden" name="command" value="block_user"/>
+            <td><input type="hidden" name="id" value="${user.getId()}"></td>
+            <td><select class="form-control" name="blockUser">
+                <option>block</option>
+                <option>unblock</option>
+            </select></td>
+            <td><input type="submit" value="" class="form-control"></td>
+        </form>
+        <form action="controller" method="post">
+            <input type="hidden" name="command" value="delete_user"/>
+            <input type="hidden" name="id" value="${user.getId()}"/>
+            <td><input type="submit" value="" class="btn-close"></td>
+        </form>
     </tr>
     </c:forEach>
 

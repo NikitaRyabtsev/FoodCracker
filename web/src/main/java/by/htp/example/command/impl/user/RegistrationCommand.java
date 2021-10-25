@@ -31,17 +31,15 @@ public class RegistrationCommand implements Command {
         String email = request.getParameter(RequestParameterName.REQ_PARAM_EMAIL);
         String name = request.getParameter(RequestParameterName.REQ_PARAM_NAME);
         String secondName = request.getParameter(RequestParameterName.REQ_PARAM_SECOND_NAME);
-        String weightS = request.getParameter(RequestParameterName.REQ_PARAM_USER_WEIGHT);
         String sex = request.getParameter(RequestParameterName.REQ_PARAM_SEX);
         String dateOfBirthS = request.getParameter(RequestParameterName.REQ_PARAM_DATE_OF_BIRTH);
         String block = request.getParameter(RequestParameterName.REQ_PARAM_BLOCK_USER);
         String role = request.getParameter(RequestParameterName.REQ_PARAM_ROLE);
 
         try {
-            weight = Integer.parseInt(weightS);
             LocalDate dateOfBirth = LocalDate.parse(dateOfBirthS);
 
-            user = new User(login, password, email, name, secondName, weight, sex, dateOfBirth, role, block);
+            user = new User(login, password, email, name, secondName, sex, dateOfBirth, role, block);
             if (user != null) {
                 userService = provider.getUserService();
                 userService.registration(user);

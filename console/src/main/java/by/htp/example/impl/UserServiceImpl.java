@@ -74,9 +74,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User getUserAccessInfo(int id) throws ServiceException {
+    public User getUserAccessInfo(String id,  String weightId) throws ServiceException {
         try{
-            return provider.getUserDao().getEditUserAccessInfo(id);
+            return provider.getUserDao().getEditUserAccessInfo(Integer.parseInt(weightId),
+                    Integer.parseInt(id));
         }catch(DaoException e){
             throw new ServiceException(e);
         }

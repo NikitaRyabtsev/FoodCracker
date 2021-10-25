@@ -21,7 +21,7 @@ public interface UserService {
 
     void blockUser(User user) throws ServiceException;
 
-    User getUserAccessInfo(int id) throws ServiceException;
+    User getUserAccessInfo(String id ,  String weightId) throws ServiceException;
 
     User deleteUser(User user) throws ServiceException;
 

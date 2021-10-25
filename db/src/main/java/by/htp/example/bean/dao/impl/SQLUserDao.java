@@ -46,10 +46,9 @@ public class SQLUserDao implements UserDao, DaoQuery {
             prepareStatement.setString(4, user.getSecondName());
             prepareStatement.setString(5, user.getEmail());
             prepareStatement.setString(6, user.getSex());
-            prepareStatement.setDouble(7, user.getWeight());
-            prepareStatement.setObject(8, user.getDateOfBirth());
-            prepareStatement.setString(9, user.getRole());
-            prepareStatement.setString(10, user.getBlock());
+            prepareStatement.setObject(7, user.getDateOfBirth());
+            prepareStatement.setString(8, user.getRole());
+            prepareStatement.setString(9, user.getBlock());
 
             prepareStatement.executeUpdate();
 
@@ -104,26 +103,27 @@ public class SQLUserDao implements UserDao, DaoQuery {
     }
 
     @Override
-    public User getEditUserAccessInfo(int id) throws DaoException {
-        User user = null;
-        int idUser = 0;
+    public User getEditUserAccessInfo(int id , int weightId) throws DaoException {
+        User user = new User();
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_USER_ACCESS_INFO)) {
-            prepareStatement.setInt(1, idUser);
+            prepareStatement.setInt(1, weightId);
+            prepareStatement.setInt(2, id);
 
             ResultSet rs = prepareStatement.executeQuery();
             if (rs.next()) {
-
-                String login = rs.getString("login");
-                String password = rs.getString("password");
-                String name = rs.getString("name");
-                String secondName = rs.getString("secondName");
-                String email = rs.getString("email");
-                String sex = rs.getString("sex");
-                double weight = rs.getDouble("weight");
+                user.setLogin(rs.getString("login"));
+                user.setPassword(rs.getString("password"));
+                user.setName(rs.getString("name"));
+                user.setSecondName(rs.getString("secondName"));
+                user.setEmail(rs.getString("email"));
+                user.setSex(rs.getString("sex"));
                 LocalDate dateOfBirth = rs.getObject("dateOfBirth", LocalDate.class);
-
-                user = new User(id, login, password, email, name, secondName, weight, sex, dateOfBirth);
+                user.setDateOfBirth(dateOfBirth);
+                user.setWeight(rs.getDouble("weight"));
+                LocalDate dateOfWeighting = rs.getObject("date", LocalDate.class);
+                user.setDateOfWeighting(dateOfWeighting);
+                user.setIdWeight(rs.getInt("user_idUser"));
             }
 
         } catch (SQLException e) {
@@ -179,7 +179,6 @@ public class SQLUserDao implements UserDao, DaoQuery {
             prepareStatement.setInt(1, id);
             ResultSet rs = prepareStatement.executeQuery();
             if (rs.next()) {
-                user.setWeight(rs.getDouble("us_weight"));
                 date = rs.getObject("date", LocalDate.class);
             }
             rs.close();
@@ -218,11 +217,14 @@ public class SQLUserDao implements UserDao, DaoQuery {
             user.setSecondName(rs.getString("secondName"));
             user.setEmail(rs.getString("email"));
             user.setSex(rs.getString("sex"));
-            user.setWeight(rs.getDouble("weight"));
             LocalDate localDate = rs.getObject("dateOfBirth", LocalDate.class);
             user.setDateOfBirth(localDate);
             user.setRole(rs.getString("role"));
             user.setBlock(rs.getString("block"));
+            user.setWeight(rs.getDouble("weight"));
+            LocalDate dateOfWeighting = rs.getObject("date" , LocalDate.class);
+            user.setDateOfWeighting(dateOfWeighting);
+            user.setIdWeight(rs.getInt("user_idUser"));
 
         } catch (SQLException e) {
             throw new DaoException(e);
