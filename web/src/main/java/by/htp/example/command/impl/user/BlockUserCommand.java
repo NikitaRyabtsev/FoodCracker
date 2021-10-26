@@ -28,9 +28,7 @@ public class BlockUserCommand implements Command {
         try {
             user = new User(Integer.parseInt(id), block);
             if (user != null) {
-                System.out.println(user);
                 userService.blockUser(user);
-                System.out.println(user);
                 request.setAttribute(RequestParameterName.REQ_PARAM_BLOCK_USER, user);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
                 dispatcher.forward(request, response);

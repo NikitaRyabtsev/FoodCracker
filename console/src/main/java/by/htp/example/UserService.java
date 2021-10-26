@@ -2,6 +2,7 @@ package by.htp.example;
 
 import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.user.User;
+import by.htp.example.bean.user.UserWeightInfo;
 
 import javax.ejb.Local;
 import java.time.LocalDate;
@@ -25,10 +26,12 @@ public interface UserService {
 
     User deleteUser(User user) throws ServiceException;
 
-    User addUserWeight(String id, String weight, String date) throws ServiceException;
+    void  addUserWeight(String id, String weight, String date) throws ServiceException;
 
     User EditProfileInDB(String login , String password , String name, String secondName
             , String email, String sex , String dateOfBirth , String id) throws ServiceException;
 
-    List<User> getWeightFromDB(String id) throws ServiceException;
+    List<UserWeightInfo> getWeightFromDB(String id) throws ServiceException;
+
+    void chooseMealPlan(String planId, String id) throws ServiceException;
 }

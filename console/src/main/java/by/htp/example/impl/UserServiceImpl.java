@@ -6,6 +6,7 @@ import by.htp.example.bean.dao.UserDao;
 import by.htp.example.bean.user.User;
 import by.htp.example.ServiceException;
 import by.htp.example.UserService;
+import by.htp.example.bean.user.UserWeightInfo;
 import by.htp.example.validation.UserDataValidator;
 
 import java.time.LocalDate;
@@ -96,16 +97,16 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User addUserWeight(String id ,String weight, String date) throws ServiceException {
+    public void addUserWeight(String id ,String weight, String date) throws ServiceException {
         UserDao userDao = DaoProvider.getInstance().getUserDao();
         User user;
         try{
-            user = userDao.addUserWeightInDB(Integer.parseInt(id),Double.parseDouble(weight)
+            userDao.addUserWeightInDB(Integer.parseInt(id),Double.parseDouble(weight)
                     ,LocalDate.parse(date));
         }catch(DaoException e){
             throw new ServiceException(e);
         }
-        return user;
+
     }
 
     @Override
@@ -122,10 +123,19 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User>  getWeightFromDB(String id) throws ServiceException {
+    public List<UserWeightInfo> getWeightFromDB(String id) throws ServiceException {
         try{
             return provider.getUserDao().getWeightFromDB(Integer.parseInt(id));
         }catch(DaoException e){
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void chooseMealPlan(String planId, String id) throws ServiceException {
+        try{
+            provider.getUserDao().chooseMealPlan(Integer.parseInt(planId),Integer.parseInt(id));
+        }catch (DaoException e){
             throw new ServiceException(e);
         }
     }

@@ -5,6 +5,7 @@ import by.htp.example.bean.user.User;
 import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.dao.connection.DriverManagerManager;
 import by.htp.example.bean.dao.DaoQuery;
+import by.htp.example.bean.user.UserWeightInfo;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -157,8 +158,8 @@ public class SQLUserDao implements UserDao, DaoQuery {
     }
 
     @Override
-    public User addUserWeightInDB(int id , double weight,LocalDate date) throws DaoException {
-        User user = new User();
+    public void addUserWeightInDB(int id , double weight,LocalDate date) throws DaoException {
+
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_ADD_WEIGHT)) {
             prepareStatement.setInt(1, id);
@@ -169,29 +170,43 @@ public class SQLUserDao implements UserDao, DaoQuery {
         } catch (SQLException e) {
             throw new DaoException(e);
         }
-    return user;
     }
 
     @Override
-    public List<User> getWeightFromDB(int id) throws DaoException {
-        List<User> users = new ArrayList<>();
-        User user = new User();
+    public List<UserWeightInfo> getWeightFromDB(int id) throws DaoException {
+
+        List<UserWeightInfo> userWeightInfoList = new ArrayList<>();
+        UserWeightInfo userWeightInfo = new UserWeightInfo();
+
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_USER_WEIGHT)) {
             prepareStatement.setInt(1, id);
             ResultSet rs = prepareStatement.executeQuery();
-            if (rs.next()) {
-
-                user.setWeight(rs.getDouble("us_weight"));
+            while(rs.next()) {
+                userWeightInfo.setWeight(rs.getDouble("us_weight"));
                 LocalDate dateOfWeighting = rs.getObject("date",LocalDate.class);
-                user.setDateOfWeighting(dateOfWeighting);
-                users.add(user);
+                userWeightInfo.setDateOfWeighting(dateOfWeighting);
+                userWeightInfoList.add(userWeightInfo);
             }
             rs.close();
         } catch (SQLException e) {
             throw new DaoException(e);
         }
-        return users;
+        return userWeightInfoList;
+    }
+
+    @Override
+    public void chooseMealPlan(int planId, int id) throws DaoException {
+
+        try (Connection connection = DriverManagerManager.getConnection();
+             PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_CHOOSE_PLAN)) {
+            prepareStatement.setInt(1, planId);
+            prepareStatement.setInt(2, id);
+            prepareStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+
     }
 
     @Override

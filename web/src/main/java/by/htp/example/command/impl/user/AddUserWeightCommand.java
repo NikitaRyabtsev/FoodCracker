@@ -22,19 +22,14 @@ public class AddUserWeightCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         ServiceProvider provider = ServiceProvider.getInstance();
         userService = provider.getUserService();
-        User user;
 
         String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
         String weight = request.getParameter(RequestParameterName.REQ_PARAM_WEIGHT);
         String date = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
 
         try {
-            user = userService.addUserWeight(id, weight,date);
-            if (user != null) {
-                request.setAttribute(RequestParameterName.REQ_PARAM_ADD_USER_WEIGHT, user);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
-                dispatcher.forward(request, response);
-            }
+            userService.addUserWeight(id, weight,date);
+            response.sendRedirect(JSPPageName.USER_PROFILE);
         } catch (ServiceException e) {
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);

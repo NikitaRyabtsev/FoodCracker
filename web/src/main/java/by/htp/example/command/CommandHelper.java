@@ -41,6 +41,7 @@ public class CommandHelper {
         commands.put(CommandName.GET_FOOD_BY_MEAL, new GetFoodByMealCommand());
         commands.put(CommandName.ADD_FOOD_IN_MEAL,new AddFoodInMealCommand());
         commands.put(CommandName.ADD_USER_WEIGHT, new AddUserWeightCommand());
+        commands.put(CommandName.CHOOSE_MEAL_PLAN, new ChooseMealPlanCommand());
     }
     public static CommandHelper getInstance() {
         return instance;

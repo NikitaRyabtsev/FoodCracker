@@ -1,7 +1,7 @@
 package by.htp.example.command;
 
 public enum CommandName {
- //User
+    //User
     NO_SUCH_COMMAND,
     AUTHORIZATION,
     REGISTRATION,
@@ -14,6 +14,7 @@ public enum CommandName {
     ADD_USER_WEIGHT,
     EDIT_PROFILE,
     GET_WEIGHT,
+    CHOOSE_MEAL_PLAN,
 //Meal
 
     GET_ALL_MEALS,
@@ -22,7 +23,7 @@ public enum CommandName {
     DELETE_MEAL,
     GET_MEAL_BY_ID,
     GET_MEAL_BY_DATE,
-//Food
+    //Food
     GET_ALL_FOOD,
     GET_FOOD_BY_MEAL,
     ADD_FOOD_IN_MEAL,

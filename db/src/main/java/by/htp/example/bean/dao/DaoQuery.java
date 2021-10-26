@@ -57,6 +57,9 @@ public interface DaoQuery {
             "ORDER BY user_weight.date DESC";
 
     String SQL_QUERY_EDIT_PROFILE = "UPDATE User SET login =? , password=? , name=?,secondName=? , email=?,sex=? , dateOfBirth=? WHERE idUser = ?";
+
+    String SQL_QUERY_CHOOSE_PLAN = "UPDATE user SET meal_plan_idmeal_plan =? WHERE idUser = ?";
+
     //Food
     String SQL_QUERY_GET_ALL_FOOD = "SELECT * FROM Food";
     String SQL_QUERY_GET_FOOD_BY_MEAL = "SELECT food.* FROM meal JOIN food_has_meal ON meal.idMeal = food_has_meal.meal_idMeal " +

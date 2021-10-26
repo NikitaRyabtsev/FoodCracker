@@ -64,6 +64,19 @@
     <input type="hidden" name="date">
     <td><input type="submit" value="Статистика веса"/></td>
 </form>
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="choose_meal_plan"/>
+    <input type="hidden" name="id" value="${user.id}"/>
+    <div class="form-group">
+        <label>План питания</label>
+        <select class="w-25 form-control" name="mealPlanId" >
+            <option value="1">Похудение</option>
+            <option value="2">Набор веса</option>
+            <option value="3">Поддержание формы</option>
+        </select>
+        <td><input type="submit" class="form-control" value="Выбрать план"/></td>
+    </div>
+</form>
 <jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>

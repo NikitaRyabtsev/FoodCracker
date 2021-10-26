@@ -54,6 +54,20 @@
     <input type="hidden" name="date">
     <td><input type="submit" value="Статистика веса"/></td>
 </form>
+
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="choose_meal_plan"/>
+    <input type="hidden" name="id" value="${user.id}"/>
+<div class="form-group">
+    <label for="exampleFormControlSelect1">План питания</label>
+    <select class="w-25 form-control" name="mealPlanId" >
+        <option value="1">Похудение</option>
+        <option value="2">Набор веса</option>
+        <option value="3">Поддержание формы</option>
+    </select>
+    <td><input type="submit" class="form-control" value="Выбрать план"/></td>
+</div>
+</form>
 <h3>Изменить профиль</h3>
 <form action="controller" method="post">
     <input type="hidden" name="command" value="edit_profile"/>
@@ -84,16 +98,19 @@
     </div>
     <div class="form-group col-md-4">
         <label for="validationDefault05">Дата рождения</label>
-        <input type="date" name="dateOfBirth" value="${user.dateOfBirth}"class="form-control" id="validationDefault05" placeholder="Дата рождения"
+        <input type="date" name="dateOfBirth" value="${user.dateOfBirth}" class="form-control" id="validationDefault05"
+               placeholder="Дата рождения"
                required>
     </div>
     <div class="form-group">
         <label for="validationDefault06">Имя</label>
-        <input type="text" name="name" class="form-control" value="${user.name}" id="validationDefault06" placeholder="Имя" required>
+        <input type="text" name="name" class="form-control" value="${user.name}" id="validationDefault06"
+               placeholder="Имя" required>
     </div>
     <div class="form-group">
         <label for="validationDefault07">Фамилия</label>
-        <input type="text" name="secondName" class="form-control" value="${user.secondName}" id="validationDefault07" placeholder="Фамилия"
+        <input type="text" name="secondName" class="form-control" value="${user.secondName}" id="validationDefault07"
+               placeholder="Фамилия"
                required>
     </div>
     <div class="form-group">

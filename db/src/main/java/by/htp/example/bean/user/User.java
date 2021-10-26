@@ -8,6 +8,7 @@ public class User {
 
     private int id;
     private int idWeight;
+    private int mealPlanId;
     private String login;
     private String password;
     private String email;
@@ -115,6 +116,14 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.block = block;
         this.role = role;
+    }
+
+    public int getMealPlanId() {
+        return mealPlanId;
+    }
+
+    public void setMealPlanId(int mealPlanId) {
+        this.mealPlanId = mealPlanId;
     }
 
     public double getWeight() {
