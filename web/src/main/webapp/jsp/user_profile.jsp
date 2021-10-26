@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <title>Профиль</title>
 </head>
 <body>
@@ -22,7 +23,8 @@
         <td>Фамилия</td>
         <td>E-mail</td>
         <td>Пол</td>
-        <td>Вес(кг)</td>
+        <td>Вес</td>
+        <td>Дата взвешивания</td>
         <td>Дата Рождения</td>
         <td>Уровень доступа</td>
 
@@ -33,7 +35,8 @@
         <td><c:out value="${user.secondName}"/></td>
         <td><c:out value="${user.email}"/></td>
         <td><c:out value="${user.sex}"/></td>
-        <td><c:out value="${user.weight}"/></td>
+        <td><c:out value="${info.weight}"/></td>
+        <td><c:out value="${info.dateOfWeighting}"/></td>
         <td><c:out value="${user.dateOfBirth}"/></td>
         <td><c:out value="${user.role}"/></td>
     </tr>
@@ -48,46 +51,66 @@
 <form action="controller" method="post">
     <input type="hidden" name="command" value="get_weight"/>
     <input type="hidden" name="id" value="${user.id}"/>
-    <input type ="hidden" name="date">
+    <input type="hidden" name="date">
     <td><input type="submit" value="Статистика веса"/></td>
+</form>
+
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="choose_meal_plan"/>
+    <input type="hidden" name="id" value="${user.id}"/>
+<div class="form-group">
+    <label for="exampleFormControlSelect1">План питания</label>
+    <select class="w-25 form-control" name="mealPlanId" >
+        <option value="1">Похудение</option>
+        <option value="2">Набор веса</option>
+        <option value="3">Поддержание формы</option>
+    </select>
+    <td><input type="submit" class="form-control" value="Выбрать план"/></td>
+</div>
 </form>
 <h3>Изменить профиль</h3>
 <form action="controller" method="post">
     <input type="hidden" name="command" value="edit_profile"/>
     <div class="form-group col-md-6">
         <label for="validationDefault01">Логин</label>
-        <input type="login" name="login" class="w-50 form-control" id="validationDefault01" placeholder="Введите логин"
+        <input type="login" name="login" class="w-50 form-control" value="${user.login}" id="validationDefault01"
+               placeholder="Введите логин"
                required>
     </div>
     <div class="form-group col-md-6">
         <label for="validationDefault02">Пароль</label>
-        <input type="text" name="password" class="form-control" id="validationDefault02" placeholder="Пароль" required>
+        <input type="text" name="password" value="${user.password}" class="form-control" id="validationDefault02"
+               placeholder="Пароль" required>
     </div>
     </div>
     <div class="form-group">
         <label for="validationDefault03">E-mail</label>
-        <input type="email" name="email" class="form-control" id="validationDefault03" placeholder="email:vasya@vasya"
+        <input type="email" name="email" value="${user.email}" class="form-control" id="validationDefault03"
+               placeholder="email:vasya@vasya"
                required>
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Пол</label>
-        <select class="form-control" name="sex" id="exampleFormControlSelect1">
+        <select class="form-control" value="${user.sex}" name="sex" id="exampleFormControlSelect1">
             <option>male</option>
             <option>female</option>
         </select>
     </div>
     <div class="form-group col-md-4">
         <label for="validationDefault05">Дата рождения</label>
-        <input type="date" name="dateOfBirth" class="form-control" id="validationDefault05" placeholder="Дата рождения"
+        <input type="date" name="dateOfBirth" value="${user.dateOfBirth}" class="form-control" id="validationDefault05"
+               placeholder="Дата рождения"
                required>
     </div>
     <div class="form-group">
         <label for="validationDefault06">Имя</label>
-        <input type="text" name="name" class="form-control" id="validationDefault06" placeholder="Имя" required>
+        <input type="text" name="name" class="form-control" value="${user.name}" id="validationDefault06"
+               placeholder="Имя" required>
     </div>
     <div class="form-group">
         <label for="validationDefault07">Фамилия</label>
-        <input type="text" name="secondName" class="form-control" id="validationDefault07" placeholder="Фамилия"
+        <input type="text" name="secondName" class="form-control" value="${user.secondName}" id="validationDefault07"
+               placeholder="Фамилия"
                required>
     </div>
     <div class="form-group">

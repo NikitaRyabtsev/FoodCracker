@@ -33,18 +33,17 @@ public class ToEditProfileCommand implements Command {
         }
         if (user != null) {
             String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
+            String weightId = request.getParameter("weightId");
             try {
-
                 if (Role.ADMIN.toString().equalsIgnoreCase(user.getRole())) {
-
-                    user = userService.getAdminAccessInfo(Integer.parseInt(id));
+                    user = userService.getAdminAccessInfo(weightId,id);
                     request.setAttribute(RequestParameterName.REQ_PARAM_TO_EDIT_PROFILE, user);
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ADMIN_PROFILE);
                     dispatcher.forward(request, response);
 
                 } else{
-
-                    user = userService.getUserAccessInfo(Integer.parseInt(id));
+                    System.out.println(weightId);
+                    user = userService.getUserAccessInfo(weightId,id);
                     request.setAttribute(RequestParameterName.REQ_PARAM_TO_EDIT_PROFILE, user);
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_PROFILE);
                     dispatcher.forward(request, response);

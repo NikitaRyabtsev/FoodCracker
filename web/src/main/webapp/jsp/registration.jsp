@@ -56,10 +56,6 @@
     <div class="form-group">
         <input type="hidden" name = "role" class="form-control" value="user" required>
     </div>
-    <div class="form-group">
-        <label for="validationDefault08">Вес</label>
-        <input type="number" name ="userWeight" class="form-control" id="validationDefault08" placeholder="Вес" required>
-    </div>
     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
     <jsp:include page="/jsp/footer.jsp"/>
 </form>

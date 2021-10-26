@@ -24,6 +24,7 @@ public class RequestParameterName {
     public static final String REQ_PARAM_ADD_USER_WEIGHT = "addUserWeight";
     public static final String REQ_PARAM_CHANGE_USER_PROFILE = "changeUserProfile";
     public static final String REQ_PARAM_GET_USER_WEIGHT = "getUserWeight";
+    public static final String REQ_PARAM_CHOOSE_MEAL_PLAN = "choosePlan";
 
     public static final String REQ_PARAM_TO_REDIRECT = "redirect";
 //Food

@@ -25,24 +25,24 @@ public class UserFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
 
-        if(session == null){
+        if (session == null) {
             session = req.getSession(true);
         }
         String url = req.getRequestURI();
         System.out.println(url);
 
-        String param =  req.getParameter(RequestParameterName.REQ_PARAM_COMMAND_NAME);
-
+        String param = req.getParameter(RequestParameterName.REQ_PARAM_COMMAND_NAME);
+        chain.doFilter(req, resp);
         if (session.getAttribute(RequestParameterName.REQ_SESSION_USER) != null) {
             chain.doFilter(req, resp);
         } else if (CommandName.AUTHORIZATION.toString().equalsIgnoreCase(param)) {
-                chain.doFilter(req, resp);
-        } else if (CommandName.REGISTRATION.toString().equalsIgnoreCase(param)){
-            chain.doFilter(req,resp);
+            chain.doFilter(req, resp);
+        } else if (CommandName.REGISTRATION.toString().equalsIgnoreCase(param)) {
+            chain.doFilter(req, resp);
         } else if (CommandName.GO_TO_REGISTRATION.toString().equalsIgnoreCase(param)) {
             chain.doFilter(req, resp);
-        }else if(url.equals("/rest/meal") | url.equals("/ws/meal")){
-            chain.doFilter(req,resp);
+//        } else if (url.equals("/rest/meal") | url.equals("/ws/meal")) {
+//            chain.doFilter(req, resp);
         } else {
             req.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP).forward(req, resp);
         }

@@ -36,6 +36,7 @@ public class AuthorizationCommand implements Command {
 
         String login = request.getParameter(RequestParameterName.REQ_PARAM_LOGIN);
         String password = request.getParameter(RequestParameterName.REQ_PARAM_PASS);
+
         try {
             userService = provider.getUserService();
             user = userService.authorization(login, password);

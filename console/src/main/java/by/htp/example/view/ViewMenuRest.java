@@ -27,6 +27,7 @@ public class ViewMenuRest {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(URL);
         Meal meal = new Meal();
+
         Response responseAdd = target.request(MediaType.APPLICATION_JSON).post(Entity.entity(meal, MediaType.APPLICATION_JSON));
         Response responseGet = target.request(MediaType.APPLICATION_JSON).get();
         GenericType<List<Meal>> type = new GenericType<List<Meal>>() {

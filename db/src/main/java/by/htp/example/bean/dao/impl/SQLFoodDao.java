@@ -60,8 +60,6 @@ public class SQLFoodDao implements FoodDao, DaoQuery {
 
             preparedStatement.setInt(1, keyMealId);
             preparedStatement.setInt(2, keyFoodId);
-            System.out.println("1" + keyMealId);
-            System.out.println("2" + keyFoodId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException(e);
@@ -80,7 +78,7 @@ public class SQLFoodDao implements FoodDao, DaoQuery {
             food.setProteins(resultSet.getDouble("proteins"));
             food.setFats(resultSet.getDouble("fats"));
             food.setCarbohydrates(resultSet.getDouble("carbohydrates"));
-
+            food.setPortion(resultSet.getDouble("portion"));
         } catch (SQLException e) {
             throw new DaoException(e);
         }

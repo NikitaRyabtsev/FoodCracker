@@ -117,7 +117,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
         List<Meal> meals = new ArrayList<>();
         Meal meal = null;
         try (Connection connection = DriverManagerManager.getConnection();
-             PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_DATE)) {
+             PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_MEAL_BY_DATE)) {
             prepareStatement.setObject(1, date);
             ResultSet rs = prepareStatement.executeQuery();
             if (rs.next()) {
