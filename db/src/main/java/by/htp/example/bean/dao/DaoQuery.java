@@ -3,23 +3,26 @@ package by.htp.example.bean.dao;
 public interface DaoQuery {
     //Meals
     String SQL_QUERY_CREATE_MEAL = "INSERT INTO Meal (date,time,user_idUser) VALUES (?,?,?)";
-    String SQL_QUERY_GET_MEAL = "SELECT date, time, weight,SUM(food.calories) AS calories FROM Meal m" +
+
+    String SQL_QUERY_GET_MEAL = "SELECT date, time, SUM(portion) AS weight ,SUM(food.calories) AS calories FROM Meal m" +
             "LEFT JOIN food_has_meal fhm ON idMeal = fhm.meal_idMeal " +
             "LEFT JOIN food ON fhm.food_idFood = food.idFood " +
             "WHERE idMeal = ?";
-    String SQL_QUERY_GET_DATE = "SELECT * FROM Meal WHERE date=?";
+
+    String SQL_QUERY_GET_MEAL_BY_DATE = "SELECT * FROM Meal WHERE date=?";
 
     String SQL_QUERY_DELETE_MEAL = "DELETE Meal from Meal WHERE idMeal = ?";
 
     String SQL_QUERY_CHANGE_MEAL = "UPDATE Meal SET date=?,time=? WHERE idMeal=?";
 
     String SQL_QUERY_GET_ALL_MEAL =
-            "SELECT idMeal,weight,user_idUser, date ,time,SUM(food.calories) AS calories " +
-                    " FROM meal " +
-                    " LEFT JOIN food_has_meal on meal.idMeal = food_has_meal.meal_idMeal " +
-                    " LEFT JOIN Food ON food_has_meal.food_idFood = food.idFood " +
-                    " WHERE user_idUser = ? " +
-                    " GROUP BY meal.idMeal,meal.date,meal.time";
+            "SELECT idMeal,SUM(portion) AS weight,user_idUser, date ,time,SUM(food.calories) AS calories \n" +
+                    "FROM meal " +
+                    "LEFT JOIN food_has_meal on meal.idMeal = food_has_meal.meal_idMeal  " +
+                    "LEFT JOIN Food ON food_has_meal.food_idFood = food.idFood  " +
+                    "WHERE user_idUser = ? " +
+                    "GROUP BY meal.idMeal,meal.date,meal.time" +
+                    " ORDER by date DESC";
 
 
     //User

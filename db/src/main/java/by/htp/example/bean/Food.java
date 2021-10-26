@@ -11,6 +11,7 @@ public class Food {
     private double proteins;
     private double fats;
     private double carbohydrates;
+    private double portion;
 
     private int keyUserId;
     private int keyMealId;
@@ -49,6 +50,14 @@ public class Food {
 
     public int getKeyUserId() {
         return keyUserId;
+    }
+
+    public double getPortion() {
+        return portion;
+    }
+
+    public void setPortion(double portion) {
+        this.portion = portion;
     }
 
     public void setKeyUserId(int keyUserId) {
