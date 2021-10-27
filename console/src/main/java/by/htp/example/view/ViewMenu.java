@@ -28,7 +28,7 @@ public class ViewMenu {
                         viewMenuSoap.viewSoap();
                         break;
                     case 4:
-                        viewMenuRest.rest();
+                        viewMenuRest.viewRest();
                         break;
                     case 5:
                         System.out.println("Goodbye");

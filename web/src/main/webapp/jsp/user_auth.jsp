@@ -88,7 +88,6 @@
 </head>
 <header class="p-2 bg-dark background-color:text-white">
 
-
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <nav class="navbar navbar-light bg-dark">
@@ -184,6 +183,12 @@
         <div class="bg-white box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
 </div>
+<script>
+    if(<%=request.getAttribute("blocked")%>){
+        alert("Вы заблокированы,по поводу приичны писать на почту:RyabtsevNukuta@yandex.by");
+    }
+
+</script>
 <script src="js/script.js"></script>
 </body>
 <jsp:include page="/jsp/footer.jsp"/>

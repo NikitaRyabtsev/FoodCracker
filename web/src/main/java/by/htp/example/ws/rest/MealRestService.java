@@ -8,19 +8,21 @@ import by.htp.example.bean.dao.MealDao;
 import by.htp.example.command.RequestParameterName;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-@Path("/meal")
-@Consumes({"application/json"})
-@Produces({"application/json"})
+@Path("meal")
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 public class MealRestService {
 
     DaoProvider provider = DaoProvider.getInstance();
     MealDao mealDao = provider.getMealDao();
 
     @GET
+    @Path("/meals")
     public List<Meal> getMeals(String keyUserId) throws ServiceException {
         keyUserId = "4";
         try {
@@ -31,6 +33,7 @@ public class MealRestService {
     }
 
     @POST
+    @Path("/new")
     public Meal createMeal(@PathParam(RequestParameterName.REQ_PARAM_DATE) String date,
                            @PathParam(RequestParameterName.REQ_PARAM_TIME) String time,
                            @PathParam(RequestParameterName.REQ_PARAM_ID) String id) throws ServiceException {
@@ -68,11 +71,11 @@ public class MealRestService {
     }
 
 
-    @POST
+    @GET
     @Path("/{id}")
-    public Meal getMealById(@PathParam(RequestParameterName.REQ_PARAM_ID) String id) throws ServiceException {
+    public Meal getMealById(@PathParam(RequestParameterName.REQ_PARAM_ID) int id) throws ServiceException {
         try{
-            return mealDao.getMealByIdFromDB(Integer.parseInt(id));
+            return mealDao.getMealByIdFromDB(id);
         }catch(DaoException e){
             throw new ServiceException(e);
         }

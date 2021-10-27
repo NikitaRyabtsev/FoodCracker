@@ -21,7 +21,7 @@ public class ViewMenuConsole {
 
     public void viewMenuConsole() {
         int userChoose = 0;
-        String userId = "1";
+        String userId = "4";
         while (userChoose != 7) {
             try {
                 showMenu();
@@ -79,7 +79,7 @@ public class ViewMenuConsole {
         if (meals != null && !meals.isEmpty()) {
             for (int i = 0; i < meals.size(); i++) {
                 System.out.println(
-                        "#" + (i + 1) + " Meals Date: " + meals.get(i).getDate() + " Time: " + meals.get(i).getTime());
+                        "#" + meals.get(i).getId() + " Meals Date: " + meals.get(i).getDate() + " Time: " + meals.get(i).getTime());
             }
         }
     }

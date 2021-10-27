@@ -26,8 +26,7 @@
         <td>Фамилия</td>
         <td>E-mail</td>
         <td>Пол</td>
-        <td>Вес</td>
-        <td>Последняя дата взвешивания</td>
+
         <td>Дата Рождения</td>
         <td>Уровень доступа</td>
         <td>Статус</td>
@@ -41,8 +40,6 @@
         <td><c:out value="${user.getSecondName()}"/></td>
         <td><c:out value="${user.getEmail()}"/></td>
         <td><c:out value="${user.getSex()}"/></td>
-        <td><c:out value="${user.getWeight()}"/></td>
-        <td><c:out value="${user.getDateOfWeighting()}"/></td>
         <td><c:out value="${user.getDateOfBirth()}"/></td>
         <td><c:out value="${user.getRole()}"/></td>
         <td><c:out value="${user.getBlock()}"/></td>

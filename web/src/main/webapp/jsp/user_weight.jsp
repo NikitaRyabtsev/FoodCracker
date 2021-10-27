@@ -30,7 +30,6 @@
 </table>
 <script>
     var b ='<%=(List<UserWeightInfo>) request.getAttribute("getUserWeight")%>';
-
     console.log(b);
 </script>
 </body>

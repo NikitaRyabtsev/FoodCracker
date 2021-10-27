@@ -32,19 +32,20 @@ public interface DaoQuery {
 
     String SQL_QUERY_DELETE_USER = "DELETE FROM User WHERE idUser=?";
     //
-    String SQL_QUERY_GET_ALL_USERS = "SELECT user.* ,user_weight.weight AS weight, MAX(date) AS date FROM User  " +
-            "JOIN user_weight ON idUser = user_weight.user_idUser ";
+    String SQL_QUERY_GET_ALL_USERS = "SELECT user.* ,user_weight.weight AS weight, user_idUser , date FROM User " +
+            " LEFT JOIN user_weight " +
+            " ON idUser = user_weight.user_idUser AND date = (select max(date) from user_weight WHERE user_idUser = idUser)";
 
     String SQL_QUERY_BLOCK_USER = "UPDATE User SET block=? WHERE idUser=?";
 
-    String SQL_QUERY_GET_USER_ACCESS_INFO = "SELECT login,password,name,secondName, email,sex,dateOfBirth, " +
+    String SQL_QUERY_GET_USER_EDIT_INFO = "SELECT login,password,name,secondName, email,sex,dateOfBirth, " +
             "  weight, date ,user_idUser" +
             " FROM User " +
             " JOIN user_weight " +
             " ON idUser = user_weight.user_idUser AND date = (select max(date) from user_weight WHERE user_idUser = idUser) " +
             " WHERE idUser= ?";
 
-    String SQL_QUERY_GET_ADMIN_ACCESS_INFO = "SELECT user.* ,user_weight.weight AS weight, user_idUser , " +
+    String SQL_QUERY_GET_ADMIN_EDIT_INFO = "SELECT user.* ,user_weight.weight AS weight, user_idUser , " +
             " date FROM User JOIN user_weight " +
             " ON idUser = user_idUser AND date = (select max(date) from user_weight WHERE user_idUser = idUser)  " +
             " WHERE idUser = ?";
@@ -63,6 +64,7 @@ public interface DaoQuery {
     String SQL_QUERY_GET_FOOD_BY_MEAL = "SELECT food.* FROM meal JOIN food_has_meal ON meal.idMeal = food_has_meal.meal_idMeal " +
             " JOIN Food ON food_has_meal.food_IdFood = food.IdFood " +
             " WHERE meal.idMeal = ? AND user_idUser = ?";
+
     String SQL_QUERY_ADD_FOOD_IN_MEAL = "INSERT INTO food_has_meal (meal_idMeal,food_idFood) VALUES (?,?)";
 
 }

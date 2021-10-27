@@ -29,7 +29,7 @@ public class AddUserWeightCommand implements Command {
 
         try {
             userService.addUserWeight(id, weight,date);
-            response.sendRedirect(JSPPageName.USER_PROFILE);
+            response.sendRedirect(JSPPageName.USER_INDEX_JSP);
         } catch (ServiceException e) {
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);

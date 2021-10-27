@@ -50,6 +50,10 @@ public class AuthorizationCommand implements Command {
                     request.setAttribute("blocked", "true");
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
                     dispatcher.forward(request, response);
+                }else {
+                    request.setAttribute("doesNotExist", "true");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
+                    dispatcher.forward(request, response);
                 }
             }else{
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);

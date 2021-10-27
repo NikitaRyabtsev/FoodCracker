@@ -6,7 +6,6 @@
 </head>
 <body>
 <jsp:include page="/jsp/header.jsp"/>
-<img src="/images/error.png">
-<button type="button" name="back" onclick="history.back()">back</button>
+<img src="/images/error.png" width="100%" height="100%">
 </body>
 </html>

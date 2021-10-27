@@ -107,7 +107,7 @@ public class SQLUserDao implements UserDao, DaoQuery {
     public User getEditUserAccessInfo(int id) throws DaoException {
         User user = new User();
         try (Connection connection = DriverManagerManager.getConnection();
-             PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_USER_ACCESS_INFO)) {
+             PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_USER_EDIT_INFO)) {
             prepareStatement.setInt(1, id);
 
             ResultSet rs = prepareStatement.executeQuery();
@@ -176,7 +176,6 @@ public class SQLUserDao implements UserDao, DaoQuery {
 
         List<UserWeightInfo> userWeightInfoList = new ArrayList<>();
         UserWeightInfo userWeightInfo = new UserWeightInfo();
-
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_USER_WEIGHT)) {
             prepareStatement.setInt(1, id);
@@ -185,8 +184,10 @@ public class SQLUserDao implements UserDao, DaoQuery {
                 userWeightInfo.setWeight(rs.getDouble("us_weight"));
                 LocalDate dateOfWeighting = rs.getObject("date",LocalDate.class);
                 userWeightInfo.setDateOfWeighting(dateOfWeighting);
+
                 userWeightInfoList.add(userWeightInfo);
             }
+
             rs.close();
         } catch (SQLException e) {
             throw new DaoException(e);
@@ -199,7 +200,7 @@ public class SQLUserDao implements UserDao, DaoQuery {
     public User getEditAdminProfileInfo(int id) throws DaoException {
         User user = null;
         try (Connection connection = DriverManagerManager.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_GET_ADMIN_ACCESS_INFO)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_GET_ADMIN_EDIT_INFO)) {
             preparedStatement.setInt(1, id );
 
             ResultSet rs = preparedStatement.executeQuery();

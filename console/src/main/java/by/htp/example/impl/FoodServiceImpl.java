@@ -36,13 +36,13 @@ public class FoodServiceImpl implements FoodService  {
     }
 
     @Override
-    public List<Food> addFoodInMeal(String keyMealId, String keyFoodId) throws ServiceException {
-        List<Food> foods;
+    public void addFoodInMeal(String keyMealId, String keyFoodId) throws ServiceException {
+
         try {
-            foods = provider.getFoodDao().addFoodInMealDB(Integer.parseInt(keyMealId), Integer.parseInt(keyFoodId));
+            provider.getFoodDao().addFoodInMealDB(Integer.parseInt(keyMealId), Integer.parseInt(keyFoodId));
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
-        return foods;
+
     }
 }
