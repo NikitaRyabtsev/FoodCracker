@@ -14,6 +14,10 @@
 
     <link rel="icon" href="images/FoodCracker.ico">
     <style>
+        form{
+            margin-block-end: 0;
+        }
+
         .header {
             height: 20vh;
             width: 100%;
@@ -125,21 +129,20 @@
 <div class="market-modal-page">
     <div class="market-modal-page__body">
         <div class="market-modal-page__top">
-            <p class="market-modal-page__title" style="margin-left: 210px">Авторизация</p>
+            <p class="market-modal-page__title" style="margin-left: 170px">Авторизация</p>
             <img class="market-modal-page__icon-close" src="img/icon-close.svg" alt="close">
         </div>
         <form action="controller" method="post">
             <input type="hidden" name="command" value="authorization"/>
             <div mb-3>
-                <label class="form-label">Логин</label>
-                <input type="login" name="login" value="" class="center w-25 form-control"
-                       style="margin-left: 217px " required autofocus>
+
+                <input type="login" name="login" value="" class="center w-25 form-control"  placeholder="Логин"
+                       style="margin-left: 190px " required autofocus>
             </div>
             </br>
             <div class="mb-3">
-                <label class="form-label">Пароль</label>
-                <input type="text" name="password" value="" class="w-25 form-control"
-                       style="margin-left: 217px " required autofocus>
+                <input type="text" name="password" value="" class="w-25 form-control"  placeholder="Пароль"
+                       style="margin-left: 190px " required autofocus>
             </div>
             <div>
                 <button class="w-25 btn btn-success" type="submit">Войти</button>

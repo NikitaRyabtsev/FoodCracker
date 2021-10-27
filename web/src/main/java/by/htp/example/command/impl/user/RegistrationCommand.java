@@ -23,7 +23,6 @@ public class RegistrationCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         User user;
-        double weight;
         ServiceProvider provider = ServiceProvider.getInstance();
 
         String login = request.getParameter(RequestParameterName.REQ_PARAM_LOGIN);

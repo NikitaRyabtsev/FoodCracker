@@ -33,5 +33,4 @@ public interface UserService {
 
     List<UserWeightInfo> getWeightFromDB(String id) throws ServiceException;
 
-    void chooseMealPlan(String planId, String id) throws ServiceException;
 }

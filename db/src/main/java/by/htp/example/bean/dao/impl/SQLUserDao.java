@@ -194,19 +194,6 @@ public class SQLUserDao implements UserDao, DaoQuery {
         return userWeightInfoList;
     }
 
-    @Override
-    public void chooseMealPlan(int planId, int id) throws DaoException {
-
-        try (Connection connection = DriverManagerManager.getConnection();
-             PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_CHOOSE_PLAN)) {
-            prepareStatement.setInt(1, planId);
-            prepareStatement.setInt(2, id);
-            prepareStatement.executeUpdate();
-        } catch (SQLException e) {
-            throw new DaoException(e);
-        }
-
-    }
 
     @Override
     public User getEditAdminProfileInfo(int id) throws DaoException {

@@ -130,12 +130,5 @@ public class UserServiceImpl implements UserService{
         }
     }
 
-    @Override
-    public void chooseMealPlan(String planId, String id) throws ServiceException {
-        try{
-            provider.getUserDao().chooseMealPlan(Integer.parseInt(planId),Integer.parseInt(id));
-        }catch (DaoException e){
-            throw new ServiceException(e);
-        }
-    }
+
 }

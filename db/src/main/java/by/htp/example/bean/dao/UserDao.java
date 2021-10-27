@@ -29,6 +29,6 @@ public interface UserDao {
 
     List<UserWeightInfo> getWeightFromDB(int id) throws DaoException;
 
-    void chooseMealPlan(int planId , int id) throws DaoException;
+
 
 }

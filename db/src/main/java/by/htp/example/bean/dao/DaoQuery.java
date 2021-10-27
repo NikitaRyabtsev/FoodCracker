@@ -41,24 +41,22 @@ public interface DaoQuery {
             "  weight, date ,user_idUser" +
             " FROM User " +
             " JOIN user_weight " +
-            " ON idUser = user_weight.user_idUser AND date = (select max(date) from user_weight WHERE user_idUser = ?) " +
+            " ON idUser = user_weight.user_idUser AND date = (select max(date) from user_weight WHERE user_idUser = idUser) " +
             " WHERE idUser= ?";
 
-    String SQL_QUERY_GET_ADMIN_ACCESS_INFO = "SELECT user.* ,user_weight.weight AS weight, user_idUser ," +
+    String SQL_QUERY_GET_ADMIN_ACCESS_INFO = "SELECT user.* ,user_weight.weight AS weight, user_idUser , " +
             " date FROM User JOIN user_weight " +
-            " ON idUser = user_idUser AND date = (select max(date) from user_weight WHERE user_idUser = ?) " +
+            " ON idUser = user_idUser AND date = (select max(date) from user_weight WHERE user_idUser = idUser)  " +
             " WHERE idUser = ?";
 
     String SQL_QUERY_ADD_WEIGHT = "INSERT INTO user_weight (user_idUser,weight,date) values (?,?,?)";
 
     String SQL_QUERY_GET_USER_WEIGHT = "SELECT user_weight.weight AS us_weight , user_weight.date AS date FROM user " +
-            "JOIN user_weight ON idUser= user_weight.user_idUser " +
+            "JOIN user_weight ON idUser = user_weight.user_idUser " +
             "WHERE idUser = ? " +
             "ORDER BY user_weight.date DESC";
 
     String SQL_QUERY_EDIT_PROFILE = "UPDATE User SET login =? , password=? , name=?,secondName=? , email=?,sex=? , dateOfBirth=? WHERE idUser = ?";
-
-    String SQL_QUERY_CHOOSE_PLAN = "UPDATE user SET meal_plan_idmeal_plan =? WHERE idUser = ?";
 
     //Food
     String SQL_QUERY_GET_ALL_FOOD = "SELECT * FROM Food";

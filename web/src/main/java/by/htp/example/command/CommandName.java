@@ -14,7 +14,6 @@ public enum CommandName {
     ADD_USER_WEIGHT,
     EDIT_PROFILE,
     GET_WEIGHT,
-    CHOOSE_MEAL_PLAN,
 //Meal
 
     GET_ALL_MEALS,
