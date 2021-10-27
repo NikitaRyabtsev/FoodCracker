@@ -104,12 +104,11 @@ public class SQLUserDao implements UserDao, DaoQuery {
     }
 
     @Override
-    public User getEditUserAccessInfo(int id , int weightId) throws DaoException {
+    public User getEditUserAccessInfo(int id) throws DaoException {
         User user = new User();
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_USER_ACCESS_INFO)) {
-            prepareStatement.setInt(1, weightId);
-            prepareStatement.setInt(2, id);
+            prepareStatement.setInt(1, id);
 
             ResultSet rs = prepareStatement.executeQuery();
             if (rs.next()) {
@@ -210,12 +209,11 @@ public class SQLUserDao implements UserDao, DaoQuery {
     }
 
     @Override
-    public User getEditAdminAccessInfo(int id , int weightId) throws DaoException {
+    public User getEditAdminProfileInfo(int id) throws DaoException {
         User user = null;
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_GET_ADMIN_ACCESS_INFO)) {
-            preparedStatement.setInt(1, weightId);
-            preparedStatement.setInt(2, id );
+            preparedStatement.setInt(1, id );
 
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {

@@ -18,9 +18,9 @@ public interface UserDao {
 
     List<User> getAllUsersFromDB() throws DaoException;
 
-	User getEditAdminAccessInfo(int id , int weightId) throws DaoException;
+	User getEditAdminProfileInfo(int id) throws DaoException;
 
-	User getEditUserAccessInfo(int id , int weightId) throws DaoException;
+	User getEditUserAccessInfo(int id) throws DaoException;
 
     User EditProfileInDB(String login , String password , String name, String secondName
             ,String email,String sex , LocalDate dateOfBirth , int id) throws DaoException;

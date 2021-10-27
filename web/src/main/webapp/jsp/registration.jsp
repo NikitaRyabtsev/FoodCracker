@@ -24,7 +24,7 @@
     </div>
     <div class="form-group col-md-6">
         <label for="validationDefault02">Пароль</label>
-        <input type="text" name ="password" class="form-control" id="validationDefault02" placeholder="Пароль" required>
+        <input type="text" name ="password" class="w-50 form-control" id="validationDefault02" placeholder="Пароль" required>
     </div>
     </div>
     <div class="form-group">
@@ -57,9 +57,9 @@
         <input type="hidden" name = "role" class="form-control" value="user" required>
     </div>
     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
-    <jsp:include page="/jsp/footer.jsp"/>
 </form>
 </div>
 </form>
+<jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>

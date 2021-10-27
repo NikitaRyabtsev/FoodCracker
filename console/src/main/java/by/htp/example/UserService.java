@@ -16,13 +16,13 @@ public interface UserService {
 
     void registration(User user) throws ServiceException;
 
-    User getAdminAccessInfo(String id ,  String weightId) throws ServiceException;
+    User getAdminAccessInfo(String id ) throws ServiceException;
 
     List<User> getUsers() throws ServiceException;
 
     void blockUser(User user) throws ServiceException;
 
-    User getUserAccessInfo(String id ,  String weightId) throws ServiceException;
+    User getUserAccessInfo(String id) throws ServiceException;
 
     User deleteUser(User user) throws ServiceException;
 

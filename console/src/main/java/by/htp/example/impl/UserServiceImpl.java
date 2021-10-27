@@ -46,10 +46,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User getAdminAccessInfo(String id , String weightId) throws ServiceException {
+    public User getAdminAccessInfo(String id) throws ServiceException {
         try{
-            return provider.getUserDao().getEditAdminAccessInfo(Integer.parseInt(weightId),
-                    Integer.parseInt(id));
+            return provider.getUserDao().getEditAdminProfileInfo(Integer.parseInt(id));
         }catch(DaoException e){
             throw new ServiceException(e);
         }
@@ -76,9 +75,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User getUserAccessInfo(String id,  String weightId) throws ServiceException {
+    public User getUserAccessInfo(String id) throws ServiceException {
         try{
-            return provider.getUserDao().getEditUserAccessInfo(Integer.parseInt(weightId),
+            return provider.getUserDao().getEditUserAccessInfo(
                     Integer.parseInt(id));
         }catch(DaoException e){
             throw new ServiceException(e);

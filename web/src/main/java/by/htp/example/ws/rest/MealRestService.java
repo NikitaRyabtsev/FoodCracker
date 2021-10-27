@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-@Path("meal")
+@Path("/meal")
 @Consumes({"application/json"})
 @Produces({"application/json"})
 public class MealRestService {
