@@ -1,9 +1,11 @@
 package by.htp.example.view;
 
+import by.htp.example.MealService;
 import by.htp.example.MealServiceRemote;
 import by.htp.example.ServiceException;
 import by.htp.example.bean.Meal;
 import by.htp.example.impl.MealServiceImpl;
+import by.htp.example.impl.rest.MealRestServiceImpl;
 import by.htp.example.util.Util;
 
 import javax.inject.Inject;
@@ -21,51 +23,36 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ViewMenuRest {
-    private static final String URL = "http://localhost:8080/ws/rest/meal";
-
 
     public void viewRest() {
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(URL);
-        Meal meal = new Meal();
-        GenericType<Meal> mealGenericType = new GenericType<Meal>() {
-        };
-        GenericType<List<Meal>> type = new GenericType<List<Meal>>() {
-        };
+        MealService mealService = new MealRestServiceImpl();
         int userChoose = 0;
         while (userChoose != 7) {
             try {
                 showMenu();
                 userChoose = Util.scanInt();
-
+                String keyUserId = "4";
                 switch (userChoose) {
                     case 1:
-                        Response responseGet = target.request(MediaType.APPLICATION_JSON).get();
-                        List<Meal> meals = responseGet.readEntity(type);
-                        displayMeals(meals);
+                        displayMeals(mealService.getMeals(keyUserId));
                         break;
                     case 2:
-                        Response responseAdd;
-                        responseAdd = target.request(MediaType.APPLICATION_JSON).post(Entity.entity(meal, MediaType.APPLICATION_JSON));
-                        meal = responseAdd.readEntity(mealGenericType);
+                        mealService.createMeal(String.valueOf(Util.scanDate()),
+                                String.valueOf(Util.scanTime()),String.valueOf(Util.scanInt()));
                         break;
                     case 3:
-                        Response responseChange;
-                        responseChange = target.request(MediaType.APPLICATION_JSON).post(Entity.entity(meal, MediaType.APPLICATION_JSON));
-                       meal = responseChange.readEntity(mealGenericType);
+                        mealService.changeMealCharacteristic(String.valueOf
+                                (Util.scanDate()), String.valueOf(Util.scanTime()), keyUserId);
                         break;
                     case 4:
-                        Response responseDelete = target.request(MediaType.APPLICATION_JSON).delete();
-                        meal = responseDelete.readEntity(mealGenericType);
+                        mealService.deleteMeal(String.valueOf(Util.scanInt()));
                         break;
                     case 5:
-                        Response responseById = target.request(MediaType.APPLICATION_JSON).get();
-                        meal = responseById.readEntity(mealGenericType);
+                        displayMeals( mealService.getMeals(keyUserId));
+                        System.out.println( mealService.getMealById(String.valueOf(Util.scanInt())));
                         break;
                     case 6:
-                        Response responseByDate = target.request(MediaType.APPLICATION_JSON).get();
-                        meals = responseByDate.readEntity(type);
-                        displayMeals(meals);
+                        displayMeals( mealService.getMealByDate(String.valueOf(Util.scanDate())));
                         break;
                     case 7:
                         System.out.println("Goodbye");
@@ -74,10 +61,9 @@ public class ViewMenuRest {
                     default:
                         System.out.println(">>>[Info] Wrong choose");
                 }
-            } catch (InputMismatchException | DateTimeException | IllegalArgumentException ex) {
+            } catch (InputMismatchException | DateTimeException | IllegalArgumentException | ServiceException ex) {
                 ex.getMessage();
             }
-            client.close();
 
         }
     }

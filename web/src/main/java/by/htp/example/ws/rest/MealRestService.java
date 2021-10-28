@@ -1,5 +1,6 @@
 package by.htp.example.ws.rest;
 
+import by.htp.example.MealService;
 import by.htp.example.ServiceException;
 import by.htp.example.bean.Meal;
 import by.htp.example.bean.dao.DaoException;
@@ -7,6 +8,7 @@ import by.htp.example.bean.dao.DaoProvider;
 import by.htp.example.bean.dao.MealDao;
 import by.htp.example.command.RequestParameterName;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.time.LocalDate;
@@ -22,8 +24,7 @@ public class MealRestService {
     MealDao mealDao = provider.getMealDao();
 
     @GET
-    @Path("/meals")
-    public List<Meal> getMeals(String keyUserId) throws ServiceException {
+    public List<Meal> getMeals(@PathParam(RequestParameterName.REQ_PARAM_ID) String keyUserId) throws ServiceException {
         keyUserId = "4";
         try {
             return mealDao.getMealsFromDB(Integer.parseInt(keyUserId));
@@ -73,9 +74,9 @@ public class MealRestService {
 
     @GET
     @Path("/{id}")
-    public Meal getMealById(@PathParam(RequestParameterName.REQ_PARAM_ID) int id) throws ServiceException {
+    public Meal getMealById(@PathParam(RequestParameterName.REQ_PARAM_ID) String id) throws ServiceException {
         try{
-            return mealDao.getMealByIdFromDB(id);
+            return mealDao.getMealByIdFromDB(Integer.parseInt(id));
         }catch(DaoException e){
             throw new ServiceException(e);
         }
