@@ -46,12 +46,13 @@ public class RegistrationCommand implements Command {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
                 dispatcher.forward(request, response);
             } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.REGISTRATION);
                 dispatcher.forward(request, response);
             }
         } catch (ServiceException | DateTimeParseException | NumberFormatException e) {
+            request.setAttribute("existLogin","true");
             e.printStackTrace();
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.REGISTRATION);
             dispatcher.forward(request, response);
 
         }

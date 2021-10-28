@@ -9,14 +9,14 @@ public class ViewMenu {
 
     public void viewMenu() {
         int userChoose = 0;
-        while (userChoose != 3) {
+        showMenu();
+        userChoose = Util.scanInt();
+        while (userChoose < 6) {
             try {
-                showMenu();
                 ViewMenuConsole viewMenuConsole = new ViewMenuConsole();
                 ViewMenuEjb viewMenuEjb = new ViewMenuEjb();
                 ViewMenuRest viewMenuRest = new ViewMenuRest();
                 ViewMenuSoap viewMenuSoap = new ViewMenuSoap();
-                userChoose = Util.scanInt();
                 switch (userChoose) {
                     case 1:
                         viewMenuConsole.viewMenuConsole();

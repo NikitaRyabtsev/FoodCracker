@@ -47,8 +47,8 @@ public class SoapMealService {
                                          @WebParam(name = "mealId") int mealId) throws ServiceException {
         Meal meal = null;
         try {
-            meal = mealDao.changeMealCharacteristicInDB(LocalDate.parse(date)
-                    , LocalTime.parse(time), mealId);
+            meal = mealDao.changeMealCharacteristicInDB( mealId,LocalDate.parse(date)
+                    , LocalTime.parse(time));
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

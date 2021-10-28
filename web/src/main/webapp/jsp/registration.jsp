@@ -170,7 +170,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <input type="hidden" name="blockUser" class="form-control" value="unlock" required>
+                <input type="hidden" name="blockUser" class="form-control" value="unblock" required>
             </div>
             <div class="form-group">
                 <input type="hidden" name="role" class="form-control" value="user" required>
@@ -207,5 +207,10 @@
 </div>
 <jsp:include page="/jsp/footer.jsp"/>
 <script src="js/script.js"></script>
+<script>
+    if(<%=request.getAttribute("existLogin")%>){
+        alert("Такой пользовтель уже существует");
+    }
+</script>
 </body>
 </html>

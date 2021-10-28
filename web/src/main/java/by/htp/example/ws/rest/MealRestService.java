@@ -53,8 +53,8 @@ public class MealRestService {
                                          @PathParam(RequestParameterName.REQ_PARAM_ID) String mealId) throws ServiceException {
         Meal meal = null;
         try {
-           meal = mealDao.changeMealCharacteristicInDB(LocalDate.parse(date)
-                   ,LocalTime.parse(time), Integer.parseInt(mealId));
+           meal = mealDao.changeMealCharacteristicInDB(Integer.parseInt(mealId),LocalDate.parse(date)
+                   ,LocalTime.parse(time));
         }catch(DaoException e){
             throw new ServiceException(e);
         }

@@ -15,7 +15,7 @@ import by.htp.example.ServiceException;
 import javax.ejb.Stateless;
 
 @Stateless
-public class MealServiceImpl implements  MealService,MealServiceRemote{
+public class MealServiceImpl implements MealService, MealServiceRemote {
 
     private DaoProvider provider = DaoProvider.getInstance();
 
@@ -24,7 +24,6 @@ public class MealServiceImpl implements  MealService,MealServiceRemote{
         List<Meal> meals;
         try {
             meals = provider.getMealDao().getMealsFromDB(Integer.parseInt(keyUserId));
-
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
@@ -32,24 +31,24 @@ public class MealServiceImpl implements  MealService,MealServiceRemote{
     }
 
     @Override
-    public Meal createMeal(String date,String time ,String id) throws ServiceException {
-            Meal meal;
+    public Meal createMeal(String date, String time, String id) throws ServiceException {
+        Meal meal;
         try {
-           meal = provider.getMealDao().createMealInDB(LocalDate.parse(date),
+            meal = provider.getMealDao().createMealInDB(LocalDate.parse(date),
                     LocalTime.parse(time), Integer.parseInt(id));
-           return meal;
+            return meal;
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
 
     @Override
-    public Meal changeMealCharacteristic(String date ,
-                                         String time,String mealId) throws ServiceException {
+    public Meal changeMealCharacteristic(String mealId, String date,
+                                         String time) throws ServiceException {
         Meal meal;
         try {
-            meal = provider.getMealDao().changeMealCharacteristicInDB(LocalDate.parse(date)
-                        ,LocalTime.parse(time) , Integer.parseInt(mealId));
+            meal = provider.getMealDao().changeMealCharacteristicInDB(Integer.parseInt(mealId),LocalDate.parse(date),
+                    LocalTime.parse(time));
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
@@ -60,7 +59,7 @@ public class MealServiceImpl implements  MealService,MealServiceRemote{
     public void deleteMeal(String id) throws ServiceException {
 
         try {
-          provider.getMealDao().deleteMealFromDB(Integer.parseInt(id));
+            provider.getMealDao().deleteMealFromDB(Integer.parseInt(id));
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

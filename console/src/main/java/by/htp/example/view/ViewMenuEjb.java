@@ -25,7 +25,7 @@ public class ViewMenuEjb{
 		ejbBeans();
 		int userChoose = 0;
 		String userId = "4";
-		while (userChoose != 7) {
+		while (userChoose < 7) {
 			try {
 				showMenu();
 				userChoose = Util.scanInt();
@@ -35,14 +35,15 @@ public class ViewMenuEjb{
 					displayMeals(mealServiceRemote.getMeals(userId));
 					break;
 				case 2:
-					System.out.println(mealServiceRemote.createMeal(String.valueOf(Util.scanDate())
-							,String.valueOf(Util.scanTime()),userId));
+					mealServiceRemote.createMeal(String.valueOf(Util.scanDate())
+							,String.valueOf(Util.scanTime()),userId);
 					break;
 				case 3:
 					mealServiceRemote.changeMealCharacteristic(String.valueOf
 							(Util.scanDate()),String.valueOf(Util.scanTime()),userId);
 					break;
 				case 4:
+					displayMeals(mealServiceRemote.getMeals(userId));
 					mealServiceRemote.deleteMeal(String.valueOf(Util.scanInt()));
 					break;
 				case 5:
@@ -55,7 +56,6 @@ public class ViewMenuEjb{
 				case 7:
 					System.out.println("Goodbye");
 					break;
-
 				default:
 					System.out.println(">>>[Info] Wrong choose");
 				}

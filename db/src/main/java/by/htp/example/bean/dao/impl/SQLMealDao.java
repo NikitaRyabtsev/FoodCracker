@@ -57,8 +57,8 @@ public class SQLMealDao implements MealDao, DaoQuery {
     }
 
     @Override
-    public Meal changeMealCharacteristicInDB(LocalDate date ,
-                               LocalTime time,int mealId) throws DaoException {
+    public Meal changeMealCharacteristicInDB(int mealId ,LocalDate date ,
+                               LocalTime time) throws DaoException {
         Meal meal;
         int id = 0;
         try (Connection connection = DriverManagerManager.getConnection();

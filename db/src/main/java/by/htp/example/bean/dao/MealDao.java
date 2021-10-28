@@ -13,8 +13,8 @@ public interface MealDao {
 
 	Meal createMealInDB(LocalDate date, LocalTime time, int keyUserId) throws DaoException;
 
-	Meal changeMealCharacteristicInDB(LocalDate date ,
-									  LocalTime time,int mealId) throws DaoException;
+	Meal changeMealCharacteristicInDB(int mealId,LocalDate date ,
+									  LocalTime time) throws DaoException;
 
 	void deleteMealFromDB(int id) throws DaoException;
 
