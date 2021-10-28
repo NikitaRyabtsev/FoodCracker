@@ -18,17 +18,12 @@ import java.util.Objects;
 public class Meal implements Serializable {
 
 	private int keyUserId;
-	@XmlElement(name="mealId")
 	private int id;
 
-	@XmlElement(name="DateOfEating")
 	@XmlJavaTypeAdapter(LocalDateAdapter.class)
 	private LocalDate date;
-
-	@XmlElement(name="timeOfEating")
 	@XmlJavaTypeAdapter(LocalTimeAdapter.class)
 	private LocalTime time;
-	@XmlTransient
 	private double weight;
 	private double calories;
 

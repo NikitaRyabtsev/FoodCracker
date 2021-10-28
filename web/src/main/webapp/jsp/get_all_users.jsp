@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="icon" href="images/FoodCracker.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>Пользователи</title>
@@ -25,8 +26,7 @@
         <td>Фамилия</td>
         <td>E-mail</td>
         <td>Пол</td>
-        <td>Вес</td>
-        <td>Последняя дата взвешивания</td>
+
         <td>Дата Рождения</td>
         <td>Уровень доступа</td>
         <td>Статус</td>
@@ -40,8 +40,6 @@
         <td><c:out value="${user.getSecondName()}"/></td>
         <td><c:out value="${user.getEmail()}"/></td>
         <td><c:out value="${user.getSex()}"/></td>
-        <td><c:out value="${user.getWeight()}"/></td>
-        <td><c:out value="${user.getDateOfWeighting()}"/></td>
         <td><c:out value="${user.getDateOfBirth()}"/></td>
         <td><c:out value="${user.getRole()}"/></td>
         <td><c:out value="${user.getBlock()}"/></td>

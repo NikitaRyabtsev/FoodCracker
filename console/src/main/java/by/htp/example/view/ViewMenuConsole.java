@@ -7,6 +7,7 @@ import by.htp.example.bean.Meal;
 import by.htp.example.impl.MealServiceImpl;
 import by.htp.example.util.Util;
 
+import javax.inject.Inject;
 import java.time.DateTimeException;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -14,30 +15,27 @@ import java.util.Scanner;
 
 public class ViewMenuConsole {
 
-
+    @Inject
     private MealService mealService = new MealServiceImpl();
-
-    private Scanner scan;
 
     public void viewMenuConsole() {
         int userChoose = 0;
-        String userId = "1";
+        String userId = "4";
         while (userChoose != 7) {
             try {
                 showMenu();
                 userChoose = Util.scanInt();
-
                 switch (userChoose) {
-                    case 1://
-                        displayMeals( mealService.getMeals(userId));
+                    case 1:
+                        displayMeals(mealService.getMeals(userId));
                         break;
-                    case 2://
-                        System.out.println( mealService.createMeal(String.valueOf(Util.scanDate())
-                                , String.valueOf(Util.scanTime()), userId));
+                    case 2:
+                       mealService.createMeal(String.valueOf(Util.scanDate())
+                                , String.valueOf(Util.scanTime()), userId);
                         break;
                     case 3:
-                        mealService.changeMealCharacteristic(String.valueOf
-                                (Util.scanDate()), String.valueOf(Util.scanTime()), userId);
+                        mealService.changeMealCharacteristic(String.valueOf(Util.scanInt()),String.valueOf
+                                (Util.scanDate()), String.valueOf(Util.scanTime()));
                         break;
                     case 4:
                         mealService.deleteMeal(String.valueOf(Util.scanInt()));
@@ -47,12 +45,11 @@ public class ViewMenuConsole {
                         System.out.println( mealService.getMealById(String.valueOf(Util.scanInt())));
                         break;
                     case 6:
-                        displayMeals( mealService.getMealByDate(String.valueOf(Util.scanDate())));
+                        System.out.println(mealService.getMealByDate(String.valueOf(Util.scanDate())));
                         break;
                     case 7:
                         System.out.println("Goodbye");
                         break;
-
                     default:
                         System.out.println(">>>[Info] Wrong choose");
                 }
@@ -79,7 +76,7 @@ public class ViewMenuConsole {
         if (meals != null && !meals.isEmpty()) {
             for (int i = 0; i < meals.size(); i++) {
                 System.out.println(
-                        "#" + (i + 1) + " Meals Date: " + meals.get(i).getDate() + " Time: " + meals.get(i).getTime());
+                        "# " + meals.get(i).getId() + " Meals Date: " + meals.get(i).getDate() + " Time: " + meals.get(i).getTime());
             }
         }
     }

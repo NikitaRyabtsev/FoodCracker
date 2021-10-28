@@ -52,8 +52,7 @@ public class SQLFoodDao implements FoodDao, DaoQuery {
     }
 
     @Override
-    public List<Food> addFoodInMealDB(int keyMealId, int keyFoodId) throws DaoException {
-        List<Food> foods = new ArrayList<>();
+    public void addFoodInMealDB(int keyMealId, int keyFoodId) throws DaoException {
 
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_ADD_FOOD_IN_MEAL)) {
@@ -61,10 +60,12 @@ public class SQLFoodDao implements FoodDao, DaoQuery {
             preparedStatement.setInt(1, keyMealId);
             preparedStatement.setInt(2, keyFoodId);
             preparedStatement.executeUpdate();
+
         } catch (SQLException e) {
             throw new DaoException(e);
+
         }
-        return foods;
+
     }
 
 

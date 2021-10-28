@@ -39,7 +39,7 @@ public class GetMealByDateCommand implements Command {
                 }
 
         } catch (ServiceException | DateTimeParseException e) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
             dispatcher.forward(request, response);
 
         }

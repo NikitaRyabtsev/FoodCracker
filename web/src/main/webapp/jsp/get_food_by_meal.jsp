@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="icon" href="images/FoodCracker.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>Пища</title>
@@ -36,9 +37,8 @@
 
 <form action="controller" method="post">
     <input type="hidden" name="command" value="add_food_in_meal"/>
-    <input name="keyFoodId" value="<%=request.getParameter("keyMealId")%>"/>
-    <input value="<%=request.getParameter("keyMealId")%>"/>
     <input hidden value="${param.keyMealId}"/>
+    <input name ="keyFoodId" value=""/>
     <input type="submit" value="Добавить"/>
 </form>
 <jsp:include page="/jsp/footer.jsp"/>
