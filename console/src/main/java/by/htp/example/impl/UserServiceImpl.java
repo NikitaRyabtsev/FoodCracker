@@ -36,10 +36,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void registration(User user) throws ServiceException {
+    public void registration(String login,String password,String name, String secondName,
+                             String email,String sex,LocalDate dateOfBirth,String role,String block) throws ServiceException {
         UserDao userDao = DaoProvider.getInstance().getUserDao();
        try {
-           userDao.registration(user);
+           userDao.registration(login,password,name,secondName,email,sex,dateOfBirth,role,block);
        }catch(DaoException e){
            throw new ServiceException(e);
        }

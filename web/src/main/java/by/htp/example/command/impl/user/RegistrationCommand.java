@@ -20,9 +20,10 @@ import java.time.format.DateTimeParseException;
 public class RegistrationCommand implements Command {
     @Inject
     private UserService userService;
+
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        User user;
+
         ServiceProvider provider = ServiceProvider.getInstance();
 
         String login = request.getParameter(RequestParameterName.REQ_PARAM_LOGIN);
@@ -37,20 +38,13 @@ public class RegistrationCommand implements Command {
 
         try {
             LocalDate dateOfBirth = LocalDate.parse(dateOfBirthS);
+            userService = provider.getUserService();
+            userService.registration(login, password, name, secondName, email, sex, dateOfBirth, role, block);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
+            dispatcher.forward(request, response);
 
-            user = new User(login, password, email, name, secondName, sex, dateOfBirth, role, block);
-            if (user != null) {
-                userService = provider.getUserService();
-                userService.registration(user);
-                request.setAttribute(RequestParameterName.REQ_PARAM_REGISTRATION, user);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
-                dispatcher.forward(request, response);
-            } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.REGISTRATION);
-                dispatcher.forward(request, response);
-            }
         } catch (ServiceException | DateTimeParseException | NumberFormatException e) {
-            request.setAttribute("existLogin","true");
+            request.setAttribute("existLogin", "true");
             e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.REGISTRATION);
             dispatcher.forward(request, response);

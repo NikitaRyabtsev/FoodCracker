@@ -33,8 +33,7 @@ public class ChangeMealCommand implements Command {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.CHANGE_MEAL);
                 dispatcher.forward(request, response);
             } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
-                dispatcher.forward(request, response);
+                response.sendRedirect(JSPPageName.USER_AUTH_PAGE_JSP);
             }
         } catch (ServiceException e) {
             e.printStackTrace();

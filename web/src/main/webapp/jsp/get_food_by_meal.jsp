@@ -34,7 +34,11 @@
     </tr>
     </c:forEach>
 </table>
-
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="to_product"/>
+    <input type="hidden" name="keyMealId" value="${param.keyMealId}">
+    <input type="submit" value="Добавить продукт">
+</form>
 <jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>

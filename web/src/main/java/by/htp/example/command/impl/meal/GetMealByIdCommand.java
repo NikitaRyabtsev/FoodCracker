@@ -28,8 +28,7 @@ public class GetMealByIdCommand implements Command {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_MEAL);
                 dispatcher.forward(request, response);
             } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
-                dispatcher.forward(request, response);
+                response.sendRedirect(JSPPageName.USER_INDEX_JSP);
             }
 
         } catch (ServiceException e) {

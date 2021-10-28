@@ -1,9 +1,8 @@
 package by.htp.example.command.impl.user;
 
+import by.htp.example.bean.dao.DaoException;
 import by.htp.example.bean.user.User;
-import by.htp.example.command.Command;
-import by.htp.example.command.JSPPageName;
-import by.htp.example.command.RequestParameterName;
+import by.htp.example.command.*;
 import by.htp.example.ServiceException;
 import by.htp.example.ServiceProvider;
 import by.htp.example.UserService;
@@ -29,8 +28,8 @@ public class AddUserWeightCommand implements Command {
 
         try {
             userService.addUserWeight(id, weight,date);
-            response.sendRedirect(JSPPageName.USER_INDEX_JSP);
-        } catch (ServiceException e) {
+            CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_WEIGHT)).execute(request,response);
+        } catch (ServiceException | DaoException e) {
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
             e.printStackTrace();
