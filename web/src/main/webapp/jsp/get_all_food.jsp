@@ -33,10 +33,17 @@
         <td><c:out value="${food.getProteins()}"/></td>
         <td><c:out value="${food.getFats()}"/></td>
         <td><c:out value="${food.getCarbohydrates()}"/></td>
-         <td><c:out value="${food.getPortion()}"/></td>
+        <td><c:out value="${food.getPortion()}"/></td>
     </tr>
+    <form action="controller" method="post">
+        <input type="hidden" name="command" value="add_food_in_meal"/>
+        <td><input type="number" name="keyMealId" value="${param.keyMealId}"/></td>
+        <input hidden name="keyFoodId" value="${food.getId()}"/>
+        <td><input type="submit" value="Добавить"/></td>
+    </form>
     </c:forEach>
 </table>
+
 <jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>

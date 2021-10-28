@@ -60,18 +60,13 @@ public class SQLMealDao implements MealDao, DaoQuery {
     public Meal changeMealCharacteristicInDB(int mealId ,LocalDate date ,
                                LocalTime time) throws DaoException {
         Meal meal;
-        int id = 0;
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_CHANGE_MEAL)) {
             prepareStatement.setObject(1, date);
             prepareStatement.setObject(2, time);
             prepareStatement.setInt(3, mealId);
-            ResultSet rs = prepareStatement.executeQuery();
-            if (rs.next()) {
-                id = rs.getInt("idMeal");
-            }
-            meal = new Meal(id,date,time);
-            rs.close();
+            prepareStatement.executeUpdate();
+            meal = new Meal(date,time,mealId);
         } catch (SQLException e) {
             throw new DaoException(e);
         }
@@ -115,14 +110,13 @@ public class SQLMealDao implements MealDao, DaoQuery {
     @Override
     public List<Meal> getMealByDateFromDB(LocalDate date) throws DaoException {
         List<Meal> meals = new ArrayList<>();
-        Meal meal = null;
+
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_MEAL_BY_DATE)) {
             prepareStatement.setObject(1, date);
             ResultSet rs = prepareStatement.executeQuery();
             if (rs.next()) {
-                meal = init(rs);
-                meals.add(meal);
+                meals.add(init(rs));
             }
             rs.close();
         } catch (SQLException e) {

@@ -35,12 +35,6 @@
     </c:forEach>
 </table>
 
-<form action="controller" method="post">
-    <input type="hidden" name="command" value="add_food_in_meal"/>
-    <input hidden value="${param.keyMealId}"/>
-    <input name ="keyFoodId" value=""/>
-    <input type="submit" value="Добавить"/>
-</form>
 <jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>

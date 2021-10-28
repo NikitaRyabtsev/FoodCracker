@@ -35,7 +35,7 @@ public class EditProfileCommand implements Command {
             user = userService.EditProfileInDB(login, password, name, secondName, email, sex, dateOfBirth, id);
             if(user != null){
                 request.setAttribute(RequestParameterName.REQ_PARAM_CHANGE_USER_PROFILE, user);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.CHANGE_MEAL);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
                 dispatcher.forward(request, response);
             }
         }catch(ServiceException e){

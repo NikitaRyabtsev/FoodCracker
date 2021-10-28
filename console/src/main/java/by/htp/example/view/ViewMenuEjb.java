@@ -25,7 +25,7 @@ public class ViewMenuEjb{
 		ejbBeans();
 		int userChoose = 0;
 		String userId = "4";
-		while (userChoose < 7) {
+		while (userChoose != 7) {
 			try {
 				showMenu();
 				userChoose = Util.scanInt();

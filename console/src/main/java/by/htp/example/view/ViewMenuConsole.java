@@ -34,8 +34,8 @@ public class ViewMenuConsole {
                                 , String.valueOf(Util.scanTime()), userId);
                         break;
                     case 3:
-                        mealService.changeMealCharacteristic(String.valueOf(Util.scanInt()),String.valueOf
-                                (Util.scanDate()), String.valueOf(Util.scanTime()));
+                       System.out.println(mealService.changeMealCharacteristic(String.valueOf(Util.scanInt()),String.valueOf
+                                (Util.scanDate()),String.valueOf(Util.scanTime())));
                         break;
                     case 4:
                         mealService.deleteMeal(String.valueOf(Util.scanInt()));
@@ -49,12 +49,13 @@ public class ViewMenuConsole {
                         break;
                     case 7:
                         System.out.println("Goodbye");
-                        break;
+
                     default:
                         System.out.println(">>>[Info] Wrong choose");
                 }
             } catch (InputMismatchException | DateTimeException | IllegalArgumentException | ServiceException ex) {
-                ex.getMessage();
+               ex.printStackTrace();
+                System.out.println(">>>[ERROR] Wrong value , try again");
             }
         }
     }
