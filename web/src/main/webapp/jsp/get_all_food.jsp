@@ -24,6 +24,7 @@
         <td>Жиры</td>
         <td>Углеводы</td>
         <td>Порция(г)</td>
+        <td></td>
 
     </tr>
     <tr>
@@ -33,10 +34,19 @@
         <td><c:out value="${food.getProteins()}"/></td>
         <td><c:out value="${food.getFats()}"/></td>
         <td><c:out value="${food.getCarbohydrates()}"/></td>
-         <td><c:out value="${food.getPortion()}"/></td>
+        <td><c:out value="${food.getPortion()}"/></td>
+            <td>
+                <form action="controller" method="post">
+                    <input type="hidden" name="command" value="add_food_in_meal"/>
+                    <input type="hidden" name="keyMealId" value="${param.keyMealId}"/>
+                    <input type="hidden" hidden name="keyFoodId" value="${food.getId()}"/>
+                    <input type="submit" value="Добавить"/>
+                </form>
+            </td>
     </tr>
     </c:forEach>
 </table>
+
 <jsp:include page="/jsp/footer.jsp"/>
 </body>
 </html>

@@ -1,7 +1,5 @@
 package by.htp.example.command.impl;
 
-import by.htp.example.ServiceException;
-import by.htp.example.bean.dao.DaoException;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
 

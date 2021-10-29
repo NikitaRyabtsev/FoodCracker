@@ -46,12 +46,15 @@ public class AuthorizationCommand implements Command {
                     session.setAttribute(RequestParameterName.REQ_SESSION_USER, user);
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
                     dispatcher.forward(request, response);
+                    System.out.println("3");
                 }else if(Status.BLOCK.toString().equalsIgnoreCase(user.getBlock())){
                     request.setAttribute("blocked", "true");
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
                     dispatcher.forward(request, response);
+                    System.out.println("2");
                 }
             }else{
+                System.out.println("1");
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
                 dispatcher.forward(request, response);
             }

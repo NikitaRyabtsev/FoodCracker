@@ -37,6 +37,7 @@
                     <input type="hidden" name="command" value="get_food_by_meal"/>
                     <input type="hidden" name="keyUserId" value="${user.id}"/>
                     <input type="hidden" name="keyMealId" value="${meal.getId()}">
+                    <input type="hidden" value="${food.id}">
                     <input type="submit" value="Просмотреть">
                 </form>
             </td>

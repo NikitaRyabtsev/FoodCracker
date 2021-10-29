@@ -37,7 +37,6 @@ public class FoodServiceImpl implements FoodService  {
 
     @Override
     public void addFoodInMeal(String keyMealId, String keyFoodId) throws ServiceException {
-
         try {
             provider.getFoodDao().addFoodInMealDB(Integer.parseInt(keyMealId), Integer.parseInt(keyFoodId));
         } catch (DaoException e) {

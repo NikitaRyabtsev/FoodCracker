@@ -10,7 +10,8 @@ public interface UserDao {
 
     User authorization(String login, String password) throws DaoException;
 
-    void registration(User user) throws DaoException;
+    void registration(String login,String password,String name, String secondName,
+                      String email,String sex,LocalDate dateOfBirth,String role,String block) throws DaoException;
 
     User deleteUserFromDB(User user) throws DaoException;
 

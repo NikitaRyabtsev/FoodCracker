@@ -14,7 +14,8 @@ public interface UserService {
 
     User authorization(String login, String password) throws ServiceException;
 
-    void registration(User user) throws ServiceException;
+    void registration(String login,String password,String name, String secondName,
+                      String email,String sex,LocalDate dateOfBirth,String role,String block) throws ServiceException;
 
     User getAdminAccessInfo(String id ) throws ServiceException;
 

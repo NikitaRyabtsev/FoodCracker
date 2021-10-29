@@ -1,10 +1,7 @@
 package by.htp.example.command.impl.food;
 
-import by.htp.example.bean.Food;
 import by.htp.example.bean.dao.DaoException;
-import by.htp.example.command.Command;
-import by.htp.example.command.JSPPageName;
-import by.htp.example.command.RequestParameterName;
+import by.htp.example.command.*;
 import by.htp.example.FoodService;
 import by.htp.example.ServiceException;
 import by.htp.example.ServiceProvider;
@@ -14,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+
 
 public class AddFoodInMealCommand implements Command {
     @Override
@@ -27,9 +24,8 @@ public class AddFoodInMealCommand implements Command {
 
         try {
             foodService.addFoodInMeal(keyMealId, keyFoodId);
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_FOOD);
-            dispatcher.forward(request, response);
-        } catch (ServiceException e) {
+            CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_ALL_FOOD)).execute(request,response);
+        } catch (ServiceException | DaoException e) {
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
             e.printStackTrace();

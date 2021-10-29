@@ -56,16 +56,13 @@ public class SQLFoodDao implements FoodDao, DaoQuery {
 
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_ADD_FOOD_IN_MEAL)) {
-
             preparedStatement.setInt(1, keyMealId);
             preparedStatement.setInt(2, keyFoodId);
-            preparedStatement.executeUpdate();
 
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException(e);
-
         }
-
     }
 
 
