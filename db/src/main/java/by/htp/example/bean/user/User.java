@@ -36,7 +36,7 @@ public class User {
         this.dateOfWeighting = dateOfWeighting;
     }
 
-    public User(int id, String login, String password, String email, String name, String secondName, String sex, LocalDate dateOfBirth){
+    public User(int id, String login, String password, String email, String name, String secondName, String sex, LocalDate dateOfBirth) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -52,10 +52,11 @@ public class User {
 
     }
 
-    public User(int id , String block){
+    public User(int id, String block) {
         this.id = id;
         this.block = block;
     }
+
     public User(String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth, String role, String block) {
 
         this.login = login;
@@ -69,7 +70,7 @@ public class User {
         this.block = block;
     }
 
-    public User(int id , String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth,String role,String block) {
+    public User(int id, String login, String password, String email, String name, String secondName, double weight, String sex, LocalDate dateOfBirth, String role, String block) {
         this.id = id;
         this.login = login;
         this.password = password;

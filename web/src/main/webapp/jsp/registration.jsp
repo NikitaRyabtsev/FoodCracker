@@ -11,8 +11,7 @@
     <style>
 
 
-
-        .header{
+        .header {
             height: 20vh;
             width: 100%;
             border: 2px solid #000;
@@ -22,14 +21,13 @@
         }
 
 
-
-        .market-modal-page{
+        .market-modal-page {
             position: fixed;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(0, 0, 0, 0.6);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,12 +35,12 @@
             visibility: hidden;
         }
 
-        .market-modal-page._active{
+        .market-modal-page._active {
             opacity: 1;
             visibility: visible;
         }
 
-        .market-modal-page__body{
+        .market-modal-page__body {
             display: flex;
 
             flex-direction: column;
@@ -50,32 +48,33 @@
             padding: 30px 50px;
             background-color: #fff;
         }
-        .market-modal-page__top{
+
+        .market-modal-page__top {
             display: flex;
             justify-content: space-between;
         }
 
-        .market-modal-page__title{
+        .market-modal-page__title {
             font-weight: 700;
             font-size: 2em;
         }
 
-        .market-modal-page__icon-close{
+        .market-modal-page__icon-close {
             height: 25px;
             width: 25px;
         }
-        .market-modal-page__form{
+
+        .market-modal-page__form {
             width: 50%;
             display: flex;
             justify-content: center;
             flex-direction: column;
         }
 
-        .market-modal-page__textarea{
+        .market-modal-page__textarea {
             margin: 15px 0px;
             min-height: 50px;
         }
-
     </style>
     <link rel="icon" href="images/FoodCracker.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -85,39 +84,39 @@
 <header class="p-2 bg-dark background-color:text-white">
 
 
-<div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <nav class="navbar navbar-light bg-dark">
-            <a class="navbar-brand" href="#">
-                <img src="images/FoodCracker.png" width="40" height="40" class="d-inline-block align-top" alt="">
-            </a>
-        </nav>
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 text-secondary">
-            </a></li>
-            <li><a href="#" class="nav-link px-2 text-secondary">
-            </a></li>
-            <li><a href="#" class="nav-link px-2 text-secondary">
-            </a></li>
-        </ul>
-        <a href="#" class="nav-link px-2 text-secondary">
-            <section class="market">
-                <div class="market__body">
-                    <div class="market__info">
-                        <button class=" market__btn  btn btn-success  margin-bottom: 20px">Войти</button>
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <nav class="navbar navbar-light bg-dark">
+                <a class="navbar-brand" href="#">
+                    <img src="images/FoodCracker.png" width="40" height="40" class="d-inline-block align-top" alt="">
+                </a>
+            </nav>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-secondary">
+                </a></li>
+                <li><a href="#" class="nav-link px-2 text-secondary">
+                </a></li>
+                <li><a href="#" class="nav-link px-2 text-secondary">
+                </a></li>
+            </ul>
+            <a href="#" class="nav-link px-2 text-secondary">
+                <section class="market">
+                    <div class="market__body">
+                        <div class="market__info">
+                            <button class=" market__btn  btn btn-success  margin-bottom: 20px">Войти</button>
+                        </div>
                     </div>
-                </div>
-            </section>
-        </a>
+                </section>
+            </a>
+        </div>
     </div>
-</div>
 </header>
 <body class="body">
 <br/>
 <h2 class="text-center">Ваш путь к успеху</h2>
 <h1 class="text-center">FoodCracker.by </h1>
 <h3 class="text-center"><img src="images/FoodCracker.png" width="400" height="400"
-                                    class="d-inline-block align-top" alt=""></h3>
+                             class="d-inline-block align-top" alt=""></h3>
 <div class="reg">
     <div class="form-row">
         <form action="controller" method="post">
@@ -126,12 +125,12 @@
                 <div class="form-group col-md-3" style="
     margin-left: 350px">
                     <label for="validationDefault01">Логин</label>
-                    <input type="login" name="login" class="w-100 form-control" id="validationDefault01"
+                    <input type="login" name="login" class="w-100 form-control"  minlength="6" maxlength="10"  id="validationDefault01"
                            placeholder="Введите логин" required>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="validationDefault02">Пароль</label>
-                    <input type="text" name="password" class="w-100 form-control" id="validationDefault02"
+                    <input type="text" name="password" class="w-100 form-control"  minlength="6" maxlength="10"  id="validationDefault02"
                            placeholder="Пароль" required>
                 </div>
             </div>
@@ -141,6 +140,7 @@
                 <input type="email" name="email" class="w-100 form-control" id="validationDefault03"
                        placeholder="email:vasya@vasya" required>
             </div>
+            <div class="row">
                 <div class="form-group col-md-3" style="
     margin-left: 350px">
                     <label for="exampleFormControlSelect1">Пол</label>
@@ -149,12 +149,12 @@
                         <option>female</option>
                     </select>
                 </div>
-                <div class="form-group col-md-3" style="
-    margin-left: 350px">
+                <div class="form-group col-md-2">
                     <label for="validationDefault05">Дата рождения</label>
                     <input type="date" name="dateOfBirth" class="form-control" id="validationDefault05"
                            placeholder="Дата рождения" required>
                 </div>
+            </div>
             <div class="row">
                 <div class="form-group col-md-3" style="
     margin-left: 350px">
@@ -176,7 +176,8 @@
                 <input type="hidden" name="role" class="form-control" value="user" required>
             </div>
             <button type="submit" class=" form-group col-md-3 btn btn-success" style="
-    margin-left: 350px">Зарегистрироваться</button>
+    margin-left: 35%">Зарегистрироваться
+            </button>
         </form>
     </div>
     </form>
@@ -190,26 +191,25 @@
         <form action="controller" method="post">
             <input type="hidden" name="command" value="authorization"/>
             <div mb-3>
-                <input type="login" name="login" value="" placeholder="Логин" class="center w-25 form-control"
+                <input type="login" id="login"name="login" value=""  placeholder="Логин(от 6 до 10 символов)" class="center w-25 form-control"
                        style="margin-left: 217px " required autofocus>
             </div>
             </br>
             <div class="mb-3">
-                <input type="text" name="password" value="" placeholder="Пароль" class="w-25 form-control"
+                <input type="text" id="password" name="password" value="" placeholder="Пароль(от 6 до 10 символов)" class="w-25 form-control"
                        style="margin-left: 217px " required autofocus>
             </div>
             <div>
-                <button class="w-25 btn btn-success" style="margin-left: 217px"type="submit">Войти</button>
+                <button class="w-25 btn btn-success" style="margin-left: 217px" type="submit">Войти</button>
             </div>
         </form>
-        <p class="mt-5 mb-3 text-muted">© 2021</p>
     </div>
 </div>
 <jsp:include page="/jsp/footer.jsp"/>
 <script src="js/script.js"></script>
 <script>
-    if(<%=request.getAttribute("existLogin")%>){
-        alert("Такой пользовтель уже существует");
+    if(${requestScope.login == 'true'} ){
+        alert("Такой пользователь уже существует");
     }
 </script>
 </body>

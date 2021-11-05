@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for meal complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="meal">
  *   &lt;complexContent>
@@ -27,16 +27,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "meal", propOrder = {
-    "keyUserId",
-    "mealId",
-    "dateOfEating",
-    "timeOfEating",
-    "calories"
+        "keyUserId",
+        "mealId",
+        "dateOfEating",
+        "timeOfEating",
+        "calories"
 })
 public class Meal {
 
@@ -49,7 +47,6 @@ public class Meal {
 
     /**
      * Gets the value of the keyUserId property.
-     * 
      */
     public int getKeyUserId() {
         return keyUserId;
@@ -57,7 +54,6 @@ public class Meal {
 
     /**
      * Sets the value of the keyUserId property.
-     * 
      */
     public void setKeyUserId(int value) {
         this.keyUserId = value;
@@ -65,7 +61,6 @@ public class Meal {
 
     /**
      * Gets the value of the mealId property.
-     * 
      */
     public int getMealId() {
         return mealId;
@@ -73,7 +68,6 @@ public class Meal {
 
     /**
      * Sets the value of the mealId property.
-     * 
      */
     public void setMealId(int value) {
         this.mealId = value;
@@ -81,11 +75,9 @@ public class Meal {
 
     /**
      * Gets the value of the dateOfEating property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDateOfEating() {
         return dateOfEating;
@@ -93,11 +85,9 @@ public class Meal {
 
     /**
      * Sets the value of the dateOfEating property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDateOfEating(String value) {
         this.dateOfEating = value;
@@ -105,11 +95,9 @@ public class Meal {
 
     /**
      * Gets the value of the timeOfEating property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getTimeOfEating() {
         return timeOfEating;
@@ -117,11 +105,9 @@ public class Meal {
 
     /**
      * Sets the value of the timeOfEating property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setTimeOfEating(String value) {
         this.timeOfEating = value;
@@ -129,7 +115,6 @@ public class Meal {
 
     /**
      * Gets the value of the calories property.
-     * 
      */
     public double getCalories() {
         return calories;
@@ -137,7 +122,6 @@ public class Meal {
 
     /**
      * Sets the value of the calories property.
-     * 
      */
     public void setCalories(double value) {
         this.calories = value;

@@ -30,19 +30,19 @@ public class ViewMenuConsole {
                         displayMeals(mealService.getMeals(userId));
                         break;
                     case 2:
-                       mealService.createMeal(String.valueOf(Util.scanDate())
+                        mealService.createMeal(String.valueOf(Util.scanDate())
                                 , String.valueOf(Util.scanTime()), userId);
                         break;
                     case 3:
-                       System.out.println(mealService.changeMealCharacteristic(String.valueOf(Util.scanInt()),String.valueOf
-                                (Util.scanDate()),String.valueOf(Util.scanTime())));
+                        System.out.println(mealService.changeMealCharacteristic(String.valueOf(Util.scanInt()), String.valueOf
+                                (Util.scanDate()), String.valueOf(Util.scanTime())));
                         break;
                     case 4:
                         mealService.deleteMeal(String.valueOf(Util.scanInt()));
                         break;
                     case 5:
-                        displayMeals( mealService.getMeals(userId));
-                        System.out.println( mealService.getMealById(String.valueOf(Util.scanInt())));
+                        displayMeals(mealService.getMeals(userId));
+                        System.out.println(mealService.getMealById(String.valueOf(Util.scanInt())));
                         break;
                     case 6:
                         System.out.println(mealService.getMealByDate(String.valueOf(Util.scanDate())));
@@ -54,7 +54,7 @@ public class ViewMenuConsole {
                         System.out.println(">>>[Info] Wrong choose");
                 }
             } catch (InputMismatchException | DateTimeException | IllegalArgumentException | ServiceException ex) {
-               ex.printStackTrace();
+                ex.printStackTrace();
                 System.out.println(">>>[ERROR] Wrong value , try again");
             }
         }

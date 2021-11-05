@@ -2,7 +2,6 @@ package by.htp.example.command.impl.meal;
 
 import by.htp.example.ServiceException;
 import by.htp.example.ServiceProvider;
-import by.htp.example.bean.user.User;
 import by.htp.example.command.Command;
 import by.htp.example.command.JSPPageName;
 import by.htp.example.command.RequestParameterName;
@@ -26,8 +25,9 @@ public class GetAllMealsCommand implements Command {
         MealService mealService = provider.getServiceMeal();
         List<Meal> meals;
         String keyUserId = request.getParameter(RequestParameterName.REQ_PARAM_ID);
+
         HttpSession session = request.getSession(false);
-        if(session!=null){
+        if (session != null) {
             session = request.getSession(true);
         }
 
@@ -43,10 +43,9 @@ public class GetAllMealsCommand implements Command {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
                 dispatcher.forward(request, response);
             }
-
         } catch (ServiceException e) {
             e.printStackTrace();
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
             dispatcher.forward(request, response);
         }
     }

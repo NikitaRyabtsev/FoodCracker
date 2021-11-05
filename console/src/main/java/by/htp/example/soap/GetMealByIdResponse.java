@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for getMealByIdResponse complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="getMealByIdResponse">
  *   &lt;complexContent>
@@ -23,12 +23,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "getMealByIdResponse", propOrder = {
-    "_return"
+        "_return"
 })
 public class GetMealByIdResponse {
 
@@ -37,11 +35,9 @@ public class GetMealByIdResponse {
 
     /**
      * Gets the value of the return property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Meal }
-     *     
+     *
+     * @return possible object is
+     * {@link Meal }
      */
     public Meal getReturn() {
         return _return;
@@ -49,11 +45,9 @@ public class GetMealByIdResponse {
 
     /**
      * Sets the value of the return property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Meal }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Meal }
      */
     public void setReturn(Meal value) {
         this._return = value;

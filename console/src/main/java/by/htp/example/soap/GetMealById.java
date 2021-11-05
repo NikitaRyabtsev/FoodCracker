@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for getMealById complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="getMealById">
  *   &lt;complexContent>
@@ -22,12 +22,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "getMealById", propOrder = {
-    "mealId"
+        "mealId"
 })
 public class GetMealById {
 
@@ -35,11 +33,9 @@ public class GetMealById {
 
     /**
      * Gets the value of the mealId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getMealId() {
         return mealId;
@@ -47,11 +43,9 @@ public class GetMealById {
 
     /**
      * Sets the value of the mealId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setMealId(String value) {
         this.mealId = value;

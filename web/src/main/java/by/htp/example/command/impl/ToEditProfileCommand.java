@@ -21,8 +21,9 @@ import java.io.IOException;
 public class ToEditProfileCommand implements Command {
     @Inject
     private UserService userService;
+
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServiceProvider provider = ServiceProvider.getInstance();
         userService = provider.getUserService();
         User user = null;
@@ -41,7 +42,7 @@ public class ToEditProfileCommand implements Command {
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ADMIN_PROFILE);
                     dispatcher.forward(request, response);
 
-                } else{
+                } else {
                     user = userService.getUserAccessInfo(id);
                     request.setAttribute(RequestParameterName.REQ_PARAM_TO_EDIT_PROFILE, user);
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_PROFILE);
@@ -49,7 +50,7 @@ public class ToEditProfileCommand implements Command {
                 }
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
                 dispatcher.forward(request, response);
-            } catch (ServiceException |NumberFormatException e) {
+            } catch (ServiceException | NumberFormatException e) {
                 e.printStackTrace();
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
                 dispatcher.forward(request, response);

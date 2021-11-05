@@ -44,7 +44,7 @@ public class RegistrationCommand implements Command {
             dispatcher.forward(request, response);
 
         } catch (ServiceException | DateTimeParseException | NumberFormatException e) {
-            request.setAttribute("existLogin", "true");
+            request.setAttribute(RequestParameterName.REQ_PARAM_LOGIN, "true");
             e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.REGISTRATION);
             dispatcher.forward(request, response);

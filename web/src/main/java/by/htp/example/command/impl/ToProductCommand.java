@@ -16,6 +16,6 @@ import java.io.IOException;
 public class ToProductCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
-        CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_ALL_FOOD)).execute(request,response);
+        CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_ALL_FOOD)).execute(request, response);
     }
 }

@@ -14,15 +14,17 @@ public interface DaoQuery {
             " LEFT JOIN food_has_meal on meal.idMeal = food_has_meal.meal_idMeal " +
             " LEFT JOIN Food ON food_has_meal.food_idFood = food.idFood  " +
             " WHERE date = ? " +
-            " GROUP BY meal.idMeal,meal.date,meal.time " +
+            " GROUP BY meal.idMeal,meal.date,meal.time  " +
             " ORDER by date DESC";
 
-    String SQL_QUERY_DELETE_MEAL = "DELETE Meal from Meal WHERE idMeal = ?";
+    String SQL_QUERY_DELETE_MEAL = "DELETE food_has_meal FROM food_has_meal " +
+            "JOIN meal ON meal_idMeal = idMeal  " +
+            "WHERE idMeal = ?";
 
     String SQL_QUERY_CHANGE_MEAL = "UPDATE Meal SET date=?,time=? WHERE idMeal=?";
 
     String SQL_QUERY_GET_ALL_MEAL =
-            "SELECT idMeal,SUM(portion) AS weight,user_idUser, date ,time,SUM(food.calories) AS calories \n" +
+            "SELECT idMeal,SUM(portion) AS weight,user_idUser, date ,time,SUM(food.calories) AS calories  " +
                     "FROM meal " +
                     "LEFT JOIN food_has_meal on meal.idMeal = food_has_meal.meal_idMeal  " +
                     "LEFT JOIN Food ON food_has_meal.food_idFood = food.idFood  " +
@@ -30,14 +32,13 @@ public interface DaoQuery {
                     "GROUP BY meal.idMeal,meal.date,meal.time" +
                     " ORDER by date DESC";
 
-
     //User
-    String SQL_QUERY_USER_LOG_ON = "SELECT user.* ,user_idUser FROM User JOIN user_weight " +
-            "  ON idUser = user_idUser WHERE login=? AND password=?";
+    String SQL_QUERY_USER_LOG_ON = "SELECT user.* FROM User WHERE login=? AND password=?";
+
     String SQL_QUERY_USER_REGISTRATION = "INSERT INTO User (login,password,name,secondName,email,sex,dateOfBirth,role,block) VALUES(?,?,?,?,?,?,?,?,?) ";
 
     String SQL_QUERY_DELETE_USER = "DELETE FROM User WHERE idUser=?";
-    //
+
     String SQL_QUERY_GET_ALL_USERS = "SELECT user.* ,user_weight.weight AS weight, user_idUser , date FROM User " +
             " LEFT JOIN user_weight " +
             " ON idUser = user_weight.user_idUser AND date = (select max(date) from user_weight WHERE user_idUser = idUser)";

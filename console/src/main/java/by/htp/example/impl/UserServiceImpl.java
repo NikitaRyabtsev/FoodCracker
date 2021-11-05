@@ -13,53 +13,53 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private static final UserDataValidator validator = UserDataValidator.getInstance();
 
     private DaoProvider provider = DaoProvider.getInstance();
 
     @Override
-    public User authorization(String login, String password) throws ServiceException{
+    public User authorization(String login, String password) throws ServiceException {
 
         if (!validator.check(login, password)) {
             throw new ServiceException("[Info]Validation is not correct");
         }
         User user;
-        try{
+        try {
             UserDao userDao = DaoProvider.getInstance().getUserDao();
             user = userDao.authorization(login, password);
-        }catch(DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
         return user;
     }
 
     @Override
-    public void registration(String login,String password,String name, String secondName,
-                             String email,String sex,LocalDate dateOfBirth,String role,String block) throws ServiceException {
+    public void registration(String login, String password, String name, String secondName,
+                             String email, String sex, LocalDate dateOfBirth, String role, String block) throws ServiceException {
         UserDao userDao = DaoProvider.getInstance().getUserDao();
-       try {
-           userDao.registration(login,password,name,secondName,email,sex,dateOfBirth,role,block);
-       }catch(DaoException e){
-           throw new ServiceException(e);
-       }
+        try {
+            userDao.registration(login, password, name, secondName, email, sex, dateOfBirth, role, block);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
     }
 
     @Override
     public User getAdminAccessInfo(String id) throws ServiceException {
-        try{
+        try {
             return provider.getUserDao().getEditAdminProfileInfo(Integer.parseInt(id));
-        }catch(DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
 
     @Override
     public List<User> getUsers() throws ServiceException {
-        try{
+        try {
             return provider.getUserDao().getAllUsersFromDB();
-        }catch(DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
 
@@ -67,9 +67,9 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void blockUser(User user) throws ServiceException {
-        try{
+        try {
             provider.getUserDao().blockUserInDB(user);
-        }catch(DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
 
@@ -77,10 +77,10 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User getUserAccessInfo(String id) throws ServiceException {
-        try{
+        try {
             return provider.getUserDao().getEditUserAccessInfo(
                     Integer.parseInt(id));
-        }catch(DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
@@ -97,36 +97,36 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void addUserWeight(String id ,String weight, String date) throws ServiceException {
+    public void addUserWeight(String id, String weight, String date) throws ServiceException {
         UserDao userDao = DaoProvider.getInstance().getUserDao();
         User user;
-        try{
-            userDao.addUserWeightInDB(Integer.parseInt(id),Double.parseDouble(weight)
-                    ,LocalDate.parse(date));
-        }catch(DaoException e){
+        try {
+            userDao.addUserWeightInDB(Integer.parseInt(id), Double.parseDouble(weight)
+                    , LocalDate.parse(date));
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
 
     }
 
     @Override
-    public User EditProfileInDB(String login , String password , String name, String secondName
-            , String email, String sex , String dateOfBirth , String id) throws ServiceException {
-        try{
+    public User EditProfileInDB(String login, String password, String name, String secondName
+            , String email, String sex, String dateOfBirth, String id) throws ServiceException {
+        try {
 
-            return provider.getUserDao().EditProfileInDB(login,password,name,secondName
-                        ,email,sex,LocalDate.parse(dateOfBirth),Integer.parseInt(id));
+            return provider.getUserDao().EditProfileInDB(login, password, name, secondName
+                    , email, sex, LocalDate.parse(dateOfBirth), Integer.parseInt(id));
 
-        }catch (DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
 
     @Override
     public List<UserWeightInfo> getWeightFromDB(String id) throws ServiceException {
-        try{
+        try {
             return provider.getUserDao().getWeightFromDB(Integer.parseInt(id));
-        }catch(DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }

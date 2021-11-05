@@ -2,64 +2,60 @@ package by.htp.example.bean;
 
 public class Meal {
 
-	private String date;
-	private String time;
-	private double weight;
-	private double calories;
-
-	
-
-	public Meal(String date, String time, double weight, double calories) {
-		super();
-		this.date = date;
-		this.time = time;
-		this.weight = weight;
-		this.calories = calories;
-	}
+    private String date;
+    private String time;
+    private double weight;
+    private double calories;
 
 
-	public String getDate() {
-		return date;
-	}
+    public Meal(String date, String time, double weight, double calories) {
+        super();
+        this.date = date;
+        this.time = time;
+        this.weight = weight;
+        this.calories = calories;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
 
-	public double getWeight() {
-		return weight;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public void setWeight(double weight) {
-		this.weight = weight;
-	}
+    public void setDate(String date) {
+        this.date = date;
+    }
 
-	public double getCalories() {
-		return calories;
-	}
+    public double getWeight() {
+        return weight;
+    }
 
-	public void setCalories(double calories) {
-		this.calories = calories;
-	}
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
-	public String getTime() {
-		return time;
-	}
+    public double getCalories() {
+        return calories;
+    }
 
-	public void setTime(String time) {
-		this.time = time;
-	}
+    public void setCalories(double calories) {
+        this.calories = calories;
+    }
 
-	@Override
-	public String toString() {
-		return  
-				"Date: " + date + "," + 
-				"Time: " + time + ", Weight: " + weight + ", Calories: "
-				+ calories + "]";
-	}
+    public String getTime() {
+        return time;
+    }
 
-	
+    public void setTime(String time) {
+        this.time = time;
+    }
 
+    @Override
+    public String toString() {
+        return
+                "Date: " + date + "," +
+                        "Time: " + time + ", Weight: " + weight + ", Calories: "
+                        + calories + "]";
+    }
 
 
 }

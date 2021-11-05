@@ -6,11 +6,11 @@ import by.htp.example.bean.Meal;
 
 public interface MealService {
 
-	void getMeals(ArrayList<Meal> meals);
+    void getMeals(ArrayList<Meal> meals);
 
-	Meal createMeal();
+    Meal createMeal();
 
-	ArrayList<Meal> changeMealCharacteristic(ArrayList<Meal> meals);
-	
-	ArrayList<Meal> deleteMeal(ArrayList<Meal> meals);
+    ArrayList<Meal> changeMealCharacteristic(ArrayList<Meal> meals);
+
+    ArrayList<Meal> deleteMeal(ArrayList<Meal> meals);
 }

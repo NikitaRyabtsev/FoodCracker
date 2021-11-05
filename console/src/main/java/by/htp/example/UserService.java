@@ -14,10 +14,10 @@ public interface UserService {
 
     User authorization(String login, String password) throws ServiceException;
 
-    void registration(String login,String password,String name, String secondName,
-                      String email,String sex,LocalDate dateOfBirth,String role,String block) throws ServiceException;
+    void registration(String login, String password, String name, String secondName,
+                      String email, String sex, LocalDate dateOfBirth, String role, String block) throws ServiceException;
 
-    User getAdminAccessInfo(String id ) throws ServiceException;
+    User getAdminAccessInfo(String id) throws ServiceException;
 
     List<User> getUsers() throws ServiceException;
 
@@ -27,10 +27,10 @@ public interface UserService {
 
     User deleteUser(User user) throws ServiceException;
 
-    void  addUserWeight(String id, String weight, String date) throws ServiceException;
+    void addUserWeight(String id, String weight, String date) throws ServiceException;
 
-    User EditProfileInDB(String login , String password , String name, String secondName
-            , String email, String sex , String dateOfBirth , String id) throws ServiceException;
+    User EditProfileInDB(String login, String password, String name, String secondName
+            , String email, String sex, String dateOfBirth, String id) throws ServiceException;
 
     List<UserWeightInfo> getWeightFromDB(String id) throws ServiceException;
 

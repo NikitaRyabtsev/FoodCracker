@@ -25,10 +25,10 @@ public class AddNewMealCommand implements Command {
 
         try {
             mealService.createMeal(date, time, id);
-            CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_ALL_MEALS)).execute(request,response);
+            CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_ALL_MEALS)).execute(request, response);
         } catch (ServiceException | DaoException e) {
             e.printStackTrace();
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
             dispatcher.forward(request, response);
         }
 

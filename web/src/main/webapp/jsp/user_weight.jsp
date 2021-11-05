@@ -13,7 +13,7 @@
 </head>
 <style>
 </style>
-<body >
+<body>
 <jsp:include page="/jsp/header.jsp"/>
 <div id="chart_div"></div>
 <table class="table table-striped table-hover">
@@ -40,7 +40,7 @@
     function getUserWeight() {
         let currentInfo = [];
         <c:forEach items="${requestScope.getUserWeight}" var="weight" varStatus="status">;
-        currentInfo = [new Date(Date.parse("${weight.getDateOfWeighting()}")),parseFloat("${weight.getWeight()}")];
+        currentInfo = [new Date(Date.parse("${weight.getDateOfWeighting()}")), parseFloat("${weight.getWeight()}")];
         userInfo.push(currentInfo);
         </c:forEach>
 
@@ -48,7 +48,7 @@
 
     getUserWeight();
 
-    google.charts.load('current', {'packages':['corechart']});
+    google.charts.load('current', {'packages': ['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
@@ -79,8 +79,6 @@
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
         chart.draw(data, options);
-
-
 
 
     }

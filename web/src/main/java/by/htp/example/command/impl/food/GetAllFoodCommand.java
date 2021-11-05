@@ -23,20 +23,18 @@ public class GetAllFoodCommand implements Command {
         FoodService foodService = provider.getFoodService();
         List<Food> foods;
 
-        try{
+        try {
             foods = foodService.getAllFood();
-
-            if(foods!=null | !foods.isEmpty()){
+            if (foods != null | !foods.isEmpty()) {
                 request.setAttribute(RequestParameterName.REQ_PARAM_GET_FOODS, foods);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_ALL_FOOD);
                 dispatcher.forward(request, response);
-            }else{
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
-                dispatcher.forward(request, response);
+            } else {
+                response.sendRedirect(JSPPageName.USER_INDEX_JSP);
             }
-        }catch(ServiceException e){
+        } catch (ServiceException e) {
             e.printStackTrace();
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
             dispatcher.forward(request, response);
 
         }

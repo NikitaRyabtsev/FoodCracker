@@ -30,10 +30,9 @@ public class GetMealByIdCommand implements Command {
             } else {
                 response.sendRedirect(JSPPageName.USER_INDEX_JSP);
             }
-
         } catch (ServiceException e) {
             e.printStackTrace();
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
             dispatcher.forward(request, response);
         }
 

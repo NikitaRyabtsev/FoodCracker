@@ -4,12 +4,12 @@ import by.htp.example.view.AdminMenu;
 
 public class Main {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		AdminMenu menu = new AdminMenu();
-		menu.viewMenu();
-			
-	}
-	
+        AdminMenu menu = new AdminMenu();
+        menu.viewMenu();
+
+    }
+
 
 }

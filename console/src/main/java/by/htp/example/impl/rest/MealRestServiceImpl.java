@@ -85,7 +85,8 @@ public class MealRestServiceImpl implements MealService {
         WebTarget target = client.target(URL).path("/" + date);
         Response response = target.request(MediaType.APPLICATION_JSON).get();
 
-        GenericType<List<Meal>> type = new GenericType<List<Meal>>() {};
+        GenericType<List<Meal>> type = new GenericType<List<Meal>>() {
+        };
         List<Meal> meals = response.readEntity(type);
 
         client.close();

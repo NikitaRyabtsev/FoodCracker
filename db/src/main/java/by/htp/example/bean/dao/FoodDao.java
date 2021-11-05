@@ -8,7 +8,7 @@ public interface FoodDao {
 
     List<Food> getAllFoodFromDB() throws DaoException;
 
-    List<Food> getFoodByMeal(int keyMealId ,int keyUserId) throws DaoException;
+    List<Food> getFoodByMeal(int keyMealId, int keyUserId) throws DaoException;
 
-    void addFoodInMealDB(int keyMealId,int keyFoodId) throws DaoException;
+    void addFoodInMealDB(int keyMealId, int keyFoodId) throws DaoException;
 }

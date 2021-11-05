@@ -9,7 +9,7 @@ import by.htp.example.FoodService;
 
 import java.util.List;
 
-public class FoodServiceImpl implements FoodService  {
+public class FoodServiceImpl implements FoodService {
 
     DaoProvider provider = DaoProvider.getInstance();
 

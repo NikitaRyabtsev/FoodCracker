@@ -17,8 +17,9 @@ import java.io.IOException;
 public class AddUserWeightCommand implements Command {
     @Inject
     private UserService userService;
+
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
         ServiceProvider provider = ServiceProvider.getInstance();
         userService = provider.getUserService();
 
@@ -27,11 +28,11 @@ public class AddUserWeightCommand implements Command {
         String date = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
 
         try {
-            userService.addUserWeight(id, weight,date);
-            CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_WEIGHT)).execute(request,response);
-        } catch (ServiceException | DaoException e) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
-            dispatcher.forward(request, response);
+            userService.addUserWeight(id, weight, date);
+            CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_WEIGHT)).execute(request, response);
+        } catch (ServiceException | DaoException | NumberFormatException e) {
+            request.setAttribute("wrong" , " true");
+            CommandHelper.getInstance().getCommand(String.valueOf(CommandName.TO_EDIT_PROFILE)).execute(request, response);
             e.printStackTrace();
         }
     }

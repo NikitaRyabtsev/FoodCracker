@@ -8,18 +8,17 @@ import javax.xml.namespace.QName;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the by.htp.example.soap package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the by.htp.example.soap package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -40,14 +39,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: by.htp.example.soap
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link ChangeMealResponse }
-     * 
      */
     public ChangeMealResponse createChangeMealResponse() {
         return new ChangeMealResponse();
@@ -55,7 +52,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link AddMeal }
-     * 
      */
     public AddMeal createAddMeal() {
         return new AddMeal();
@@ -63,7 +59,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link AddMealResponse }
-     * 
      */
     public AddMealResponse createAddMealResponse() {
         return new AddMealResponse();
@@ -71,7 +66,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DeleteMeal }
-     * 
      */
     public DeleteMeal createDeleteMeal() {
         return new DeleteMeal();
@@ -79,7 +73,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetMealsResponse }
-     * 
      */
     public GetMealsResponse createGetMealsResponse() {
         return new GetMealsResponse();
@@ -87,7 +80,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetMealById }
-     * 
      */
     public GetMealById createGetMealById() {
         return new GetMealById();
@@ -95,7 +87,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetMealsByDate }
-     * 
      */
     public GetMealsByDate createGetMealsByDate() {
         return new GetMealsByDate();
@@ -103,7 +94,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetMealsByDateResponse }
-     * 
      */
     public GetMealsByDateResponse createGetMealsByDateResponse() {
         return new GetMealsByDateResponse();
@@ -111,7 +101,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetMealByIdResponse }
-     * 
      */
     public GetMealByIdResponse createGetMealByIdResponse() {
         return new GetMealByIdResponse();
@@ -119,7 +108,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ServiceException }
-     * 
      */
     public ServiceException createServiceException() {
         return new ServiceException();
@@ -127,7 +115,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DeleteMealResponse }
-     * 
      */
     public DeleteMealResponse createDeleteMealResponse() {
         return new DeleteMealResponse();
@@ -135,7 +122,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetMeals }
-     * 
      */
     public GetMeals createGetMeals() {
         return new GetMeals();
@@ -143,7 +129,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ChangeMeal }
-     * 
      */
     public ChangeMeal createChangeMeal() {
         return new ChangeMeal();
@@ -151,7 +136,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Meal }
-     * 
      */
     public Meal createMeal() {
         return new Meal();
@@ -159,7 +143,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddMealResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "addMealResponse")
     public JAXBElement<AddMealResponse> createAddMealResponse(AddMealResponse value) {
@@ -168,7 +151,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DeleteMeal }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "deleteMeal")
     public JAXBElement<DeleteMeal> createDeleteMeal(DeleteMeal value) {
@@ -177,7 +159,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddMeal }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "addMeal")
     public JAXBElement<AddMeal> createAddMeal(AddMeal value) {
@@ -186,7 +167,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ChangeMealResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "changeMealResponse")
     public JAXBElement<ChangeMealResponse> createChangeMealResponse(ChangeMealResponse value) {
@@ -195,7 +175,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetMealById }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "getMealById")
     public JAXBElement<GetMealById> createGetMealById(GetMealById value) {
@@ -204,7 +183,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetMealsByDate }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "getMealsByDate")
     public JAXBElement<GetMealsByDate> createGetMealsByDate(GetMealsByDate value) {
@@ -213,7 +191,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetMealsByDateResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "getMealsByDateResponse")
     public JAXBElement<GetMealsByDateResponse> createGetMealsByDateResponse(GetMealsByDateResponse value) {
@@ -222,7 +199,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetMealsResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "getMealsResponse")
     public JAXBElement<GetMealsResponse> createGetMealsResponse(GetMealsResponse value) {
@@ -231,7 +207,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DeleteMealResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "deleteMealResponse")
     public JAXBElement<DeleteMealResponse> createDeleteMealResponse(DeleteMealResponse value) {
@@ -240,7 +215,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetMeals }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "getMeals")
     public JAXBElement<GetMeals> createGetMeals(GetMeals value) {
@@ -249,7 +223,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetMealByIdResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "getMealByIdResponse")
     public JAXBElement<GetMealByIdResponse> createGetMealByIdResponse(GetMealByIdResponse value) {
@@ -258,7 +231,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ServiceException }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "ServiceException")
     public JAXBElement<ServiceException> createServiceException(ServiceException value) {
@@ -267,7 +239,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ChangeMeal }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soap.ws.example.htp.by/", name = "changeMeal")
     public JAXBElement<ChangeMeal> createChangeMeal(ChangeMeal value) {

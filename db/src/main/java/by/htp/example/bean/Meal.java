@@ -17,147 +17,149 @@ import java.util.Objects;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Meal implements Serializable {
 
-	private int keyUserId;
-	private int id;
+    private int keyUserId;
+    private int id;
 
-	@XmlJavaTypeAdapter(LocalDateAdapter.class)
-	private LocalDate date;
-	@XmlJavaTypeAdapter(LocalTimeAdapter.class)
-	private LocalTime time;
-	private double weight;
-	private double calories;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate date;
+    @XmlJavaTypeAdapter(LocalTimeAdapter.class)
+    private LocalTime time;
+    private double weight;
+    private double calories;
 
-	public Meal(int id){
-		super();
-		this.id = id;
-	}
-	public Meal() {}
+    public Meal(int id) {
+        super();
+        this.id = id;
+    }
 
-	public Meal(LocalDate date, LocalTime time, double weight, double calories) {
-		super();
-		this.date = date;
-		this.time = time;
-		this.weight = weight;
-		this.calories = calories;
-	}
+    public Meal() {
+    }
 
-	public Meal(int id, LocalDate date, LocalTime time, double weight, double calories) {
-		super();
-		this.id = id;
-		this.date = date;
-		this.time = time;
-		this.weight = weight;
-		this.calories = calories;
-	}
+    public Meal(LocalDate date, LocalTime time, double weight, double calories) {
+        super();
+        this.date = date;
+        this.time = time;
+        this.weight = weight;
+        this.calories = calories;
+    }
 
-	public Meal(LocalDate date, LocalTime time, double weight, double calories, int keyUserId) {
+    public Meal(int id, LocalDate date, LocalTime time, double weight, double calories) {
+        super();
+        this.id = id;
+        this.date = date;
+        this.time = time;
+        this.weight = weight;
+        this.calories = calories;
+    }
 
-		this.date = date;
-		this.time = time;
-		this.weight = weight;
-		this.calories = calories;
-		this.keyUserId = keyUserId;
-	}
+    public Meal(LocalDate date, LocalTime time, double weight, double calories, int keyUserId) {
 
-    public Meal(LocalDate date, LocalTime time ,int id) {
-		this.date = date;
-		this.time = time;
-		this.id = id;
+        this.date = date;
+        this.time = time;
+        this.weight = weight;
+        this.calories = calories;
+        this.keyUserId = keyUserId;
+    }
+
+    public Meal(LocalDate date, LocalTime time, int id) {
+        this.date = date;
+        this.time = time;
+        this.id = id;
     }
 
     public Meal(int id, LocalDate date, LocalTime time) {
-		this.id = id;
-		this.date = date;
-		this.time = time;
+        this.id = id;
+        this.date = date;
+        this.time = time;
     }
 
 
-	public int getKeyUserId() {
-		return keyUserId;
-	}
+    public int getKeyUserId() {
+        return keyUserId;
+    }
 
-	public void setKeyUserId(int keyUserId) {
-		this.keyUserId = keyUserId;
-	}
+    public void setKeyUserId(int keyUserId) {
+        this.keyUserId = keyUserId;
+    }
 
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
+    public int getId() {
+        return id;
+    }
 
 
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
 
 
-	public LocalTime getTime() {
-		return time;
-	}
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
 
-	public void setTime(LocalTime time) {
-		this.time = time;
-	}
+    public LocalTime getTime() {
+        return time;
+    }
 
 
-	public double getWeight() {
-		return weight;
-	}
+    public void setTime(LocalTime time) {
+        this.time = time;
+    }
 
 
-	public void setWeight(double weight) {
-		this.weight = weight;
-	}
+    public double getWeight() {
+        return weight;
+    }
 
 
-	public double getCalories() {
-		return calories;
-	}
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
 
-	public void setCalories(double calories) {
-		this.calories = calories;
-	}
+    public double getCalories() {
+        return calories;
+    }
 
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(calories, date, id, time, weight);
-	}
+    public void setCalories(double calories) {
+        this.calories = calories;
+    }
 
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Meal other = (Meal) obj;
-		return Double.doubleToLongBits(calories) == Double.doubleToLongBits(other.calories)
-				&& Objects.equals(date, other.date) && id == other.id && Objects.equals(time, other.time)
-				&& Double.doubleToLongBits(weight) == Double.doubleToLongBits(other.weight);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(calories, date, id, time, weight);
+    }
 
 
-	@Override
-	public String toString() {
-		return "Meal{" +
-				"id=" + id +
-				", date=" + date +
-				", time=" + time +
-				", weight=" + weight +
-				", calories=" + calories +
-				'}';
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Meal other = (Meal) obj;
+        return Double.doubleToLongBits(calories) == Double.doubleToLongBits(other.calories)
+                && Objects.equals(date, other.date) && id == other.id && Objects.equals(time, other.time)
+                && Double.doubleToLongBits(weight) == Double.doubleToLongBits(other.weight);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Meal{" +
+                "id=" + id +
+                ", date=" + date +
+                ", time=" + time +
+                ", weight=" + weight +
+                ", calories=" + calories +
+                '}';
+    }
 }

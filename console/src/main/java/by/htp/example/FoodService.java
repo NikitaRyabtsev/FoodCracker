@@ -9,5 +9,5 @@ public interface FoodService {
 
     List<Food> getFoodByMeal(String keyMealId, String keyUserId) throws ServiceException;
 
-    void addFoodInMeal(String keyMealId,String keyFoodId) throws ServiceException;
+    void addFoodInMeal(String keyMealId, String keyFoodId) throws ServiceException;
 }

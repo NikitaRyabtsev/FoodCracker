@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class  GetFoodByMealCommand implements Command {
+public class GetFoodByMealCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServiceProvider provider = ServiceProvider.getInstance();
@@ -25,16 +25,16 @@ public class  GetFoodByMealCommand implements Command {
         String keyMealId = request.getParameter("keyMealId");
         String keyUserId = request.getParameter("keyUserId");
         List<Food> foods;
-        try{
-            foods = foodService.getFoodByMeal(keyMealId,keyUserId);
-            if(foods!=null | !foods.isEmpty()){
+        try {
+            foods = foodService.getFoodByMeal(keyMealId, keyUserId);
+            if (foods != null | !foods.isEmpty()) {
                 request.setAttribute(RequestParameterName.REQ_PARAM_GET_FOOD_BY_MEAL, foods);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_FOOD_BY_MEAL);
                 dispatcher.forward(request, response);
             }
-        }catch(ServiceException e){
+        } catch (ServiceException e) {
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
             dispatcher.forward(request, response);
             e.printStackTrace();
         }

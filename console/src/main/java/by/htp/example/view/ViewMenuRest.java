@@ -38,7 +38,7 @@ public class ViewMenuRest {
                         break;
                     case 2:
                         mealService.createMeal(String.valueOf(Util.scanDate()),
-                                String.valueOf(Util.scanTime()),String.valueOf(Util.scanInt()));
+                                String.valueOf(Util.scanTime()), String.valueOf(Util.scanInt()));
                         break;
                     case 3:
                         mealService.changeMealCharacteristic(String.valueOf
@@ -48,11 +48,11 @@ public class ViewMenuRest {
                         mealService.deleteMeal(String.valueOf(Util.scanInt()));
                         break;
                     case 5:
-                        displayMeals( mealService.getMeals(keyUserId));
-                        System.out.println( mealService.getMealById(String.valueOf(Util.scanInt())));
+                        displayMeals(mealService.getMeals(keyUserId));
+                        System.out.println(mealService.getMealById(String.valueOf(Util.scanInt())));
                         break;
                     case 6:
-                        displayMeals( mealService.getMealByDate(String.valueOf(Util.scanDate())));
+                        displayMeals(mealService.getMealByDate(String.valueOf(Util.scanDate())));
                         break;
                     case 7:
                         System.out.println("Goodbye");

@@ -36,15 +36,15 @@ public class SQLUserDao implements UserDao, DaoQuery {
     }
 
     @Override
-    public void registration(String login,String password,String name, String secondName,
-           String email,String sex,LocalDate dateOfBirth,String role,String block) throws DaoException {
+    public void registration(String login, String password, String name, String secondName,
+                             String email, String sex, LocalDate dateOfBirth, String role, String block) throws DaoException {
 
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_USER_REGISTRATION)) {
 
             prepareStatement.setString(1, login);
             prepareStatement.setString(2, password);
-            prepareStatement.setString(3,name);
+            prepareStatement.setString(3, name);
             prepareStatement.setString(4, secondName);
             prepareStatement.setString(5, email);
             prepareStatement.setString(6, sex);
@@ -124,7 +124,6 @@ public class SQLUserDao implements UserDao, DaoQuery {
                 user.setWeight(rs.getDouble("weight"));
                 LocalDate dateOfWeighting = rs.getObject("date", LocalDate.class);
                 user.setDateOfWeighting(dateOfWeighting);
-                user.setIdWeight(rs.getInt("user_idUser"));
 
             }
 
@@ -229,7 +228,7 @@ public class SQLUserDao implements UserDao, DaoQuery {
             user.setDateOfBirth(localDate);
             user.setRole(rs.getString("role"));
             user.setBlock(rs.getString("block"));
-            user.setIdWeight(rs.getInt("user_idUser"));
+
 
         } catch (SQLException e) {
             throw new DaoException(e);
@@ -246,6 +245,6 @@ public class SQLUserDao implements UserDao, DaoQuery {
         } catch (SQLException e) {
             throw new DaoException(">>>Exception in method weightInfoInit()", e);
         }
-        return  userWeightInfo;
+        return userWeightInfo;
     }
 }

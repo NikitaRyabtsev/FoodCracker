@@ -16,7 +16,21 @@
 </head>
 <body>
 <jsp:include page="/jsp/header.jsp"/>
-<table class="table table-striped table-hover">
+<div class="row" style=" text-align: center">
+    <form action="controller" method="post">
+        <input type="hidden" name="command" value="change_meal"/>
+        <input type="hidden" name="id" value="${param.keyMealId}">
+        <div style="margin-left: 44%">
+            <input type="date" class="w-25 form-control" name="date" value="${param.date}"/>
+            <input type="time" class="w-25 form-control" name="time" value="${param.time}"/>
+        </div>
+            <br/>
+            <input type="submit" class="btn btn-success" value="Изменить"/>
+    </form>
+
+</div>
+</table>
+<table class="w-100 table table-striped table-hover">
     <tr>
         <td>Название</td>
         <td>Калории</td>
@@ -25,15 +39,16 @@
         <td>Углеводы</td>
     </tr>
     <c:forEach items="${requestScope.getFoodByMeal}" var="food">
-    <tr>
-        <td><c:out value="${food.getName()}"/></td>
-        <td><c:out value="${food.getCalories()}"/></td>
-        <td><c:out value="${food.getProteins()}"/></td>
-        <td><c:out value="${food.getFats()}"/></td>
-        <td><c:out value="${food.getCarbohydrates()}"/></td>
-    </tr>
+        <tr>
+            <td><c:out value="${food.getName()}"/></td>
+            <td><c:out value="${food.getCalories()}"/></td>
+            <td><c:out value="${food.getProteins()}"/></td>
+            <td><c:out value="${food.getFats()}"/></td>
+            <td><c:out value="${food.getCarbohydrates()}"/></td>
+        </tr>
     </c:forEach>
 </table>
+</div>
 <form action="controller" method="post">
     <input type="hidden" name="command" value="to_product"/>
     <input type="hidden" name="keyMealId" value="${param.keyMealId}">

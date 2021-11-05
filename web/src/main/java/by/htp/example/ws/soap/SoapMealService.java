@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-@WebService(name ="SoapMealService" ,serviceName = "ws/meal")
+@WebService(name = "SoapMealService", serviceName = "ws/meal")
 public class SoapMealService {
 
     DaoProvider provider = DaoProvider.getInstance();
@@ -32,9 +32,9 @@ public class SoapMealService {
     @WebMethod(operationName = "addMeal")
     public Meal createMeal(@WebParam(name = "date") String date,
                            @WebParam(name = "time") String time,
-                           @WebParam(name = "userId") int id) throws ServiceException{
+                           @WebParam(name = "userId") int id) throws ServiceException {
         try {
-            return mealDao.createMealInDB(LocalDate.parse(date),LocalTime.parse(time),
+            return mealDao.createMealInDB(LocalDate.parse(date), LocalTime.parse(time),
                     id);
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -47,7 +47,7 @@ public class SoapMealService {
                                          @WebParam(name = "mealId") int mealId) throws ServiceException {
         Meal meal = null;
         try {
-            meal = mealDao.changeMealCharacteristicInDB( mealId,LocalDate.parse(date)
+            meal = mealDao.changeMealCharacteristicInDB(mealId, LocalDate.parse(date)
                     , LocalTime.parse(time));
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -56,7 +56,7 @@ public class SoapMealService {
     }
 
     @WebMethod(operationName = "deleteMeal")
-    public void deleteMeal(@WebParam(name = "mealId") int id) throws ServiceException {
+    public void deleteMeal(@WebParam(name = "id") int id , @WebParam(name = "keyMealId")int keyMealId) throws ServiceException {
         try {
             mealDao.deleteMealFromDB(id);
         } catch (DaoException e) {

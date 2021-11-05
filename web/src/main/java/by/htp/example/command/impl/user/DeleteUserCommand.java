@@ -4,9 +4,7 @@ import by.htp.example.ServiceException;
 import by.htp.example.ServiceProvider;
 import by.htp.example.UserService;
 import by.htp.example.bean.user.User;
-import by.htp.example.command.Command;
-import by.htp.example.command.JSPPageName;
-import by.htp.example.command.RequestParameterName;
+import by.htp.example.command.*;
 import by.htp.example.bean.dao.DaoException;
 
 import javax.servlet.RequestDispatcher;
@@ -29,19 +27,18 @@ public class DeleteUserCommand implements Command {
             if (user != null) {
                 userService.deleteUser(user);
                 request.setAttribute(RequestParameterName.REQ_PARAM_DELETE_USER, user);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
-                dispatcher.forward(request, response);
+                CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_ALL_USERS)).execute(request, response);
             } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
                 dispatcher.forward(request, response);
 
             }
 
-        } catch(ServiceException | NumberFormatException e){
+        } catch (ServiceException | NumberFormatException | DaoException e) {
             e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
             dispatcher.forward(request, response);
         }
     }
-    }
+}
 
