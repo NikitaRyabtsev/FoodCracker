@@ -45,7 +45,7 @@ public class ViewMenuConsole {
                         System.out.println(mealService.getMealById(String.valueOf(Util.scanInt())));
                         break;
                     case 6:
-                        System.out.println(mealService.getMealByDate(String.valueOf(Util.scanDate())));
+                        System.out.println(mealService.getMealByDate(String.valueOf(Util.scanDate()),String.valueOf(Util.scanInt())));
                         break;
                     case 7:
                         System.out.println("Goodbye");

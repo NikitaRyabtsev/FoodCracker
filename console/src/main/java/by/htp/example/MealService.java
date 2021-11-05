@@ -19,5 +19,5 @@ public interface MealService {
 
     Meal getMealById(String id) throws ServiceException;
 
-    List<Meal> getMealByDate(String date) throws ServiceException;
+    List<Meal> getMealByDate(String date , String id) throws ServiceException;
 }

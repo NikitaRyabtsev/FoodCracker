@@ -24,6 +24,7 @@ public class GetMealByDateCommand implements Command {
         ServiceProvider provider = ServiceProvider.getInstance();
         String date = request.getParameter(RequestParameterName.REQ_PARAM_DATE);
         MealService mealService = provider.getServiceMeal();
+        String keyUserId = request.getParameter(RequestParameterName.REQ_PARAM_ID);
 
         List<Meal> meals;
         HttpSession session = request.getSession(false);
@@ -32,7 +33,7 @@ public class GetMealByDateCommand implements Command {
         }
 
         try {
-            meals = mealService.getMealByDate(date);
+            meals = mealService.getMealByDate(date,keyUserId);
             session.getAttribute(RequestParameterName.REQ_SESSION_USER);
             if (meals != null | meals.isEmpty()) {
                 request.setAttribute(RequestParameterName.REQ_PARAM_GET_MEAL_BY_DATE, meals);

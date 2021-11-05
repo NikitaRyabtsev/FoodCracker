@@ -75,9 +75,9 @@ public class SoapMealService {
 
 
     @WebMethod(operationName = "getMealsByDate")
-    public List<Meal> getMealByDate(@WebParam(name = "date") String date) throws ServiceException {
+    public List<Meal> getMealByDate(@WebParam(name = "date") String date,@WebParam(name="id")String id) throws ServiceException {
         try {
-            return mealDao.getMealByDateFromDB(LocalDate.parse(date));
+            return mealDao.getMealByDateFromDB(LocalDate.parse(date),Integer.parseInt(id));
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

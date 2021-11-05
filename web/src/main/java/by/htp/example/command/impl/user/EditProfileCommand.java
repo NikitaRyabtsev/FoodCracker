@@ -20,7 +20,7 @@ public class EditProfileCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServiceException, DaoException {
         ServiceProvider provider = ServiceProvider.getInstance();
         UserService userService = provider.getUserService();
-        User user = null;
+        User user;
         String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
         String login = request.getParameter(RequestParameterName.REQ_PARAM_LOGIN);
         String password = request.getParameter(RequestParameterName.REQ_PARAM_PASS);
@@ -34,12 +34,14 @@ public class EditProfileCommand implements Command {
             user = userService.EditProfileInDB(login, password, name, secondName, email, sex, dateOfBirth, id);
             if (user != null) {
                 request.setAttribute(RequestParameterName.REQ_PARAM_CHANGE_USER_PROFILE, user);
-                response.sendRedirect(JSPPageName.USER_PROFILE);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
+                dispatcher.forward(request, response);
+            }else{
+                CommandHelper.getInstance().getCommand(String.valueOf(CommandName.TO_EDIT_PROFILE)).execute(request, response);
             }
         } catch (ServiceException | NumberFormatException e) {
             request.setAttribute(RequestParameterName.REQ_PARAM_LOGIN,"true");
-            e.printStackTrace();
-            CommandHelper.getInstance().getCommand(String.valueOf(CommandName.EDIT_PROFILE)).execute(request, response);
+            CommandHelper.getInstance().getCommand(String.valueOf(CommandName.TO_EDIT_PROFILE)).execute(request, response);
         }
     }
 }

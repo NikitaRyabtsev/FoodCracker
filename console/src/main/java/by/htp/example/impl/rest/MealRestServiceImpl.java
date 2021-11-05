@@ -80,7 +80,7 @@ public class MealRestServiceImpl implements MealService {
     }
 
     @Override
-    public List<Meal> getMealByDate(String date) throws ServiceException {
+    public List<Meal> getMealByDate(String date , String id) throws ServiceException {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(URL).path("/" + date);
         Response response = target.request(MediaType.APPLICATION_JSON).get();

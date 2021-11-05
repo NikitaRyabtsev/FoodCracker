@@ -1,6 +1,5 @@
 package by.htp.example.command.impl.user;
 
-import by.htp.example.bean.dao.DaoException;
 import by.htp.example.command.Role;
 import by.htp.example.bean.user.User;
 import by.htp.example.command.Command;

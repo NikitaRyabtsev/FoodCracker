@@ -84,9 +84,9 @@ public class MealRestService {
 
     @POST
     @Path("/{date}")
-    public List<Meal> getMealByDate(@PathParam(RequestParameterName.REQ_PARAM_DATE) String date) throws ServiceException {
+    public List<Meal> getMealByDate(@PathParam(RequestParameterName.REQ_PARAM_DATE) String date,@PathParam(RequestParameterName.REQ_PARAM_ID) String id) throws ServiceException {
         try {
-            return mealDao.getMealByDateFromDB(LocalDate.parse(date));
+            return mealDao.getMealByDateFromDB(LocalDate.parse(date),Integer.parseInt(id));
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

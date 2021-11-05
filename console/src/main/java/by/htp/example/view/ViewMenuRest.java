@@ -52,7 +52,7 @@ public class ViewMenuRest {
                         System.out.println(mealService.getMealById(String.valueOf(Util.scanInt())));
                         break;
                     case 6:
-                        displayMeals(mealService.getMealByDate(String.valueOf(Util.scanDate())));
+                        displayMeals(mealService.getMealByDate(String.valueOf(Util.scanDate()),String.valueOf(Util.scanInt())));
                         break;
                     case 7:
                         System.out.println("Goodbye");

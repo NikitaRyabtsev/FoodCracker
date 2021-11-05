@@ -34,6 +34,7 @@
     </form>
     <form action="controller" method="post">
         <input type="hidden" name="command" value="get_meal_by_date"/>
+        <input type="hidden" name="id" value="${user.id}">
         <input type="submit" class="btn btn-success " value="Приёмы пищи"/>
         <input type="date" name="date" id="validationDefault03" value=""/>
     </form>

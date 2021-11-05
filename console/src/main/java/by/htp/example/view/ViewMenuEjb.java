@@ -51,7 +51,7 @@ public class ViewMenuEjb {
                         System.out.println(mealServiceRemote.getMealById(String.valueOf(Util.scanInt())));
                         break;
                     case 6:
-                        displayMeals(mealServiceRemote.getMealByDate(String.valueOf(Util.scanDate())));
+                        displayMeals(mealServiceRemote.getMealByDate(String.valueOf(Util.scanDate()),String.valueOf(Util.scanInt())));
                         break;
                     case 7:
                         System.out.println("Goodbye");

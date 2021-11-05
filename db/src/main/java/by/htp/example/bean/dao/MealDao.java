@@ -20,6 +20,6 @@ public interface MealDao {
 
     Meal getMealByIdFromDB(int idMeal) throws DaoException;
 
-    List<Meal> getMealByDateFromDB(LocalDate date) throws DaoException;
+    List<Meal> getMealByDateFromDB(LocalDate date ,  int id) throws DaoException;
 
 }

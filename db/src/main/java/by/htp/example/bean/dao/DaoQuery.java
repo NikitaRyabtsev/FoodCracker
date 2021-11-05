@@ -13,7 +13,7 @@ public interface DaoQuery {
             " FROM meal " +
             " LEFT JOIN food_has_meal on meal.idMeal = food_has_meal.meal_idMeal " +
             " LEFT JOIN Food ON food_has_meal.food_idFood = food.idFood  " +
-            " WHERE date = ? " +
+            " WHERE date = ?  and user_idUser = ?" +
             " GROUP BY meal.idMeal,meal.date,meal.time  " +
             " ORDER by date DESC";
 

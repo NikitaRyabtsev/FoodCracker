@@ -110,12 +110,13 @@ public class SQLMealDao implements MealDao, DaoQuery {
     }
 
     @Override
-    public List<Meal> getMealByDateFromDB(LocalDate date) throws DaoException {
+    public List<Meal> getMealByDateFromDB(LocalDate date , int id) throws DaoException {
         List<Meal> meals = new ArrayList<>();
 
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_MEAL_BY_DATE)) {
             prepareStatement.setObject(1,date);
+            prepareStatement.setInt(2,id);
             ResultSet rs = prepareStatement.executeQuery();
             while (rs.next()) {
                 meals.add(init(rs));

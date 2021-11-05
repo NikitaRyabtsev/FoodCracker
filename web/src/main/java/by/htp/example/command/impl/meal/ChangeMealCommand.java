@@ -29,11 +29,12 @@ public class ChangeMealCommand implements Command {
             meal = mealService.changeMealCharacteristic(id, date, time);
             if (meal != null) {
                 request.setAttribute(RequestParameterName.REQ_PARAM_CHANGE_MEAL, meal);
-                CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_ALL_MEALS)).execute(request, response);
+                response.sendRedirect(JSPPageName.USER_INDEX_JSP);
             } else {
-                response.sendRedirect(JSPPageName.USER_AUTH_PAGE_JSP);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
+                dispatcher.forward(request, response);
             }
-        } catch (ServiceException | DaoException e) {
+        } catch (ServiceException  e) {
             e.printStackTrace();
             RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
             dispatcher.forward(request, response);
