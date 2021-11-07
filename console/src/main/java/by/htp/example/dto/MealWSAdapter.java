@@ -7,7 +7,7 @@ import java.time.LocalTime;
 
 public class MealWSAdapter {
 
-    public Meal transformMeal(by.htp.example.soap.Meal meal){
+    public Meal transformMeal(by.htp.example.soap.Meal meal) {
         return new Meal(meal.getMealId(), LocalDate.parse(meal.getDateOfEating()),
                 LocalTime.parse(meal.getTimeOfEating()));
     }

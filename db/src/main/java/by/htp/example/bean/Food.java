@@ -17,7 +17,7 @@ public class Food {
     private int keyMealId;
 
 
-    public Food(){
+    public Food() {
     }
 
     public Food(int id, String name, double calories, double proteins, double fats, double carbohydrates) {
@@ -34,7 +34,7 @@ public class Food {
         this.calories = calories;
         this.proteins = proteins;
         this.fats = fats;
-        this.carbohydrates=carbohydrates;
+        this.carbohydrates = carbohydrates;
     }
 
     public Food(int id, String name, double calories, double proteins, double fats, double carbohydrates, int keyUserId, int keyMealId) {

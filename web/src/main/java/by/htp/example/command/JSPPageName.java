@@ -5,7 +5,8 @@ public final class JSPPageName {
     private JSPPageName() {
 
     }
-   // public static final String USER_MAIN_JSP = "/jsp/main.jsp";
+
+    // public static final String USER_MAIN_JSP = "/jsp/main.jsp";
     public static final String USER_INDEX_JSP = "/index.jsp";
     public static final String USER_AUTH_PAGE_JSP = "/jsp/user_auth.jsp";
     public static final String GET_ALL_MEALS_JSP = "/jsp/get_all_meals.jsp";
@@ -19,5 +20,5 @@ public final class JSPPageName {
     public static final String GET_ALL_FOOD = "/jsp/get_all_food.jsp";
     public static final String GET_FOOD_BY_MEAL = "/jsp/get_food_by_meal.jsp";
     public static final String GET_USER_WEIGHT = "/jsp/user_weight.jsp";
-   public static final String GET_USER_MEAL_PLAN = "/jsp/user_plan.jsp";
+    public static final String GET_USER_MEAL_PLAN = "/jsp/user_plan.jsp";
 }

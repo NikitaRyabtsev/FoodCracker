@@ -16,8 +16,8 @@ public class ViewMenuSoap {
 
     public void viewSoap() throws ServiceException_Exception {
 
-    Ws_002fMeal mealsWSFactory = new Ws_002fMeal();
-    SoapMealService mealWS = mealsWSFactory.getSoapMealServicePort();
+        Ws_002fMeal mealsWSFactory = new Ws_002fMeal();
+        SoapMealService mealWS = mealsWSFactory.getSoapMealServicePort();
 
         int userChoose = 0;
         String userId = "4";
@@ -62,13 +62,13 @@ public class ViewMenuSoap {
             }
         }
 
-}
+    }
 
     private void displayMeals(List<by.htp.example.soap.Meal> meals) {
         if (meals != null && !meals.isEmpty()) {
             for (int i = 0; i < meals.size(); i++) {
                 System.out.println(
-                        "#" + meals.get(i).getMealId()     + " Meals Date: " + meals.get(i).getDateOfEating() + " Time: " + meals.get(i).getTimeOfEating());
+                        "#" + meals.get(i).getMealId() + " Meals Date: " + meals.get(i).getDateOfEating() + " Time: " + meals.get(i).getTimeOfEating());
             }
         }
     }

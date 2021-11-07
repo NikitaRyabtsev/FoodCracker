@@ -47,7 +47,7 @@ public class MealServiceImpl implements MealService, MealServiceRemote {
                                          String time) throws ServiceException {
         Meal meal;
         try {
-            meal = provider.getMealDao().changeMealCharacteristicInDB(Integer.parseInt(mealId),LocalDate.parse(date),
+            meal = provider.getMealDao().changeMealCharacteristicInDB(Integer.parseInt(mealId), LocalDate.parse(date),
                     LocalTime.parse(time));
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -76,13 +76,13 @@ public class MealServiceImpl implements MealService, MealServiceRemote {
     }
 
     @Override
-    public List<Meal> getMealByDate(String date) throws ServiceException {
+    public List<Meal> getMealByDate(String date,String id) throws ServiceException {
+        List<Meal> meals;
         try {
-            return provider.getMealDao().getMealByDateFromDB(LocalDate.parse(date));
+            meals =  provider.getMealDao().getMealByDateFromDB(LocalDate.parse(date),Integer.parseInt(id));
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
-
-
+        return meals;
     }
 }

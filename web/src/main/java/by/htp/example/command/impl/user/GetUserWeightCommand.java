@@ -23,17 +23,17 @@ public class GetUserWeightCommand implements Command {
 
         String id = request.getParameter(RequestParameterName.REQ_PARAM_ID);
         List<UserWeightInfo> userWeightInfoList;
-        try{
+        try {
             userWeightInfoList = userService.getWeightFromDB(id);
-            if(userWeightInfoList != null){
+            if (userWeightInfoList != null) {
                 request.setAttribute(RequestParameterName.REQ_PARAM_GET_USER_WEIGHT, userWeightInfoList);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.GET_USER_WEIGHT);
                 dispatcher.forward(request, response);
-            }else {
+            } else {
                 response.sendRedirect(JSPPageName.USER_INDEX_JSP);
             }
-        }catch(ServiceException e){
-            response.sendRedirect(JSPPageName.ERROR_PAGE_JSP);
+        } catch (ServiceException e) {
+            response.sendRedirect(JSPPageName.USER_AUTH_PAGE_JSP);
             e.printStackTrace();
         }
     }

@@ -17,6 +17,7 @@ import java.io.IOException;
 public class BlockUserCommand implements Command {
     @Inject
     private UserService userService;
+
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServiceProvider provider = ServiceProvider.getInstance();
@@ -29,10 +30,10 @@ public class BlockUserCommand implements Command {
             if (user != null) {
                 userService.blockUser(user);
                 request.setAttribute(RequestParameterName.REQ_PARAM_BLOCK_USER, user);
-                CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_ALL_USERS)).execute(request,response);
+                CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_ALL_USERS)).execute(request, response);
             }
         } catch (ServiceException | DaoException e) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
             dispatcher.forward(request, response);
             e.printStackTrace();
         }

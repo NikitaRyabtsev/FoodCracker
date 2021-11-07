@@ -1,10 +1,10 @@
 package by.htp.example.command.impl.food;
 
 import by.htp.example.bean.dao.DaoException;
-import by.htp.example.command.*;
 import by.htp.example.FoodService;
 import by.htp.example.ServiceException;
 import by.htp.example.ServiceProvider;
+import by.htp.example.command.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,11 +24,12 @@ public class AddFoodInMealCommand implements Command {
 
         try {
             foodService.addFoodInMeal(keyMealId, keyFoodId);
-            CommandHelper.getInstance().getCommand(String.valueOf(CommandName.GET_ALL_FOOD)).execute(request,response);
+            CommandHelper.getInstance().getCommand(CommandName.GET_ALL_FOOD.toString()).execute(request, response);
         } catch (ServiceException | DaoException e) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
             dispatcher.forward(request, response);
             e.printStackTrace();
         }
+
     }
 }

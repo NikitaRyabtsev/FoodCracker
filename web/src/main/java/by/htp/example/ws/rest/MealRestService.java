@@ -41,7 +41,7 @@ public class MealRestService {
         try {
             return mealDao.createMealInDB(LocalDate.parse(date),
                     LocalTime.parse(time), Integer.parseInt(id));
-        }catch(DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
@@ -53,9 +53,9 @@ public class MealRestService {
                                          @PathParam(RequestParameterName.REQ_PARAM_ID) String mealId) throws ServiceException {
         Meal meal = null;
         try {
-           meal = mealDao.changeMealCharacteristicInDB(Integer.parseInt(mealId),LocalDate.parse(date)
-                   ,LocalTime.parse(time));
-        }catch(DaoException e){
+            meal = mealDao.changeMealCharacteristicInDB(Integer.parseInt(mealId), LocalDate.parse(date)
+                    , LocalTime.parse(time));
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
         return meal;
@@ -64,9 +64,9 @@ public class MealRestService {
     @DELETE
     @Path("/{id}")
     public void deleteMeal(@PathParam(RequestParameterName.REQ_PARAM_ID) String id) throws ServiceException {
-        try{
+        try {
             mealDao.deleteMealFromDB(Integer.parseInt(id));
-        }catch(DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
@@ -75,19 +75,19 @@ public class MealRestService {
     @GET
     @Path("/{id}")
     public Meal getMealById(@PathParam(RequestParameterName.REQ_PARAM_ID) String id) throws ServiceException {
-        try{
+        try {
             return mealDao.getMealByIdFromDB(Integer.parseInt(id));
-        }catch(DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
 
     @POST
     @Path("/{date}")
-    public List<Meal> getMealByDate(@PathParam(RequestParameterName.REQ_PARAM_DATE) String date) throws ServiceException {
-        try{
-            return mealDao.getMealByDateFromDB(LocalDate.parse(date));
-        }catch(DaoException e){
+    public List<Meal> getMealByDate(@PathParam(RequestParameterName.REQ_PARAM_DATE) String date,@PathParam(RequestParameterName.REQ_PARAM_ID) String id) throws ServiceException {
+        try {
+            return mealDao.getMealByDateFromDB(LocalDate.parse(date),Integer.parseInt(id));
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
 

@@ -19,7 +19,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
 
     @Override
     public List<Meal> getMealsFromDB(int keyUserId) throws DaoException {
-       List<Meal> meals = new ArrayList<>();
+        List<Meal> meals = new ArrayList<>();
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_GET_ALL_MEAL)) {
 
@@ -57,8 +57,8 @@ public class SQLMealDao implements MealDao, DaoQuery {
     }
 
     @Override
-    public Meal changeMealCharacteristicInDB(int mealId ,LocalDate date ,
-                               LocalTime time) throws DaoException {
+    public Meal changeMealCharacteristicInDB(int mealId, LocalDate date,
+                                             LocalTime time) throws DaoException {
         Meal meal;
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_CHANGE_MEAL)) {
@@ -66,7 +66,7 @@ public class SQLMealDao implements MealDao, DaoQuery {
             prepareStatement.setObject(2, time);
             prepareStatement.setInt(3, mealId);
             prepareStatement.executeUpdate();
-            meal = new Meal(date,time,mealId);
+            meal = new Meal(date, time, mealId);
         } catch (SQLException e) {
             throw new DaoException(e);
         }
@@ -77,7 +77,9 @@ public class SQLMealDao implements MealDao, DaoQuery {
     public void deleteMealFromDB(int id) throws DaoException {
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY_DELETE_MEAL)) {
+
             preparedStatement.setInt(1, id);
+
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException(e);
@@ -108,14 +110,15 @@ public class SQLMealDao implements MealDao, DaoQuery {
     }
 
     @Override
-    public List<Meal> getMealByDateFromDB(LocalDate date) throws DaoException {
+    public List<Meal> getMealByDateFromDB(LocalDate date , int id) throws DaoException {
         List<Meal> meals = new ArrayList<>();
 
         try (Connection connection = DriverManagerManager.getConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(SQL_QUERY_GET_MEAL_BY_DATE)) {
-            prepareStatement.setObject(1, date);
+            prepareStatement.setObject(1,date);
+            prepareStatement.setInt(2,id);
             ResultSet rs = prepareStatement.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 meals.add(init(rs));
             }
             rs.close();

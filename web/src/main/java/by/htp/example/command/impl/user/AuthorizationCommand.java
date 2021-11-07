@@ -23,6 +23,7 @@ public class AuthorizationCommand implements Command {
     ServiceProvider provider = ServiceProvider.getInstance();
     @Inject
     private UserService userService;
+
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
@@ -30,7 +31,7 @@ public class AuthorizationCommand implements Command {
 
         ServiceProvider provider = ServiceProvider.getInstance();
         HttpSession session = request.getSession(false);
-        if(session!=null){
+        if (session != null) {
             session = request.getSession(true);
         }
 
@@ -42,25 +43,23 @@ public class AuthorizationCommand implements Command {
             user = userService.authorization(login, password);
 
             if (user != null) {
-                if(Status.UNBLOCK.toString().equalsIgnoreCase(user.getBlock())) {
+                if (Status.UNBLOCK.toString().equalsIgnoreCase(user.getBlock())) {
                     session.setAttribute(RequestParameterName.REQ_SESSION_USER, user);
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_INDEX_JSP);
                     dispatcher.forward(request, response);
-                    System.out.println("3");
-                }else if(Status.BLOCK.toString().equalsIgnoreCase(user.getBlock())){
-                    request.setAttribute("blocked", "true");
+                } else if (Status.BLOCK.toString().equalsIgnoreCase(user.getBlock())) {
+                    request.setAttribute(RequestParameterName.REQ_PARAM_BLOCK_USER, "true");
                     RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
                     dispatcher.forward(request, response);
-                    System.out.println("2");
                 }
-            }else{
-                System.out.println("1");
+            } else {
+                request.setAttribute(RequestParameterName.REQ_SESSION_USER,"true");
                 RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
                 dispatcher.forward(request, response);
             }
         } catch (ServiceException e) {
             e.printStackTrace();
-            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.ERROR_PAGE_JSP);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(JSPPageName.USER_AUTH_PAGE_JSP);
             dispatcher.forward(request, response);
 
         }

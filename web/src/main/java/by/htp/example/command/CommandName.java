@@ -22,7 +22,7 @@ public enum CommandName {
     DELETE_MEAL,
     GET_MEAL_BY_ID,
     GET_MEAL_BY_DATE,
-//Food
+    //Food
     GET_ALL_FOOD,
     GET_FOOD_BY_MEAL,
     ADD_FOOD_IN_MEAL,

@@ -27,7 +27,7 @@ public class RequestParameterName {
     public static final String REQ_PARAM_CHOOSE_MEAL_PLAN = "choosePlan";
 
     public static final String REQ_PARAM_TO_REDIRECT = "redirect";
-//Food
+    //Food
     public static final String REQ_PARAM_GET_NAME = "name";
     public static final String REQ_PARAM_GET_CALORIES = "calories";
     public static final String REQ_PARAM_GET_PROTEINS = "proteins";
@@ -35,12 +35,12 @@ public class RequestParameterName {
     public static final String REQ_PARAM_GET_CARBOHYDRATES = "carbohydrates";
     public static final String REQ_PARAM_GET_FOODS = "getFoods";
     public static final String REQ_PARAM_GET_FOOD_BY_MEAL = "getFoodByMeal";
-    public static final String REQ_PARAM_ADD_FOOD_IN_MEAL= "addFood";
-    public static final String REQ_PARAM_ADD_FOOD_ID_MEAL= "keyMealId";
-    public static final String REQ_PARAM_ADD_FOOD_ID= "keyFoodId";
+    public static final String REQ_PARAM_ADD_FOOD_IN_MEAL = "addFood";
+    public static final String REQ_PARAM_ADD_FOOD_ID_MEAL = "keyMealId";
+    public static final String REQ_PARAM_ADD_FOOD_ID = "keyFoodId";
 
 
-//Meal
+    //Meal
     public static final String REQ_PARAM_GET_MEALS = "getMeals";
     public static final String REQ_PARAM_GET_MEAL_BY_ID = "getMealById";
     public static final String REQ_PARAM_GET_MEAL_BY_DATE = "getMealByDate";
@@ -50,15 +50,13 @@ public class RequestParameterName {
     public static final String REQ_PARAM_CHANGE_MEAL = "changeMeal";
 
     public static final String REQ_PARAM_ID = "id";
-    public static final String REQ_PARAM_ID_MEAL = "idM";
+    public static final String REQ_PARAM_ID_MEAL = "idMeal";
     public static final String REQ_PARAM_DATE = "date";
     public static final String REQ_PARAM_TIME = "time";
     public static final String REQ_PARAM_WEIGHT = "weight";
     public static final String REQ_PARAM_CALORIES = "calories";
 
     public static final String REQ_SESSION_USER = "user";
-
-
 
 
 }

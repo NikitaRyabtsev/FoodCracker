@@ -14,7 +14,7 @@
 
     <link rel="icon" href="images/FoodCracker.ico">
     <style>
-        form{
+        form {
             margin-block-end: 0;
         }
 
@@ -82,8 +82,6 @@
             min-height: 50px;
         }
     </style>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>Вход</title>
 </head>
 <header class="p-2 bg-dark background-color:text-white">
@@ -134,20 +132,18 @@
         <form action="controller" method="post">
             <input type="hidden" name="command" value="authorization"/>
             <div mb-3>
-
-                <input type="login" name="login" value="" class="center w-25 form-control"  placeholder="Логин"
+                <input type="login" name="login" value="" class="center w-25 form-control" placeholder="Логин"
                        style="margin-left: 190px " required autofocus>
             </div>
             </br>
             <div class="mb-3">
-                <input type="text" name="password" value="" class="w-25 form-control"  placeholder="Пароль"
+                <input type="text" name="password" value="" class="w-25 form-control" placeholder="Пароль"
                        style="margin-left: 190px " required autofocus>
             </div>
             <div>
                 <button class="w-25 btn btn-success" type="submit">Войти</button>
             </div>
         </form>
-        <p class="mt-5 mb-3 text-muted">© 2021</p>
     </div>
 </div>
 
@@ -183,13 +179,15 @@
         <div class="bg-white box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
 </div>
+</div>
 <script>
-    if(<%=request.getAttribute("blocked")%>){
-        alert("Вы заблокированы,по поводу приичны писать на почту:RyabtsevNukuta@yandex.by");
+    if (${requestScope.blockUser == 'true'}) {
+        alert("Вы заблокированы,по поводу причины писать на почту:RyabtsevNukuta@yandex.by");
+    }else if(${requestScope.user == 'true'}){
+        alert("Не верно введен логин или пароль , попробуйте снова")
     }
-
 </script>
 <script src="js/script.js"></script>
-</body>
 <jsp:include page="/jsp/footer.jsp"/>
+</body>
 </html>
